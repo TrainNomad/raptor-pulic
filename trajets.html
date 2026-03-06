@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TrainNomad — Résultats de recherche</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet"/>
+<link href="css/autocomplete.css" rel="stylesheet"/>
+<script src="https://kit.fontawesome.com/8e4de4bf0a.js" crossorigin="anonymous"></script>
+
+<style type="text/tailwindcss">
+  :root {
+    --midnight-blue: #1A2B3C;
+    --green-highlight: #4ade80;
+    --bg-gray: #F8FAFC;
+  }
+  body { font-family:'Plus Jakarta Sans',sans-serif; background-color:var(--bg-gray); color:var(--midnight-blue); }
+  .search-bar-shadow { box-shadow: 0 4px 20px -2px rgba(26,43,60,.05); }
+  .journey-card { transition:all .3s cubic-bezier(.4,0,.2,1); animation:cardIn .35s ease both; }
+  .journey-card:hover { box-shadow:0 10px 25px -5px rgba(26,43,60,.08); transform:translateY(-2px); }
+  @keyframes cardIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  .timeline-line { width:2px; background:repeating-linear-gradient(to bottom,#E2E8F0 0,#E2E8F0 4px,transparent 4px,transparent 8px); }
+  .custom-scrollbar::-webkit-scrollbar{width:6px} .custom-scrollbar::-webkit-scrollbar-track{background:transparent} .custom-scrollbar::-webkit-scrollbar-thumb{background:#E2E8F0;border-radius:10px}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+
+  /* Status dot */
+  .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%}
+  .status-dot.ok{background:#4ade80} .status-dot.loading{background:#f59e0b;animation:pulse 1s infinite} .status-dot.err{background:#f87171}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+  .text-primary{
+    --tw-text-opacity: 1;
+    color: rgb(74 222 128 / var(--tw-text-opacity, 1));
+  }
+  /* ── Journey card — style fichier texte ── */
+  /* Carte : rounded-2xl, border, shadow-sm, p-6 */
+  .journey-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 1px 3px rgba(26,43,60,.06);
+    overflow: hidden;
+  }
+
+  /* Résumé : même layout que le fichier texte (flex, items-center, justify-between) */
+  .card-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    cursor: pointer;
+    gap: 32px;
+  }
+  .card-summary:hover { background: #fafcff; }
+
+  /* Partie gauche : logo + blocs dep/mid/arr */
+  .card-logo { width: 80px; flex-shrink: 0; display: flex; align-items: center; }
+  .card-logo-img { max-height: 24px; max-width: 80px; object-fit: contain; }
+  .card-logo-placeholder { width: 60px; height: 20px; background: #f1f5f9; border-radius: 4px; }
+
+  /* Groupe dep + mid + arr alignés sur une ligne */
+  .card-dep-block, .card-arr-block { text-align: center; }
+  .card-time {
+    display: block;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--midnight-blue);
+  }
+  .card-station-lbl {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  .card-overnight { font-size: 11px; font-weight: 700; color: #f59e0b; vertical-align: super; }
+
+  /* Milieu : durée + track + direct/corresp */
+  .card-mid-block { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .card-dur-lbl   { font-size: 10px; font-weight: 700; color: #94a3b8; }
+
+  /* Track — ligne avec point ou icône train au centre, largeur fixe */
+  .card-track { display: flex; align-items: center; gap: 4px; width: 96px; }
+  .card-track-dot  { width: 6px; height: 6px; border-radius: 50%; background: #cbd5e1; flex-shrink: 0; }
+  .card-track-line { flex: 1; height: 2px; background: #f1f5f9; border-radius: 1px; }
+  .card-track-icon { font-size: 14px; color: #cbd5e1; }
+
+  .card-direct  { font-size: 10px; font-weight: 700; color: var(--green-highlight); letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
+  .card-corresp { font-size: 10px; font-weight: 700; color: #f59e0b; letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
+
+  /* Prix — aligné à droite */
+  .card-price-block { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 0; }
+  .price-val         { font-size: 24px; font-weight: 800; display: block; line-height: 1.1; }
+  .price-val--green  { color: var(--green-highlight); }
+  .price-val--black  { color: var(--midnight-blue); }
+  .price-lbl {
+    font-size: 10px; font-weight: 700; color: #94a3b8;
+    letter-spacing: .12em; text-transform: uppercase;
+    background: #f8fafc; padding: 2px 7px; border-radius: 4px; margin-top: 4px;
+    display: inline-block;
+  }
+  .price-unavail { font-size: 18px; font-weight: 700; color: #cbd5e1; }
+  .price-loading { font-size: 12px; color: #94a3b8; font-style: italic; }
+  .price-ter     { font-size: 9px; color: #94a3b8; }
+
+  /* Select journey btn */
+  .btn-select-journey{margin-top:6px;padding:5px 14px;border-radius:999px;background:var(--midnight-blue);color:#fff;font-size:11px;font-weight:700;border:none;cursor:pointer;transition:background .15s}
+  .btn-select-journey:hover{background:#25394f}
+
+  /* ── Expanded legs — style fichier texte ── */
+  /* Section bg-slate-50 avec ligne timeline absolue à gauche */
+  .card-legs { display: none; }
+  .journey-card.expanded .card-legs { display: block; }
+
+  .tl-wrap {
+    position: relative;
+    background: #F8FAFC;
+    border-radius: 12px;
+    border: 1px solid #f1f5f9;
+    margin: 0 24px 24px;
+    padding: 24px;
+  }
+  /* Ligne verticale pointillée absolue (calée sur les cercles) */
+  .tl-wrap::before {
+    content: '';
+    position: absolute;
+    left: 33px;
+    top: 32px;
+    bottom: 32px;
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, #E2E8F0 0, #E2E8F0 4px, transparent 4px, transparent 8px);
+  }
+
+  .tl-stop { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 32px; position: relative; }
+  .tl-stop--final { margin-bottom: 0; }
+  .tl-transfer { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 32px; position: relative; }
+
+  .tl-node-col { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; z-index: 1; }
+  .tl-circle { border-radius: 50%; flex-shrink: 0; }
+  /* Cercles calés sur ml-1 pour aligner avec la ligne absolue (left:33px) */
+  .tl-circle--dep { width: 16px; height: 16px; background: #fff; border: 4px solid var(--midnight-blue); margin-left: 1px; margin-top: 6px; }
+  .tl-circle--mid { width: 16px; height: 16px; background: #fff; border: 4px solid #cbd5e1; margin-left: 1px; margin-top: 6px; }
+  .tl-circle--arr { width: 16px; height: 16px; background: var(--green-highlight); margin-left: 1px; margin-top: 6px; }
+  .tl-circle--xfer { width: 24px; height: 24px; background: #fff7ed; border: 2px solid #fed7aa; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .tl-vline { display: none; } /* la ligne est gérée par ::before */
+
+  .tl-body { flex: 1; }
+  .tl-stop-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 4px; }
+  .tl-stop-name  { font-size: 14px; font-weight: 800; color: var(--midnight-blue); }
+  .tl-stop-time  { font-size: 12px; color: #94a3b8; font-weight: 500; display: block; margin-top: 2px; }
+  .tl-trip-badge {
+    font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 4px;
+    background: #e2e8f0; color: #64748b;
+    letter-spacing: .04em; white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .tl-dur-box {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 12px; padding: 10px 14px;
+    background: #fff; border: 1px solid #f1f5f9; border-radius: 8px;
+    width: fit-content;
+  }
+  .tl-dur-ico  { font-size: 14px; }
+  .tl-dur-text { font-size: 12px; font-weight: 600; color: #64748b; }
+
+  /* Correspondance */
+  .tl-xfer-body { display: flex; align-items: center; gap: 12px; flex: 1; }
+  .tl-xfer-station { font-size: 14px; font-weight: 700; color: #f59e0b; }
+  .tl-xfer-wait    { font-size: 12px; font-weight: 700; color: #f59e0b; }
+  .tl-xfer-sep     { flex: 1; height: 1px; background: #fed7aa; }
+
+  /* Results header */
+  .results-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px}
+  .results-header-left{flex:1}
+  .results-title{font-size:22px;font-weight:800;color:var(--midnight-blue)}
+  .results-count{font-size:13px;color:#94a3b8;font-weight:500;margin-top:4px}
+  .results-sort{font-size:13px;font-weight:700;color:var(--midnight-blue);display:flex;align-items:center;gap:6px}
+
+  /* States */
+  .loading-container{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 0;gap:16px}
+  .spinner{width:36px;height:36px;border:3px solid #e2e8f0;border-top-color:var(--green-highlight);border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .state-empty,.state-error{text-align:center;padding:64px 0;color:#94a3b8;font-size:15px;font-weight:600}
+  .state-error{color:#f87171}
+
+  /* Phase banner */
+  .phase-banner{background:linear-gradient(135deg,#1A2B3C,#25394f);color:#fff;border-radius:14px;padding:16px 20px;margin-bottom:20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+  .phase-banner__check{font-size:13px;font-weight:800;color:var(--green-highlight)}
+  .phase-banner__detail{font-size:13px;font-weight:600;opacity:.85;flex:1}
+  .phase-banner__prompt{font-size:12px;font-weight:700;opacity:.7}
+
+  /* Btn more */
+  .btn-more{padding:10px 28px;border-radius:999px;border:1.5px solid #e2e8f0;font-size:13px;font-weight:700;color:var(--midnight-blue);background:#fff;cursor:pointer;transition:all .2s}
+  .btn-more:hover{background:var(--midnight-blue);color:#fff;border-color:var(--midnight-blue)}
+
+  /* Multi-select */
+  .ms-dropdown .ms-item{display:none}
+  .ms-dropdown.open .ms-item{display:flex}
+  .ms-item{align-items:center;gap:10px;padding:7px 6px;border-radius:8px;cursor:pointer;transition:background .1s}
+  .ms-item:hover{background:#f8fafc}
+  .ms-item input[type=checkbox]{accent-color:var(--green-highlight);cursor:pointer;width:14px;height:14px;flex-shrink:0}
+  .ms-color-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+  .ms-item-label{font-size:13px;font-weight:500;color:#475569}
+
+  /* autocomplete */
+  .input-ac-wrapper { position: relative; }
+  input[type="date"]::-webkit-calendar-picker-indicator { display: none; -webkit-appearance: none; }
+  /* input[type="date"] { -moz-appearance: textfield; } */
+  .suggestions-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px -4px rgba(26,43,60,.12);
+    overflow: hidden;
+    margin-top: 4px;
+  }
+  .ac-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background .1s;
+    gap: 8px;
+  }
+  .ac-row:hover, .ac-row.ac-active { background: #f8fafc; }
+  .ac-row-name { font-size: 13px; font-weight: 700; color: var(--midnight-blue); }
+  .ac-row-country { font-size: 11px; font-weight: 500; color: #94a3b8; white-space: nowrap; }
+</style>
+</head>
+
+<body class="min-h-screen">
+
+<!-- ══ NAV ══ -->
+<nav class="bg-white border-b border-slate-100 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-3xl">eco</span>
+            <span class="text-xl font-extrabold tracking-tight text-midnight">TrainNomad<span class="text-primary">.eu</span></span>
+        </div>    </a>
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-2 text-xs font-medium text-slate-400">
+        <span class="status-dot ok" id="status-dot"></span>
+        <span id="status-text">Connexion au moteur…</span>
+      </div>
+      <!-- <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-sm font-semibold hover:bg-slate-100 transition-colors">
+        <span class="material-symbols-outlined text-lg">account_circle</span>Mon Compte
+      </button> -->
+    </div>
+  </div>
+</nav>
+
+<!-- ══ SEARCH BAR ══ -->
+<div class="bg-white border-b border-slate-100 py-6 px-6 sticky top-16 z-40">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Trip type pills -->
+    <div class="flex items-center gap-2 mb-3 ml-1">
+      <button onclick="setTripTypeBar('oneway')" id="tt-oneway-bar"
+        class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all bg-[var(--midnight-blue)] text-white">
+        <i class="fa-solid fa-arrow-right text-[10px]"></i>Aller simple
+      </button>
+      <button onclick="setTripTypeBar('roundtrip')" id="tt-roundtrip-bar"
+        class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all bg-slate-100 text-slate-500 hover:bg-slate-200">
+        <i class="fa-solid fa-arrow-right-arrow-left text-[10px]"></i>Aller-retour
+      </button>
+      <!-- Hidden hooks for trajets.js -->
+      <div class="hidden" id="tripTypeBtn"></div>
+      <div class="hidden" id="tripTypeMenu">
+        <div class="trip-type-option" data-value="oneway"></div>
+        <div class="trip-type-option" data-value="roundtrip"></div>
+      </div>
+      <span class="hidden" id="selectedTripType">Aller simple</span>
+    </div>
+
+    <div class="flex flex-wrap lg:flex-nowrap gap-3 p-2 bg-white rounded-2xl search-bar-shadow border border-slate-100">
+
+      <!-- De -->
+      <div class="flex-1 min-w-[200px] relative group">
+        <label class="absolute left-4 top-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">De</label>
+        <div class="flex items-center pt-5 pb-2 px-4 input-ac-wrapper">
+          <span class="material-symbols-outlined text-slate-400 mr-2 text-xl flex-shrink-0"><i class="fa-solid fa-location-dot fa-xs"></i></span>
+          <input id="input-from" type="text" autocomplete="off" placeholder="Ville de départ"
+            class="w-full border-none p-0 text-sm font-semibold text-[var(--midnight-blue)] focus:ring-0 placeholder:text-slate-300 outline-none bg-transparent"/>
+          <input type="hidden" id="id-from"/>
+          <div id="ac-from" class="suggestions-container hidden"></div>
+        </div>
+      </div>
+
+      <div class="w-px bg-slate-100 my-2 hidden lg:block"></div>
+
+      <!-- Vers -->
+      <div class="flex-1 min-w-[200px] relative group">
+        <label class="absolute left-4 top-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Vers</label>
+        <div class="flex items-center pt-5 pb-2 px-4 input-ac-wrapper">
+          <span class="material-symbols-outlined text-slate-400 mr-2 text-xl flex-shrink-0"><i class="fa-solid fa-location-arrow fa-xs"></i></span>
+          <input id="input-to" type="text" autocomplete="off" placeholder="Ville d'arrivée"
+            class="w-full border-none p-0 text-sm font-semibold text-[var(--midnight-blue)] focus:ring-0 placeholder:text-slate-300 outline-none bg-transparent"/>
+          <input type="hidden" id="id-to"/>
+          <div id="ac-to" class="suggestions-container hidden"></div>
+        </div>
+      </div>
+
+      <div class="w-px bg-slate-100 my-2 hidden lg:block"></div>
+
+      <!-- Date aller -->
+      <div class="w-full lg:w-40 relative group cursor-pointer" onclick="document.getElementById('input-date').showPicker()">
+        <label class="absolute left-4 top-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider pointer-events-none">Date aller</label>
+        <div class="flex items-center pt-5 pb-2 px-4 relative">
+          <span class="material-symbols-outlined text-slate-400 mr-2 text-xl flex-shrink-0"><i class="fa-regular fa-calendar fa-xs"></i></span>
+          <input id="input-date" type="date" style="color-scheme:light;"
+            class="w-full border-none p-0 text-sm font-semibold text-[var(--midnight-blue)] focus:ring-0 outline-none bg-transparent cursor-pointer" />
+        </div>
+      </div>
+
+      <!-- Date retour (masquée par défaut) -->
+      <div id="return-date-wrapper" class="w-full lg:w-40 relative group cursor-pointer border-l border-slate-100" style="display:none" onclick="document.getElementById('return-date').showPicker()">
+        <label class="absolute left-4 top-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider pointer-events-none">Date retour</label>
+        <div class="flex items-center pt-5 pb-2 px-4 relative">
+          <span class="material-symbols-outlined text-slate-400 mr-2 text-xl flex-shrink-0"><i class="fa-regular fa-calendar fa-xs"></i></span>
+          <input id="return-date" type="date" style="color-scheme:light;"
+            class="w-full border-none p-0 text-sm font-semibold text-[var(--midnight-blue)] focus:ring-0 outline-none bg-transparent cursor-pointer"/>
+        </div>
+      </div>
+
+      <!-- Séparateur heure (masqué) -->
+      <div id="sep-time" class="w-px bg-slate-100 my-2 hidden"></div>
+
+      <!-- Heure (masquée) -->
+      <div id="time-wrapper" class="w-full lg:w-36 relative group hidden">
+        <label class="absolute left-4 top-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Heure départ</label>
+        <div class="flex items-center pt-5 pb-2 px-4">
+          <span class="material-symbols-outlined text-slate-400 mr-2 text-xl flex-shrink-0">schedule</span>
+          <input id="input-time" type="time" value="06:00"
+            class="w-full border-none p-0 text-sm font-semibold text-[var(--midnight-blue)] focus:ring-0 outline-none bg-transparent"/>
+        </div>
+      </div>
+
+      <!-- Séparateur profil (masqué) -->
+      <div id="sep-profil" class="w-px bg-slate-100 my-2 hidden"></div>
+
+      <!-- Profil (masqué) -->
+      <div id="profil-wrapper" class="w-full lg:w-48 relative group hidden">
+        <label class="absolute left-4 top-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Profil</label>
+        <div class="flex items-center pt-5 pb-2 px-4">
+          <span class="material-symbols-outlined text-slate-400 mr-2 text-xl flex-shrink-0">style</span>
+          <select id="input-carte"
+            class="w-full border-none p-0 text-sm font-semibold text-[var(--midnight-blue)] focus:ring-0 appearance-none bg-transparent outline-none cursor-pointer">
+            <option value="Tarif Normal">Sans carte</option>
+            <option value="Tarif Avantage">Carte Avantage</option>
+            <option value="Tarif Elève - Etudiant - Apprenti">Carte Jeune / Étudiant</option>
+            <option value="Tarif Réglementé">Carte Liberté / Pro</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Bouton -->
+      <button id="btn-search" disabled
+        class="bg-[var(--midnight-blue)] hover:bg-[#25394f] disabled:opacity-50 disabled:cursor-not-allowed text-white px-8 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+        <span class="material-symbols-outlined">search</span>RECHERCHER
+      </button>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ══ MAIN ══ -->
+<main class="results__main max-w-7xl mx-auto px-6 py-8 flex gap-8">
+
+  <!-- Sidebar -->
+  <aside class="w-64 flex-shrink-0 hidden md:block">
+    <div class="sticky top-44 space-y-8">
+
+      <div>
+        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-[0.15em] mb-4">Filtrer par transport</h3>
+
+        <button id="ms-btn"
+          class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-[var(--midnight-blue)] hover:bg-slate-50 transition-colors mb-2">
+          <span id="ms-label">Tous les trains</span>
+          <span class="flex items-center gap-1.5">
+            <span id="ms-count" class="hidden text-[10px] font-bold bg-[var(--green-highlight)] text-[var(--midnight-blue)] px-1.5 py-0.5 rounded-full"></span>
+            <span class="material-symbols-outlined text-slate-400 text-lg">expand_more</span>
+          </span>
+        </button>
+
+        <div id="ms-dropdown" class="space-y-1">
+          <!-- "Tout sélectionner" — toujours visible même quand dropdown fermé -->
+          <label class="flex items-center justify-between group cursor-pointer px-1 py-1.5 rounded-lg hover:bg-slate-50">
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded border-2 border-slate-200 flex items-center justify-center group-hover:border-[var(--green-highlight)] transition-colors flex-shrink-0">
+                <input id="ms-all" type="checkbox" checked class="hidden peer"/>
+                <span class="material-symbols-outlined text-[var(--green-highlight)] text-sm opacity-0 peer-checked:opacity-100">check</span>
+              </div>
+              <span class="text-sm font-bold text-slate-500 uppercase tracking-wider">Tous</span>
+            </div>
+          </label>
+          <!-- .ms-item injectés dynamiquement par populateTypeCombobox() -->
+        </div>
+      </div>
+
+      <!-- <div class="p-4 bg-[var(--midnight-blue)] rounded-2xl text-white">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="material-symbols-outlined text-[var(--green-highlight)]">electric_bolt</span>
+          <span class="text-sm font-bold">Optimisation TGVmax</span>
+        </div>
+        <p class="text-[11px] leading-relaxed opacity-70">Nous priorisons les trajets à 0€ éligibles à votre abonnement.</p>
+      </div> -->
+    </div>
+  </aside>
+
+  <!-- Results -->
+  <section class="flex-1 space-y-4" id="results">
+    <div class="loading-container">
+      <div class="spinner"></div>
+      <p class="text-sm text-slate-400 font-medium">Connexion au moteur…</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="bg-white border-t border-slate-100 py-12 px-6 mt-12">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 bg-slate-100 rounded flex items-center justify-center">
+        <span class="material-symbols-outlined text-slate-400 text-sm">train</span>
+      </div>
+      <span class="text-sm font-bold text-slate-400">© 2026 TrainNomad.eu</span>
+    </div>
+    <div class="flex gap-8">
+      <a class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-[var(--midnight-blue)] transition-colors" href="mention legal.html">Mentions légales</a>
+      <a class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-[var(--midnight-blue)] transition-colors" href="#">Confidentialité</a>
+      <a class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-[var(--midnight-blue)] transition-colors" href="#">API &amp; Données</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ JS ══ -->
+<script>
+// ─── Autocomplétion (même méthode que index.html) ────────────────────────────
+let acTimers = {};
+
+const AC_COUNTRY_NAMES = {
+  FR:'France', IT:'Italie', BE:'Belgique', DE:'Allemagne',
+  NL:'Pays-Bas', GB:'Royaume-Uni', ES:'Espagne', PT:'Portugal',
+  CH:'Suisse', AT:'Autriche', PL:'Pologne', CZ:'Tchéquie', SK:'Slovaquie',
+};
+
+function setupAutocomplete(inputId, acId, hiddenId, stateKey, stateObj, onSelect) {
+  const input  = document.getElementById(inputId);
+  const ac     = document.getElementById(acId);
+  const hidden = document.getElementById(hiddenId);
+  let acIndex  = -1;
+  let items    = [];
+
+  const close = () => {
+    ac.classList.add('hidden');
+    ac.innerHTML = '';
+    acIndex = -1;
+    items   = [];
+  };
+
+  input.addEventListener('input', () => {
+    clearTimeout(acTimers[inputId]);
+    const q = input.value.trim();
+    stateObj[stateKey] = null;
+    hidden.value = '';
+    if (onSelect) onSelect();
+
+    if (q.length < 2) { close(); return; }
+
+    acTimers[inputId] = setTimeout(async () => {
+      try {
+        const API = 'https://raptor-backend-2vdj.onrender.com';
+        const res   = await fetch(`${API}/api/stops?q=${encodeURIComponent(q)}`);
+        const stops = await res.json();
+
+        if (!stops.length) { close(); return; }
+
+        // Grouper par ville+pays
+        const cityOrder = [];
+        const cityMap   = new Map();
+
+        for (const stop of stops) {
+          const city        = stop.city || stop.name;
+          const country     = stop.country || 'FR';
+          const countryName = AC_COUNTRY_NAMES[country] || country;
+          const key         = city + ':' + country;
+
+          if (!cityMap.has(key)) {
+            cityMap.set(key, { city, countryName, stops: [] });
+            cityOrder.push(key);
+          }
+          cityMap.get(key).stops.push(stop);
+        }
+
+        ac.innerHTML = '';
+        acIndex = -1;
+        items   = [];
+
+        for (const key of cityOrder) {
+          const { countryName, stops: groupStops } = cityMap.get(key);
+
+          for (const stop of groupStops) {
+            const div = document.createElement('div');
+            div.className = 'ac-row';
+            div.setAttribute('data-ac-index', items.length);
+
+            div.innerHTML = `
+              <span class="ac-row-name">${escapeHtml(stop.name)}</span>
+              <span class="ac-row-country">${escapeHtml(countryName)}</span>`;
+
+            div.addEventListener('mousedown', e => {
+              e.preventDefault();
+              selectStop(stop, input, hidden, stateKey, stateObj, onSelect);
+              close();
+            });
+            ac.appendChild(div);
+            items.push(stop);
+          }
+        }
+
+        ac.style.position = 'absolute';
+        ac.style.top    = '100%';
+        ac.style.left   = '0';
+        ac.style.right  = '0';
+        ac.style.zIndex = '1000';
+        ac.classList.remove('hidden');
+      } catch (_) {}
+    }, 180);
+  });
+
+  input.addEventListener('keydown', e => {
+    if (!items.length) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      acIndex = Math.min(acIndex + 1, items.length - 1);
+      highlightItem();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      acIndex = Math.max(acIndex - 1, -1);
+      highlightItem();
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (acIndex >= 0 && items[acIndex]) {
+        selectStop(items[acIndex], input, hidden, stateKey, stateObj, onSelect);
+        close();
+      }
+    } else if (e.key === 'Escape') {
+      close();
+    }
+  });
+
+  function highlightItem() {
+    ac.querySelectorAll('[data-ac-index]').forEach(el => {
+      el.classList.toggle('ac-active', parseInt(el.getAttribute('data-ac-index')) === acIndex);
+    });
+  }
+
+  input.addEventListener('blur', () => setTimeout(close, 150));
+}
+
+function selectStop(stop, input, hidden, stateKey, stateObj, onSelect) {
+  input.value        = stop.name;
+  hidden.value       = (stop.stopIds && stop.stopIds.length) ? stop.stopIds.join(',') : (stop.id || '');
+  stateObj[stateKey] = { ...stop, stopIds: stop.stopIds || [stop.id] };
+  if (onSelect) onSelect();
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+<script src="Script/trajets.js"></script>
+
+<script>
+/* Toggle aller / aller-retour dans la barre */
+function setTripTypeBar(type) {
+  const isRound = type === 'roundtrip';
+  const base = 'flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ';
+  document.getElementById('tt-oneway-bar').className   = base + (isRound ? 'bg-slate-100 text-slate-500 hover:bg-slate-200' : 'bg-[var(--midnight-blue)] text-white');
+  document.getElementById('tt-roundtrip-bar').className = base + (isRound ? 'bg-[var(--midnight-blue)] text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200');
+  document.getElementById('return-date-wrapper').style.display = isRound ? '' : 'none';
+  if (typeof state !== 'undefined') {
+    state.isRoundTrip = isRound;
+    state.phase = 'aller';
+    state.selectedAller = null;
+    if (typeof hidePhaseBanner === 'function') hidePhaseBanner();
+  }
+  const lbl = document.getElementById('selectedTripType');
+  if (lbl) lbl.textContent = isRound ? 'Aller-retour' : 'Aller simple';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('tripType') === 'roundtrip') setTripTypeBar('roundtrip');
+});
+</script>
+
+</body>
+</html>
