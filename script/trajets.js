@@ -357,8 +357,8 @@ function renderResults(journeys, fromName, toName, time, showLoadMore = false) {
         if (state.isRoundTrip) {
           selectJourneyForRoundTrip(sortedJourneys[idx]);
         } else {
-          // Aller simple : expand la card au clic sur Sélectionner aussi
-          card.classList.toggle('expanded');
+          // Aller simple : sauvegarder le trajet et aller au récap
+          selectJourneySimple(sortedJourneys[idx]);
         }
       });
     }
@@ -862,9 +862,23 @@ function selectJourneyForRoundTrip(journey) {
     sessionStorage.setItem('recap_to',          JSON.stringify(state.selectedFrom)); // inversé
     sessionStorage.setItem('recap_date_aller',  state.allerDate  || '');
     sessionStorage.setItem('recap_date_retour', state.retourDate || document.getElementById('input-date').value || '');
+    sessionStorage.setItem('recap_is_simple',   'false');
 
     window.location.href = 'recap.html';
   }
+}
+
+function selectJourneySimple(journey) {
+  const dateAller = document.getElementById('input-date').value || '';
+  // On nettoie complètement le sessionStorage avant d'écrire
+  sessionStorage.removeItem('recap_retour');
+  sessionStorage.removeItem('recap_date_retour');
+  sessionStorage.setItem('recap_aller',      JSON.stringify(journey));
+  sessionStorage.setItem('recap_from',       JSON.stringify(state.selectedFrom));
+  sessionStorage.setItem('recap_to',         JSON.stringify(state.selectedTo));
+  sessionStorage.setItem('recap_date_aller', dateAller);
+  sessionStorage.setItem('recap_is_simple',  'true');
+  window.location.href = 'recap.html';
 }
 
 function showPhaseBanner(phase, allerJourney) {
