@@ -284,7 +284,52 @@ function renderResults(journeys, fromName, toName, time, showLoadMore = false) {
                    : isRetourPhase ? ' — <strong>Choisissez votre trajet retour</strong>'
                    : '';
 
-  let out = '<div class="results-header">'
+  let out = '';
+
+  // ── En phase retour : afficher la récap du trajet aller en haut ──────────
+  if (isRetourPhase && state.selectedAller) {
+    const a      = state.selectedAller;
+    const leg0   = a.legs[0];
+    const legEnd = a.legs[a.legs.length - 1];
+    const types  = (a.train_types || []).join(' · ') || 'Train';
+    const xfers  = a.transfers === 0 ? 'Direct' : a.transfers + ' corresp.';
+    out += `
+      <div class="aller-recap-wrapper">
+        <div class="aller-recap-label">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="6.5" stroke="#4ade80" stroke-width="1.2"/>
+            <path d="M4.5 7l2 2 3-3" stroke="#4ade80" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Trajet aller sélectionné
+        </div>
+        <div class="aller-recap-card">
+          <div>
+            <div class="aller-recap-times">
+              <div>
+                <div class="aller-recap-time">${leg0.dep_str}</div>
+                <div class="aller-recap-stations">${escapeHtml(leg0.from_name)}</div>
+              </div>
+              <div class="aller-recap-arrow">
+                <div class="aller-recap-arrow-line"></div>
+                <div class="aller-recap-dur">${minutesToHHMM(a.duration)}</div>
+              </div>
+              <div>
+                <div class="aller-recap-time">${legEnd.arr_str}</div>
+                <div class="aller-recap-stations">${escapeHtml(legEnd.to_name)}</div>
+              </div>
+            </div>
+          </div>
+          <div class="aller-recap-meta">
+            <div class="aller-recap-badge">${escapeHtml(types)}</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.45);font-weight:500">${xfers}</div>
+            <button class="aller-recap-change-btn" onclick="resetAllerSelection()">Modifier l'aller</button>
+          </div>
+        </div>
+        <div class="retour-section-label">Choisissez votre trajet retour</div>
+      </div>`;
+  }
+
+  out += '<div class="results-header">'
     + '<div class="results-header-left">'
     + '<div class="results-title">' + escapeHtml(fromName) + ' → ' + escapeHtml(toName) + '</div>'
     + '<div class="results-count">Départ après ' + time + dateLabel + ' — ' + plural + phaseLabel + '</div>'
@@ -795,7 +840,7 @@ function selectJourneyForRoundTrip(journey) {
     }
 
     // Heure : repartir de 06:00
-    document.getElementById('input-time').value = '06:00';
+    document.getElementById('input-time').value = '02:00';
 
     showPhaseBanner('retour', journey);
     state.allJourneys       = [];
@@ -823,29 +868,37 @@ function selectJourneyForRoundTrip(journey) {
 }
 
 function showPhaseBanner(phase, allerJourney) {
-  let banner = document.getElementById('phase-banner');
-  if (!banner) {
-    banner = document.createElement('div');
-    banner.id = 'phase-banner';
-    document.querySelector('main.results__main').prepend(banner);
-  }
-  const leg0    = allerJourney.legs[0];
-  const legLast = allerJourney.legs[allerJourney.legs.length - 1];
-  banner.innerHTML = `
-    <div class="phase-banner">
-      <div class="phase-banner__check">✓ Aller sélectionné</div>
-      <div class="phase-banner__detail">
-        ${escapeHtml(leg0.from_name)} → ${escapeHtml(legLast.to_name)}
-        &nbsp;·&nbsp; ${leg0.dep_str} → ${legLast.arr_str}
-        &nbsp;·&nbsp; ${minutesToHHMM(allerJourney.duration)}
-      </div>
-      <div class="phase-banner__prompt">Choisissez maintenant votre trajet retour ↓</div>
-    </div>`;
+  // La carte aller est maintenant injectée dans renderResults — rien à faire ici
 }
 
 function hidePhaseBanner() {
   const banner = document.getElementById('phase-banner');
   if (banner) banner.remove();
+}
+
+function resetAllerSelection() {
+  // Remettre l'état aller
+  state.phase         = 'aller';
+  state.selectedAller = null;
+
+  // Ré-inverser from/to
+  const tmpFrom      = state.selectedFrom;
+  state.selectedFrom = state.selectedTo;
+  state.selectedTo   = tmpFrom;
+
+  document.getElementById('input-from').value = state.selectedFrom.name || '';
+  document.getElementById('id-from').value    = (state.selectedFrom.stopIds || []).join(',');
+  document.getElementById('input-to').value   = state.selectedTo.name || '';
+  document.getElementById('id-to').value      = (state.selectedTo.stopIds || []).join(',');
+
+  // Remettre la date aller
+  if (state.allerDate) document.getElementById('input-date').value = state.allerDate;
+
+  state.allJourneys  = [];
+  state.nextOffset   = 0;
+  state.lastDepTime  = 0;
+  state._phaseSearch = true;
+  doSearch();
 }
 
 // ─── Pré-remplissage depuis les paramètres URL ────────────────────────────────

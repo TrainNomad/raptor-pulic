@@ -189,11 +189,75 @@
   .state-empty,.state-error{text-align:center;padding:64px 0;color:#94a3b8;font-size:15px;font-weight:600}
   .state-error{color:#f87171}
 
-  /* Phase banner */
-  .phase-banner{background:linear-gradient(135deg,#1A2B3C,#25394f);color:#fff;border-radius:14px;padding:16px 20px;margin-bottom:20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px}
-  .phase-banner__check{font-size:13px;font-weight:800;color:var(--green-highlight)}
-  .phase-banner__detail{font-size:13px;font-weight:600;opacity:.85;flex:1}
-  .phase-banner__prompt{font-size:12px;font-weight:700;opacity:.7}
+  /* ── Phase retour — carte aller sélectionné ── */
+  .aller-recap-wrapper {
+    margin-bottom: 24px;
+  }
+  .aller-recap-label {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 800; color: var(--green-highlight);
+    text-transform: uppercase; letter-spacing: .1em;
+    margin-bottom: 10px;
+  }
+  .aller-recap-label svg { flex-shrink: 0; }
+  .aller-recap-card {
+    background: linear-gradient(135deg, #1A2B3C 0%, #25394f 100%);
+    border-radius: 16px;
+    padding: 18px 22px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    box-shadow: 0 4px 20px rgba(26,43,60,.18);
+    position: relative; overflow: hidden;
+  }
+  .aller-recap-card::before {
+    content: ''; position: absolute; top: -30px; right: -30px;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: rgba(74,222,128,.07);
+  }
+  .aller-recap-times {
+    display: flex; align-items: center; gap: 16px;
+  }
+  .aller-recap-time {
+    font-size: 22px; font-weight: 800; color: #fff; line-height: 1;
+  }
+  .aller-recap-arrow {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+  }
+  .aller-recap-arrow-line {
+    width: 48px; height: 2px;
+    background: linear-gradient(90deg, rgba(74,222,128,.4), rgba(74,222,128,.9));
+    border-radius: 2px;
+  }
+  .aller-recap-dur {
+    font-size: 10px; font-weight: 700; color: rgba(74,222,128,.85); letter-spacing: .04em;
+  }
+  .aller-recap-stations {
+    font-size: 11px; font-weight: 500; color: rgba(255,255,255,.5);
+    margin-top: 3px;
+  }
+  .aller-recap-meta {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+  }
+  .aller-recap-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: .06em;
+    background: rgba(74,222,128,.18); color: var(--green-highlight);
+    padding: 3px 10px; border-radius: 999px;
+    border: 1px solid rgba(74,222,128,.25);
+  }
+  .aller-recap-change-btn {
+    font-size: 11px; font-weight: 600; color: rgba(255,255,255,.45);
+    background: none; border: none; cursor: pointer; padding: 0;
+    text-decoration: underline; transition: color .15s;
+  }
+  .aller-recap-change-btn:hover { color: rgba(255,255,255,.8); }
+  .retour-section-label {
+    font-size: 11px; font-weight: 800; color: #94a3b8;
+    text-transform: uppercase; letter-spacing: .1em;
+    margin-bottom: 12px; margin-top: 4px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .retour-section-label::after {
+    content: ''; flex: 1; height: 1px; background: #e2e8f0;
+  }
 
   /* Btn more */
   .btn-more{padding:10px 28px;border-radius:999px;border:1.5px solid #e2e8f0;font-size:13px;font-weight:700;color:var(--midnight-blue);background:#fff;cursor:pointer;transition:all .2s}
