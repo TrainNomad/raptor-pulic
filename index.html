@@ -186,18 +186,25 @@
 <!-- ═══════════════════ NAV ═══════════════════ -->
 <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
             <span class="material-symbols-outlined text-primary text-3xl">eco</span>
             <span class="text-xl font-extrabold tracking-tight text-midnight">TrainNomad<span class="text-primary">.eu</span></span>
         </div>
+
         <div class="hidden md:flex items-center gap-10">
-            <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Rechercher</a>
-            <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Outils TGVmax</a>
-            <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Destinations</a>
-            <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Impact Carbone</a>
+            <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="trajets.html">
+                <span class="material-symbols-outlined text-lg">train</span> Voyager
+            </a>
+            <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="explorer.html">
+                <span class="material-symbols-outlined text-lg">explore</span> Explorer
+            </a>
+            <a class="text-sm font-bold text-white bg-midnight px-4 py-2 rounded-xl hover:bg-primary hover:text-midnight transition-all flex items-center gap-2 shadow-sm" href="outilstgvmax.html">
+                <span class="material-symbols-outlined text-lg">bolt</span> Outils TGVmax
+            </a>
         </div>
+
         <div class="flex items-center gap-4">
-            <!-- <a href="A_propos.html" class="text-sm font-bold px-4 py-2 hover:bg-slate-50 rounded-lg transition-colors">À propos</a> -->
+            <span class="material-symbols-outlined text-slate-400 hover:text-midnight cursor-pointer">account_circle</span>
         </div>
     </div>
 </nav>
@@ -220,11 +227,13 @@
         <div class="max-w-5xl mx-auto">
             <!-- Mode tabs -->
             <div class="flex items-center gap-2 mb-0 ml-2">
-                <button id="tab-europe" onclick="switchTab('europe')" class="tab-btn flex items-center gap-2 px-5 py-2.5 rounded-t-2xl text-slate-500 text-sm font-bold transition-all border-b-2 border-transparent bg-white/50 hover:bg-white">
+                <button id="tab-europe" onclick="switchTab('europe')" 
+                    class="tab-btn flex items-center gap-2 px-5 py-2.5 rounded-t-2xl text-midnight bg-white font-bold transition-all border-b-2 border-primary shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
                     <span class="material-symbols-outlined text-xl"><i class="fa-solid fa-route"></i></span>
                     Trajets Europe
                 </button>
-                <button id="tab-carte" onclick="switchTab('carte')" class="tab-btn flex items-center gap-2 px-5 py-2.5 rounded-t-2xl text-slate-500 text-sm font-bold transition-all border-b-2 border-transparent bg-white/50 hover:bg-white">
+                <button id="tab-carte" onclick="switchTab('carte')" 
+                    class="tab-btn flex items-center gap-2 px-5 py-2.5 rounded-t-2xl text-slate-500 text-sm font-bold transition-all border-b-2 border-transparent bg-white/50 hover:bg-white">
                     <span class="material-symbols-outlined text-xl"><i class="fa-regular fa-map"></i></span>
                     Explorer la carte
                 </button>
@@ -418,49 +427,58 @@
                 <h2 class="text-3xl font-bold tracking-tight text-midnight mb-2">Destinations Bas Carbone</h2>
                 <p class="text-slate-500">Explorez l'Europe sans compromis pour la planète.</p>
             </div>
-            <a class="text-sm font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors" href="#">Explorer la carte</a>
+            <a class="text-sm font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors" href="explorer.html">Explorer la carte</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="group cursor-pointer">
+            
+            <div class="group cursor-pointer" onclick="window.location.href='trajets.html?to=stop_area:SNCF:87471003&toName=Rennes&carte=Tarif%20Normal&tripType=oneway'">
                 <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
-                    <img alt="Paris city view" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxhQCM_QpYU0edAbpuYaD_PkDN8YtkX-olTcCuz49mKgfUSuS7zIlEv7U5nbv8UwBXvgjSb0npuFnjsxHNLG7cs0XcPMSuD7xQli1mz0WxRZ-DnGVVoeO6cCIMo9ePcVKrUGnKFXdFsN0h4MJYxsMjJ07hY7SOk0m0HW8OgcyW80njMEdzMdYEBRghC_oGTEujh5LEhFYy_I6oKlFDES7h_q9TZmsjjEcF-6lmLJ4zwpJfGYHmcq3d7fg2jr99UWbaZmK7TK8Dcbg"/>
-                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-4 py-2 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm">
-                        Dès 0€ <span class="text-primary">MAX</span>
+                    <img alt="Rennes city view" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/rennes.png"/>
+                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-primary text-sm">schedule</span>
+                        <span>1h25 <span class="text-slate-400">de Paris</span></span>
                     </div>
                 </div>
-                <h3 class="font-bold text-xl text-midnight mb-1">Paris, France</h3>
-                <p class="text-sm text-slate-500">Hub central des réseaux TGV &amp; Eurostar</p>
+                <h3 class="font-bold text-xl text-midnight mb-1">Rennes, France</h3>
+                <p class="text-sm text-slate-500">La Bretagne à portée de main pour un week-end</p>
             </div>
-            <div class="group cursor-pointer">
+
+            <div class="group cursor-pointer" onclick="window.location.href='trajets.html?to=stop_area:SNCF:84000582&toName=Amsterdam&carte=Tarif%20Normal&tripType=oneway'">
                 <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
-                    <img alt="Swiss Alps landscape" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrG8g8TV45-ekv62vBGEz5eqfVACLMbUpeauEG9Hl5jvI_8t4r8gqiz3eQYWq6aqhCQyI81JJk9J5cQHCJT28SqCXQpRk6y_rt2mvnxRaCuIgX16tYkGeWiYoYK9vIOxHhfYUhf__l0R6CYpvsXMX0l-h5GLn1_7HP6zgRoz2HQTkTa7viG8rxbYPaOYIWTXgbcuLhSImx4mGwU7wngP7ydfwkF3e7rbJpDXANpzwCPuuWSO_25yywanBpRke9Fv6t5DuGocdcTsY"/>
-                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-4 py-2 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm">
-                        Dès 85€
-                    </div>
-                </div>
-                <h3 class="font-bold text-xl text-midnight mb-1">Zermatt, Suisse</h3>
-                <p class="text-sm text-slate-500">Le sommet de l'éco-tourisme alpin</p>
-            </div>
-            <div class="group cursor-pointer">
-                <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
-                    <img alt="Venice canal" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU72c1wfZdJAw0nKs_ZAjVMqyjj0MQNjmW96lVXBhInx-XxekVdrLIeix9IZOjuO1rZN4AGe3TnvGhL1XVAkQybKxM_R2Mb2P-yv2mnOA5h_75A9DlGbHbLKMkLM_8RmdvgFPzqqfEB-wijHAZ2-fCEQjSlq97Wr21sNoAgkhY0A01LcHOYxMYbcpiBeQQSOfi57y24ltS-KydvEQWr4RM326dJTWTejAUGTL7YnKYc_JO439cyMNDZy652odwQnYypX1SUrovHqE"/>
-                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-4 py-2 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm">
-                        Dès 45€
-                    </div>
-                </div>
-                <h3 class="font-bold text-xl text-midnight mb-1">Venise, Italie</h3>
-                <p class="text-sm text-slate-500">Trajets directs Frecciarossa</p>
-            </div>
-            <div class="group cursor-pointer">
-                <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
-                    <img alt="Amsterdam canal" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHWw197FVdUh0DlVohFGWeKoKSlHTTBQxB13KzLARwUuHRxbT5Ahk_iNGo2kLa7Mdx8hlzYTIlgecg-KviuLTG8Tc-LyRYWdrM-VyaXD87ARDgJcy-2MFRQ-kJ1NXYDSJVpZnRuUZtPMt0__fsztkSOV6jJ93Jdqx2lrzt8jlIo0uLKavBaZ9e_rILKIlq9D0IaOGxfNQAIoPmS8oWFWyzmyESWwhg5OPmmUQWB1ber_6K_MFR4EGjFh4oyqY0vcAdbjl681pvPbo"/>
-                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-4 py-2 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm">
-                        Dès 0€ <span class="text-primary">MAX</span>
+                    <img alt="Amsterdam canal" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/amsterdam.png"/>
+                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-primary text-sm">schedule</span>
+                        <span>3h20 <span class="text-slate-400">de Paris</span></span>
                     </div>
                 </div>
                 <h3 class="font-bold text-xl text-midnight mb-1">Amsterdam, NL</h3>
-                <p class="text-sm text-slate-500">L'Europe du Nord à grande vitesse</p>
+                <p class="text-sm text-slate-500">Les canaux et l'ambiance unique du Nord</p>
             </div>
+
+            <div class="group cursor-pointer" onclick="window.location.href='trajets.html?to=stop_area:SNCF:85010086&toName=Genève&carte=Tarif%20Normal&tripType=oneway'">
+                <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
+                    <img alt="Genève lac" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/geneve.png"/>
+                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-primary text-sm">schedule</span>
+                        <span>3h10 <span class="text-slate-400">de Paris</span></span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-xl text-midnight mb-1">Genève, Suisse</h3>
+                <p class="text-sm text-slate-500">Évasion immédiate entre lac et montagnes</p>
+            </div>
+
+            <div class="group cursor-pointer" onclick="window.location.href='trajets.html?to=stop_area:SNCF:83000455&toName=Milan&carte=Tarif%20Normal&tripType=oneway'">
+                <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
+                    <img alt="Milan duomo" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/milan.png"/>
+                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-primary text-sm">schedule</span>
+                        <span>7h00 <span class="text-slate-400">de Paris</span></span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-xl text-midnight mb-1">Milan, Italie</h3>
+                <p class="text-sm text-slate-500">La Dolce Vita italienne en direct</p>
+            </div>
+
         </div>
     </div>
 </section>

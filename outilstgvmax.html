@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>TrainNomad — MAX, La France à 0€</title>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/8e4de4bf0a.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'midnight': '#1A2B3C',
+            'primary':  '#4ade80',
+            'max-pink':  '#FF007A',
+            'max-purple':'#7D2AE8',
+          },
+          fontFamily: {
+            sans:    ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          borderRadius: {
+            '3xl': '24px',
+            '4xl': '40px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* ── Gradient logo & texte ── */
+    .logo-gradient {
+      background: linear-gradient(135deg, #FF007A 0%, #7D2AE8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .logo-icon-gradient {
+      background: linear-gradient(135deg, #FF007A 0%, #7D2AE8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-gradient-pink-purple {
+      background: linear-gradient(135deg, #FF007A 0%, #7D2AE8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .bg-gradient-magenta { background: linear-gradient(135deg, #FF007A 0%, #D80073 100%); transition: opacity .3s; }
+    .bg-gradient-magenta:hover { opacity: .88; }
+
+    .hero-shadow { box-shadow: 0 25px 50px -12px rgba(26,43,60,.18); }
+
+    @keyframes ping { 75%,100%{ transform:scale(2); opacity:0; } }
+    .do-ping { animation: ping 1s cubic-bezier(0,0,.2,1) infinite; }
+
+    /* ── Tableau comparatif ── */
+    .offer-card {
+      background: #fff;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px 26px;
+      position: relative;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .offer-card:hover { border-color: #FF007A; box-shadow: 0 8px 32px rgba(255,0,122,.12); transform: translateY(-4px); }
+    .offer-card--hl   { border-color: #FF007A; box-shadow: 0 8px 32px rgba(255,0,122,.15); }
+    .offer-badge-top {
+      position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+      background: linear-gradient(135deg,#FF007A,#7D2AE8); color:#fff;
+      font-size:.68rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+      padding:4px 14px; border-radius:20px; white-space:nowrap;
+    }
+    .offer-label     { font-size:.7rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#FF007A; margin-bottom:4px; }
+    .offer-name      { font-size:1.35rem; font-weight:800; color:#1A2B3C; margin-bottom:2px; }
+    .offer-age       { font-size:.82rem; color:#94a3b8; margin-bottom:18px; }
+    .offer-price     { font-size:2.6rem; font-weight:800; color:#1A2B3C; line-height:1; margin-bottom:3px; }
+    .offer-price sup { font-size:1.1rem; vertical-align:super; }
+    .offer-pricenote { font-size:.78rem; color:#94a3b8; margin-bottom:22px; }
+    .offer-divider   { border:none; border-top:1px solid #f1f5f9; margin:0 0 18px; }
+    .offer-list      { list-style:none; padding:0; margin:0 0 26px; }
+    .offer-list li   { display:flex; align-items:flex-start; gap:8px; font-size:.84rem; color:#475569; padding:5px 0; border-bottom:1px solid #f8fafc; line-height:1.5; }
+    .offer-list li:last-child { border-bottom:none; }
+    .ck     { color:#4ade80; flex-shrink:0; margin-top:1px; font-size:.9rem; }
+    .ck-off { color:#e2e8f0; flex-shrink:0; margin-top:1px; font-size:.9rem; }
+    .offer-cta { display:block; text-align:center; font-size:.82rem; font-weight:700; color:#FF007A; text-decoration:none; border:1.5px solid #FF007A; border-radius:12px; padding:10px 18px; transition:background .2s,color .2s; }
+    .offer-cta:hover { background:#FF007A; color:#fff; }
+    .offer-card--hl .offer-cta { background:linear-gradient(135deg,#FF007A,#D80073); color:#fff; border-color:transparent; }
+    .offer-card--hl .offer-cta:hover { opacity:.88; }
+
+    /* ── Destinations ── */
+    .dest-card {
+      background:#fff; border:1.5px solid #e2e8f0; border-radius:18px;
+      padding:20px 18px; text-decoration:none; display:block; position:relative;
+      transition: border-color .2s, box-shadow .2s, transform .15s;
+    }
+    .dest-card:hover { border-color:#1A2B3C; box-shadow:0 6px 24px rgba(26,43,60,.1); transform:translateY(-3px); }
+    .dest-icon  { width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+    .dest-cities { display:flex; align-items:center; gap:6px; font-size:.95rem; font-weight:800; color:#1A2B3C; margin-bottom:4px; }
+    .dest-arrow  { color:#FF007A; }
+    .dest-time   { display:inline-block; font-size:.7rem; font-weight:700; color:#FF007A; background:#fff0f6; border:1px solid #ffd6e8; border-radius:6px; padding:2px 8px; margin-bottom:7px; }
+    .dest-desc   { font-size:.78rem; color:#94a3b8; line-height:1.5; }
+    .dest-inspo  { position:absolute; top:14px; right:14px; font-size:.63rem; font-weight:700; color:#7D2AE8; background:#f3e8ff; border-radius:6px; padding:2px 7px; text-transform:uppercase; letter-spacing:.05em; }
+
+    /* ── Autocomplete ── */
+    .input-ac-wrapper { position: relative; }
+    .suggestions-container {
+      position: absolute; top: 100%; left: 0; right: 0; z-index: 1000;
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 14px;
+      box-shadow: 0 8px 32px -4px rgba(26,43,60,.13); overflow: hidden; margin-top: 6px;
+    }
+    .ac-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px; cursor: pointer; transition: background .1s; gap: 8px;
+    }
+    .ac-row:hover, .ac-row.ac-active { background: #f8fafc; }
+    .ac-row-name    { font-size: 13px; font-weight: 700; color: #1A2B3C; }
+    .ac-row-country { font-size: 11px; font-weight: 500; color: #94a3b8; white-space: nowrap; }
+
+    /* Masquer l'icône native du calendrier */
+    input[type="date"]::-webkit-calendar-picker-indicator { display: none; -webkit-appearance: none; }
+
+    /* Champ de recherche style index */
+    .search-field {
+      display: flex; flex-direction: column;
+      padding: 14px 16px; border-radius: 16px;
+      transition: background .15s; cursor: pointer;
+    }
+    .search-field:hover { background: #f8fafc; }
+    .search-field__label {
+      font-size: 10px; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; color: #94a3b8; margin-bottom: 6px;
+      transition: color .15s;
+    }
+    .search-field:hover .search-field__label { color: #FF007A; }
+    .search-field__row {
+      display: flex; align-items: center; gap: 10px; width: 100%;
+    }
+    .search-field__icon { color: #cbd5e1; flex-shrink: 0; font-size: .95rem; transition: color .15s; }
+    .search-field:hover .search-field__icon { color: #FF007A; }
+    .search-field input {
+      width: 100%; background: transparent; border: none; padding: 0;
+      font-size: 1.05rem; font-weight: 700; color: #1A2B3C;
+      outline: none; box-shadow: none !important;
+    }
+    .search-field input::placeholder { color: #cbd5e1; font-weight: 600; }
+    .search-divider { border: none; border-top: 1px solid #f1f5f9; margin: 0 4px; }
+
+    /* ── Opendata banner ── */
+    .opendata-banner {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 20px 24px;
+    }
+    .opendata-banner__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .opendata-banner__icon {
+      color: #94a3b8;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .opendata-banner__text {
+      font-size: .82rem;
+      color: #64748b;
+      line-height: 1.7;
+    }
+    .opendata-banner__text strong { color: #475569; }
+  </style>
+</head>
+
+<body class="text-midnight antialiased bg-[#fdfbf7]">
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+    <!-- Logo : feuille + .eu en rose, TrainNomad en noir -->
+    <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+      <span class="material-symbols-outlined text-3xl" style="color:#FF007A;">eco</span>
+      <span class="text-xl font-extrabold tracking-tight text-midnight">TrainNomad<span style="color:#FF007A;">.eu</span></span>
+    </div>
+
+    <div class="hidden md:flex items-center gap-10">
+      <a class="text-sm font-bold hover:text-[#4ade80] transition-colors flex items-center gap-2" href="trajets.html">
+        <span class="material-symbols-outlined text-lg">train</span> Voyager
+      </a>
+      <a class="text-sm font-bold hover:text-[#4ade80] transition-colors flex items-center gap-2" href="explorer.html">
+        <span class="material-symbols-outlined text-lg">explore</span> Explorer
+      </a>
+      <a class="text-sm font-bold text-white bg-midnight px-4 py-2 rounded-xl hover:bg-[#4ade80] hover:text-midnight transition-all flex items-center gap-2 shadow-sm" href="OutilTGVMax.html">
+        <span class="material-symbols-outlined text-lg">bolt</span> Outils TGVmax
+      </a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <span class="material-symbols-outlined text-slate-400 hover:text-midnight cursor-pointer">account_circle</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="relative min-h-[calc(100vh-80px)] flex items-center justify-center py-16 px-6 lg:px-12"
+  style="background: url('assets/outilsTGVMax/background.jpg') center/cover no-repeat;">
+  <div class="absolute inset-0 bg-black/55 pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+    <!-- LEFT : Booking card -->
+    <div>
+      <div class="bg-white rounded-4xl p-6 lg:p-8 hero-shadow border border-gray-50">
+        <div class="flex items-center gap-2 mb-4">
+          <h2 class="text-xl font-bold tracking-tight text-midnight">Trouver une place MAX</h2>
+          <svg class="w-5 h-5 text-[#FF007A]" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+
+        <!-- Toggle Aller simple / Aller-retour -->
+        <div class="flex items-center gap-1.5 mb-3">
+          <button onclick="maxSetTripType('oneway')" id="max-tt-oneway"
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all bg-midnight text-white">
+            <i class="fa-solid fa-arrow-right text-[10px]"></i> Aller simple
+          </button>
+          <button onclick="maxSetTripType('roundtrip')" id="max-tt-roundtrip"
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all bg-slate-100 text-slate-500 hover:bg-slate-200">
+            <i class="fa-solid fa-arrow-right-arrow-left text-[10px]"></i> Aller-retour
+          </button>
+          <input type="hidden" id="max-input-time" value="01:00"/>
+          <input type="hidden" id="max-input-carte" value="Tarif Normal"/>
+          <input type="hidden" id="max-trip-type" value="oneway"/>
+        </div>
+
+        <!-- Champs de recherche -->
+        <div class="border border-slate-100 rounded-2xl overflow-visible">
+
+          <!-- Départ -->
+          <div class="search-field input-ac-wrapper" style="position:relative;">
+            <div class="search-field__label">Départ</div>
+            <div class="search-field__row">
+              <i class="fa-solid fa-location-dot search-field__icon"></i>
+              <input type="text" id="max-input-from" autocomplete="off" placeholder="Paris, France"/>
+              <input type="hidden" id="max-id-from"/>
+            </div>
+            <div id="max-ac-from" class="suggestions-container hidden"></div>
+          </div>
+
+          <hr class="search-divider"/>
+
+          <!-- Arrivée -->
+          <div class="search-field input-ac-wrapper" style="position:relative;">
+            <div class="search-field__label">Arrivée</div>
+            <div class="search-field__row">
+              <i class="fa-solid fa-location-arrow search-field__icon"></i>
+              <input type="text" id="max-input-to" autocomplete="off" placeholder="Marseille, Nice…"/>
+              <input type="hidden" id="max-id-to"/>
+            </div>
+            <div id="max-ac-to" class="suggestions-container hidden"></div>
+          </div>
+
+          <hr class="search-divider"/>
+
+          <!-- Dates -->
+          <div id="max-dates-row" class="flex">
+            <!-- Date aller -->
+            <div class="search-field flex-1" onclick="document.getElementById('max-input-date').showPicker()" style="cursor:pointer;">
+              <div class="search-field__label" id="max-label-date">Date</div>
+              <div class="search-field__row">
+                <i class="fa-regular fa-calendar search-field__icon"></i>
+                <input type="date" id="max-input-date" style="color-scheme:light; cursor:pointer;"/>
+              </div>
+            </div>
+            <!-- Date retour (cachée par défaut) -->
+            <div id="max-return-date-field" class="search-field flex-1 hidden border-l border-slate-100" onclick="document.getElementById('max-return-date').showPicker()" style="cursor:pointer;">
+              <div class="search-field__label">Retour</div>
+              <div class="search-field__row">
+                <i class="fa-regular fa-calendar search-field__icon"></i>
+                <input type="date" id="max-return-date" style="color-scheme:light; cursor:pointer;"/>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <button id="max-btn-search"
+          class="mt-4 w-full py-4 bg-gradient-magenta rounded-2xl text-white font-extrabold text-sm tracking-widest flex items-center justify-center gap-3 shadow-lg shadow-pink-200 uppercase disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+          disabled>
+          <span class="material-symbols-outlined text-xl" style="font-variation-settings:'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 24">search</span>
+          Scanner les places à 0€
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT : Texte + pills -->
+    <div class="flex flex-col space-y-8">
+
+      <div class="flex">
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-sm rounded-full border border-white/30 text-sm font-semibold tracking-wide uppercase text-white">
+          <span class="relative flex h-2 w-2">
+            <span class="do-ping absolute inline-flex h-full w-full rounded-full bg-[#FF007A] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#FF007A]"></span>
+          </span>
+          Exclusif Abonnés MAX
+        </span>
+      </div>
+
+      <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] text-white">
+        La France à <span class="text-gradient-pink-purple">0€</span><br/>avec MAX
+      </h1>
+
+      <p class="text-white/75 text-lg leading-relaxed max-w-lg">
+        Abonné TGV Max ? Trouvez instantanément les places disponibles à 0€ à travers toute la France. Ne ratez plus jamais un trajet gratuit.
+      </p>
+
+      <!-- Pills temps de trajet depuis Paris -->
+      <div>
+        <p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-3">Depuis Paris, en train</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white text-sm font-semibold">
+            <span class="material-symbols-outlined text-[#FF007A] text-base" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">train</span>
+            <span class="font-bold">Bordeaux</span><span class="text-white/50 text-xs">À 2h04</span>
+          </span>
+          <span class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white text-sm font-semibold">
+            <span class="material-symbols-outlined text-[#FF007A] text-base" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">anchor</span>
+            <span class="font-bold">Rennes</span><span class="text-white/50 text-xs">À 1h27</span>
+          </span>
+          <span class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white text-sm font-semibold">
+            <span class="material-symbols-outlined text-[#FF007A] text-base" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">wb_sunny</span>
+            <span class="font-bold">Avignon</span><span class="text-white/50 text-xs">À 2h37</span>
+          </span>
+          <span class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white text-sm font-semibold">
+            <span class="material-symbols-outlined text-[#FF007A] text-base" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">beach_access</span>
+            <span class="font-bold">Marseille</span><span class="text-white/50 text-xs">À 3h20</span>
+          </span>
+          <span class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white text-sm font-semibold">
+            <span class="material-symbols-outlined text-[#FF007A] text-base" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">spa</span>
+            <span class="font-bold">Nice</span><span class="text-white/50 text-xs">À 5h30</span>
+          </span>
+          <span class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white text-sm font-semibold">
+            <span class="material-symbols-outlined text-[#FF007A] text-base" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">park</span>
+            <span class="font-bold">Arcachon</span><span class="text-white/50 text-xs">À 3h15</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ TABLEAU COMPARATIF ═══════════════════ -->
+<section class="py-20 px-6 lg:px-12 bg-white">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-14">
+      <span class="inline-block bg-[#fff0f6] text-[#FF007A] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">Abonnements TGV Max</span>
+      <h2 class="text-3xl lg:text-4xl font-extrabold text-midnight mb-4">Quel abonnement vous correspond ?</h2>
+      <p class="text-slate-500 text-lg max-w-xl mx-auto leading-relaxed">Deux formules MAX pour voyager à 0€ en France — selon votre âge, même prix, mêmes avantages.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+      <!-- MAX JEUNE -->
+      <div class="offer-card offer-card--hl">
+        <div class="offer-badge-top">⭐ Le plus populaire</div>
+        <div class="offer-label">Pour les 16–27 ans</div>
+        <div class="offer-name">MAX Jeune</div>
+        <div class="offer-age">16 – 27 ans</div>
+        <div class="offer-price"><sup>€</sup>79<span class="text-base font-normal text-slate-400">/mois</span></div>
+        <div class="offer-pricenote">Sans engagement après 3 mois · résiliation 15 €</div>
+        <hr class="offer-divider"/>
+        <ul class="offer-list">
+          <li><span class="ck">✓</span> Billets à 0€ (TGV Inoui, Intercités, OUIGO GV) hors forte affluence</li>
+          <li><span class="ck">✓</span> -30 % garanti toute l'année, 1re &amp; 2e classe</li>
+          <li><span class="ck">✓</span> Réservation dès J-30, places jusqu'à la dernière minute</li>
+          <li><span class="ck">✓</span> Jusqu'à 6 réservations simultanées</li>
+          <li><span class="ck">✓</span> France + Luxembourg + Fribourg-en-Brisgau</li>
+          <li><span class="ck">✓</span> Confirmation obligatoire entre J-2 et J-1 17h</li>
+        </ul>
+        <a class="offer-cta" href="https://www.sncf-connect.com/catalogue/description/max-jeune" target="_blank">Souscrire sur SNCF Connect →</a>
+      </div>
+
+      <!-- MAX SENIOR -->
+      <div class="offer-card">
+        <div class="offer-label">Pour les 60 ans et +</div>
+        <div class="offer-name">MAX Senior</div>
+        <div class="offer-age">60 ans et plus</div>
+        <div class="offer-price"><sup>€</sup>79<span class="text-base font-normal text-slate-400">/mois</span></div>
+        <div class="offer-pricenote">Mêmes conditions que MAX Jeune</div>
+        <hr class="offer-divider"/>
+        <ul class="offer-list">
+          <li><span class="ck">✓</span> Billets à 0€ (TGV Inoui, Intercités, OUIGO GV) hors forte affluence</li>
+          <li><span class="ck">✓</span> -30 % garanti toute l'année, 1re &amp; 2e classe</li>
+          <li><span class="ck">✓</span> Réservation dès J-30, places jusqu'à la dernière minute</li>
+          <li><span class="ck">✓</span> Jusqu'à 6 réservations simultanées</li>
+          <li><span class="ck">✓</span> France + Luxembourg + Fribourg-en-Brisgau</li>
+          <li><span class="ck">✓</span> Confirmation obligatoire entre J-2 et J-1 17h</li>
+        </ul>
+        <a class="offer-cta" href="https://www.sncf-connect.com/catalogue/description/max-senior" target="_blank">Souscrire sur SNCF Connect →</a>
+      </div>
+
+      <!-- MAX ACTIF — info card -->
+      <div class="offer-card" style="background:#f8fafc; border-style:dashed;">
+        <div class="offer-label" style="color:#64748b;">Pour les navetteurs</div>
+        <div class="offer-name" style="color:#475569;">MAX Actif / Actif+</div>
+        <div class="offer-age">Tout âge · trajet fixe</div>
+        <div class="offer-price" style="font-size:1.4rem; color:#64748b;">Prix variable</div>
+        <div class="offer-pricenote">selon trajet, classe et fréquence</div>
+        <hr class="offer-divider"/>
+        <ul class="offer-list">
+          <li><span class="ck">✓</span> Abonnement navetteur sur un <strong>trajet fixe</strong></li>
+          <li><span class="ck">✓</span> MAX Actif : 250 trajets/an, lun.–jeu.</li>
+          <li><span class="ck">✓</span> MAX Actif+ : 450 trajets/an, 7j/7</li>
+          <li><span class="ck">✓</span> TGV Inoui &amp; Intercités uniquement</li>
+          <li><span class="ck-off">✗</span> <span class="text-slate-400">Pas de billets à 0€ n'importe où</span></li>
+          <li><span class="ck-off">✗</span> <span class="text-slate-400">Destinations non libres — trajet défini</span></li>
+        </ul>
+        <a class="offer-cta" style="color:#64748b; border-color:#cbd5e1;" href="https://www.sncf-connect.com/catalogue/description/max-actif-plus" target="_blank">En savoir plus sur SNCF Connect →</a>
+      </div>
+
+    </div>
+
+    <!-- ── Feature cards sous le tableau ── -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="bg-[#fff0f6] p-6 rounded-3xl flex items-start gap-4">
+        <div class="w-11 h-11 rounded-xl bg-[#FF007A]/10 flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-[#FF007A]" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">calendar_month</span>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg text-midnight mb-1">Disponibilité J-30</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Les places MAX s'ouvrent 30 jours avant le départ. Planifiez à l'avance pour maximiser vos chances de trouver un billet.</p>
+        </div>
+      </div>
+      <div class="bg-[#f3e8ff] p-6 rounded-3xl flex items-start gap-4">
+        <div class="w-11 h-11 rounded-xl bg-[#7D2AE8]/10 flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-[#7D2AE8]" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">confirmation_number</span>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg text-midnight mb-1">0€ à volonté en France</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Pas de limite de trajets. Voyagez autant que vous le souhaitez partout en France, sans débourser un centime de plus.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════ DESTINATIONS INSOLITES ═══════════════════ -->
+<section class="py-20 px-6 lg:px-12 bg-[#fdfbf7]">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-12">
+      <span class="inline-block bg-midnight text-[#4ade80] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">Idées de voyage</span>
+      <h2 class="text-3xl lg:text-4xl font-extrabold text-midnight mb-4">Des destinations auxquelles<br/>vous n'auriez pas pensé</h2>
+      <p class="text-slate-500 text-lg max-w-xl mx-auto">Accessibles à 0€ avec votre abonnement MAX — des escapades qui valent le détour, à portée de rail.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <a class="dest-card" href="trajets.html?fromName=Paris&toName=Avignon+TGV">
+        <span class="dest-inspo">Coup de cœur</span>
+        <div class="dest-icon bg-yellow-50">
+          <span class="material-symbols-outlined text-yellow-500" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">sunny</span>
+        </div>
+        <div class="dest-cities">Paris <span class="dest-arrow">→</span> Avignon</div>
+        <div class="dest-time">À 2h37 de Paris</div>
+        <p class="dest-desc">Cité des Papes, marchés provençaux, lavandes. Une parenthèse méridionale parfaite le week-end.</p>
+      </a>
+
+      <a class="dest-card" href="trajets.html?fromName=Paris&toName=Arcachon">
+        <span class="dest-inspo">Nature</span>
+        <div class="dest-icon bg-blue-50">
+          <span class="material-symbols-outlined text-blue-500" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">water</span>
+        </div>
+        <div class="dest-cities">Paris <span class="dest-arrow">→</span> Arcachon</div>
+        <div class="dest-time">À 3h15 de Paris</div>
+        <p class="dest-desc">Dune du Pilat, huîtres, forêts de pins. L'Atlantique à portée de train, sans voiture.</p>
+      </a>
+
+      <a class="dest-card" href="trajets.html?fromName=Paris&toName=Quimper">
+        <span class="dest-inspo">Bretagne</span>
+        <div class="dest-icon bg-teal-50">
+          <span class="material-symbols-outlined text-teal-500" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">sailing</span>
+        </div>
+        <div class="dest-cities">Paris <span class="dest-arrow">→</span> Quimper</div>
+        <div class="dest-time">À 3h55 de Paris</div>
+        <p class="dest-desc">Bout du Finistère, cathédrale gothique, crêpes au beurre salé. La Bretagne dans ce qu'elle a de plus authentique.</p>
+      </a>
+
+      <a class="dest-card" href="trajets.html?fromName=Paris&toName=Nice+Ville">
+        <span class="dest-inspo">Soleil</span>
+        <div class="dest-icon bg-orange-50">
+          <span class="material-symbols-outlined text-orange-400" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">beach_access</span>
+        </div>
+        <div class="dest-cities">Paris <span class="dest-arrow">→</span> Nice</div>
+        <div class="dest-time">À 5h30 de Paris</div>
+        <p class="dest-desc">Promenade des Anglais, vieille ville colorée, marché du cours Saleya. La Côte d'Azur à 0€.</p>
+      </a>
+
+      <a class="dest-card" href="trajets.html?fromName=Paris&toName=Vannes">
+        <span class="dest-inspo">Bretagne</span>
+        <div class="dest-icon bg-indigo-50">
+          <span class="material-symbols-outlined text-indigo-500" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">castle</span>
+        </div>
+        <div class="dest-cities">Paris <span class="dest-arrow">→</span> Vannes</div>
+        <div class="dest-time">À 2h20 de Paris</div>
+        <p class="dest-desc">Golfe du Morbihan, remparts médiévaux, îles en bateau. Une des plus belles villes de Bretagne, souvent oubliée.</p>
+      </a>
+
+      <a class="dest-card" href="trajets.html?fromName=Paris&toName=Aix-en-Provence+TGV">
+        <span class="dest-inspo">Provence</span>
+        <div class="dest-icon bg-green-50">
+          <span class="material-symbols-outlined text-green-500" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">eco</span>
+        </div>
+        <div class="dest-cities">Paris <span class="dest-arrow">→</span> Aix-en-Provence</div>
+        <div class="dest-time">À 3h05 de Paris</div>
+        <p class="dest-desc">Fontaines, marchés, montagne Sainte-Victoire. Cézanne n'a pas eu tort de s'y installer.</p>
+      </a>
+
+      <a class="dest-card" href="trajets.html?fromName=Paris&toName=Marseille+Saint-Charles">
+        <div class="dest-icon bg-blue-50">
+          <span class="material-symbols-outlined text-blue-600" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">anchor</span>
+        </div>
+        <div class="dest-cities">Paris <span class="dest-arrow">→</span> Marseille</div>
+        <div class="dest-time">À 3h20 de Paris</div>
+        <p class="dest-desc">Calanques, Vieux-Port, bouillabaisse. La cité phocéenne, une expérience à part entière.</p>
+      </a>
+
+      <a class="dest-card" href="trajets.html?fromName=Paris&toName=Saint-Malo">
+        <span class="dest-inspo">Bretagne</span>
+        <div class="dest-icon bg-slate-50">
+          <span class="material-symbols-outlined text-slate-500" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">fort</span>
+        </div>
+        <div class="dest-cities">Paris <span class="dest-arrow">→</span> Saint-Malo</div>
+        <div class="dest-time">À 2h25 de Paris</div>
+        <p class="dest-desc">Remparts sur la mer, grandes marées, intra-muros préservé. La ville des corsaires s'explore à pied.</p>
+      </a>
+
+      <a class="dest-card" href="trajets.html?fromName=Paris&toName=Montpellier+Saint-Roch">
+        <div class="dest-icon bg-purple-50">
+          <span class="material-symbols-outlined text-purple-500" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">museum</span>
+        </div>
+        <div class="dest-cities">Paris <span class="dest-arrow">→</span> Montpellier</div>
+        <div class="dest-time">À 3h20 de Paris</div>
+        <p class="dest-desc">Place de la Comédie, hôtels particuliers, vignobles du Languedoc. Vivante, jeune, méditerranéenne.</p>
+      </a>
+
+    </div>
+
+    <p class="text-center text-slate-400 text-sm mt-10">
+      ⚡ À propos des résultats affichés — TrainNomad utilise les données ouvertes SNCF (API SNCF open data) et n'affiche que les trains TGV Inoui & Intercités éligibles aux abonnements Max. Les trains Ouigo peuvent être inclus dans votre abonnement, mais leurs disponibilités ne sont pas accessibles via cette source — vérifiez directement sur SNCF Connect. Les disponibilités affichées sont indicatives : des places peuvent être prises ou libérées d'ici votre réservation.
+    </p>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ À PROPOS DES RÉSULTATS ═══════════════════ -->
+<!-- <div class="opendata-banner">
+  <div class="opendata-banner__inner">
+    <div class="opendata-banner__icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+    </div>
+    <div class="opendata-banner__text">
+      <strong>À propos des résultats affichés —</strong>
+      TrainNomad utilise les données ouvertes SNCF (API SNCF open data) et n'affiche que les trains <strong>TGV Inoui &amp; Intercités</strong> éligibles aux abonnements Max.
+      Les trains <strong>Ouigo peuvent être inclus dans votre abonnement</strong>, mais leurs disponibilités ne sont pas accessibles via cette source — vérifiez directement sur SNCF Connect.
+      Les disponibilités affichées sont <strong>indicatives</strong> : des places peuvent être prises ou libérées d'ici votre réservation.
+    </div>
+  </div>
+</div> -->
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="bg-midnight text-white py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-16 mb-12">
+
+      <!-- Colonne brand -->
+      <div class="col-span-1">
+        <div class="flex items-center gap-2 mb-8">
+          <span class="material-symbols-outlined text-[#4ade80] text-3xl">eco</span>
+          <span class="text-xl font-extrabold tracking-tight">TrainNomad<span class="text-[#4ade80]">.eu</span></span>
+        </div>
+        <p class="text-slate-400 text-base leading-relaxed">
+          L'expérience de réservation ferroviaire la plus élégante. Conçue pour le voyageur moderne et éco-responsable.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h5 class="font-bold mb-8 text-lg">Navigation</h5>
+        <ul class="flex flex-col gap-5 text-base text-slate-400">
+          <li><a class="hover:text-[#4ade80] transition-colors" href="A_propos.html">À propos</a></li>
+          <li><a class="hover:text-[#4ade80] transition-colors" href="#">Destinations</a></li>
+          <li><a class="hover:text-[#4ade80] transition-colors" href="#">Calculateur CO2</a></li>
+          <li><a class="hover:text-[#4ade80] transition-colors" href="#">Aide &amp; FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h5 class="font-bold mb-8 text-lg">Services</h5>
+        <ul class="flex flex-col gap-5 text-base text-slate-400">
+          <li><a class="hover:text-[#4ade80] transition-colors" href="OutilTGVMax.html">Outils TGVmax</a></li>
+          <li><a class="hover:text-[#4ade80] transition-colors" href="#">Groupes</a></li>
+          <li><a class="hover:text-[#4ade80] transition-colors" href="#">Professionnels</a></li>
+          <li><a class="hover:text-[#4ade80] transition-colors" href="#">API Partenaires</a></li>
+        </ul>
+      </div>
+
+      <!-- Réseaux sociaux -->
+      <div>
+        <h5 class="font-bold mb-8 text-lg">Nous suivre</h5>
+        <div class="flex gap-4">
+          <a class="size-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-[#4ade80] hover:text-midnight transition-all" href="#">
+            <span class="material-symbols-outlined text-xl">share</span>
+          </a>
+          <a class="size-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-[#4ade80] hover:text-midnight transition-all" href="#">
+            <span class="material-symbols-outlined text-xl">alternate_email</span>
+          </a>
+          <a class="size-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-[#4ade80] hover:text-midnight transition-all" href="#">
+            <span class="material-symbols-outlined text-xl">public</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] text-slate-500 uppercase tracking-[0.2em] font-bold">
+      <p>© 2026 TrainNomad.eu - Engagé pour un futur durable.</p>
+      <div class="flex gap-10">
+        <a class="hover:text-white transition-colors" href="mention legal.html">Mentions Légales</a>
+        <a class="hover:text-white transition-colors" href="#">Confidentialité</a>
+        <a class="hover:text-white transition-colors" href="#">Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════ CONFIG ═══════════════════
+const MAX_API = 'https://raptor-tgvmax-backend.onrender.com';
+
+const maxSearchState = { selectedFrom: null, selectedTo: null, toIsAnywhere: false };
+
+// ═══════════════════ BOUTON ═══════════════════
+function maxUpdateBtn() {
+  document.getElementById('max-btn-search').disabled =
+    !(maxSearchState.selectedFrom && (maxSearchState.selectedTo || maxSearchState.toIsAnywhere));
+}
+
+// ═══════════════════ TRIP TYPE ════════════════
+function maxSetTripType(type) {
+  const isRound = type === 'roundtrip';
+  document.getElementById('max-trip-type').value = type;
+  document.getElementById('max-tt-oneway').className =
+    'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all ' +
+    (isRound ? 'bg-slate-100 text-slate-500 hover:bg-slate-200' : 'bg-midnight text-white');
+  document.getElementById('max-tt-roundtrip').className =
+    'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all ' +
+    (isRound ? 'bg-midnight text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200');
+  const retField = document.getElementById('max-return-date-field');
+  const label    = document.getElementById('max-label-date');
+  if (isRound) { retField.classList.remove('hidden'); retField.classList.add('flex'); label.textContent = 'Aller'; }
+  else         { retField.classList.add('hidden'); retField.classList.remove('flex'); label.textContent = 'Date'; }
+}
+
+// ═══════════════════ RECHERCHE ════════════════
+document.getElementById('max-btn-search').addEventListener('click', () => {
+  const from = maxSearchState.selectedFrom;
+  if (!from) return;
+  const getAreaId = s => s.stopIds ? (s.stopIds.find(id => id.includes('StopArea')) || s.stopIds[0]) : s.id;
+  const date = document.getElementById('max-input-date').value;
+
+  // → N'importe où : carte interactive MAX
+  if (maxSearchState.toIsAnywhere) {
+    const params = new URLSearchParams({
+      from:     getAreaId(from),
+      fromName: from.name,
+      date:     date || new Date().toISOString().slice(0, 10),
+    });
+    window.location.href = 'explorermax.html?' + params.toString();
+    return;
+  }
+
+  const to = maxSearchState.selectedTo;
+  if (!to) return;
+
+  const params = new URLSearchParams({
+    from:     getAreaId(from),   fromName: from.name,
+    to:       getAreaId(to),     toName:   to.name,
+    carte:    document.getElementById('max-input-carte').value || 'Tarif Normal',
+    time:     document.getElementById('max-input-time').value  || '01:00',
+    tripType: document.getElementById('max-trip-type').value   || 'oneway',
+  });
+  const returnDate = document.getElementById('max-return-date').value;
+  if (date)       params.set('date', date);
+  if (returnDate) params.set('returnDate', returnDate);
+  window.location.href = 'trajetsmax.html?' + params.toString();
+});
+
+// ═══════════════════ AUTOCOMPLÉTION ═══════════
+const MAX_COUNTRY_NAMES = {
+  FR:'France', IT:'Italie', BE:'Belgique', DE:'Allemagne',
+  NL:'Pays-Bas', GB:'Royaume-Uni', ES:'Espagne', PT:'Portugal',
+  CH:'Suisse', AT:'Autriche', PL:'Pologne', CZ:'Tchéquie', SK:'Slovaquie',
+};
+let maxAcTimers = {};
+
+function maxSetupAC(inputId, acId, hiddenId, stateKey, onSelect, withAnywhere = false) {
+  const input  = document.getElementById(inputId);
+  const ac     = document.getElementById(acId);
+  const hidden = document.getElementById(hiddenId);
+  let acIndex = -1, items = [];
+  const close = () => { ac.classList.add('hidden'); ac.innerHTML = ''; acIndex = -1; items = []; };
+
+  function injectAnywhere(container) {
+    const div = document.createElement('div');
+    div.className = 'ac-row';
+    div.style.cssText = 'background:linear-gradient(90deg,#fff0f6,#fff);border-bottom:1px solid #fce7f3;';
+    div.setAttribute('data-ac-index', 'anywhere');
+    div.innerHTML = `
+      <span style="display:flex;align-items:center;gap:8px;">
+        <span class="material-symbols-outlined" style="font-size:16px;color:#FF007A;font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">explore</span>
+        <span class="ac-row-name" style="color:#FF007A">N'importe où</span>
+      </span>
+      <span class="ac-row-country" style="color:#FF007A;font-weight:700">Explorer la carte →</span>`;
+    div.addEventListener('mousedown', e => {
+      e.preventDefault();
+      input.value = "N'importe où 🗺️";
+      hidden.value = '';
+      maxSearchState[stateKey] = null;
+      maxSearchState.toIsAnywhere = true;
+      if (onSelect) onSelect();
+      close();
+    });
+    container.insertBefore(div, container.firstChild);
+  }
+
+  if (withAnywhere) {
+    input.addEventListener('focus', () => {
+      if (ac.classList.contains('hidden')) {
+        ac.innerHTML = ''; items = []; acIndex = -1;
+        injectAnywhere(ac); ac.classList.remove('hidden');
+      }
+    });
+  }
+
+  input.addEventListener('input', () => {
+    clearTimeout(maxAcTimers[inputId]);
+    const q = input.value.trim();
+    maxSearchState[stateKey] = null;
+    maxSearchState.toIsAnywhere = false;
+    hidden.value = '';
+    if (onSelect) onSelect();
+    if (q.length < 2) {
+      if (withAnywhere) { ac.innerHTML=''; items=[]; acIndex=-1; injectAnywhere(ac); ac.classList.remove('hidden'); }
+      else close();
+      return;
+    }
+    maxAcTimers[inputId] = setTimeout(async () => {
+      try {
+        const res   = await fetch(`${MAX_API}/api/stops?q=${encodeURIComponent(q)}`);
+        const stops = await res.json();
+        ac.innerHTML = ''; acIndex = -1; items = [];
+        if (withAnywhere) injectAnywhere(ac);
+        if (stops.length) {
+          const cityOrder = [], cityMap = new Map();
+          for (const stop of stops) {
+            const city = stop.city || stop.name, country = stop.country || 'FR';
+            const key  = city + ':' + country;
+            if (!cityMap.has(key)) { cityMap.set(key, { countryName: MAX_COUNTRY_NAMES[country]||country, stops:[] }); cityOrder.push(key); }
+            cityMap.get(key).stops.push(stop);
+          }
+          for (const key of cityOrder) {
+            const { countryName, stops: gs } = cityMap.get(key);
+            for (const stop of gs) {
+              const div = document.createElement('div');
+              div.className = 'ac-row'; div.setAttribute('data-ac-index', items.length);
+              div.innerHTML = `<span class="ac-row-name">${maxEscHtml(stop.name)}</span><span class="ac-row-country">${maxEscHtml(countryName)}</span>`;
+              div.addEventListener('mousedown', e => { e.preventDefault(); maxSearchState.toIsAnywhere=false; maxSelectStop(stop,input,hidden,stateKey,onSelect); close(); });
+              ac.appendChild(div); items.push(stop);
+            }
+          }
+        }
+        ac.classList.remove('hidden');
+      } catch(_) {}
+    }, 180);
+  });
+
+  input.addEventListener('keydown', e => {
+    if (e.key==='ArrowDown')  { e.preventDefault(); acIndex=Math.min(acIndex+1,items.length-1); maxHighlight(ac,acIndex); }
+    else if (e.key==='ArrowUp')   { e.preventDefault(); acIndex=Math.max(acIndex-1,-1); maxHighlight(ac,acIndex); }
+    else if (e.key==='Enter')     { e.preventDefault(); if(acIndex>=0&&items[acIndex]){maxSearchState.toIsAnywhere=false;maxSelectStop(items[acIndex],input,hidden,stateKey,onSelect);close();} }
+    else if (e.key==='Escape')    { close(); }
+  });
+  input.addEventListener('blur', () => setTimeout(close, 150));
+}
+
+function maxHighlight(ac, idx) {
+  ac.querySelectorAll('[data-ac-index]').forEach(el =>
+    el.classList.toggle('ac-active', parseInt(el.getAttribute('data-ac-index'))===idx));
+}
+function maxSelectStop(stop, input, hidden, stateKey, onSelect) {
+  input.value = stop.name;
+  hidden.value = (stop.stopIds?.length) ? stop.stopIds.join(',') : (stop.id||'');
+  maxSearchState[stateKey] = { ...stop, stopIds: stop.stopIds||[stop.id] };
+  if (onSelect) onSelect();
+}
+function maxEscHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Init
+document.getElementById('max-input-date').value = new Date().toISOString().slice(0, 10);
+maxUpdateBtn();
+maxSetupAC('max-input-from','max-ac-from','max-id-from','selectedFrom',maxUpdateBtn,false);
+maxSetupAC('max-input-to',  'max-ac-to',  'max-id-to',  'selectedTo',  maxUpdateBtn,true);
+</script>
+</body>
+</html>
