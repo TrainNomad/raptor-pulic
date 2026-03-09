@@ -9,6 +9,16 @@
 <script src="https://kit.fontawesome.com/8e4de4bf0a.js" crossorigin="anonymous"></script>
 <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { "primary": "#4ade80", "midnight": "#1A2B3C" }
+      }
+    }
+  }
+</script>
 
 <style>
 :root { --midnight:#1A2B3C; --green:#4ade80; --bg:#F8FAFC; }
@@ -217,6 +227,46 @@ input[type="date"]::-webkit-calendar-picker-indicator { display:none; }
   </div>
 
 </div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="bg-midnight text-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-16 mb-12">
+            <div class="col-span-1">
+                <div class="flex items-center gap-2 mb-8">
+                    <span class="material-symbols-outlined text-primary text-3xl">eco</span>
+                    <span class="text-xl font-extrabold tracking-tight">TrainNomad<span class="text-primary">.eu</span></span>
+                </div>
+                <p class="text-slate-400 text-base leading-relaxed">
+                    L'expérience de réservation ferroviaire la plus élégante. Conçue pour le voyageur moderne et éco-responsable.
+                </p>
+            </div>
+            <div>
+                <h5 class="font-bold mb-8 text-lg">Navigation</h5>
+                <ul class="flex flex-col gap-5 text-base text-slate-400">
+                    <li><a class="hover:text-primary transition-colors" href="A_propos.html">À propos</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="trajets.html">Destinations</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="explorer.html">Explorer</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="outilstgvmax.html">Outils TGVMax</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold mb-8 text-lg">Notre Engagement</h5>
+                <p class="text-slate-400 text-base leading-relaxed" style="color: #a0aec0; line-height: 1.6; font-style: italic;">
+"Choisir le rail, c'est réduire son empreinte carbone de 90% par rapport à l'avion. Voyagez léger, voyagez loin, voyagez responsable."</p>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] text-slate-500 uppercase tracking-[0.2em] font-bold">
+            <p>© 2026 TrainNomad.eu - Engagé pour un futur durable.</p>
+            <div class="flex gap-10">
+                <a class="hover:text-white transition-colors" href="mention_legal.html">Mentions Légales</a>
+                <a class="hover:text-white transition-colors" href="confidentialite.html">Confidentialité</a>
+                <a class="hover:text-white transition-colors" href="conditions.html">Conditions</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
 
 <script>
 // ═══════════════════════════════════════════════════════════
