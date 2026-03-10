@@ -561,6 +561,9 @@ const TRAIN_TYPE_LOGO = {
   'RENFE':           'renfe.png',
   // ── Espagne — OUIGO España ────────────────────────────────────────────────
   'OUIGO_ES':        'ouigo.png',   // même logo que Ouigo France (couleur identique)
+  // ── Portugal ────────────────────────────────────────────────
+  'ALFA_PENDULAR':   'Comboios-de-Portugal.png',
+  'IC_CP':            'Comboios-de-Portugal.png'
 };
 
 function trainTypeBadge(trainType) {
