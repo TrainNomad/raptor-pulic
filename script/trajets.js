@@ -61,9 +61,7 @@ async function initEngine() {
     }
 
     const dateInfo = meta.date_range
-      ? ` | données du ${meta.date_range.first} au ${meta.date_range.last}`
-      : '';
-    setStatus('ok', `Moteur prêt — ${meta.total_stops.toLocaleString('fr-FR')} arrêts${dateInfo}`);
+    setStatus('ok', `Moteur prêt — ${meta.total_stops.toLocaleString('fr-FR')} `);
   } catch (e) {
     setStatus('err', `Moteur inaccessible : ${e.message}`);
   }
