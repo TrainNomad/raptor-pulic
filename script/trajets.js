@@ -563,7 +563,7 @@ const TRAIN_TYPE_LOGO = {
   'INTERCITY_ES':    'renfe_Intercity.png',
   'MD':              'renfe_MD.png',
   'REGIONAL_ES':     'Renfe_Regionales.png',
-  'REG_EXP':         'Renfe_Regionales.png',
+  'REG_EXP':         'Renfe_regionales.png',
   'RENFE':           'renfe.png',
   'OUIGO_ES':        'ouigo.png',
 
