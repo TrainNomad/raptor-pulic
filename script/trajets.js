@@ -553,7 +553,7 @@ const TRAIN_TYPE_LOGO = {
 
   // ── Royaume-Uni (Avanti / Caledonian) ─────────────────────────────────────
   'AVANTI':          'avanti.png',
-  'CALEDONIAN_SLEEPER': 'caledonian.png',
+  'CALEDONIAN_SLEEPER': 'CaledonianSleeper.png',
   'UK_RAIL':         'national_rail.png',
 
   // ── Espagne (Renfe & Ouigo ES) ────────────────────────────────────────────
