@@ -524,30 +524,36 @@ const TRAIN_TYPE_STYLES = {
 
 // Map train type -> logo filename in Assets/Icone_logo/
 const TRAIN_TYPE_LOGO = {
-  // ── France ────────────────────────────────────────────────────────────────
+  // ── France (SNCF) ─────────────────────────────────────────────────────────
   'INOUI':           'tgv_inoui.png',
   'OUIGO':           'ouigo.png',
   'OUIGO_CLASSIQUE': 'ouigo-classique.png',
   'TER':             'TER.png',
-  'CAR':             'TER.png',
   'IC':              'intercites.png',
   'IC_NUIT':         'intercites.png',
   'LYRIA':           'lyria.png',
   'ICE':             'ice.png',
-  'TRAMTRAIN':       'TER.png',
-  'NAVETTE':         'TER.png',
-  'TRAIN':           'inoui.svg',
-  // ── Belgique  ─────────────────────────────────────────────────────────
+  'TRAIN':           'inoui.svg', // Fallback France
+
+  // ── Belgique (SNCB) ───────────────────────────────────────────────────────
   'IC_SNCB':         'sncb.png',
-  // ── Autriche ─────────────────────────────────────────────────────────
-  'NIGHTJET':         'nightjet.png',
-  // ── International ─────────────────────────────────────────────────────────
-  'EUROSTAR':        'eurostar.png',
+  'NIGHTJET':        'nightjet.png',
+  'EC':              'eurocity.png',
+  'THALYS_CORRIDOR': 'eurostar.png',
+
+  // ── Allemagne (DB) ────────────────────────────────────────────────────────
+  'IC_DB':           'db.png',
+  'TRAIN_DB':        'db.png',
+
+  // ── Italie (Trenitalia) ───────────────────────────────────────────────────
   'FRECCIAROSSA':    'frecciarossa.png',
-  'EURONIGHT':       'intercites.png',
-  'IC_IT':           'intercites.png',
-  'REGIONALE_IT':    'trenitalia.png',
-  // ── Espagne — Renfe ───────────────────────────────────────────────────────
+
+  // ── Royaume-Uni (Avanti / Caledonian) ─────────────────────────────────────
+  'AVANTI':          'avanti.png',
+  'CALEDONIAN_SLEEPER': 'caledonian.png',
+  'UK_RAIL':         'national_rail.png',
+
+  // ── Espagne (Renfe & Ouigo ES) ────────────────────────────────────────────
   'AVE':             'Renfe_ave.png',
   'AVE_INT':         'Renfe_ave.png',
   'ALVIA':           'Renfe_Alvia.png',
@@ -559,11 +565,13 @@ const TRAIN_TYPE_LOGO = {
   'REGIONAL_ES':     'Renfe_Regionales.png',
   'REG_EXP':         'Renfe_Regionales.png',
   'RENFE':           'renfe.png',
-  // ── Espagne — OUIGO España ────────────────────────────────────────────────
-  'OUIGO_ES':        'ouigo.png',   // même logo que Ouigo France (couleur identique)
-  // ── Portugal ────────────────────────────────────────────────
+  'OUIGO_ES':        'ouigo.png',
+
+  // ── Portugal (CP) ─────────────────────────────────────────────────────────
   'ALFA_PENDULAR':   'Comboios-de-Portugal.png',
-  'IC_CP':            'Comboios-de-Portugal.png'
+  'IC_CP':           'Comboios-de-Portugal.png',
+  'IR_CP':           'Comboios-de-Portugal.png',
+  'CP':              'Comboios-de-Portugal.png'
 };
 
 function trainTypeBadge(trainType) {
