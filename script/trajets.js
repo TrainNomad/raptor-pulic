@@ -414,7 +414,7 @@ function renderJourneyCard(j, i, showSelectBtn = false) {
     // Logo du train pour ce leg
     const legLogoFile = TRAIN_TYPE_LOGO[leg.train_type];
     const legLogoHtml = legLogoFile
-      ? `<img src="Assets/Icone_logo/${legLogoFile}" alt="${leg.train_type}"
+      ? `<img src="assets/Icone_logo/${legLogoFile}" alt="${leg.train_type}"
            style="height:18px;max-width:60px;object-fit:contain;vertical-align:middle;"
            onerror="this.style.display='none'">`
       : `<span style="font-size:10px;font-weight:700;color:#94a3b8">${leg.train_type || ''}</span>`;
@@ -522,7 +522,7 @@ const TRAIN_TYPE_STYLES = {
   'TRAIN':           { bg: '#3a3a3a', label: 'Train' },
 };
 
-// Map train type -> logo filename in Assets/Icone_logo/
+// Map train type -> logo filename in assets/Icone_logo/
 const TRAIN_TYPE_LOGO = {
   // ── International ─────────────────────────────────────────────────────────
   'EUROSTAR':        'eurostar.png',
@@ -582,7 +582,7 @@ function trainTypeBadge(trainType) {
   const logo = TRAIN_TYPE_LOGO[trainType];
   if (logo) {
     return '<span style="display:inline-flex;align-items:center;">'
-      + '<img src="Assets/Icone_logo/' + logo + '" alt="' + s.label + '" title="' + s.label + '"'
+      + '<img src="assets/Icone_logo/' + logo + '" alt="' + s.label + '" title="' + s.label + '"'
       + ' style="height:22px;max-width:80px;object-fit:contain;vertical-align:middle;"'
       + ' onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\';">'
       + '<span style="display:none;background:' + s.bg + ';color:#fff;font-size:9px;padding:2px 6px;border-radius:3px;letter-spacing:.06em;font-weight:600">' + s.label + '</span>'
