@@ -36,9 +36,9 @@ function initCanvas() {
   cvs.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:400;';
   map.getContainer().appendChild(cvs);
   ctx = cvs.getContext('2d');
-  function resize() { const s=map.getSize(); cvs.width=s.x; cvs.height=s.y; }
+  function resize() { const s = map.getSize(); cvs.width = s.x; cvs.height = s.y; }
   resize();
-  map.on('move zoom moveend zoomend resize', () => { resize(); if(lastResults.length) redrawCanvas(); });
+  map.on('move zoom moveend zoomend resize', () => { resize(); if (lastResults.length) redrawCanvas(); });
   canvasReady = true;
 }
 
@@ -77,30 +77,63 @@ function bindCanvasEvents() {
   container.addEventListener('click', e => {
     if (!lastResults.length) return;
     const rect=container.getBoundingClientRect(), hit=hitTest(e.clientX-rect.left,e.clientY-rect.top);
-    if (hit) { openDestPopup(hit); const idx=lastResults.indexOf(hit); if(idx>=0) highlightCardByListIdx(idx); }
+    if (hit) { openDestPopup(hit); const idx=lastResults.indexOf(hit); if(idx>=0) highlightCardByListIdx(idx); if(cvs){cvs.style.visibility='hidden'; map.once('popupclose',()=>{cvs.style.visibility='visible';});} }
     else { if(leafletPopup) map.closePopup(leafletPopup); }
   });
 }
 
 function openDestPopup(dest) {
-  const j=dest.journeys[0], legs=j.legs||[], leg0=legs[0]||{}, legN=legs[legs.length-1]||{};
-  const trainT=(j.train_types||[])[0]||leg0.train_type||'', dur=formatDuration(j.duration);
-  const fromName=explorerState?.from?.name||leg0.from_name||'';
-  const p=new URLSearchParams({ from:document.getElementById('id-from').value, fromName, to:dest.to_id, toName:dest.name, date:document.getElementById('date-input').value, time:'06:00', carte:'Tarif Normal' });
-  const url='trajets.html?'+p.toString();
-  const html=`<div class="popup-card">
+  const j    = dest.journeys[0];
+  const legs = j.legs || [];
+  const leg0 = legs[0] || {};
+  const legN = legs[legs.length - 1] || {};
+  const dur  = formatDuration(j.duration);
+  const fromName = explorerState?.from?.name || leg0.from_name || '';
+
+  // Heures : priorité j.dep_str / j.arr_str (champs directs), fallback sur legs
+  const depStr = j.dep_str || leg0.dep_str || leg0.departure_time?.slice(0,5) || '--:--';
+  const arrStr = j.arr_str || legN.arr_str || legN.arrival_time?.slice(0,5) || '--:--';
+
+  // Badge type de train (INOUI, OUIGO, TGV, Eurostar…)
+  const trainTypes = j.train_types || [];
+  const trainT = trainTypes[0] || leg0.train_type || '';
+  const trainBadge = trainT ? `<span class="popup-type">${escapeHtml(trainT)}</span>` : '';
+
+  const p = new URLSearchParams({
+    from:     document.getElementById('id-from').value,
+    fromName,
+    to:       dest.to_id,
+    toName:   dest.name,
+    date:     document.getElementById('date-input').value,
+    time:     '06:00',
+    carte:    'Tarif Normal',
+  });
+  const url = 'trajets.html?' + p.toString();
+
+  const html = `<div class="popup-card">
     <div class="popup-card-city">${escapeHtml(dest.name)}</div>
-    ${trainT?`<span class="popup-type">${escapeHtml(trainT)}</span>`:''}
+    ${trainBadge}
     <div class="popup-train-row">
-      <div><div class="popup-dep">${leg0.dep_str||'--:--'}</div><div class="popup-dur">${escapeHtml(fromName)}</div></div>
-      <div style="text-align:center;flex:1"><div class="popup-arrow">→</div><div class="popup-dur">${dur}</div></div>
-      <div style="text-align:right"><div class="popup-arr">${legN.arr_str||'--:--'}</div><div class="popup-dur">${escapeHtml(dest.name)}</div></div>
+      <div>
+        <div class="popup-dep">${depStr}</div>
+        <div class="popup-dur">${escapeHtml(fromName)}</div>
+      </div>
+      <div style="text-align:center;flex:1">
+        <div class="popup-arrow">→</div>
+        <div class="popup-dur">${dur}</div>
+      </div>
+      <div style="text-align:right">
+        <div class="popup-arr">${arrStr}</div>
+        <div class="popup-dur">${escapeHtml(dest.name)}</div>
+      </div>
     </div>
     <a href="${url}" class="popup-book-btn">Voir les trains →</a>
   </div>`;
-  if (!leafletPopup) leafletPopup=L.popup({maxWidth:280,offset:[0,-4],closeButton:true});
-  leafletPopup.setLatLng([dest.lat,dest.lon]).setContent(html).openOn(map);
-  openPopupDest=dest;
+
+  if (!leafletPopup) leafletPopup = L.popup({ maxWidth: 280, offset: [0, -4], closeButton: true });
+  leafletPopup.setLatLng([dest.lat, dest.lon]).setContent(html).openOn(map);
+  openPopupDest = dest;
+
 }
 
 function syncHoverList() {

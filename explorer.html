@@ -144,8 +144,7 @@
 .leaflet-control-zoom,
 .leaflet-control-scale { z-index: 20 !important; position: relative; }
 
-/* ── Popup Leaflet AU DESSUS de tout ── */
-.leaflet-popup-pane { z-index: 900 !important; }
+/* ── Popup Leaflet ── */
 .leaflet-popup-content-wrapper {
   padding: 0 !important; border-radius: 14px !important; overflow: hidden;
   box-shadow: 0 16px 48px rgba(26,43,60,.25) !important;
@@ -154,6 +153,84 @@
 }
 .leaflet-popup-content { margin: 0 !important; }
 .leaflet-popup-close-button { font-size: 16px !important; padding: 6px 10px !important; color: #94a3b8 !important; top: 4px !important; right: 4px !important; }
+
+/* ── Contenu popup destination ── */
+.popup-card {
+  width: 280px;
+  padding: 18px 20px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.popup-card-city {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1A2B3C;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.popup-type {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  background: #f1f5f9;
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-bottom: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.popup-train-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+.popup-dep, .popup-arr {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1A2B3C;
+  line-height: 1;
+}
+.popup-dur {
+  font-size: 11px;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+}
+.popup-arrow {
+  font-size: 18px;
+  color: #4ade80;
+  font-weight: 900;
+  line-height: 1;
+}
+.popup-book-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #1A2B3C;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 11px 0;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background .15s, transform .1s;
+  letter-spacing: .02em;
+}
+.popup-book-btn:hover {
+  background: #4ade80;
+  color: #1A2B3C;
+  transform: translateY(-1px);
+}
 
 /* ── Légende durée ── */
 #duration-legend {
