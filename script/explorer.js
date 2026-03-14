@@ -90,11 +90,9 @@ function openDestPopup(dest) {
   const dur  = formatDuration(j.duration);
   const fromName = explorerState?.from?.name || leg0.from_name || '';
 
-  // Heures : priorité j.dep_str / j.arr_str (champs directs), fallback sur legs
   const depStr = j.dep_str || leg0.dep_str || leg0.departure_time?.slice(0,5) || '--:--';
   const arrStr = j.arr_str || legN.arr_str || legN.arrival_time?.slice(0,5) || '--:--';
 
-  // Badge type de train (INOUI, OUIGO, TGV, Eurostar…)
   const trainTypes = j.train_types || [];
   const trainT = trainTypes[0] || leg0.train_type || '';
   const trainBadge = trainT ? `<span class="popup-type">${escapeHtml(trainT)}</span>` : '';
@@ -133,7 +131,6 @@ function openDestPopup(dest) {
   if (!leafletPopup) leafletPopup = L.popup({ maxWidth: 280, offset: [0, -4], closeButton: true });
   leafletPopup.setLatLng([dest.lat, dest.lon]).setContent(html).openOn(map);
   openPopupDest = dest;
-
 }
 
 function syncHoverList() {
@@ -273,3 +270,197 @@ function showNoResults(msg) {
 }
 function formatDuration(m) { if(!m)return'--'; const h=Math.floor(m/60),mn=m%60; return h>0?`${h}h${mn>0?String(mn).padStart(2,'0'):''}`:mn+'min'; }
 function setProgress(pct) { document.getElementById('progress-bar').style.width=pct+'%'; }
+
+// ─── Autocomplétion ───────────────────────────────────────────────────────────
+const API_BASE = 'https://raptor-backend-2vdj.onrender.com';
+let acTimers = {};
+
+const AC_COUNTRY_NAMES = {
+  FR:'France', IT:'Italie', BE:'Belgique', DE:'Allemagne',
+  NL:'Pays-Bas', GB:'Royaume-Uni', ES:'Espagne', PT:'Portugal',
+  CH:'Suisse', AT:'Autriche', PL:'Pologne', CZ:'Tchéquie', SK:'Slovaquie',
+};
+
+function setupAutocomplete(inputId, acId, hiddenId, stateKey, stateObj, onSelect) {
+  const input  = document.getElementById(inputId);
+  const ac     = document.getElementById(acId);
+  const hidden = document.getElementById(hiddenId);
+  let acIndex = -1, items = [];
+
+  const close = () => { ac.classList.add('hidden'); ac.innerHTML = ''; acIndex = -1; items = []; };
+
+  input.addEventListener('input', () => {
+    clearTimeout(acTimers[inputId]);
+    const q = input.value.trim();
+    stateObj[stateKey] = null;
+    hidden.value = '';
+    if (onSelect) onSelect();
+    if (q.length < 2) { close(); return; }
+    acTimers[inputId] = setTimeout(async () => {
+      try {
+        const res   = await fetch(`${API_BASE}/api/stops?q=${encodeURIComponent(q)}`);
+        const stops = await res.json();
+        if (!stops.length) { close(); return; }
+        const cityOrder = [], cityMap = new Map();
+        for (const stop of stops) {
+          const city = stop.city || stop.name, country = stop.country || 'FR';
+          const countryName = AC_COUNTRY_NAMES[country] || country;
+          const key = city + ':' + country;
+          if (!cityMap.has(key)) { cityMap.set(key, { city, countryName, stops: [] }); cityOrder.push(key); }
+          cityMap.get(key).stops.push(stop);
+        }
+        ac.innerHTML = ''; acIndex = -1; items = [];
+        for (const key of cityOrder) {
+          const { countryName, stops: gs } = cityMap.get(key);
+          for (const stop of gs) {
+            const div = document.createElement('div');
+            div.className = 'ac-row'; div.setAttribute('data-ac-index', items.length);
+            div.innerHTML = `<span class="ac-row-name">${escapeHtml(stop.name)}</span><span class="ac-row-country">${escapeHtml(countryName)}</span>`;
+            div.addEventListener('mousedown', e => { e.preventDefault(); selectStop(stop, input, hidden, stateKey, stateObj, onSelect); close(); });
+            ac.appendChild(div); items.push(stop);
+          }
+        }
+        ac.style.cssText = 'position:absolute;top:100%;left:0;right:0;z-index:1000;';
+        ac.classList.remove('hidden');
+      } catch (_) {}
+    }, 180);
+  });
+
+  input.addEventListener('keydown', e => {
+    if (!items.length) return;
+    if (e.key === 'ArrowDown') { e.preventDefault(); acIndex = Math.min(acIndex+1, items.length-1); highlight(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); acIndex = Math.max(acIndex-1, -1); highlight(); }
+    else if (e.key === 'Enter') { e.preventDefault(); if (acIndex>=0 && items[acIndex]) { selectStop(items[acIndex], input, hidden, stateKey, stateObj, onSelect); close(); } }
+    else if (e.key === 'Escape') close();
+  });
+
+  function highlight() {
+    ac.querySelectorAll('[data-ac-index]').forEach(el =>
+      el.classList.toggle('ac-active', parseInt(el.getAttribute('data-ac-index')) === acIndex));
+  }
+  input.addEventListener('blur', () => setTimeout(close, 150));
+}
+
+function selectStop(stop, input, hidden, stateKey, stateObj, onSelect) {
+  input.value = stop.name;
+  hidden.value = (stop.stopIds?.length) ? stop.stopIds.join(',') : (stop.id || '');
+  stateObj[stateKey] = { ...stop, stopIds: stop.stopIds || [stop.id] };
+  if (onSelect) onSelect();
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+(function() {
+  const t = new Date();
+  const iso = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;
+  document.getElementById('date-input').min = iso;
+  const params = new URLSearchParams(window.location.search);
+  document.getElementById('date-input').value = params.get('date') || iso;
+})();
+
+const explorerState = { from: null };
+
+setupAutocomplete('input-from', 'ac-from', 'id-from', 'from', explorerState, () => {
+  const s = explorerState.from;
+  if (s?.lat && s.lon) map.flyTo({ center: [s.lon, s.lat], zoom: 6, duration: 1200 });
+});
+
+// ─── Pré-remplir depuis index.html (?from=...&fromName=...&date=...) ──────────
+(function() {
+  const params   = new URLSearchParams(window.location.search);
+  const fromId   = params.get('from');
+  const fromName = params.get('fromName');
+  if (!fromId || !fromName) return;
+  document.getElementById('input-from').value = fromName;
+  document.getElementById('id-from').value    = fromId;
+  explorerState.from = { name: fromName, stopIds: fromId.split(','), id: fromId };
+  map.whenReady(() => setTimeout(doSearch, 300));
+})();
+
+// ─── Filtres ──────────────────────────────────────────────────────────────────
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    currentFilter = chip.dataset.filter;
+    refreshView();
+  });
+});
+
+// ─── Search btn ───────────────────────────────────────────────────────────────
+function doSearch() {
+  const s = explorerState.from;
+  if (!s) {
+    const inp = document.getElementById('input-from');
+    inp.focus(); inp.style.outline = '2px solid #f87171';
+    setTimeout(() => inp.style.outline = '', 900);
+    return;
+  }
+  const btn = document.getElementById('search-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Recherche…';
+  clearMap(); setProgress(10);
+
+  const fromIds = (s.stopIds || [s.id]).join(',');
+  const dateStr = document.getElementById('date-input').value;
+
+  fetchDestinations(fromIds, dateStr)
+    .catch(e => { showNoResults('Erreur : ' + e.message); document.getElementById('status-dot').className = 'status-dot err'; document.getElementById('status-text').textContent = e.message; })
+    .finally(() => {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i> Explorer';
+      setProgress(100); setTimeout(() => setProgress(0), 500);
+    });
+}
+
+// ─── Toggle carte/liste (mobile) ─────────────────────────────────────────────
+let mobileMapVisible = false;
+
+function toggleMapMobile() {
+  const panel     = document.getElementById('side-panel');
+  const mapCont   = document.getElementById('map-container');
+  const icon      = document.getElementById('mobile-view-icon');
+  const label     = document.getElementById('mobile-view-label');
+  const closeBtn  = document.getElementById('mobile-close-map');
+
+  mobileMapVisible = !mobileMapVisible;
+
+  if (mobileMapVisible) {
+    // Afficher la carte plein écran
+    panel.classList.add('collapsed');
+    mapCont.classList.add('map-open');
+    if (closeBtn) closeBtn.classList.add('visible');
+    icon.textContent  = 'list';
+    label.textContent = 'Voir les destinations';
+    // Forcer Leaflet à recalculer la taille
+    setTimeout(() => map.invalidateSize(), 50);
+  } else {
+    // Retour à la liste
+    panel.classList.remove('collapsed');
+    mapCont.classList.remove('map-open');
+    if (closeBtn) closeBtn.classList.remove('visible');
+    icon.textContent  = 'map';
+    label.textContent = 'Voir la carte';
+  }
+}
+
+// ─── Toggle menu mobile ───────────────────────────────────────────────────────
+function toggleMobileMenu() {
+  const nav  = document.getElementById('mobile-nav');
+  const icon = document.getElementById('mobile-menu-icon');
+  const open = nav.classList.toggle('open');
+  icon.textContent = open ? 'close' : 'menu';
+}
+
+// ─── Toggle sidebar ───────────────────────────────────────────────────────────
+function togglePanel() {
+  const panel = document.getElementById('side-panel');
+  const btn   = document.getElementById('toggle-panel-btn');
+  const lbl   = document.getElementById('toggle-label');
+  const collapsed = panel.classList.toggle('collapsed');
+  lbl.textContent = collapsed ? 'Afficher' : 'Masquer';
+  btn.style.left  = collapsed ? '16px' : '352px';
+}

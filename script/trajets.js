@@ -1,3 +1,132 @@
+// ─── Autocomplétion ───────────────────────────────────────────────────────────
+let acTimers = {};
+
+const AC_COUNTRY_NAMES = {
+  FR:'France', IT:'Italie', BE:'Belgique', DE:'Allemagne',
+  NL:'Pays-Bas', GB:'Royaume-Uni', ES:'Espagne', PT:'Portugal',
+  CH:'Suisse', AT:'Autriche', PL:'Pologne', CZ:'Tchéquie', SK:'Slovaquie',
+};
+
+function setupAutocomplete(inputId, acId, hiddenId, stateKey, stateObj, onSelect) {
+  const input  = document.getElementById(inputId);
+  const ac     = document.getElementById(acId);
+  const hidden = document.getElementById(hiddenId);
+  let acIndex  = -1;
+  let items    = [];
+
+  const close = () => {
+    ac.classList.add('hidden');
+    ac.innerHTML = '';
+    acIndex = -1;
+    items   = [];
+  };
+
+  input.addEventListener('input', () => {
+    clearTimeout(acTimers[inputId]);
+    const q = input.value.trim();
+    stateObj[stateKey] = null;
+    hidden.value = '';
+    if (onSelect) onSelect();
+
+    if (q.length < 2) { close(); return; }
+
+    acTimers[inputId] = setTimeout(async () => {
+      try {
+        const API = 'https://raptor-backend-2vdj.onrender.com';
+        const res   = await fetch(`${API}/api/stops?q=${encodeURIComponent(q)}`);
+        const stops = await res.json();
+
+        if (!stops.length) { close(); return; }
+
+        const cityOrder = [];
+        const cityMap   = new Map();
+
+        for (const stop of stops) {
+          const city        = stop.city || stop.name;
+          const country     = stop.country || 'FR';
+          const countryName = AC_COUNTRY_NAMES[country] || country;
+          const key         = city + ':' + country;
+
+          if (!cityMap.has(key)) {
+            cityMap.set(key, { city, countryName, stops: [] });
+            cityOrder.push(key);
+          }
+          cityMap.get(key).stops.push(stop);
+        }
+
+        ac.innerHTML = '';
+        acIndex = -1;
+        items   = [];
+
+        for (const key of cityOrder) {
+          const { countryName, stops: groupStops } = cityMap.get(key);
+
+          for (const stop of groupStops) {
+            const div = document.createElement('div');
+            div.className = 'ac-row';
+            div.setAttribute('data-ac-index', items.length);
+
+            div.innerHTML = `
+              <span class="ac-row-name">${escapeHtml(stop.name)}</span>
+              <span class="ac-row-country">${escapeHtml(countryName)}</span>`;
+
+            div.addEventListener('mousedown', e => {
+              e.preventDefault();
+              selectStop(stop, input, hidden, stateKey, stateObj, onSelect);
+              close();
+            });
+            ac.appendChild(div);
+            items.push(stop);
+          }
+        }
+
+        ac.style.position = 'absolute';
+        ac.style.top    = '100%';
+        ac.style.left   = '0';
+        ac.style.right  = '0';
+        ac.style.zIndex = '1000';
+        ac.classList.remove('hidden');
+      } catch (_) {}
+    }, 180);
+  });
+
+  input.addEventListener('keydown', e => {
+    if (!items.length) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      acIndex = Math.min(acIndex + 1, items.length - 1);
+      highlightItem();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      acIndex = Math.max(acIndex - 1, -1);
+      highlightItem();
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (acIndex >= 0 && items[acIndex]) {
+        selectStop(items[acIndex], input, hidden, stateKey, stateObj, onSelect);
+        close();
+      }
+    } else if (e.key === 'Escape') {
+      close();
+    }
+  });
+
+  function highlightItem() {
+    ac.querySelectorAll('[data-ac-index]').forEach(el => {
+      el.classList.toggle('ac-active', parseInt(el.getAttribute('data-ac-index')) === acIndex);
+    });
+  }
+
+  input.addEventListener('blur', () => setTimeout(close, 150));
+}
+
+function selectStop(stop, input, hidden, stateKey, stateObj, onSelect) {
+  input.value        = stop.name;
+  hidden.value       = (stop.stopIds && stop.stopIds.length) ? stop.stopIds.join(',') : (stop.id || '');
+  stateObj[stateKey] = { ...stop, stopIds: stop.stopIds || [stop.id] };
+  if (onSelect) onSelect();
+}
+
 // ─── Config ───────────────────────────────────────────────────────────────────
 const API = 'https://raptor-backend-2vdj.onrender.com';
 
@@ -15,10 +144,9 @@ const state = {
   profil:            'Tarif Normal',
   activeTypeFilters: null,
   availableTypes:    [],
-  // ── Aller-retour ──────────────────────────────────────────────────────────
-  isRoundTrip:       false,   // mode aller-retour activé
-  phase:             'aller', // 'aller' | 'retour'
-  selectedAller:     null,    // journey sélectionné pour l'aller
+  isRoundTrip:       false,
+  phase:             'aller',
+  selectedAller:     null,
 };
 
 // ─── Utilitaires ──────────────────────────────────────────────────────────────
@@ -60,16 +188,12 @@ async function initEngine() {
       dateInput.max = meta.date_range.last;
     }
 
-    const dateInfo = meta.date_range
     setStatus('ok', `Moteur prêt — ${meta.total_stops.toLocaleString('fr-FR')} `);
   } catch (e) {
     setStatus('err', `Moteur inaccessible : ${e.message}`);
   }
   updateSearchBtn();
 }
-
-// ─── Autocomplétion ───────────────────────────────────────────────────────────
-// (setupAutocomplete et escapeHtml viennent de autocomplete.js)
 
 // ─── Recherche principale ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -78,6 +202,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('input-time').addEventListener('keydown', e => {
     if (e.key === 'Enter' && !document.getElementById('btn-search').disabled) doSearch();
   });
+
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('tripType') === 'roundtrip') setTripTypeBar('roundtrip');
 });
 
 async function doSearch() {
@@ -88,7 +215,7 @@ async function doSearch() {
   const carte = document.getElementById('input-carte').value || 'Tarif Normal';
 
   const isFilteredRelaunch = state._filterRelaunch;
-  const isPhaseSearch      = state._phaseSearch;   // recherche déclenchée par sélection aller-retour
+  const isPhaseSearch      = state._phaseSearch;
   state._filterRelaunch = false;
   state._phaseSearch    = false;
 
@@ -99,19 +226,15 @@ async function doSearch() {
   state.allJourneys  = [];
   state.lastDepTime  = 0;
 
-  // Si nouvelle recherche MANUELLE en mode aller-retour → reset phase
-  // Ne pas resetter si c'est une recherche retour déclenchée par selectJourneyForRoundTrip
   if (!isFilteredRelaunch && !isPhaseSearch && state.phase === 'retour') {
     state.phase = 'aller';
     state.selectedAller = null;
     hidePhaseBanner();
   }
 
-  // Nouvelle recherche utilisateur → reset complet des filtres
   if (!isFilteredRelaunch && !isPhaseSearch) {
     state.activeTypeFilters = null;
     state.availableTypes    = [];
-    // Vider la combobox (sera repeuplée après résultats)
     const dropdown = document.getElementById('ms-dropdown');
     if (dropdown) dropdown.querySelectorAll('.ms-item').forEach(el => el.remove());
     const labelEl = document.getElementById('ms-label');
@@ -136,9 +259,6 @@ async function doSearch() {
     const toIds      = (state.selectedTo.stopIds   || [state.selectedTo.id]).join(',');
     const carteParam = state.currentCarte !== 'Tarif Normal'
       ? `&carte=${encodeURIComponent(state.currentCarte)}` : '';
-    // Lors d'un relancement avec filtre, on NE transmet PAS train_types au serveur :
-    // le serveur explore librement tous les trains, et on filtre cote client ensuite.
-    // Cela evite que RAPTOR s'arrete avant de trouver les trains du type voulu.
     const limitParam = isFilteredRelaunch ? '&limit=32' : '';
     const url = `${API}/api/search?from=${encodeURIComponent(fromIds)}&to=${encodeURIComponent(toIds)}&time=${time}&offset=0${dateParam}${carteParam}${limitParam}`;
 
@@ -147,7 +267,6 @@ async function doSearch() {
 
     const allReceived = data.journeys || [];
 
-    // Filtre cote client selon les types selectionnes
     const filtered = (isFilteredRelaunch && state.activeTypeFilters)
       ? allReceived.filter(j => (j.train_types || []).some(tt => state.activeTypeFilters.has(tt)))
       : allReceived;
@@ -158,7 +277,6 @@ async function doSearch() {
     state.lastDepTime = lastFiltered || (data.last_dep_time !== undefined ? data.last_dep_time : 0);
     state.profil      = data.profil_tarifaire || 'Tarif Normal';
 
-    // Apres une recherche sans filtre -> peupler la combobox avec les types presents
     if (!isFilteredRelaunch) {
       const types = new Set();
       allReceived.forEach(j => (j.train_types || []).forEach(t => types.add(t)));
@@ -224,14 +342,12 @@ async function loadMore() {
     const afterDep   = state.lastDepTime || 0;
     const carteParam = state.currentCarte && state.currentCarte !== 'Tarif Normal'
       ? `&carte=${encodeURIComponent(state.currentCarte)}` : '';
-    // loadMore : pas de train_types serveur, on filtre cote client
     const limitMore = state.activeTypeFilters ? '&limit=32' : '&limit=16';
     const url = `${API}/api/search?from=${encodeURIComponent(fromIds)}&to=${encodeURIComponent(toIds)}&time=${state.currentTime}&offset=${state.nextOffset}&after_dep=${afterDep}${limitMore}${dateParam}${carteParam}`;
 
     const res  = await fetch(url);
     const data = await res.json();
     const allMore = data.journeys || [];
-    // Filtre cote client
     const newJourneys = (state.activeTypeFilters)
       ? allMore.filter(j => (j.train_types || []).some(tt => state.activeTypeFilters.has(tt)))
       : allMore;
@@ -284,7 +400,6 @@ function renderResults(journeys, fromName, toName, time, showLoadMore = false) {
 
   let out = '';
 
-  // ── En phase retour : afficher la récap du trajet aller en haut ──────────
   if (isRetourPhase && state.selectedAller) {
     const a      = state.selectedAller;
     const leg0   = a.legs[0];
@@ -335,7 +450,6 @@ function renderResults(journeys, fromName, toName, time, showLoadMore = false) {
     + '<div class="results-sort"><svg viewBox="0 0 14 14" fill="none" width="14" height="14"><path d="M2 4h10M4 7h6M6 10h2" stroke="#6b7a8d" stroke-width="1.4" stroke-linecap="round"/></svg> Trier par : <span>Heure de départ</span></div>'
     + '</div>';
 
-  // ✅ Tri par heure de départ (dep_time) croissant
   const sortedJourneys = [...journeys].sort((a, b) => (a.dep_time || 0) - (b.dep_time || 0));
   sortedJourneys.forEach((j, i) => { out += renderJourneyCard(j, i, isAllerPhase || isRetourPhase); });
 
@@ -355,12 +469,10 @@ function renderResults(journeys, fromName, toName, time, showLoadMore = false) {
         if (state.isRoundTrip) {
           selectJourneyForRoundTrip(sortedJourneys[idx]);
         } else {
-          // Aller simple : sauvegarder le trajet et aller au récap
           selectJourneySimple(sortedJourneys[idx]);
         }
       });
     }
-    // Expand au clic sur le résumé (sauf si clic sur le bouton)
     card.querySelector('.card-summary').addEventListener('click', e => {
       if (e.target.closest('.btn-select-journey')) return;
       card.classList.toggle('expanded');
@@ -373,27 +485,20 @@ function renderJourneyCard(j, i, showSelectBtn = false) {
   const fromLeg  = j.legs[0];
   const toLeg    = j.legs[j.legs.length - 1];
 
-  // ── Overnight indicator ──────────────────────────────────────────────────
   const overnight = toLeg.arr_time - fromLeg.dep_time >= 86400;
   const overnightSup = overnight
     ? `<sup class="card-overnight">+${Math.floor((toLeg.arr_time - fromLeg.dep_time) / 86400)}</sup>`
     : '';
 
-  // ── Summary middle ───────────────────────────────────────────────────────
   const transferLabel = isDirect
     ? `<span class="card-direct">DIRECT</span>`
     : `<span class="card-corresp">${j.transfers} CORRESP.</span>`;
 
-  // ── Train logo (first leg) — affiché dans la timeline étendue uniquement ──
-  // (pas dans le résumé de la card)
-
-  // ── Timeline (expanded) ──────────────────────────────────────────────────
   let tlHtml = '<div class="tl-wrap">';
 
   j.legs.forEach((leg, li) => {
     const isFirst = li === 0;
 
-    // Transfer row between legs
     if (li > 0) {
       const wait = Math.round((leg.dep_time - j.legs[li - 1].arr_time) / 60);
       const waitLabel = wait > 0 ? minutesToHHMM(wait) : 'courte';
@@ -411,7 +516,6 @@ function renderJourneyCard(j, i, showSelectBtn = false) {
         </div>`;
     }
 
-    // Logo du train pour ce leg
     const legLogoFile = TRAIN_TYPE_LOGO[leg.train_type];
     const legLogoHtml = legLogoFile
       ? `<img src="assets/Icone_logo/${legLogoFile}" alt="${leg.train_type}"
@@ -439,7 +543,6 @@ function renderJourneyCard(j, i, showSelectBtn = false) {
       </div>`;
   });
 
-  // Final arrival stop
   tlHtml += `
     <div class="tl-stop tl-stop--final">
       <div class="tl-node-col">
@@ -471,7 +574,10 @@ function renderJourneyCard(j, i, showSelectBtn = false) {
           <span class="card-station-lbl">${escapeHtml(toLeg.to_name).toUpperCase()}</span>
         </div>
         <div class="card-select-block">
-          <button class="btn-select-journey">Sélectionner →</button>
+          <button class="btn-select-journey">
+            <span class="btn-select-text">Sélectionner</span>
+            <span class="btn-select-arrow material-symbols-outlined" style="font-size:18px;line-height:1">arrow_forward</span>
+          </button>
         </div>
       </div>
       <div class="card-legs">${tlHtml}</div>
@@ -479,17 +585,7 @@ function renderJourneyCard(j, i, showSelectBtn = false) {
 }
 
 // ─── Badges types de train ────────────────────────────────────────────────────
-// Mapping GTFS route_short_name (Renfe) → train_type backend :
-//   'AVE'        → 'AVE'          | 'AVE INT'   → 'AVE_INT'
-//   'ALVIA'      → 'ALVIA'        | 'AVLO'      → 'AVLO'
-//   'AVANT'      → 'AVANT'        | 'AVANT EXP' → 'AVANT'
-//   'EUROMED'    → 'EUROMED'      | 'Intercity' → 'INTERCITY_ES'
-//   'MD'         → 'MD'           | 'REGIONAL'  → 'REGIONAL_ES'
-//   'REG.EXP.'   → 'REG_EXP'     | 'PROXIMDAD' → 'MD' (ou filtrer)
-//   'TRENCELTA'  → 'REGIONAL_ES'
-//   OUIGO España → 'OUIGO_ES'
 const TRAIN_TYPE_STYLES = {
-  // ── France ────────────────────────────────────────────────────────────────
   'INOUI':           { bg: '#c8962e', label: 'TGV Inoui' },
   'OUIGO':           { bg: '#e80082', label: 'Ouigo GV' },
   'OUIGO_CLASSIQUE': { bg: '#9b1c6e', label: 'Ouigo Classique' },
@@ -500,34 +596,26 @@ const TRAIN_TYPE_STYLES = {
   'LYRIA':           { bg: '#d4001a', label: 'Lyria' },
   'TRAMTRAIN':       { bg: '#5a7a3a', label: 'TramTrain' },
   'NAVETTE':         { bg: '#7a6a5a', label: 'Navette' },
-  // ── International ─────────────────────────────────────────────────────────
   'ICE':             { bg: '#d40000', label: 'ICE' },
   'EUROSTAR':        { bg: '#00435a', label: 'Eurostar' },
   'FRECCIAROSSA':    { bg: '#c60018', label: 'Frecciarossa' },
-  // ── Espagne — Renfe ───────────────────────────────────────────────────────
-  'AVE':             { bg: '#8b1a4a', label: 'AVE' },          // Haute vitesse Renfe
-  'AVE_INT':         { bg: '#6b1238', label: 'AVE Int.' },     // AVE international
-  'ALVIA':           { bg: '#c0392b', label: 'Alvia' },        // Semi-rapide (tilting)
-  'AVLO':            { bg: '#e74c3c', label: 'AVLO' },         // Low-cost AVE (≈ Ouigo ES)
-  'AVANT':           { bg: '#922b21', label: 'Avant' },        // Courte dist. grande vitesse
-  'EUROMED':         { bg: '#1a5276', label: 'Euromed' },      // Barcelone–Valencia–Alicante
-  'INTERCITY_ES':    { bg: '#2471a3', label: 'Intercity' },    // Grandes lignes Renfe
-  'MD':              { bg: '#27ae60', label: 'Media Distancia' }, // Régional Renfe
-  'REGIONAL_ES':     { bg: '#1e8449', label: 'Regional' },     // Omnibus régional Renfe
-  'REG_EXP':         { bg: '#196f3d', label: 'Reg. Exprés' },  // Régional express Renfe
-  // ── Espagne — OUIGO España ────────────────────────────────────────────────
-  'OUIGO_ES':        { bg: '#e80082', label: 'Ouigo España' }, // Partage la couleur OUIGO FR
-  // ── Fallback générique ────────────────────────────────────────────────────
-  'RENFE':           { bg: '#5e1b43', label: 'Renfe' },        // type non identifié Renfe
+  'AVE':             { bg: '#8b1a4a', label: 'AVE' },
+  'AVE_INT':         { bg: '#6b1238', label: 'AVE Int.' },
+  'ALVIA':           { bg: '#c0392b', label: 'Alvia' },
+  'AVLO':            { bg: '#e74c3c', label: 'AVLO' },
+  'AVANT':           { bg: '#922b21', label: 'Avant' },
+  'EUROMED':         { bg: '#1a5276', label: 'Euromed' },
+  'INTERCITY_ES':    { bg: '#2471a3', label: 'Intercity' },
+  'MD':              { bg: '#27ae60', label: 'Media Distancia' },
+  'REGIONAL_ES':     { bg: '#1e8449', label: 'Regional' },
+  'REG_EXP':         { bg: '#196f3d', label: 'Reg. Exprés' },
+  'OUIGO_ES':        { bg: '#e80082', label: 'Ouigo España' },
+  'RENFE':           { bg: '#5e1b43', label: 'Renfe' },
   'TRAIN':           { bg: '#3a3a3a', label: 'Train' },
 };
 
-// Map train type -> logo filename in assets/Icone_logo/
 const TRAIN_TYPE_LOGO = {
-  // ── International ─────────────────────────────────────────────────────────
   'EUROSTAR':        'eurostar.png',
-
-  // ── France (SNCF) ─────────────────────────────────────────────────────────
   'INOUI':           'tgv_inoui.png',
   'OUIGO':           'ouigo.png',
   'OUIGO_CLASSIQUE': 'ouigo-classique.png',
@@ -536,27 +624,17 @@ const TRAIN_TYPE_LOGO = {
   'IC_NUIT':         'intercites.png',
   'LYRIA':           'lyria.png',
   'ICE':             'ice.png',
-  'TRAIN':           'inoui.svg', // Fallback France
-
-  // ── Belgique (SNCB) ───────────────────────────────────────────────────────
+  'TRAIN':           'inoui.svg',
   'IC_SNCB':         'sncb.png',
   'NIGHTJET':        'nightjet.png',
   'EC':              'eurocity.png',
   'THALYS_CORRIDOR': 'eurostar.png',
-
-  // ── Allemagne (DB) ────────────────────────────────────────────────────────
   'IC_DB':           'db.png',
   'TRAIN_DB':        'db.png',
-
-  // ── Italie (Trenitalia) ───────────────────────────────────────────────────
   'FRECCIAROSSA':    'frecciarossa.png',
-
-  // ── Royaume-Uni (Avanti / Caledonian) ─────────────────────────────────────
   'AVANTI':          'avanti.png',
   'CALEDONIAN_SLEEPER': 'CaledonianSleeper.png',
   'UK_RAIL':         'national_rail.png',
-
-  // ── Espagne (Renfe & Ouigo ES) ────────────────────────────────────────────
   'AVE':             'Renfe_ave.png',
   'AVE_INT':         'Renfe_ave.png',
   'ALVIA':           'Renfe_Alvia.png',
@@ -569,12 +647,10 @@ const TRAIN_TYPE_LOGO = {
   'REG_EXP':         'Renfe_regionales.png',
   'RENFE':           'renfe.png',
   'OUIGO_ES':        'ouigo.png',
-
-  // ── Portugal (CP) ─────────────────────────────────────────────────────────
   'ALFA_PENDULAR':   'Comboios-de-Portugal.png',
   'IC_CP':           'Comboios-de-Portugal.png',
   'IR_CP':           'Comboios-de-Portugal.png',
-  'CP':              'Comboios-de-Portugal.png'
+  'CP':              'Comboios-de-Portugal.png',
 };
 
 function trainTypeBadge(trainType) {
@@ -599,7 +675,6 @@ function trainTypeBadgeFallback(trainType) {
   return span;
 }
 
-// Badge simplifié gris pour la timeline (sans logo, juste le label)
 function trainTypeSimpleBadge(trainType) {
   const s = TRAIN_TYPE_STYLES[trainType] || TRAIN_TYPE_STYLES['TRAIN'];
   return `<span class="tl-trip-badge">${s.label}</span>`;
@@ -628,7 +703,6 @@ function renderTarifBlock(tarif) {
   };
   const priceLabel = labelMap[profil] || profil.toUpperCase();
 
-  // TGVmax = 0€ → green
   const isFree = totalMin === 0 && totalMax === 0 && allFound;
   const colorClass = isFree ? 'price-val--green' : 'price-val--black';
 
@@ -637,9 +711,7 @@ function renderTarifBlock(tarif) {
     valHtml = `<span class="price-val ${colorClass}">0€</span>`;
   } else if (totalMin > 0 || totalMax > 0) {
     const minStr = formatPrice(totalMin);
-    valHtml = totalMin === totalMax
-      ? `<span class="price-val ${colorClass}">${minStr}</span>`
-      : `<span class="price-val ${colorClass}">${minStr}</span>`;
+    valHtml = `<span class="price-val ${colorClass}">${minStr}</span>`;
   } else {
     valHtml = `<span class="price-unavail">N/D</span>`;
   }
@@ -651,17 +723,10 @@ function renderTarifBlock(tarif) {
 }
 
 // ─── Multi-select type de train ───────────────────────────────────────────────
-// (TRAIN_TYPE_STYLES déjà déclaré plus haut dans "Badges types de train")
-
-// Priorité d'affichage dans la liste
 const TYPE_ORDER = [
-  // France
   'INOUI','OUIGO','OUIGO_CLASSIQUE','IC','IC_NUIT','TER','CAR','TRAMTRAIN','NAVETTE','LYRIA',
-  // International
   'ICE','EUROSTAR','FRECCIAROSSA',
-  // Espagne
   'AVE','AVE_INT','AVLO','OUIGO_ES','ALVIA','AVANT','EUROMED','INTERCITY_ES','MD','REGIONAL_ES','REG_EXP','RENFE',
-  // Fallback
   'TRAIN',
 ];
 
@@ -670,13 +735,11 @@ function populateTypeCombobox(availableTypes) {
   const allChk   = document.getElementById('ms-all');
   if (!dropdown || !availableTypes.length) return;
 
-  // Trier selon TYPE_ORDER
   const sorted = [...availableTypes].sort((a, b) => {
     const ia = TYPE_ORDER.indexOf(a), ib = TYPE_ORDER.indexOf(b);
     return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
   });
 
-  // Vider les items existants (garder le "tout sélectionner" + divider)
   dropdown.querySelectorAll('.ms-item').forEach(el => el.remove());
 
   sorted.forEach(key => {
@@ -703,9 +766,7 @@ function updateMsLabel() {
   const all     = [...dropdown.querySelectorAll('.ms-chk')];
   const checked = all.filter(c => c.checked);
 
-  // Si rien coché ou tout coché → pas de filtre
   if (checked.length === 0 || checked.length === all.length) {
-    // Si rien coché → tout recocher automatiquement
     if (checked.length === 0) all.forEach(c => { c.checked = true; });
     labelEl.textContent      = 'Tous les trains';
     countEl.style.display    = 'none';
@@ -730,21 +791,18 @@ function updateMsLabel() {
   const allChk   = document.getElementById('ms-all');
   if (!btn || !dropdown) return;
 
-  // Tout sélectionner / désélectionner
   allChk.addEventListener('change', () => {
     dropdown.querySelectorAll('.ms-chk').forEach(c => { c.checked = allChk.checked; });
     updateMsLabel();
     if (state.allJourneys.length) relaunchWithFilter();
   });
 
-  // Délégation sur les checkboxes individuelles
   dropdown.addEventListener('change', e => {
     if (!e.target.classList.contains('ms-chk')) return;
     updateMsLabel();
     if (state.allJourneys.length) relaunchWithFilter();
   });
 
-  // Ouvrir / fermer
   btn.addEventListener('click', e => {
     e.stopPropagation();
     const isOpen = dropdown.classList.toggle('open');
@@ -759,7 +817,6 @@ function updateMsLabel() {
   dropdown.addEventListener('click', e => e.stopPropagation());
 })();
 
-// Relance doSearch avec le filtre actif (reset offset + résultats)
 function relaunchWithFilter() {
   state._filterRelaunch = true;
   state.nextOffset  = 0;
@@ -788,7 +845,6 @@ function relaunchWithFilter() {
       state.isRoundTrip        = (val === 'roundtrip');
       label.textContent        = val === 'roundtrip' ? 'Aller-retour' : 'Aller simple';
       retour.style.display     = val === 'roundtrip' ? '' : 'none';
-      // Reset phase si on change de mode
       state.phase          = 'aller';
       state.selectedAller  = null;
       hidePhaseBanner();
@@ -808,36 +864,28 @@ function relaunchWithFilter() {
 // ─── Aller-retour : sélection d'un trajet ────────────────────────────────────
 function selectJourneyForRoundTrip(journey) {
   if (state.phase === 'aller') {
-    // Sauvegarder le trajet aller et passer en phase retour
     state.selectedAller = journey;
     state.phase = 'retour';
-
-    // ✅ Mémoriser la date ALLER avant de l'écraser
     state.allerDate = document.getElementById('input-date').value || '';
 
-    // Inverser from/to
     const tmpFrom = state.selectedFrom;
     state.selectedFrom = state.selectedTo;
     state.selectedTo   = tmpFrom;
 
-    // Mettre à jour les champs visuels
     document.getElementById('input-from').value = state.selectedFrom.name || '';
     document.getElementById('id-from').value    = (state.selectedFrom.stopIds || []).join(',');
     document.getElementById('input-to').value   = state.selectedTo.name || '';
     document.getElementById('id-to').value      = (state.selectedTo.stopIds || []).join(',');
 
-    // Date retour : utiliser le champ dédié (obligatoire pour éviter doublon)
     const retInput   = document.getElementById('return-date');
     const returnDate = (retInput && retInput.value) ? retInput.value : '';
 
     if (!returnDate) {
-      // L'utilisateur n'a pas saisi de date retour → on la lui demande
       const saisie = prompt(
         'Veuillez saisir la date de retour (format YYYY-MM-DD) :',
         state.allerDate || ''
       );
       if (!saisie) {
-        // Annulation → on remet la phase aller
         state.phase         = 'aller';
         state.selectedAller = null;
         hidePhaseBanner();
@@ -851,7 +899,6 @@ function selectJourneyForRoundTrip(journey) {
       state.retourDate = returnDate;
     }
 
-    // Heure : repartir de 06:00
     document.getElementById('input-time').value = '02:00';
 
     showPhaseBanner('retour', journey);
@@ -859,19 +906,17 @@ function selectJourneyForRoundTrip(journey) {
     state.nextOffset        = 0;
     state.lastDepTime       = 0;
     state.activeTypeFilters = null;
-    state._phaseSearch      = true;  // empêche doSearch de resetter la phase
+    state._phaseSearch      = true;
     doSearch();
 
   } else if (state.phase === 'retour') {
-    // Les deux trajets sont sélectionnés → récap
     const aller  = state.selectedAller;
     const retour = journey;
 
-    // ✅ Utiliser les dates mémorisées pour éviter toute confusion
     sessionStorage.setItem('recap_aller',       JSON.stringify(aller));
     sessionStorage.setItem('recap_retour',      JSON.stringify(retour));
-    sessionStorage.setItem('recap_from',        JSON.stringify(state.selectedTo));   // inversé
-    sessionStorage.setItem('recap_to',          JSON.stringify(state.selectedFrom)); // inversé
+    sessionStorage.setItem('recap_from',        JSON.stringify(state.selectedTo));
+    sessionStorage.setItem('recap_to',          JSON.stringify(state.selectedFrom));
     sessionStorage.setItem('recap_date_aller',  state.allerDate  || '');
     sessionStorage.setItem('recap_date_retour', state.retourDate || document.getElementById('input-date').value || '');
     sessionStorage.setItem('recap_is_simple',   'false');
@@ -882,7 +927,6 @@ function selectJourneyForRoundTrip(journey) {
 
 function selectJourneySimple(journey) {
   const dateAller = document.getElementById('input-date').value || '';
-  // On nettoie complètement le sessionStorage avant d'écrire
   sessionStorage.removeItem('recap_retour');
   sessionStorage.removeItem('recap_date_retour');
   sessionStorage.setItem('recap_aller',      JSON.stringify(journey));
@@ -893,9 +937,7 @@ function selectJourneySimple(journey) {
   window.location.href = 'recap.html';
 }
 
-function showPhaseBanner(phase, allerJourney) {
-  // La carte aller est maintenant injectée dans renderResults — rien à faire ici
-}
+function showPhaseBanner(phase, allerJourney) {}
 
 function hidePhaseBanner() {
   const banner = document.getElementById('phase-banner');
@@ -903,11 +945,9 @@ function hidePhaseBanner() {
 }
 
 function resetAllerSelection() {
-  // Remettre l'état aller
   state.phase         = 'aller';
   state.selectedAller = null;
 
-  // Ré-inverser from/to
   const tmpFrom      = state.selectedFrom;
   state.selectedFrom = state.selectedTo;
   state.selectedTo   = tmpFrom;
@@ -917,7 +957,6 @@ function resetAllerSelection() {
   document.getElementById('input-to').value   = state.selectedTo.name || '';
   document.getElementById('id-to').value      = (state.selectedTo.stopIds || []).join(',');
 
-  // Remettre la date aller
   if (state.allerDate) document.getElementById('input-date').value = state.allerDate;
 
   state.allJourneys  = [];
@@ -954,12 +993,10 @@ function initFromURL() {
   const carte = p.get('carte');
   if (carte) document.getElementById('input-carte').value = carte;
 
-  // ✅ Restaurer le type de trajet aller-retour et la date retour depuis l'URL
   const tripType   = p.get('tripType');
   const returnDate = p.get('returnDate');
   if (tripType === 'roundtrip') {
     state.isRoundTrip = true;
-    // Activer visuellement le sélecteur
     const menu          = document.getElementById('tripTypeMenu');
     const label         = document.getElementById('selectedTripType');
     const retourWrapper = document.getElementById('return-date-wrapper');
@@ -977,6 +1014,31 @@ function initFromURL() {
   }
 
   updateSearchBtn();
+}
+
+// ─── Toggle aller / aller-retour dans la barre ────────────────────────────────
+function setTripTypeBar(type) {
+  const isRound = type === 'roundtrip';
+  const base = 'flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ';
+  document.getElementById('tt-oneway-bar').className   = base + (isRound ? 'bg-slate-100 text-slate-500 hover:bg-slate-200' : 'bg-[var(--midnight-blue)] text-white');
+  document.getElementById('tt-roundtrip-bar').className = base + (isRound ? 'bg-[var(--midnight-blue)] text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200');
+  document.getElementById('return-date-wrapper').style.display = isRound ? '' : 'none';
+  if (typeof state !== 'undefined') {
+    state.isRoundTrip = isRound;
+    state.phase = 'aller';
+    state.selectedAller = null;
+    if (typeof hidePhaseBanner === 'function') hidePhaseBanner();
+  }
+  const lbl = document.getElementById('selectedTripType');
+  if (lbl) lbl.textContent = isRound ? 'Aller-retour' : 'Aller simple';
+}
+
+// ─── Toggle menu mobile ───────────────────────────────────────────────────────
+function toggleMobileMenu() {
+  const nav  = document.getElementById('mobile-nav');
+  const icon = document.getElementById('mobile-menu-icon');
+  const open = nav.classList.toggle('open');
+  icon.textContent = open ? 'close' : 'menu';
 }
 
 // ─── Init autocomplétion ──────────────────────────────────────────────────────

@@ -1,5 +1,205 @@
+// ═══════════════════ MENU MOBILE ══════════════════════════════
+function toggleMobileMenu() {
+  const nav  = document.getElementById('mobile-nav');
+  const icon = document.getElementById('mobile-menu-icon');
+  const open = nav.classList.toggle('open');
+  icon.textContent = open ? 'close' : 'menu';
+}
+
+// ═══════════════════ TOGGLE CARTE / LISTE (mobile) ════════════
+function toggleMapMobile() {
+  const mapContainer = document.getElementById('map-container');
+  const sidePanel    = document.getElementById('side-panel');
+  const closeBtn     = document.getElementById('mobile-close-map');
+  const viewIcon     = document.getElementById('mobile-view-icon');
+  const viewLabel    = document.getElementById('mobile-view-label');
+  const isOpen       = mapContainer.classList.toggle('map-open');
+
+  // Masquer le panneau quand la carte est ouverte, et inversement
+  sidePanel.style.display = isOpen ? 'none' : '';
+
+  // Bouton fermer visible en mode carte plein écran
+  closeBtn.classList.toggle('visible', isOpen);
+
+  viewIcon.textContent  = isOpen ? 'list' : 'map';
+  viewLabel.textContent = isOpen ? 'Voir les destinations' : 'Voir la carte';
+
+  // Invalider la taille de la carte Leaflet
+  if (isOpen && typeof map !== 'undefined') {
+    setTimeout(() => map.invalidateSize(), 100);
+  }
+}
+
+// ============================================================
+//   TrainNomad.eu — script/explorermax.js
+// ============================================================
+
+// ═══════════════════════════════════════════════════════════
+//  CONFIG — pointe sur votre propre server.js, jamais SNCF
+// ═══════════════════════════════════════════════════════════
+const API_BASE = 'https://raptor-tgvmax-backend.onrender.com';
+
+// State partagé entre les deux blocs <script>
+let explorerState = { from: null };
+
+// ═══════════════════════════════════════════════════════════
+//  AUTOCOMPLETE — /api/stops (votre server.js)
+// ═══════════════════════════════════════════════════════════
+let acTimer = null;
+
+document.getElementById('inp-from').addEventListener('input', function () {
+  clearTimeout(acTimer);
+  const q = this.value.trim();
+  if (q.length < 2) { closeAc(); return; }
+  acTimer = setTimeout(() => fetchStops(q), 200);
+});
+document.getElementById('inp-from').addEventListener('blur',  () => setTimeout(closeAc, 160));
+document.getElementById('inp-from').addEventListener('keydown', e => { if (e.key === 'Escape') closeAc(); });
+
+async function fetchStops(q) {
+  try {
+    const res  = await fetch(`${API_BASE}/api/stops?q=${encodeURIComponent(q)}&limit=8`);
+    const data = await res.json();
+    renderAc(data.stops || data || []);
+  } catch (_) { closeAc(); }
+}
+
+function renderAc(stops) {
+  const ac = document.getElementById('ac-from');
+  ac.innerHTML = '';
+  if (!stops.length) { ac.style.display = 'none'; return; }
+  stops.forEach(s => {
+    const div  = document.createElement('div');
+    div.className = 'ac-row';
+    const sub  = s.stopIds?.length > 1 ? `${s.stopIds.length} gares` : (s.city || '');
+    div.innerHTML = `<span class="ac-name">${esc(s.name)}</span><span class="ac-sub">${esc(sub)}</span>`;
+    div.addEventListener('mousedown', e => {
+      e.preventDefault();
+      selectStop(s);
+    });
+    ac.appendChild(div);
+  });
+  ac.style.display = 'block';
+}
+
+function selectStop(s) {
+  document.getElementById('inp-from').value  = s.name;
+  document.getElementById('id-from').value   = (s.stopIds || []).join(',');
+  explorerState.from = {
+    name:   s.name,
+    lat:    s.lat  || 0,
+    lon:    s.lon  || 0,
+    stopIds: s.stopIds || [],
+  };
+  closeAc();
+}
+
+function closeAc() { document.getElementById('ac-from').style.display = 'none'; }
+
+// ═══════════════════════════════════════════════════════════
+//  BOUTON EXPLORER — appelle fetchDestinations (bloc script ci-dessous)
+// ═══════════════════════════════════════════════════════════
+async function doSearch() {
+  const fromIds = document.getElementById('id-from').value.trim();
+  const date    = document.getElementById('date-input').value;
+
+  if (!fromIds) {
+    const inp = document.getElementById('inp-from');
+    inp.style.outline = '2px solid #f87171';
+    setTimeout(() => inp.style.outline = '', 900);
+    return;
+  }
+  if (!date) {
+    const inp = document.getElementById('date-input');
+    inp.style.outline = '2px solid #f87171';
+    setTimeout(() => inp.style.outline = '', 900);
+    return;
+  }
+
+  const btn = document.getElementById('btn-search');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Chargement…';
+
+  clearMap();
+  setProgress(5);
+
+  try {
+    await fetchDestinations(fromIds, date);
+    setProgress(100);
+    setTimeout(() => setProgress(0), 600);
+  } catch (e) {
+    console.error('[MAX]', e);
+    document.getElementById('map-hint').innerHTML = `
+      <div class="hint-icon">❌</div>
+      <div class="hint-title">Erreur</div>
+      <div class="hint-sub">${esc(e.message)}</div>`;
+    document.getElementById('map-hint').classList.remove('hidden');
+    document.getElementById('status-dot').className  = 'sdot err';
+    document.getElementById('status-text').textContent = e.message;
+    setProgress(0);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i> Explorer MAX';
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  FILTRES
+// ═══════════════════════════════════════════════════════════
+document.querySelectorAll('.filter-chip').forEach(c => {
+  c.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(x => x.classList.remove('active'));
+    c.classList.add('active');
+    // refreshView() défini dans le bloc script canvas ci-dessous
+    if (typeof currentFilter !== 'undefined') {
+      currentFilter = c.dataset.filter;
+      refreshView();
+    }
+  });
+});
+
+function togglePanel() {
+  const p = document.getElementById('side-panel');
+  const b = document.getElementById('toggle-btn');
+  const l = document.getElementById('toggle-lbl');
+  const col = p.classList.toggle('collapsed');
+  l.textContent = col ? 'Afficher' : 'Masquer';
+  b.style.left  = col ? '16px' : '352px';
+}
+
+// ═══════════════════════════════════════════════════════════
+//  UTILITAIRES
+// ═══════════════════════════════════════════════════════════
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escapeHtml(s) { return esc(s); }
+function setProgress(p) { document.getElementById('progress-bar').style.width = p + '%'; }
+
+// ── Init date par défaut ──
+(() => {
+  const t   = new Date();
+  const iso = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;
+  const inp = document.getElementById('date-input');
+  inp.min   = iso;
+  const p   = new URLSearchParams(window.location.search);
+  inp.value = p.get('date') || iso;
+
+  // Pré-remplir depuis les query params si fournis
+  const from     = p.get('from');
+  const fromName = p.get('fromName');
+  if (from && fromName) {
+    document.getElementById('inp-from').value = fromName;
+    document.getElementById('id-from').value  = from;
+    explorerState.from = { name: fromName, lat: 0, lon: 0, stopIds: from.split(',') };
+
+    // Lancer la recherche automatiquement dès que la carte est prête
+    window._autoSearchPending = true;
+  }
+})();
+
 /* ════════════════════════════════════════════════════════════════════════════
-   explorermax.js — Explorer MAX (abonnement TGVmax)
+   Explorer MAX — fichier autonome, aucune dépendance API externe
    Carte Leaflet + Canvas overlay — destinations disponibles avec abonnement Max
    ════════════════════════════════════════════════════════════════════════════ */
 
@@ -15,6 +215,13 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 L.control.zoom({ position: 'bottomright' }).addTo(map);
 L.control.scale({ imperial: false, position: 'bottomright' }).addTo(map);
 
+// ── Auto-search depuis URL params (ex: depuis outilstgvmax) ──────────────
+if (window._autoSearchPending) {
+  window._autoSearchPending = false;
+  // Attendre que fetchDestinations soit défini (second bloc script)
+  setTimeout(() => doSearch(), 200);
+}
+
 let allDestinations = [], lastResults = [], currentFilter = 'all';
 let hoveredDest = null, openPopupDest = null;
 let ctx = null, cvs = null, canvasReady = false;
@@ -24,13 +231,12 @@ let originMarker = null, leafletPopup = null;
 // Palette centrée sur les durées TGV France : < 3h = vert, 3-5h = orange, > 5h = rouge
 function durationColor(minutes) {
   const stops = [
-    [0,   [40, 190,  80]],   // vert vif  — < 1h
-    [60,  [80, 200,  60]],   // vert      — 1h
-    [120, [180,210,  30]],   // jaune-vert — 2h
-    [180, [240,180,  20]],   // jaune     — 3h
-    [240, [240,120,  20]],   // orange    — 4h
-    [300, [220, 50,  30]],   // rouge-orange — 5h
-    [420, [150, 10,  10]],   // rouge foncé — 7h+
+    [0,   [40, 180, 40]],    // vert vif  — 0h
+    [120, [180,210, 30]],    // jaune-vert — 2h
+    [300, [240,200, 20]],    // jaune     — 5h
+    [480, [230, 90, 20]],    // orange    — 8h
+    [720, [180, 20, 20]],    // rouge     — 12h
+    [900, [80,   0,  0]],    // rouge foncé — 15h+
   ];
   if (minutes <= stops[0][0])               return stops[0][1];
   if (minutes >= stops[stops.length-1][0])  return stops[stops.length-1][1];
@@ -259,8 +465,9 @@ function buildDestinations(journeys) {
 
   // Centrer la carte sur l'origine
   const s = explorerState?.from;
-  console.log('[MAX] explorerState.from pour flyTo:', s);
-  if (s?.lat) {
+  const hasFromCoords = s?.lat && s.lat !== 0 && !isNaN(s.lat) && s?.lon && s.lon !== 0 && !isNaN(s.lon);
+
+  if (hasFromCoords) {
     if (originMarker) map.removeLayer(originMarker);
     const el = document.createElement('div');
     el.className = 'origin-pin';
@@ -271,9 +478,8 @@ function buildDestinations(journeys) {
     originMarker.bindTooltip(s.name, { permanent: false, direction: 'top' });
     map.flyTo([s.lat, s.lon], 6, { animate: true, duration: 1.2 });
   } else {
-    console.warn('[MAX] ⚠️ Pas de lat/lon sur explorerState.from — pas de flyTo');
-    // Fallback : centrer sur la France
-    if (allDestinations.length) map.flyTo([46.8, 2.5], 6, { animate: true, duration: 1 });
+    // Pas de coordonnées depuis les params URL — centrer sur la France
+    map.setView([46.8, 2.5], 6);
   }
 
   if (!canvasReady) { initCanvas(); bindCanvasEvents(); }
@@ -283,6 +489,9 @@ function buildDestinations(journeys) {
   document.getElementById('results-count-label').textContent = 'Destinations MAX :';
   document.getElementById('status-dot').className   = 'status-dot ok';
   document.getElementById('status-text').textContent = `${allDestinations.length} destinations`;
+  // Afficher la légende
+  const legendEl = document.getElementById('legend');
+  if (legendEl) legendEl.style.display = 'block';
 
   refreshView();
 }
@@ -373,6 +582,8 @@ function clearMap() {
   document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
   document.querySelector('[data-filter="all"]')?.classList.add('active');
   currentFilter = 'all';
+  const legendEl = document.getElementById('legend');
+  if (legendEl) legendEl.style.display = 'none';
 }
 
 function showNoResults(msg) {

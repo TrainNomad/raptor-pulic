@@ -1,196 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KNQFGSZX');</script>
+
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>TrainNomad.eu - L'Europe est à vous</title>
 
+    <!-- SEO -->
     <meta name="description" content="Trouvez facilement vos billets TGVmax réservables. Utilisez notre carte interactive et notre calendrier pour planifier vos voyages éco-responsables avec TrainNomad.">
     <link rel="icon" type="image/x-icon" href="assets/Train_Marker.svg">
 
-    <meta property="og:title" content="TrainNomad - Le voyage commence sur les rails">
+    <!-- Open Graph -->
+    <meta property="og:title"       content="TrainNomad - Le voyage commence sur les rails">
     <meta property="og:description" content="Marre de chercher des places TGV Max ? Trouvez instantanément vos trajets disponibles avec notre carte interactive. Planifiez vos voyages éco-responsables en un clic.">
-    <meta property="og:url" content="https://trainnomad.eu">
-    <meta property="og:image" content="https://trainnomad.eu/assets/background-index.jpeg">
-    <meta property="og:type" content="website">
+    <meta property="og:url"         content="https://trainnomad.eu">
+    <meta property="og:image"       content="https://trainnomad.eu/assets/background-index.jpeg">
+    <meta property="og:type"        content="website">
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Fonts & icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <!-- Tailwind CDN (doit précéder tailwind.config.js) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="script/tailwind.config.js"></script>
+
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/8e4de4bf0a.js" crossorigin="anonymous"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/autocomplete.css">
 
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#4ade80",
-                        "midnight": "#1A2B3C",
-                        "background-light": "#f8f7f5",
-                    },
-                    fontFamily: {
-                        "display": ["Plus Jakarta Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
-    <style type="text/tailwindcss">
-        body {
-            font-family: "Plus Jakarta Sans", sans-serif;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .hero-gradient {
-            background: radial-gradient(circle at 50% -20%, #4ade8015 0%, transparent 50%);
-        }
-
-        /* Companies infinite scroll */
-        .companies__track-wrapper {
-            overflow: hidden;
-            width: 100%;
-        }
-        .companies__track {
-            display: flex;
-            gap: 48px;
-            width: max-content;
-            animation: scroll-logos 28s linear infinite;
-            align-items: center;
-        }
-        .company-item img {
-            height: 32px;
-            width: auto;
-            object-fit: contain;
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: filter 0.3s, opacity 0.3s;
-        }
-        .company-item img:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-        @keyframes scroll-logos {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        /* TGVmax card */
-        .trainmax-card-container {
-            position: relative;
-            margin: 40px auto;
-            max-width: 1100px;
-            min-height: 350px;
-            border-radius: 24px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            background: 
-                linear-gradient(105deg, rgba(14, 55, 33, 0.95) 30%, rgba(34, 139, 34, 0.4) 100%),
-                url('assets/TGVMax/TGVMax-Section.jpg') center/cover no-repeat;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            color: #ffffff;
-        }
-        .trainmax-card-content {
-            padding: 40px 60px;
-            z-index: 2;
-            width: 60%;
-        }
-        .trainmax-badge {
-            display: inline-block;
-            background: #e8007d;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-        .trainmax-card-content h2 {
-            font-size: 2.2rem;
-            margin: 0 0 15px 0;
-            line-height: 1.2;
-        }
-        .trainmax-card-content h2 span { color: #4ade80; }
-        .trainmax-card-content p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: rgba(255,255,255,0.9);
-        }
-        .trainmax-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #ffffff;
-            color: #0e3721;
-            padding: 14px 28px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: transform 0.2s, background 0.2s;
-        }
-        .trainmax-button:hover {
-            transform: translateY(-3px);
-            background: #4ade80;
-            color: #ffffff;
-        }
-        @media (max-width: 768px) {
-            .trainmax-card-container {
-                margin: 20px;
-            }
-            .trainmax-card-content {
-                width: 100%;
-                padding: 30px;
-                text-align: center;
-            }
-        }
-
-        /* Search input wrappers */
-        .input-ac-wrapper {
-            position: relative;
-        }
-
-        /* Masquer l'icône calendrier native des champs date */
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            display: none;
-            -webkit-appearance: none;
-        }
-        /* input[type="date"] {
-            -moz-appearance: textfield;
-        } */
-    </style>
+    
 </head>
 
 <body class="bg-white text-midnight font-display">
 
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNQFGSZX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNQFGSZX"
+    height="0" width="0" class="gtm-noscript"></iframe></noscript>
 
-<!-- ═══════════════════ NAV ═══════════════════ -->
+<!-- ═══════════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════════════ -->
 <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+
+        <!-- Logo -->
+        <div id="logo-home" class="flex items-center gap-2 cursor-pointer">
             <span class="material-symbols-outlined text-primary text-3xl">eco</span>
-            <span class="text-xl font-extrabold tracking-tight text-midnight">TrainNomad<span class="text-primary">.eu</span></span>
+            <span class="text-xl font-extrabold tracking-tight text-midnight">
+                TrainNomad<span class="text-primary">.eu</span>
+            </span>
         </div>
 
+        <!-- Liens desktop -->
         <div class="hidden md:flex items-center gap-10">
             <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="trajets.html">
                 <span class="material-symbols-outlined text-lg">train</span> Voyager
@@ -204,54 +75,81 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <!-- <span class="material-symbols-outlined text-slate-400 hover:text-midnight cursor-pointer">account_circle</span> -->
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()"
+                class="hidden items-center justify-center w-9 h-9 rounded-xl hover:bg-slate-100 transition-colors"
+                aria-label="Menu">
+                <span id="mobile-menu-icon" class="material-symbols-outlined text-midnight text-2xl">menu</span>
+            </button>
         </div>
     </div>
 </nav>
 
-<!-- ═══════════════════ HERO ═══════════════════ -->
+<!-- ══ MENU MOBILE ══ -->
+<div id="mobile-nav">
+    <a href="trajets.html">
+        <span class="material-symbols-outlined text-xl">train</span> Voyager
+    </a>
+    <a href="explorer.html">
+        <span class="material-symbols-outlined text-xl">explore</span> Explorer
+    </a>
+    <a href="outilstgvmax.html" class="nav-cta">
+        <span class="material-symbols-outlined text-xl">bolt</span> Outils TGVmax
+    </a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
 <section class="relative pt-24 pb-40 overflow-hidden hero-gradient">
     <div class="max-w-7xl mx-auto px-6 text-center">
+
+        <!-- Badge -->
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider mb-8">
-            <span class="material-symbols-outlined text-sm"><i class="fa-solid fa-leaf" style="color: hsl(142, 69%, 58%);"></i></span>
+            <span class="material-symbols-outlined text-sm">
+                <i class="fa-solid fa-leaf" style="color: hsl(142, 69%, 58%);"></i>
+            </span>
             Le voyage responsable, simplifié
         </div>
+
         <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1] max-w-4xl mx-auto">
             L'Europe est à vous, le <span class="text-[#4ade80]">TGVmax</span> aussi.
         </h1>
         <p class="text-slate-500 text-lg md:text-xl max-w-3xl mx-auto mb-16 leading-relaxed">
-            Tracez votre itinéraire sur une carte sans frontières. Que vous cherchiez un trajet précis ou une escapade à 0€ avec votre abonnement TGV Max, explorez le rail européen en un seul clic.
+            Tracez votre itinéraire sur une carte sans frontières. Que vous cherchiez un trajet précis
+            ou une escapade à 0€ avec votre abonnement TGV Max, explorez le rail européen en un seul clic.
         </p>
 
-        <!-- ── Search Box ── -->
+        <!-- ── Search Box ────────────────────────────────────── -->
         <div class="max-w-5xl mx-auto">
-            <!-- Mode tabs -->
+
+            <!-- Tabs -->
             <div class="flex items-center gap-2 mb-0 ml-2">
-                <button id="tab-europe" onclick="switchTab('europe')" 
+                <button id="tab-europe"
                     class="tab-btn flex items-center gap-2 px-5 py-2.5 rounded-t-2xl text-midnight bg-white font-bold transition-all border-b-2 border-primary shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
                     <span class="material-symbols-outlined text-xl"><i class="fa-solid fa-route"></i></span>
                     Trajets Europe
                 </button>
-                <button id="tab-carte" onclick="switchTab('carte')" 
+                <button id="tab-carte"
                     class="tab-btn flex items-center gap-2 px-5 py-2.5 rounded-t-2xl text-slate-500 text-sm font-bold transition-all border-b-2 border-transparent bg-white/50 hover:bg-white">
                     <span class="material-symbols-outlined text-xl"><i class="fa-regular fa-map"></i></span>
                     Explorer la carte
                 </button>
             </div>
+
             <div class="bg-white rounded-3xl rounded-tl-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] p-3 border border-slate-100">
 
                 <!-- Toggle Aller simple / Aller-retour -->
                 <div class="flex items-center gap-1 px-3 pt-2 pb-2" id="trip-type-row">
-                    <button onclick="setTripType('oneway')" id="tt-oneway"
+                    <button id="tt-oneway"
                         class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all bg-midnight text-white">
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>Aller simple
                     </button>
-                    <button onclick="setTripType('roundtrip')" id="tt-roundtrip"
+                    <button id="tt-roundtrip"
                         class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all bg-slate-100 text-slate-500 hover:bg-slate-200">
                         <i class="fa-solid fa-arrow-right-arrow-left text-[10px]"></i>Aller-retour
                     </button>
 
-                    <!-- IDs fantômes pour compatibilité index.js (tripTypeBtn/Menu/selectedTripType) -->
+                    <!-- IDs fantômes pour compatibilité trip-type -->
                     <div id="tripTypeBtn" class="hidden"></div>
                     <div id="tripTypeMenu" class="hidden">
                         <div class="trip-type-option selected" data-value="oneway"></div>
@@ -260,145 +158,144 @@
                     <span id="selectedTripType" class="hidden">Aller simple</span>
                     <div id="return-date-wrapper" class="hidden"></div>
 
-                    <!-- Inputs cachés : heure de départ (06:00 par défaut), carte tarifaire -->
-                    <input type="hidden" id="input-time" value="06:00"/>
+                    <!-- Inputs cachés -->
+                    <input type="hidden" id="input-time"  value="06:00"/>
                     <input type="hidden" id="input-carte" value="Tarif Normal"/>
                 </div>
 
-                <!-- ── Grille Europe : 3 cols + bouton (aller simple) → 4 cols + bouton (aller-retour) ── -->
+                <!-- ── Grille Europe ────────────────────────────────────── -->
                 <div id="grid-europe">
-                <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_auto] gap-0" id="search-grid">
+                    <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_auto] gap-0" id="search-grid">
 
-                    <!-- Départ -->
-                    <div class="flex flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">Départ</span>
-                        <div class="flex items-center gap-3 w-full input-ac-wrapper">
-                            <i class="fa-solid fa-location-dot text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base"></i>
-                            <input
-                                type="text"
-                                id="input-from"
-                                autocomplete="off"
-                                placeholder="Paris, France"
-                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold placeholder:text-slate-300 text-xl outline-none"
-                            />
-                            <input type="hidden" id="id-from">
-                            <div id="ac-from" class="suggestions-container hidden" style="top:100%; left:0; right:0;"></div>
+                        <!-- Départ -->
+                        <div class="flex flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">Départ</span>
+                            <div class="flex items-center gap-3 w-full input-ac-wrapper">
+                                <i class="fa-solid fa-location-dot text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base"></i>
+                                <input
+                                    type="text"
+                                    id="input-from"
+                                    autocomplete="off"
+                                    placeholder="Paris, France"
+                                    class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold placeholder:text-slate-300 text-xl outline-none"
+                                />
+                                <input type="hidden" id="id-from">
+                                <div id="ac-from" class="suggestions-container hidden"></div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Arrivée -->
-                    <div class="flex flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">Arrivée</span>
-                        <div class="flex items-center gap-3 w-full input-ac-wrapper">
-                            <i class="fa-solid fa-location-arrow text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base"></i>
-                            <input
-                                type="text"
-                                id="input-to"
-                                autocomplete="off"
-                                placeholder="Berlin, Allemagne"
-                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold placeholder:text-slate-300 text-xl outline-none"
-                            />
-                            <input type="hidden" id="id-to">
-                            <div id="ac-to" class="suggestions-container hidden" style="top:100%; left:0; right:0;"></div>
+                        <!-- Arrivée -->
+                        <div class="flex flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">Arrivée</span>
+                            <div class="flex items-center gap-3 w-full input-ac-wrapper">
+                                <i class="fa-solid fa-location-arrow text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base"></i>
+                                <input
+                                    type="text"
+                                    id="input-to"
+                                    autocomplete="off"
+                                    placeholder="Berlin, Allemagne"
+                                    class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold placeholder:text-slate-300 text-xl outline-none"
+                                />
+                                <input type="hidden" id="id-to">
+                                <div id="ac-to" class="suggestions-container hidden"></div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Date aller -->
-                    <div class="flex flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group"
-                         onclick="document.getElementById('input-date').showPicker()">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors" id="label-date-depart">Date</span>
-                        <div class="flex items-center gap-3 w-full relative">
-                            <i class="fa-regular fa-calendar text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base" style="cursor:pointer;" aria-hidden="true"></i>
-                            <input
-                                type="date"
-                                id="input-date"
-                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold text-xl outline-none cursor-pointer"
-                                style="color-scheme: light;"
-                            />
+                        <!-- Date aller -->
+                        <div id="date-depart-trigger"
+                            class="flex flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group">
+                            <span id="label-date-depart" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">Date</span>
+                            <div class="flex items-center gap-3 w-full relative">
+                                <i class="fa-regular fa-calendar icon-calendar text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base" aria-hidden="true"></i>
+                                <input
+                                    type="date"
+                                    id="input-date"
+                                    class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold text-xl outline-none cursor-pointer"
+                                />
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Date retour (cachée par défaut, visible en aller-retour) -->
-                    <div id="return-date-field"
-                        class="hidden flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group border-l border-slate-100"
-                        onclick="document.getElementById('return-date').showPicker()">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">Retour</span>
-                        <div class="flex items-center gap-3 w-full relative">
-                            <i class="fa-regular fa-calendar text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base" style="cursor:pointer;" aria-hidden="true"></i>
-                            <input
-                                type="date"
-                                id="return-date"
-                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold text-xl outline-none cursor-pointer"
-                                style="color-scheme: light;"
-                            />
+                        <!-- Date retour (cachée par défaut) -->
+                        <div id="return-date-field"
+                            class="hidden flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group border-l border-slate-100">
+                            <span id="date-retour-trigger" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">Retour</span>
+                            <div class="flex items-center gap-3 w-full relative">
+                                <i class="fa-regular fa-calendar icon-calendar text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base" aria-hidden="true"></i>
+                                <input
+                                    type="date"
+                                    id="return-date"
+                                    class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold text-xl outline-none cursor-pointer"
+                                />
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Bouton — pleine hauteur, occupe toute la dernière colonne -->
-                    <div class="flex p-1.5" id="btn-cell">
-                        <button
-                            id="btn-search"
-                            disabled
-                            class="bg-primary hover:bg-[#3ecf71] text-midnight rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 w-full h-full min-w-[88px] px-5 font-bold"
-                        >
-                            <span class="material-symbols-outlined font-bold text-3xl">search</span>
-                            <span id="btn-label" class="text-xs font-bold tracking-wide uppercase">Recherche</span>
-                        </button>
+                        <!-- Bouton Rechercher -->
+                        <div class="flex p-1.5" id="btn-cell">
+                            <button
+                                id="btn-search"
+                                disabled
+                                class="bg-primary hover:bg-[#3ecf71] text-midnight rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 w-full h-full min-w-[88px] px-5 font-bold"
+                            >
+                                <span class="material-symbols-outlined font-bold text-3xl">search</span>
+                                <span id="btn-label" class="text-xs font-bold tracking-wide uppercase">Recherche</span>
+                            </button>
+                        </div>
+
                     </div>
-                </div>
                 </div><!-- /grid-europe -->
 
-                <!-- ── Grille Explorer la carte : départ + date + bouton ── -->
-                <div id="grid-carte" style="display:none">
-                <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-0">
+                <!-- ── Grille Explorer la carte ─────────────────────────── -->
+                <div id="grid-carte" class="hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-0">
 
-                    <!-- Départ -->
-                    <div class="flex flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">Départ</span>
-                        <div class="flex items-center gap-3 w-full input-ac-wrapper">
-                            <i class="fa-solid fa-location-dot text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base"></i>
-                            <input
-                                type="text"
-                                id="carte-input-from"
-                                autocomplete="off"
-                                placeholder="Paris, France"
-                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold placeholder:text-slate-300 text-xl outline-none"
-                            />
-                            <input type="hidden" id="carte-id-from">
-                            <div id="carte-ac-from" class="suggestions-container hidden" style="top:100%; left:0; right:0;"></div>
+                        <!-- Départ -->
+                        <div class="flex flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">Départ</span>
+                            <div class="flex items-center gap-3 w-full input-ac-wrapper">
+                                <i class="fa-solid fa-location-dot text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base"></i>
+                                <input
+                                    type="text"
+                                    id="carte-input-from"
+                                    autocomplete="off"
+                                    placeholder="Paris, France"
+                                    class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold placeholder:text-slate-300 text-xl outline-none"
+                                />
+                                <input type="hidden" id="carte-id-from">
+                                <div id="carte-ac-from" class="suggestions-container hidden"></div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Date -->
-                    <div class="flex flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100"
-                         onclick="document.getElementById('carte-input-date').showPicker()">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">Date</span>
-                        <div class="flex items-center gap-3 w-full relative">
-                            <i class="fa-regular fa-calendar text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base" style="cursor:pointer;" aria-hidden="true"></i>
-                            <input
-                                type="date"
-                                id="carte-input-date"
-                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold text-xl outline-none cursor-pointer"
-                                style="color-scheme: light;"
-                            />
+                        <!-- Date -->
+                        <div id="carte-date-trigger"
+                            class="flex flex-col items-start px-6 py-5 hover:bg-slate-50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">Date</span>
+                            <div class="flex items-center gap-3 w-full relative">
+                                <i class="fa-regular fa-calendar icon-calendar text-slate-300 group-hover:text-primary transition-colors flex-shrink-0 text-base" aria-hidden="true"></i>
+                                <input
+                                    type="date"
+                                    id="carte-input-date"
+                                    class="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold text-xl outline-none cursor-pointer"
+                                />
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Bouton -->
-                    <div class="flex p-1.5">
-                        <button
-                            id="btn-search-carte"
-                            disabled
-                            onclick="goToExplorer()"
-                            class="bg-primary hover:bg-[#3ecf71] text-midnight rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 w-full h-full min-w-[88px] px-5 font-bold"
-                        >
-                            <span class="material-symbols-outlined font-bold text-3xl">search</span>
-                            <span class="text-xs font-bold tracking-wide uppercase">Explorer</span>
-                        </button>
+                        <!-- Bouton Explorer -->
+                        <div class="flex p-1.5">
+                            <button
+                                id="btn-search-carte"
+                                onclick="goToExplorer()"
+                                disabled
+                                class="bg-primary hover:bg-[#3ecf71] text-midnight rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 w-full h-full min-w-[88px] px-5 font-bold"
+                            >
+                                <span class="material-symbols-outlined font-bold text-3xl">search</span>
+                                <span class="text-xs font-bold tracking-wide uppercase">Explorer</span>
+                            </button>
+                        </div>
+
                     </div>
-                </div>
                 </div><!-- /grid-carte -->
-            </div>
+
+            </div><!-- /bg-white -->
 
             <!-- Features row -->
             <div class="mt-12 flex flex-wrap justify-center items-center gap-x-12 gap-y-4 text-slate-400 text-sm font-medium">
@@ -415,13 +312,17 @@
                     <span>Plus de 30 pays européens</span>
                 </div>
             </div>
-        </div>
+
+        </div><!-- /max-w-5xl -->
     </div>
 </section>
 
-<!-- ═══════════════════ DESTINATIONS ═══════════════════ -->
+<!-- ═══════════════════════════════════════════════════════════
+     DESTINATIONS BAS CARBONE
+════════════════════════════════════════════════════════════ -->
 <section class="bg-background-light py-16">
     <div class="max-w-7xl mx-auto px-6">
+
         <div class="flex items-end justify-between mb-12">
             <div>
                 <h2 class="text-3xl font-bold tracking-tight text-midnight mb-2">Destinations Bas Carbone</h2>
@@ -429,9 +330,11 @@
             </div>
             <a class="text-sm font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors" href="explorer.html">Explorer la carte</a>
         </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            
-            <div class="group cursor-pointer" onclick="window.location.href='trajets.html?to=stop_area:SNCF:87471003&toName=Rennes&carte=Tarif%20Normal&tripType=oneway'">
+
+            <div class="group cursor-pointer"
+                data-href="trajets.html?to=stop_area:SNCF:87471003&toName=Rennes&carte=Tarif%20Normal&tripType=oneway">
                 <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
                     <img alt="Rennes city view" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/rennes.jpg"/>
                     <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
@@ -443,7 +346,8 @@
                 <p class="text-sm text-slate-500">La Bretagne à portée de main pour un week-end</p>
             </div>
 
-            <div class="group cursor-pointer" onclick="window.location.href='trajets.html?to=stop_area:SNCF:84000582&toName=Amsterdam&carte=Tarif%20Normal&tripType=oneway'">
+            <div class="group cursor-pointer"
+                data-href="trajets.html?to=stop_area:SNCF:84000582&toName=Amsterdam&carte=Tarif%20Normal&tripType=oneway">
                 <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
                     <img alt="Amsterdam canal" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/amsterdam.jpg"/>
                     <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
@@ -455,7 +359,8 @@
                 <p class="text-sm text-slate-500">Les canaux et l'ambiance unique du Nord</p>
             </div>
 
-            <div class="group cursor-pointer" onclick="window.location.href='trajets.html?to=stop_area:SNCF:85010086&toName=Genève&carte=Tarif%20Normal&tripType=oneway'">
+            <div class="group cursor-pointer"
+                data-href="trajets.html?to=stop_area:SNCF:85010086&toName=Gen%C3%A8ve&carte=Tarif%20Normal&tripType=oneway">
                 <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
                     <img alt="Genève lac" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/geneve.jpg"/>
                     <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
@@ -467,7 +372,8 @@
                 <p class="text-sm text-slate-500">Évasion immédiate entre lac et montagnes</p>
             </div>
 
-            <div class="group cursor-pointer" onclick="window.location.href='trajets.html?to=stop_area:SNCF:83000455&toName=Milan&carte=Tarif%20Normal&tripType=oneway'">
+            <div class="group cursor-pointer"
+                data-href="trajets.html?to=stop_area:SNCF:83000455&toName=Milan&carte=Tarif%20Normal&tripType=oneway">
                 <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
                     <img alt="Milan duomo" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/milan.jpg"/>
                     <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
@@ -483,10 +389,13 @@
     </div>
 </section>
 
-<!-- ═══════════════════ FEATURES ═══════════════════ -->
+<!-- ═══════════════════════════════════════════════════════════
+     FEATURES
+════════════════════════════════════════════════════════════ -->
 <section class="py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-20">
+
             <div class="flex flex-col gap-6">
                 <div class="size-14 bg-primary/10 rounded-2xl flex items-center justify-center">
                     <span class="material-symbols-outlined text-primary text-3xl">psychiatry</span>
@@ -496,6 +405,7 @@
                     Algorithmes avancés pour trouver les places disponibles sur vos trajets favoris avant tout le monde.
                 </p>
             </div>
+
             <div class="flex flex-col gap-6">
                 <div class="size-14 bg-primary/10 rounded-2xl flex items-center justify-center">
                     <span class="material-symbols-outlined text-primary text-3xl">eco</span>
@@ -505,6 +415,7 @@
                     Chaque trajet affiche son équivalent CO2. Choisissez l'itinéraire le plus respectueux de l'environnement.
                 </p>
             </div>
+
             <div class="flex flex-col gap-6">
                 <div class="size-14 bg-primary/10 rounded-2xl flex items-center justify-center">
                     <span class="material-symbols-outlined text-primary text-3xl">smart_toy</span>
@@ -514,14 +425,20 @@
                     Comparez les prix et les temps de parcours sur l'ensemble des opérateurs européens en un seul coup d'œil.
                 </p>
             </div>
+
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
 <footer class="bg-midnight text-white py-20">
     <div class="max-w-7xl mx-auto px-6">
+
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-16 mb-12">
+
+            <!-- Branding -->
             <div class="col-span-1">
                 <div class="flex items-center gap-2 mb-8">
                     <span class="material-symbols-outlined text-primary text-3xl">eco</span>
@@ -531,6 +448,8 @@
                     L'expérience de réservation ferroviaire la plus élégante. Conçue pour le voyageur moderne et éco-responsable.
                 </p>
             </div>
+
+            <!-- Navigation -->
             <div>
                 <h5 class="font-bold mb-8 text-lg">Navigation</h5>
                 <ul class="flex flex-col gap-5 text-base text-slate-400">
@@ -540,40 +459,21 @@
                     <li><a class="hover:text-primary transition-colors" href="outilstgvmax.html">Outils TGVMax</a></li>
                 </ul>
             </div>
-            <!-- <div>
-                <h5 class="font-bold mb-8 text-lg">Services</h5>
-                <ul class="flex flex-col gap-5 text-base text-slate-400">
-                    <li><a class="hover:text-primary transition-colors" href="outilstgvmax.html">Gestion TGVmax</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="#">Groupes</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="#">Professionnels</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="#">API Partenaires</a></li>
-                </ul>
-            </div> -->
-             <div>
+
+            <!-- Engagement -->
+            <div>
                 <h5 class="font-bold mb-8 text-lg">Notre Engagement</h5>
                 <div class="flex gap-4">
-                    <p class="text-slate-400 text-base leading-relaxed" style="color: #a0aec0; line-height: 1.6; font-style: italic;">
-"Choisir le rail, c'est réduire son empreinte carbone de 90% par rapport à l'avion. 
-    Voyagez léger, voyagez loin, voyagez responsable."</p>
-                    
+                    <p class="footer-quote text-base">
+                        "Choisir le rail, c'est réduire son empreinte carbone de 90% par rapport à l'avion.
+                        Voyagez léger, voyagez loin, voyagez responsable."
+                    </p>
                 </div>
-            </div> 
-            <!--<div>   
-                <h5 class="font-bold mb-8 text-lg">Nous suivre</h5>
-                
-                <div class="flex gap-4">
-                    <a class="size-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-primary hover:text-midnight transition-all" href="#">
-                        <span class="material-symbols-outlined text-xl">share</span>
-                    </a>
-                    <a class="size-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-primary hover:text-midnight transition-all" href="#">
-                        <span class="material-symbols-outlined text-xl">alternate_email</span>
-                    </a>
-                    <a class="size-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-primary hover:text-midnight transition-all" href="#">
-                        <span class="material-symbols-outlined text-xl">public</span>
-                    </a>
-                </div>
-            </div> -->
+            </div>
+
         </div>
+
+        <!-- Barre légale -->
         <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] text-slate-500 uppercase tracking-[0.2em] font-bold">
             <p>© 2026 TrainNomad.eu - Engagé pour un futur durable.</p>
             <div class="flex gap-10">
@@ -582,286 +482,13 @@
                 <a class="hover:text-white transition-colors" href="conditions.html">Conditions</a>
             </div>
         </div>
+
     </div>
 </footer>
 
-<script>
-// ─── Autocomplétion partagée (index + trajets) ───────────────────────────────
-// Dépendances attendues dans le scope global : API, escapeHtml()
-//
-// Stratégie :
-//   - Un seul endpoint /api/stops?q=
-//   - Groupement par ville côté client
-//   - La ville est un en-tête NON cliquable
-//   - Seules les gares individuelles sont sélectionnables
+<!-- Scripts -->
+<script src="script/index.js" defer></script>
+<script src="script/Tailwind.config.js" defer></script>
 
-let acTimers = {};
-
-const AC_COUNTRY_NAMES = {
-  FR:'France', IT:'Italie', BE:'Belgique', DE:'Allemagne',
-  NL:'Pays-Bas', GB:'Royaume-Uni', ES:'Espagne', PT:'Portugal',
-  CH:'Suisse', AT:'Autriche', PL:'Pologne', CZ:'Tchéquie', SK:'Slovaquie',
-};
-
-function setupAutocomplete(inputId, acId, hiddenId, stateKey, stateObj, onSelect) {
-  const input  = document.getElementById(inputId);
-  const ac     = document.getElementById(acId);
-  const hidden = document.getElementById(hiddenId);
-  let acIndex  = -1;
-  let items    = [];   // liste plate des gares UNIQUEMENT (pas les en-têtes ville)
-
-  const close = () => {
-    ac.classList.add('hidden');
-    ac.innerHTML = '';
-    acIndex = -1;
-    items   = [];
-  };
-
-  input.addEventListener('input', () => {
-    clearTimeout(acTimers[inputId]);
-    const q = input.value.trim();
-    stateObj[stateKey] = null;
-    hidden.value = '';
-    if (onSelect) onSelect();
-
-    if (q.length < 2) { close(); return; }
-
-    acTimers[inputId] = setTimeout(async () => {
-      try {
-        const res   = await fetch(`${API}/api/stops?q=${encodeURIComponent(q)}`);
-        const stops = await res.json();
-
-        if (!stops.length) { close(); return; }
-
-        // ── Grouper par ville+pays, en conservant l'ordre d'arrivée ──────────
-        const cityOrder = [];
-        const cityMap   = new Map(); // "ville:pays" → { city, countryName, stops[] }
-
-        for (const stop of stops) {
-          const city        = stop.city || stop.name;
-          const country     = stop.country || 'FR';
-          const countryName = AC_COUNTRY_NAMES[country] || country;
-          const key         = city + ':' + country;
-
-          if (!cityMap.has(key)) {
-            cityMap.set(key, { city, countryName, stops: [] });
-            cityOrder.push(key);
-          }
-          cityMap.get(key).stops.push(stop);
-        }
-
-        ac.innerHTML = '';
-        acIndex = -1;
-        items   = [];
-
-        for (const key of cityOrder) {
-          const { city, countryName, stops: groupStops } = cityMap.get(key);
-
-          // ── Une ligne par gare : "Ville en gras  Pays en gris" ──────────────
-          for (const stop of groupStops) {
-            const div = document.createElement('div');
-            div.className = 'ac-row';
-            div.setAttribute('data-ac-index', items.length);
-
-            div.innerHTML = `
-              <span class="ac-row-name">${escapeHtml(stop.name)}</span>
-              <span class="ac-row-country">${escapeHtml(countryName)}</span>`;
-
-            div.addEventListener('mousedown', e => {
-              e.preventDefault();
-              selectStop(stop, input, hidden, stateKey, stateObj, onSelect);
-              close();
-            });
-            ac.appendChild(div);
-            items.push(stop);
-          }
-        }
-
-        ac.style.position = 'absolute';
-        ac.style.top    = '100%';
-        ac.style.left   = '0';
-        ac.style.right  = '0';
-        ac.style.zIndex = '1000';
-        ac.classList.remove('hidden');
-      } catch (_) {}
-    }, 180);
-  });
-
-  // ── Navigation clavier (navigue entre gares uniquement, saute les en-têtes) ──
-  input.addEventListener('keydown', e => {
-    if (!items.length) return;
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      acIndex = Math.min(acIndex + 1, items.length - 1);
-      highlightItem();
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      acIndex = Math.max(acIndex - 1, -1);
-      highlightItem();
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      if (acIndex >= 0 && items[acIndex]) {
-        selectStop(items[acIndex], input, hidden, stateKey, stateObj, onSelect);
-        close();
-      }
-    } else if (e.key === 'Escape') {
-      close();
-    }
-  });
-
-  function highlightItem() {
-    ac.querySelectorAll('[data-ac-index]').forEach(el => {
-      el.classList.toggle('ac-active', parseInt(el.getAttribute('data-ac-index')) === acIndex);
-    });
-  }
-
-  input.addEventListener('blur', () => setTimeout(close, 150));
-}
-
-// ─── Sélection gare ───────────────────────────────────────────────────────────
-function selectStop(stop, input, hidden, stateKey, stateObj, onSelect) {
-  input.value        = stop.name;
-  hidden.value       = (stop.stopIds && stop.stopIds.length) ? stop.stopIds.join(',') : (stop.id || '');
-  stateObj[stateKey] = { ...stop, stopIds: stop.stopIds || [stop.id] };
-  if (onSelect) onSelect();
-}
-
-// ─── Styles CSS ──────────────────────────────────────────────────────────────
-// Styles gérés via css/autocomplete.css
-
-function escapeHtml(s) {
-  return String(s)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-</script>
-<script>
-// ─── Tab switching ────────────────────────────────────────────────────────────
-function switchTab(tab) {
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.classList.remove('bg-white', 'text-midnight', 'border-[#4ade80]', 'shadow-[0_-4px_12px_-4px_rgba(0,0,0,0.05)]');
-    btn.classList.add('bg-white/50', 'text-slate-500', 'border-transparent');
-    btn.querySelector('.material-symbols-outlined').classList.remove('text-[#4ade80]');
-  });
-  const active = document.getElementById('tab-' + tab);
-  active.classList.remove('bg-white/50', 'text-slate-500', 'border-transparent');
-  active.classList.add('bg-white', 'text-midnight', 'border-[#4ade80]', 'shadow-[0_-4px_12px_-4px_rgba(0,0,0,0.05)]');
-  active.querySelector('.material-symbols-outlined').classList.add('text-[#4ade80]');
-
-  const isCarte = tab === 'carte';
-  document.getElementById('trip-type-row').style.display  = isCarte ? 'none' : '';
-  document.getElementById('grid-europe').style.display    = isCarte ? 'none' : '';
-  document.getElementById('grid-carte').style.display     = isCarte ? '' : 'none';
-}
-
-// ─── Config ───────────────────────────────────────────────────────────────────
-const API = 'https://raptor-backend-2vdj.onrender.com';
-
-// ─── État ─────────────────────────────────────────────────────────────────────
-const searchState = {
-  selectedFrom: null,
-  selectedTo:   null,
-};
-
-// ─── Mise à jour du bouton ─────────────────────────────────────────────────────
-function updateSearchBtn() {
-  document.getElementById('btn-search').disabled =
-    !(searchState.selectedFrom && searchState.selectedTo);
-}
-
-// ─── Date par défaut + bouton désactivé au départ ─────────────────────────────
-document.getElementById('btn-search').disabled = true;
-document.getElementById('input-date').value = new Date().toISOString().slice(0, 10);
-
-// ─── Toggle visuel Aller simple / Aller-retour ────────────────────────────────
-function setTripType(type) {
-  const isRound = type === 'roundtrip';
-
-  // Pills visuels
-  document.getElementById('tt-oneway').className =
-    'flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ' +
-    (isRound ? 'bg-slate-100 text-slate-500 hover:bg-slate-200' : 'bg-midnight text-white');
-  document.getElementById('tt-roundtrip').className =
-    'flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ' +
-    (isRound ? 'bg-midnight text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200');
-
-  // Sync .trip-type-option.selected (lu par index.js au clic Rechercher)
-  document.querySelectorAll('.trip-type-option').forEach(o => o.classList.remove('selected'));
-  document.querySelector(`.trip-type-option[data-value="${type}"]`).classList.add('selected');
-
-  // Champ date retour
-  const retField = document.getElementById('return-date-field');
-  if (isRound) {
-    retField.classList.remove('hidden');
-    retField.classList.add('flex');
-    document.getElementById('search-grid').className =
-      'grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_1fr_auto] gap-0';
-    document.getElementById('label-date-depart').textContent = 'Aller';
-  } else {
-    retField.classList.add('hidden');
-    retField.classList.remove('flex');
-    document.getElementById('search-grid').className =
-      'grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_auto] gap-0';
-    document.getElementById('label-date-depart').textContent = 'Date';
-  }
-}
-
-// ─── Recherche → redirect vers trajets.html (logique index.js) ───────────────
-document.getElementById('btn-search').addEventListener('click', () => {
-  if (!searchState.selectedFrom || !searchState.selectedTo) return;
-
-  const date  = document.getElementById('input-date').value  || '';
-  const time  = document.getElementById('input-time').value  || '06:00';
-  const carte = document.getElementById('input-carte').value || 'Tarif Normal';
-
-  const getAreaId = stop => {
-    if (!stop.stopIds) return stop.id;
-    return stop.stopIds.find(id => id.includes('StopArea')) || stop.stopIds[0];
-  };
-
-  const selectedTripOpt = document.querySelector('.trip-type-option.selected');
-  const tripType = selectedTripOpt ? selectedTripOpt.dataset.value : 'oneway';
-  const returnDate = document.getElementById('return-date') ? document.getElementById('return-date').value : '';
-
-  const params = new URLSearchParams({
-    from:     getAreaId(searchState.selectedFrom),
-    fromName: searchState.selectedFrom.name,
-    to:       getAreaId(searchState.selectedTo),
-    toName:   searchState.selectedTo.name,
-    carte,
-    time,
-    tripType,
-  });
-  if (date)       params.set('date', date);
-  if (returnDate) params.set('returnDate', returnDate);
-
-  window.location.href = 'trajets.html?' + params.toString();
-});
-
-// ─── Init autocomplétion ──────────────────────────────────────────────────────
-setupAutocomplete('input-from', 'ac-from', 'id-from', 'selectedFrom', searchState, updateSearchBtn);
-
-// ─── Init autocomplétion grille Explorer la carte ─────────────────────────────
-const carteState = { selectedFrom: null };
-function updateCarteBtnSearch() {
-  document.getElementById('btn-search-carte').disabled = !carteState.selectedFrom;
-}
-setupAutocomplete('carte-input-from', 'carte-ac-from', 'carte-id-from', 'selectedFrom', carteState, updateCarteBtnSearch);
-
-// Date par défaut pour la grille carte
-document.getElementById('carte-input-date').value = new Date().toISOString().slice(0, 10);
-
-// ─── Redirection vers explorer.html ──────────────────────────────────────────
-function goToExplorer() {
-  const s    = carteState.selectedFrom;
-  const from = document.getElementById('carte-id-from').value;
-  const date = document.getElementById('carte-input-date').value;
-  if (!s || !from) return;
-  const p = new URLSearchParams({ from, fromName: s.name || '', date });
-  window.location.href = 'explorer.html?' + p.toString();
-}
-setupAutocomplete('input-to',   'ac-to',   'id-to',   'selectedTo',   searchState, updateSearchBtn);
-</script>
 </body>
 </html>

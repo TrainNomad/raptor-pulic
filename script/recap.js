@@ -1,3 +1,11 @@
+// ─── Toggle menu mobile ───────────────────────────────────────────────────────
+function toggleMobileMenu() {
+  const nav  = document.getElementById('mobile-nav');
+  const icon = document.getElementById('mobile-menu-icon');
+  const open = nav.classList.toggle('open');
+  icon.textContent = open ? 'close' : 'menu';
+}
+
 /* ════════════════════════════════════════════════════════════════════════════
    recap.js — Récapitulatif aller/retour depuis sessionStorage
    ════════════════════════════════════════════════════════════════════════════ */
