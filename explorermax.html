@@ -14,13 +14,9 @@
   <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script>
-    tailwind.config = {
-      theme: { extend: { colors: { primary: '#4ade80', midnight: '#1A2B3C' } } }
-    }
-  </script>
+    <!-- Tailwind CDN (doit précéder tailwind.config.js) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="script/tailwind.config.js"></script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/explorermax.css">
