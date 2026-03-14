@@ -333,8 +333,9 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
+            <!-- Rennes — StopArea OCE87471003 -->
             <div class="group cursor-pointer"
-                data-href="trajets.html?to=stop_area:SNCF:87471003&toName=Rennes&carte=Tarif%20Normal&tripType=oneway">
+                data-href="trajets.html?to=stop_area%3AOCE87471003&toName=Rennes&carte=Tarif%20Normal&tripType=oneway">
                 <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
                     <img alt="Rennes city view" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/rennes.jpg"/>
                     <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
@@ -346,21 +347,23 @@
                 <p class="text-sm text-slate-500">La Bretagne à portée de main pour un week-end</p>
             </div>
 
+            <!-- Milano Centrale — StopArea OCE83000455 -->
             <div class="group cursor-pointer"
-                data-href="trajets.html?to=stop_area:SNCF:84000582&toName=Amsterdam&carte=Tarif%20Normal&tripType=oneway">
+                data-href="trajets.html?to=stop_area%3AOCE83000455&toName=Milano%20Centrale&carte=Tarif%20Normal&tripType=oneway">
                 <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
-                    <img alt="Amsterdam canal" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/amsterdam.jpg"/>
+                    <img alt="Milan duomo" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/milan.jpg"/>
                     <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
                         <span class="material-symbols-outlined text-primary text-sm">schedule</span>
-                        <span>3h20 <span class="text-slate-400">de Paris</span></span>
+                        <span>7h00 <span class="text-slate-400">de Paris</span></span>
                     </div>
                 </div>
-                <h3 class="font-bold text-xl text-midnight mb-1">Amsterdam, NL</h3>
-                <p class="text-sm text-slate-500">Les canaux et l'ambiance unique du Nord</p>
+                <h3 class="font-bold text-xl text-midnight mb-1">Milano Centrale, Italie</h3>
+                <p class="text-sm text-slate-500">La Dolce Vita italienne en direct</p>
             </div>
 
+            <!-- Genève — StopArea OCE85010086 -->
             <div class="group cursor-pointer"
-                data-href="trajets.html?to=stop_area:SNCF:85010086&toName=Gen%C3%A8ve&carte=Tarif%20Normal&tripType=oneway">
+                data-href="trajets.html?to=stop_area%3AOCE85010086&toName=Gen%C3%A8ve&carte=Tarif%20Normal&tripType=oneway">
                 <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
                     <img alt="Genève lac" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/geneve.jpg"/>
                     <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
@@ -372,21 +375,48 @@
                 <p class="text-sm text-slate-500">Évasion immédiate entre lac et montagnes</p>
             </div>
 
+            <!-- Amsterdam-Centraal — StopArea OCE84000582 -->
             <div class="group cursor-pointer"
-                data-href="trajets.html?to=stop_area:SNCF:83000455&toName=Milan&carte=Tarif%20Normal&tripType=oneway">
+                data-href="trajets.html?to=stop_area%3AOCE84000582&toName=Amsterdam-Centraal&carte=Tarif%20Normal&tripType=oneway">
                 <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
-                    <img alt="Milan duomo" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/milan.jpg"/>
+                    <img alt="Amsterdam canal" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" src="assets/destinations/amsterdam.jpg"/>
                     <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
                         <span class="material-symbols-outlined text-primary text-sm">schedule</span>
-                        <span>7h00 <span class="text-slate-400">de Paris</span></span>
+                        <span>3h20 <span class="text-slate-400">de Paris</span></span>
                     </div>
                 </div>
-                <h3 class="font-bold text-xl text-midnight mb-1">Milan, Italie</h3>
-                <p class="text-sm text-slate-500">La Dolce Vita italienne en direct</p>
+                <h3 class="font-bold text-xl text-midnight mb-1">Amsterdam-Centraal, NL</h3>
+                <p class="text-sm text-slate-500">Les canaux et l'ambiance unique du Nord</p>
             </div>
 
         </div>
     </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     OUTILS TGVMAX
+════════════════════════════════════════════════════════════ -->
+<section class="py-16 px-6">
+  <div class="trainmax-card-container max-w-7xl mx-auto">
+    <div class="trainmax-card-content">
+
+      <div class="trainmax-badge">Outils TGVmax</div>
+
+      <h2 class="trainmax-card-content__title">
+        Optimisez votre abonnement<br>
+        <span>Max Jeune &amp; Senior</span>
+      </h2>
+
+      <p>
+        Abonné TGVmax ? Ne laissez plus passer une place à 0€. Notre outil dédié scanne le réseau TGV Inoui et Intercités pour vous afficher instantanément toutes les disponibilités — visualisez-les sur une carte interactive et lancez votre recherche en un clic.
+      </p>
+
+      <a href="outilstgvmax.html" class="trainmax-button">
+        Accéder aux outils <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -488,7 +518,7 @@
 
 <!-- Scripts -->
 <script src="script/index.js" defer></script>
-<script src="script/Tailwind.config.js" defer></script>
+<script src="script/tailwind.config.js" defer></script>
 
 </body>
 </html>

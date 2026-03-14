@@ -50,4 +50,10 @@
 
   /* ── Footer ── */
   footer .grid.grid-cols-1.md\:grid-cols-4 { grid-template-columns: 1fr 1fr !important; gap: 2rem; }
+
+  /* ── Section TGVmax ── */
+  .trainmax-card-container { margin: 0 !important; }
+  .trainmax-card-content { width: 80% !important; padding: 2rem !important; }
+  .trainmax-card-content__title { font-size: 1.9rem !important; }
+
 }

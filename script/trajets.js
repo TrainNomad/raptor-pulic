@@ -633,16 +633,7 @@ const TRAIN_TYPE_LOGO = {
   'TRAIN_DB':        'db.png',
   'FRECCIAROSSA':    'frecciarossa.png',
   'AVANTI':          'avanti.png',
-  'LNER':            'LNER.png',
   'CALEDONIAN_SLEEPER': 'CaledonianSleeper.png',
-  'CROSSCOUNTRY':    'crosscountry.png',
-  'TPE':             'TransPennineExpress.png',
-  'EMR':             'East_Midlands_Railway.png',
-  'GWR':             'Great_Western_Railway.png',
-  'SWR':             'South_Western_Railway.png',
-  'HULL_TRAINS':     'HullTrains.png',
-  'GRAND_CENTRAL':   'GrandCentral_Railway.png',
-  'LUMO':            'Lumo.png',
   'UK_RAIL':         'national_rail.png',
   'AVE':             'Renfe_ave.png',
   'AVE_INT':         'Renfe_ave.png',
@@ -982,6 +973,19 @@ function initFromURL() {
   const fromName = p.get('fromName');
   const to       = p.get('to');
   const toName   = p.get('toName');
+
+  // ── Pré-remplir la destination seule (venant de index.html) ──
+  if (to && !from) {
+    document.getElementById('input-to').value = toName || to;
+    document.getElementById('id-to').value    = to;
+    state.selectedTo = { name: toName || to, id: to, stopIds: to.split(',') };
+    const date = p.get('date');
+    if (date) document.getElementById('input-date').value = date;
+    const carte = p.get('carte');
+    if (carte) document.getElementById('input-carte').value = carte;
+    updateSearchBtn();
+    return; // départ à saisir par l'utilisateur
+  }
 
   if (!from || !to) return;
 

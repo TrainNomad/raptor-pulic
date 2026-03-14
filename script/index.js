@@ -293,9 +293,14 @@ function goToExplorer() {
   const s    = carteState.selectedFrom;
   const from = document.getElementById('carte-id-from').value;
   const date = document.getElementById('carte-input-date').value;
-  if (!s || !from) return;
-  const p = new URLSearchParams({ from, fromName: s.name || '', date });
-  window.location.href = 'explorer.html?' + p.toString();
+  // Si gare sélectionnée → passer les params
+  if (s && from) {
+    const p = new URLSearchParams({ from, fromName: s.name || '', date });
+    window.location.href = 'explorer.html?' + p.toString();
+  } else {
+    // Sinon → explorer.html sans paramètres
+    window.location.href = 'explorer.html';
+  }
 }
 
 function updateCarteBtnSearch() {
