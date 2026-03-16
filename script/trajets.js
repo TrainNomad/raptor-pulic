@@ -615,42 +615,62 @@ const TRAIN_TYPE_STYLES = {
 };
 
 const TRAIN_TYPE_LOGO = {
-  'EUROSTAR':        'eurostar.png',
-  'INOUI':           'tgv_inoui.png',
-  'OUIGO':           'ouigo.png',
-  'OUIGO_CLASSIQUE': 'ouigo-classique.png',
-  'TER':             'TER.png',
-  'IC':              'intercites.png',
-  'IC_NUIT':         'intercites.png',
-  'LYRIA':           'lyria.png',
-  'ICE':             'ice.png',
-  'TRAIN':           'inoui.svg',
-  'IC_SNCB':         'sncb.png',
-  'NIGHTJET':        'nightjet.png',
-  'EC':              'eurocity.png',
-  'THALYS_CORRIDOR': 'eurostar.png',
-  'IC_DB':           'db.png',
-  'TRAIN_DB':        'db.png',
-  'FRECCIAROSSA':    'frecciarossa.png',
-  'AVANTI':          'avanti.png',
+  // --- FRANCE & INTERNATIONAL ---
+  'EUROSTAR':          'eurostar.png',
+  'INOUI':             'tgv_inoui.png',
+  'OUIGO':             'ouigo.png',
+  'OUIGO_CLASSIQUE':   'ouigo-classique.png',
+  'TER':               'TER.png',
+  'IC':                'intercites.png',
+  'IC_NUIT':           'intercites.png',
+  'LYRIA':             'lyria.png',
+  'ICE':               'ice.png',
+  'TRAIN':             'tgv_inoui.png', // Remplacement du .svg par .png
+  'IC_SNCB':           'SNCB.png',      // Majuscule selon image
+  'NIGHTJET':          'nightjet.png',
+  'EC':                'eurocity.png',
+  'THALYS_CORRIDOR':   'eurostar.png',
+  'IC_DB':             'ice.png',       // Utilisation de ice.png faute de db.png
+  'FRECCIAROSSA':      'frecciarossa.png',
+
+  // --- ROYAUME-UNI (UK) ---
+  'AVANTI':            'avanti.png',
+  'LNER':              'LNER.png',
   'CALEDONIAN_SLEEPER': 'CaledonianSleeper.png',
-  'UK_RAIL':         'national_rail.png',
-  'AVE':             'Renfe_ave.png',
-  'AVE_INT':         'Renfe_ave.png',
-  'ALVIA':           'Renfe_Alvia.png',
-  'AVLO':            'Renfe_Alvo.png',
-  'AVANT':           'Renfe_Avant.png',
-  'EUROMED':         'Renfe_Euromed.png',
-  'INTERCITY_ES':    'renfe_Intercity.png',
-  'MD':              'renfe_MD.png',
-  'REGIONAL_ES':     'Renfe_regionales.png',
-  'REG_EXP':         'Renfe_regionales.png',
-  'RENFE':           'renfe.png',
-  'OUIGO_ES':        'ouigo.png',
-  'ALFA_PENDULAR':   'Comboios-de-Portugal.png',
-  'IC_CP':           'Comboios-de-Portugal.png',
-  'IR_CP':           'Comboios-de-Portugal.png',
-  'CP':              'Comboios-de-Portugal.png',
+  'CROSSCOUNTRY':      'crosscountry.png',
+  'TRANSPENNINE':      'TransPennineExpress.png',
+  'EMR':               'East_Midlands_Railway.png',
+  'GWR':               'Great_Western_Railway.png',
+  'SWR':               'South_Western_Railway.png',
+  'HULL_TRAINS':       'HullTrains.png',
+  'GRAND_CENTRAL':     'GrandCentral_Railway.png',
+  'LUMO':              'Lumo.png',
+  'SCOTRAIL':          'scotrail.png',
+  'NORTHERN':          'northern.png',
+  'TRANSPORT_WALES':   'transport_for_wales.png',
+
+  // --- ESPAGNE (RENFE) ---
+  'AVE':               'Renfe_ave.png',
+  'AVE_INT':           'Renfe_ave.png',
+  'ALVIA':             'Renfe_Alvia.png',
+  'AVLO':              'Renfe_Avlo.png', 
+  'AVANT':             'Renfe_Avant.png',
+  'EUROMED':           'Renfe_Euromed.png',
+  'INTERCITY_ES':      'Renfe_Intercity.png',
+  'MD':                'Renfe_MD.png',
+  'REGIONAL_ES':       'Renfe_regionales.png',
+  'REG_EXP':           'Renfe_regionales.png',
+  'RENFE':             'renfe.png',
+  'OUIGO_ES':          'ouigo.png',
+
+  // --- PORTUGAL (CP) ---
+  'ALFA_PENDULAR':     'Alfa_Pendular.png',
+  'IC_CP':             'Comboios-de-Portugal.png',
+  'IR_CP':             'Comboios-de-Portugal.png',
+  'CP':                'Comboios-de-Portugal.png',
+  
+  // --- ITALIE ---
+  'TRENITALIA':        'trenitalia.png'
 };
 
 function trainTypeBadge(trainType) {
