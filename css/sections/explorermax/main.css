@@ -232,3 +232,49 @@ input[type="date"] {
 
 /* ── Footer ── */
 footer { display: block; }
+
+/* ── Tag lendemain ── */
+.overnight-tag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 800;
+  color: #f97316;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 4px;
+  padding: 0 3px;
+  margin-left: 2px;
+  vertical-align: super;
+  line-height: 1.4;
+}
+
+/* ── Popup badges ── */
+.popup-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0 10px;
+  flex-wrap: wrap;
+}
+.popup-direct {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  color: #16a34a;
+  background: #dcfce7;
+  border-radius: 5px;
+  padding: 2px 7px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.popup-corresp {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  color: #d97706;
+  background: #fef3c7;
+  border-radius: 5px;
+  padding: 2px 7px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}

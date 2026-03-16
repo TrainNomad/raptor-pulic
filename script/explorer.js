@@ -1,3 +1,47 @@
+// ─── Slider durée max ────────────────────────────────────────────────────────
+
+function updateDurSlider() {
+  const slider = document.getElementById('dur-slider');
+  const mask   = document.getElementById('dur-mask');
+  const thumb  = document.getElementById('dur-thumb');
+  const valEl  = document.getElementById('dur-val');
+  if (!slider) return;
+
+  const val  = parseInt(slider.value);
+  const min  = parseInt(slider.min);
+  const max  = parseInt(slider.max);
+  const pct  = ((val - min) / (max - min)) * 100;
+  const rPct = (100 - pct);                    // % depuis la droite
+
+  // Masque grisé = partie droite du gradient (au-delà du curseur)
+  if (mask)  mask.style.width = rPct + '%';
+
+  // Thumb positionné depuis la droite
+  if (thumb) {
+    thumb.style.right     = rPct + '%';
+    thumb.style.transform = 'translate(50%, -50%)';
+  }
+
+  if (val >= max) {
+    if (valEl) valEl.textContent = 'Toutes';
+    maxDurationMin = 9999;
+  } else {
+    const h = Math.floor(val / 60);
+    const m = val % 60;
+    if (valEl) valEl.textContent = h + 'h' + (m > 0 ? String(m).padStart(2, '0') : '');
+    maxDurationMin = val;
+  }
+  if (allDestinations.length) refreshView();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.getElementById('dur-slider');
+  if (slider) {
+    slider.addEventListener('input', updateDurSlider);
+    updateDurSlider();
+  }
+});
+
 /* ════════════════════════════════════════════════════════════════════════════
    explorer.js — Leaflet (tuiles grises CartoDB) + Canvas overlay ultra-rapide
    ════════════════════════════════════════════════════════════════════════════ */
@@ -14,11 +58,17 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 L.control.zoom({ position: 'bottomright' }).addTo(map);
 L.control.scale({ imperial: false, position: 'bottomright' }).addTo(map);
 
-let allDestinations = [], lastResults = [], currentFilter = 'all';
+let allDestinations = [], lastResults = [], currentFilter = 'all', maxDurationMin = 9999;
 let hoveredDest = null, openPopupDest = null;
-let ctx = null, cvs = null, canvasReady = false;
+let canvasReady = false;
 let originMarker = null, leafletPopup = null;
 
+// ── PixiJS WebGL renderer ─────────────────────────────────────────────────────
+let pixiOverlay = null;
+let pixiContainer = null; // PIXI.Container principal
+let dotSprites = [];       // { dest, gfx } pour chaque point affiché
+
+// ── Utilitaires couleur ───────────────────────────────────────────────────────
 function durationColor(minutes) {
   const stops = [[0,[40,180,40]],[120,[180,210,30]],[300,[240,200,20]],[480,[230,90,20]],[720,[180,20,20]],[900,[80,0,0]]];
   if (minutes <= stops[0][0]) return stops[0][1];
@@ -28,57 +78,188 @@ function durationColor(minutes) {
   const t = (minutes-lo[0])/(hi[0]-lo[0]);
   return lo[1].map((v,j) => Math.round(v+(hi[1][j]-v)*t));
 }
-function rgbStr([r,g,b],a=1) { return `rgba(${r},${g},${b},${a})`; }
-function dotRadius(zoom) { if(zoom<=4)return 3.5;if(zoom<=5)return 4.5;if(zoom<=6)return 5.5;if(zoom<=7)return 6;return 7; }
 
-function initCanvas() {
-  cvs = document.createElement('canvas');
-  cvs.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:400;';
-  map.getContainer().appendChild(cvs);
-  ctx = cvs.getContext('2d');
-  function resize() { const s = map.getSize(); cvs.width = s.x; cvs.height = s.y; }
-  resize();
-  map.on('move zoom moveend zoomend resize', () => { resize(); if (lastResults.length) redrawCanvas(); });
-  canvasReady = true;
+function rgbToHex([r,g,b]) { return (r<<16)|(g<<8)|b; }
+function rgbStr([r,g,b],a=1) { return `rgba(${r},${g},${b},${a})`; }
+
+function dotRadius(zoom) {
+  if (zoom<=4) return 4;
+  if (zoom<=5) return 5;
+  if (zoom<=6) return 6.5;
+  if (zoom<=7) return 8;
+  return 10;
 }
 
+// ── Init PixiOverlay ──────────────────────────────────────────────────────────
+function initCanvas() {
+  if (!window.L.pixiOverlay) {
+    console.error('[Pixi] Leaflet.PixiOverlay non chargé — fallback canvas 2D');
+    initCanvasFallback();
+    return;
+  }
+
+  pixiContainer = new PIXI.Container();
+
+  pixiOverlay = L.pixiOverlay((utils) => {
+    const renderer = utils.getRenderer();
+    const project  = utils.latLngToLayerPoint;
+    const scale    = utils.getScale();
+    const zoom     = map.getZoom();
+    const r        = dotRadius(zoom);
+
+    for (const item of dotSprites) {
+      const { dest, gfxFill, gfxHalo } = item;
+      const pt = project([dest.lat, dest.lon]);
+
+      const rgb      = durationColor(dest.journeys[0]?.duration || 0);
+      const color    = rgbToHex(rgb);
+      const isHover  = dest === hoveredDest;
+      const radius   = isHover ? r * 1.8 : r;
+
+      // Halo survol
+      gfxHalo.clear();
+      if (isHover) {
+        gfxHalo.beginFill(color, 0.22);
+        gfxHalo.drawCircle(0, 0, radius * 2.6);
+        gfxHalo.endFill();
+      }
+      gfxHalo.x = pt.x;
+      gfxHalo.y = pt.y;
+
+      // Point principal
+      gfxFill.clear();
+      // Contour blanc
+      gfxFill.lineStyle(1.5 / scale, 0xFFFFFF, 0.75);
+      gfxFill.beginFill(color, isHover ? 1 : 0.88);
+      gfxFill.drawCircle(0, 0, radius);
+      gfxFill.endFill();
+      gfxFill.x = pt.x;
+      gfxFill.y = pt.y;
+    }
+
+    renderer.render(pixiContainer);
+  }, pixiContainer, { padding: 0.1 });
+
+  pixiOverlay.addTo(map);
+  canvasReady = true;
+  bindCanvasEvents();
+}
+
+// ── Fallback Canvas 2D (si PixiOverlay indisponible) ─────────────────────────
+let _cvs = null, _ctx = null;
+function initCanvasFallback() {
+  _cvs = document.createElement('canvas');
+  _cvs.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:400;';
+  map.getContainer().appendChild(_cvs);
+  _ctx = _cvs.getContext('2d');
+  const resize = () => { const s=map.getSize(); _cvs.width=s.x; _cvs.height=s.y; };
+  resize();
+  map.on('move zoom moveend zoomend resize', () => { resize(); if(lastResults.length) redrawCanvas(); });
+  canvasReady = true;
+  bindCanvasEvents();
+}
+
+// ── Redessiner tous les points ────────────────────────────────────────────────
 function redrawCanvas() {
-  if (!ctx||!cvs) return;
-  ctx.clearRect(0,0,cvs.width,cvs.height);
+  if (pixiOverlay) {
+    // Recréer les sprites pour les résultats actuels
+    pixiContainer.removeChildren();
+    dotSprites = [];
+    for (const dest of lastResults) {
+      const gfxHalo = new PIXI.Graphics();
+      const gfxFill = new PIXI.Graphics();
+      pixiContainer.addChild(gfxHalo);
+      pixiContainer.addChild(gfxFill);
+      dotSprites.push({ dest, gfxFill, gfxHalo });
+    }
+    pixiOverlay.redraw();
+    return;
+  }
+
+  // Fallback canvas 2D
+  if (!_ctx || !_cvs) return;
+  _ctx.clearRect(0, 0, _cvs.width, _cvs.height);
   if (!lastResults.length) return;
-  const zoom=map.getZoom(), r=dotRadius(zoom);
+  const zoom = map.getZoom(), r = dotRadius(zoom);
   for (const dest of lastResults) {
-    const pt=map.latLngToContainerPoint([dest.lat,dest.lon]);
-    dest._px=pt;
-    const rgb=durationColor(dest.journeys[0]?.duration||0), isHover=dest===hoveredDest;
-    if (isHover) { ctx.beginPath(); ctx.arc(pt.x,pt.y,r*2.8,0,Math.PI*2); ctx.fillStyle=rgbStr(rgb,0.2); ctx.fill(); }
-    ctx.beginPath(); ctx.arc(pt.x,pt.y,isHover?r*1.7:r,0,Math.PI*2);
-    ctx.fillStyle=rgbStr(rgb,isHover?1:0.88); ctx.strokeStyle='rgba(255,255,255,0.7)'; ctx.lineWidth=1.2;
-    ctx.fill(); ctx.stroke();
+    const pt = map.latLngToContainerPoint([dest.lat, dest.lon]);
+    dest._px = pt;
+    const rgb = durationColor(dest.journeys[0]?.duration || 0);
+    const isHover = dest === hoveredDest;
+    if (isHover) {
+      _ctx.beginPath(); _ctx.arc(pt.x,pt.y,r*2.8,0,Math.PI*2);
+      _ctx.fillStyle = rgbStr(rgb,0.2); _ctx.fill();
+    }
+    _ctx.beginPath(); _ctx.arc(pt.x,pt.y,isHover?r*1.7:r,0,Math.PI*2);
+    _ctx.fillStyle = rgbStr(rgb,isHover?1:0.88);
+    _ctx.strokeStyle = 'rgba(255,255,255,0.7)'; _ctx.lineWidth = 1.2;
+    _ctx.fill(); _ctx.stroke();
   }
 }
 
-function hitTest(mx,my) {
+// ── Hit-test souris ───────────────────────────────────────────────────────────
+function hitTest(mx, my) {
   if (!lastResults.length) return null;
-  const r2=Math.pow(dotRadius(map.getZoom())*3.5,2);
-  let best=null, bestD=Infinity;
-  for (const dest of lastResults) { const px=dest._px; if(!px) continue; const d=(px.x-mx)**2+(px.y-my)**2; if(d<r2&&d<bestD){best=dest;bestD=d;} }
+  const zoom = map.getZoom();
+  const r    = dotRadius(zoom) * 3;
+  let best = null, bestD = Infinity;
+
+  for (const dest of lastResults) {
+    let px, py;
+    if (pixiOverlay) {
+      const pt = pixiOverlay._utils?.latLngToLayerPoint
+        ? pixiOverlay._utils.latLngToLayerPoint([dest.lat, dest.lon])
+        : map.latLngToContainerPoint([dest.lat, dest.lon]);
+      // Convertir layer → container
+      const containerPt = map.latLngToContainerPoint([dest.lat, dest.lon]);
+      px = containerPt.x; py = containerPt.y;
+    } else {
+      const pt = dest._px; if (!pt) continue;
+      px = pt.x; py = pt.y;
+    }
+    const d = (px - mx) ** 2 + (py - my) ** 2;
+    if (d < r * r && d < bestD) { best = dest; bestD = d; }
+  }
   return best;
 }
 
+// ── Événements souris sur la carte ────────────────────────────────────────────
 function bindCanvasEvents() {
   const container = map.getContainer();
+
   container.addEventListener('mousemove', e => {
     if (!lastResults.length) return;
-    const rect=container.getBoundingClientRect(), hit=hitTest(e.clientX-rect.left,e.clientY-rect.top);
-    if (hit!==hoveredDest) { hoveredDest=hit; container.style.cursor=hit?'pointer':''; redrawCanvas(); syncHoverList(); }
+    const rect = container.getBoundingClientRect();
+    const hit  = hitTest(e.clientX - rect.left, e.clientY - rect.top);
+    if (hit !== hoveredDest) {
+      hoveredDest = hit;
+      container.style.cursor = hit ? 'pointer' : '';
+      if (pixiOverlay) pixiOverlay.redraw();
+      else redrawCanvas();
+      syncHoverList();
+    }
   });
-  container.addEventListener('mouseleave', () => { if(hoveredDest){hoveredDest=null;redrawCanvas();syncHoverList();} });
+
+  container.addEventListener('mouseleave', () => {
+    if (hoveredDest) {
+      hoveredDest = null;
+      if (pixiOverlay) pixiOverlay.redraw();
+      else redrawCanvas();
+      syncHoverList();
+    }
+  });
+
   container.addEventListener('click', e => {
     if (!lastResults.length) return;
-    const rect=container.getBoundingClientRect(), hit=hitTest(e.clientX-rect.left,e.clientY-rect.top);
-    if (hit) { openDestPopup(hit); const idx=lastResults.indexOf(hit); if(idx>=0) highlightCardByListIdx(idx); if(cvs){cvs.style.visibility='hidden'; map.once('popupclose',()=>{cvs.style.visibility='visible';});} }
-    else { if(leafletPopup) map.closePopup(leafletPopup); }
+    const rect = container.getBoundingClientRect();
+    const hit  = hitTest(e.clientX - rect.left, e.clientY - rect.top);
+    if (hit) {
+      openDestPopup(hit);
+      const idx = lastResults.indexOf(hit);
+      if (idx >= 0) highlightCardByListIdx(idx);
+    } else {
+      if (leafletPopup) map.closePopup(leafletPopup);
+    }
   });
 }
 
@@ -185,9 +366,10 @@ function buildDestinations(journeys) {
     map.flyTo([s.lat,s.lon],5.5,{animate:true,duration:1.2});
   }
 
-  if (!canvasReady){initCanvas();bindCanvasEvents();}
+  if (!canvasReady) initCanvas();
   document.getElementById('map-hint').classList.add('hidden');
   document.getElementById('filters-bar').classList.add('visible');
+
   document.getElementById('results-count-label').textContent='Destinations trouvées :';
   document.getElementById('status-dot').className='status-dot ok';
   document.getElementById('status-text').textContent=`${allDestinations.length} destinations`;
@@ -195,14 +377,19 @@ function buildDestinations(journeys) {
 }
 
 function refreshView() {
-  lastResults=allDestinations.filter(d=>{
-    if(currentFilter==='all') return true;
-    if(currentFilter==='direct') return d.journeys[0]?.transfers===0;
-    const types=d.journeys[0]?.train_types||[];
-    return types.some(t=>t?.toUpperCase().includes(currentFilter.toUpperCase()));
+  lastResults = allDestinations.filter(d => {
+    if (currentFilter === 'direct' && d.journeys[0]?.transfers !== 0) return false;
+    if (currentFilter !== 'all' && currentFilter !== 'direct') {
+      const types = d.journeys[0]?.train_types || [];
+      if (!types.some(t => t?.toUpperCase().includes(currentFilter.toUpperCase()))) return false;
+    }
+    const dur = d.journeys[0]?.duration || 0;
+    if (maxDurationMin < 9999 && dur > maxDurationMin) return false;
+    return true;
   });
-  document.getElementById('results-count').textContent=lastResults.length;
-  redrawCanvas(); renderList(lastResults);
+  document.getElementById('results-count').textContent = lastResults.length;
+  redrawCanvas();
+  renderList(lastResults);
 }
 
 function renderList(destinations) {
@@ -248,7 +435,9 @@ function highlightCardByListIdx(idx) {
 }
 
 function clearMap() {
-  if(ctx&&cvs) ctx.clearRect(0,0,cvs.width,cvs.height);
+  // Nettoyer le rendu Pixi ou le fallback canvas
+  if (pixiContainer) { pixiContainer.removeChildren(); dotSprites = []; if (pixiOverlay) pixiOverlay.redraw(); }
+  if (_ctx && _cvs) _ctx.clearRect(0, 0, _cvs.width, _cvs.height);
   if(originMarker){map.removeLayer(originMarker);originMarker=null;}
   if(leafletPopup) map.closePopup(leafletPopup);
   allDestinations=[];lastResults=[];hoveredDest=null;openPopupDest=null;
@@ -256,6 +445,10 @@ function clearMap() {
   document.getElementById('results-count').textContent='';
   document.getElementById('results-count-label').textContent='Lancez une recherche';
   document.getElementById('filters-bar').classList.remove('visible');
+
+  maxDurationMin = 9999;
+  const sliderEl = document.getElementById('dur-slider');
+  if (sliderEl) { sliderEl.value = sliderEl.max; updateDurSlider(); }
   document.getElementById('map-hint').classList.remove('hidden');
   document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
   document.querySelector('[data-filter="all"]')?.classList.add('active');

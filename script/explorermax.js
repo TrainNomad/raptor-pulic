@@ -371,12 +371,23 @@ function openDestPopup(dest) {
   });
   const url = 'trajetsmax.html?' + p.toString();
 
+  // Heures : priorité aux legs, fallback sur le journey racine
+  const depStr = leg0.dep_str || j.dep_str || '--:--';
+  const arrStr = legN.arr_str || j.arr_str || '--:--';
+  const xfers  = j.transfers || 0;
+  const xferLabel = xfers === 0
+    ? '<span class="popup-direct">Direct</span>'
+    : `<span class="popup-corresp">${xfers} corresp.</span>`;
+
   const html = `<div class="popup-card">
     <div class="popup-card-city">${escapeHtml(dest.name)}</div>
-    <span class="popup-type">🚄 MAX inclus</span>
+    <div class="popup-badges">
+      <span class="popup-type">🚄 MAX inclus</span>
+      ${xferLabel}
+    </div>
     <div class="popup-train-row">
       <div>
-        <div class="popup-dep">${leg0.dep_str || '--:--'}</div>
+        <div class="popup-dep">${depStr}</div>
         <div class="popup-dur">${escapeHtml(fromName)}</div>
       </div>
       <div style="text-align:center;flex:1">
@@ -384,7 +395,7 @@ function openDestPopup(dest) {
         <div class="popup-dur">${dur}</div>
       </div>
       <div style="text-align:right">
-        <div class="popup-arr">${legN.arr_str || '--:--'}</div>
+        <div class="popup-arr">${arrStr}</div>
         <div class="popup-dur">${escapeHtml(dest.name)}</div>
       </div>
     </div>

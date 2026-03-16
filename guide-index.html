@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TrainNomad — Guides Bas Carbone</title>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#14b866",
+          "background-light": "#f6f8f7",
+          "background-dark": "#112119",
+          "midnight": "#1A2B3C",
+        },
+        fontFamily: { "display": ["Plus Jakarta Sans", "sans-serif"] },
+        borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+      },
+    },
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet"/>
+<script src="https://kit.fontawesome.com/8e4de4bf0a.js" crossorigin="anonymous"></script>
+
+<style>
+  body { font-family: 'Plus Jakarta Sans', sans-serif; min-height: 100dvh; }
+
+  /* Carte pays */
+  .country-card { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s; }
+  .country-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -8px rgba(20,184,102,.25); }
+  .country-card .cover { transition: transform .6s cubic-bezier(.22,1,.36,1); }
+  .country-card:hover .cover { transform: scale(1.08); }
+  .country-card .desc { opacity: 0; transform: translateY(8px); transition: opacity .3s, transform .3s; }
+  .country-card:hover .desc { opacity: 1; transform: translateY(0); }
+
+  /* Pill active */
+  .filter-pill.active { background: #14b866; color: #112119; }
+
+  /* Skeleton loader */
+  @keyframes shimmer { to { background-position: 200% center; } }
+  .skeleton {
+    background: linear-gradient(90deg, #1e3a2a 25%, #2a4f38 50%, #1e3a2a 75%);
+    background-size: 200%;
+    animation: shimmer 1.4s infinite;
+  }
+
+  /* Entrée des cartes */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  .card-anim { animation: fadeUp .5s ease both; }
+</style>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display">
+
+<!-- ══ NAV ══ -->
+<nav class="sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 cursor-pointer">
+      <span class="material-symbols-outlined text-primary text-3xl">eco</span>
+      <span class="text-xl font-extrabold tracking-tight text-white">TrainNomad<span class="text-primary">.eu</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-10">
+      <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="trajets.html">
+        <span class="material-symbols-outlined text-lg">train</span> Voyager
+      </a>
+      <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="explorer.html">
+        <span class="material-symbols-outlined text-lg">explore</span> Explorer
+      </a>
+      <a class="text-sm font-bold text-white bg-midnight px-4 py-2 rounded-xl hover:bg-primary hover:text-midnight transition-all flex items-center gap-2 shadow-sm" href="outilstgvmax.html">
+        <span class="material-symbols-outlined text-lg">bolt</span> Outils TGVmax
+      </a>
+    </div>
+    <button class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl hover:bg-white/10 transition-colors">
+      <span class="material-symbols-outlined text-white text-2xl">menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="relative overflow-hidden py-20 px-6">
+  <!-- Fond dégradé décoratif -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-emerald-500/8 rounded-full blur-3xl"></div>
+  </div>
+  <div class="relative max-w-7xl mx-auto">
+    <div class="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 uppercase tracking-widest">
+      <span class="material-symbols-outlined text-sm">eco</span>
+      Voyage durable
+    </div>
+    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-none">
+      Guides<br>
+      <span class="text-primary">Bas Carbone</span>
+    </h1>
+    <p class="text-slate-400 text-xl max-w-2xl leading-relaxed">
+      Explorez l'Europe de manière durable. Des itinéraires pensés pour le voyageur ferroviaire — horaires, hébergements, adresses locales.
+    </p>
+
+    <!-- Stats -->
+    <div class="flex flex-wrap gap-8 mt-12">
+      <div>
+        <div class="text-3xl font-extrabold text-primary" id="stat-cities">—</div>
+        <div class="text-sm text-slate-500 mt-1">Villes couvertes</div>
+      </div>
+      <div>
+        <div class="text-3xl font-extrabold text-primary" id="stat-countries">—</div>
+        <div class="text-sm text-slate-500 mt-1">Pays</div>
+      </div>
+      <div>
+        <div class="text-3xl font-extrabold text-white">92%</div>
+        <div class="text-sm text-slate-500 mt-1">CO2 économisé vs avion</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FILTRES ══ -->
+<section class="sticky top-20 z-40 bg-background-dark/95 backdrop-blur border-b border-white/5 px-6 py-4">
+  <div class="max-w-7xl mx-auto">
+    <!-- Recherche -->
+    <div class="flex flex-col sm:flex-row gap-4">
+      <div class="relative flex-1 max-w-sm">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">
+          <i class="fa-solid fa-magnifying-glass text-sm"></i>
+        </span>
+        <input id="search-input" type="text" placeholder="Rechercher une ville..."
+          class="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-primary/50 transition-colors"/>
+      </div>
+      <!-- Pills catégories -->
+      <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+        <button class="filter-pill active shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold border border-primary/30 transition-all" data-filter="all">
+          <span class="material-symbols-outlined text-sm">explore</span> Tous
+        </button>
+        <button class="filter-pill shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-white/5 border border-white/10 text-slate-400 hover:border-primary/30 hover:text-primary transition-all" data-filter="montagne">
+          <span class="material-symbols-outlined text-sm">landscape</span> Montagne
+        </button>
+        <button class="filter-pill shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-white/5 border border-white/10 text-slate-400 hover:border-primary/30 hover:text-primary transition-all" data-filter="mer">
+          <span class="material-symbols-outlined text-sm">waves</span> Mer
+        </button>
+        <button class="filter-pill shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-white/5 border border-white/10 text-slate-400 hover:border-primary/30 hover:text-primary transition-all" data-filter="city-break">
+          <span class="material-symbols-outlined text-sm">apartment</span> City-break
+        </button>
+        <button class="filter-pill shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-white/5 border border-white/10 text-slate-400 hover:border-primary/30 hover:text-primary transition-all" data-filter="budget">
+          <span class="material-symbols-outlined text-sm">payments</span> Budget
+        </button>
+        <button class="filter-pill shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-white/5 border border-white/10 text-slate-400 hover:border-primary/30 hover:text-primary transition-all" data-filter="gastronomie">
+          <span class="material-symbols-outlined text-sm">restaurant</span> Gastronomie
+        </button>
+        <button class="filter-pill shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-white/5 border border-white/10 text-slate-400 hover:border-primary/30 hover:text-primary transition-all" data-filter="culture">
+          <span class="material-symbols-outlined text-sm">palette</span> Culture
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTENU ══ -->
+<main class="max-w-7xl mx-auto px-6 py-12 pb-24">
+
+  <!-- Message aucun résultat -->
+  <div id="no-results" class="hidden text-center py-20">
+    <div class="text-5xl mb-4">🔍</div>
+    <p class="text-slate-400 text-lg">Aucune destination trouvée pour ce filtre.</p>
+  </div>
+
+  <!-- Sections par pays générées dynamiquement -->
+  <div id="countries-container"></div>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="bg-background-dark border-t border-primary/10 py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/5 pb-12 mb-12">
+      <div class="col-span-2">
+        <div class="flex items-center gap-2 mb-6">
+          <span class="material-symbols-outlined text-primary text-3xl">eco</span>
+          <span class="text-xl font-extrabold">TrainNomad<span class="text-primary">.eu</span></span>
+        </div>
+        <p class="text-slate-400 leading-relaxed max-w-sm">
+          Le guide de référence pour explorer l'Europe sans avion. Rejoignez le mouvement du voyage lent et bas carbone.
+        </p>
+      </div>
+      <div>
+        <h5 class="font-bold mb-6 text-xs uppercase tracking-widest text-slate-500">Navigation</h5>
+        <ul class="space-y-3 text-slate-400">
+          <li><a href="index.html" class="hover:text-primary transition-colors">Accueil</a></li>
+          <li><a href="trajets.html" class="hover:text-primary transition-colors">Voyager</a></li>
+          <li><a href="explorer.html" class="hover:text-primary transition-colors">Explorer</a></li>
+          <li><a href="outilstgvmax.html" class="hover:text-primary transition-colors">Outils TGVmax</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-bold mb-6 text-xs uppercase tracking-widest text-slate-500">Légal</h5>
+        <ul class="space-y-3 text-slate-400">
+          <li><a href="mention_legal.html" class="hover:text-primary transition-colors">Mentions Légales</a></li>
+          <li><a href="confidentialite.html" class="hover:text-primary transition-colors">Confidentialité</a></li>
+          <li><a href="conditions.html" class="hover:text-primary transition-colors">Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600 uppercase tracking-widest font-bold">
+      <p>© 2026 TrainNomad.eu — Engagé pour un futur durable.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── Configuration : liste des guides disponibles ─────────────────────────────
+// Chaque entrée pointe vers un fichier JSON dans guide/{country}/{city}.json
+// Ajouter une ville = ajouter une ligne ici, le reste est automatique.
+const GUIDES_MANIFEST = [
+  { country: 'IT', file: 'guide/IT/milan.json' },
+  { country: 'IT', file: 'guide/IT/turin.json' },
+
+  { country: 'ES', file: 'guide/ES/barcelone.json' },
+  { country: 'ES', file: 'guide/ES/madrid.json' },
+  { country: 'ES', file: 'guide/ES/seville.json' },
+  // Exemples à venir — décommenter quand le JSON est créé :
+  // { country: 'FR', file: 'guide/FR/paris.json' },
+  // { country: 'FR', file: 'guide/FR/bordeaux.json' },
+  // { country: 'ES', file: 'guide/ES/barcelone.json' },
+  // { country: 'CH', file: 'guide/CH/geneve.json' },
+  // { country: 'DE', file: 'guide/DE/berlin.json' },
+  // { country: 'NL', file: 'guide/NL/amsterdam.json' },
+  // { country: 'AT', file: 'guide/AT/vienne.json' },
+  // { country: 'PT', file: 'guide/PT/lisbonne.json' },
+];
+
+const COUNTRY_META = {
+  FR: { name: 'France',      flag: '🇫🇷', desc: 'De la Provence aux Alpes' },
+  IT: { name: 'Italie',      flag: '🇮🇹', desc: 'La Dolce Vita accessible en train' },
+  ES: { name: 'Espagne',     flag: '🇪🇸', desc: 'Soleil et culture à grande vitesse' },
+  DE: { name: 'Allemagne',   flag: '🇩🇪', desc: 'Forêts denses et métropoles modernes' },
+  CH: { name: 'Suisse',      flag: '🇨🇭', desc: 'Le paradis des trajets ferroviaires' },
+  NL: { name: 'Pays-Bas',    flag: '🇳🇱', desc: 'Canaux, tulipes et vélo partout' },
+  AT: { name: 'Autriche',    flag: '🇦🇹', desc: 'Majestueuses Alpes et élégance viennoise' },
+  PT: { name: 'Portugal',    flag: '🇵🇹', desc: 'Côtes sauvages et culture authentique' },
+  GB: { name: 'Royaume-Uni', flag: '🇬🇧', desc: 'Campagnes verdoyantes et villes vibrantes' },
+  BE: { name: 'Belgique',    flag: '🇧🇪', desc: 'Chocolat, bière et patrimoine mondial' },
+};
+
+const CATEGORY_LABELS = {
+  'city-break':   'City-break',
+  'culture':      'Culture',
+  'gastronomie':  'Gastronomie',
+  'montagne':     'Montagne',
+  'mer':          'Mer',
+  'budget':       'Budget',
+};
+
+// ─── État ────────────────────────────────────────────────────────────────────
+let allGuides = [];
+let activeFilter = 'all';
+let searchQuery  = '';
+
+// ─── Chargement des guides ────────────────────────────────────────────────────
+async function loadGuides() {
+  const results = await Promise.allSettled(
+    GUIDES_MANIFEST.map(m => fetch(m.file).then(r => r.json()))
+  );
+  allGuides = results
+    .filter(r => r.status === 'fulfilled')
+    .map(r => r.value);
+
+  // Stats hero
+  document.getElementById('stat-cities').textContent = allGuides.length;
+  const uniqueCountries = new Set(allGuides.map(g => g.country));
+  document.getElementById('stat-countries').textContent = uniqueCountries.size;
+
+  renderAll();
+}
+
+// ─── Rendu ────────────────────────────────────────────────────────────────────
+function renderAll() {
+  const container = document.getElementById('countries-container');
+  const noResults = document.getElementById('no-results');
+  container.innerHTML = '';
+
+  // Filtrer
+  const filtered = allGuides.filter(g => {
+    const matchCat = activeFilter === 'all' || (g.categories || []).includes(activeFilter);
+    const matchSearch = !searchQuery ||
+      g.city.toLowerCase().includes(searchQuery) ||
+      g.country_name.toLowerCase().includes(searchQuery);
+    return matchCat && matchSearch;
+  });
+
+  if (!filtered.length) {
+    noResults.classList.remove('hidden');
+    return;
+  }
+  noResults.classList.add('hidden');
+
+  // Grouper par pays
+  const byCountry = {};
+  for (const g of filtered) {
+    if (!byCountry[g.country]) byCountry[g.country] = [];
+    byCountry[g.country].push(g);
+  }
+
+  let delay = 0;
+  for (const [countryCode, guides] of Object.entries(byCountry)) {
+    const meta = COUNTRY_META[countryCode] || { name: countryCode, flag: '🌍', desc: '' };
+    const section = document.createElement('section');
+    section.className = 'mb-16';
+    section.innerHTML = `
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-4xl">${meta.flag}</span>
+            <h2 class="text-3xl font-extrabold">${meta.name}</h2>
+            <span class="bg-primary/15 text-primary text-xs font-bold px-2.5 py-1 rounded-full border border-primary/20">
+              ${guides.length} ville${guides.length > 1 ? 's' : ''}
+            </span>
+          </div>
+          <p class="text-slate-500 text-sm">${meta.desc}</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" data-country-grid>
+      </div>`;
+
+    const grid = section.querySelector('[data-country-grid]');
+    for (const guide of guides) {
+      grid.appendChild(buildCard(guide, delay));
+      delay += 60;
+    }
+    container.appendChild(section);
+  }
+}
+
+function buildCard(guide, delay) {
+  const div = document.createElement('div');
+  div.className = 'country-card group relative overflow-hidden rounded-2xl bg-slate-900 aspect-[4/5] cursor-pointer ring-1 ring-white/5 hover:ring-primary/40 card-anim';
+  div.style.animationDelay = delay + 'ms';
+
+  const cats = (guide.categories || [])
+    .slice(0, 2)
+    .map(c => `<span class="bg-primary/20 text-primary text-[9px] font-bold px-2 py-0.5 rounded-full border border-primary/20 uppercase tracking-wider">${CATEGORY_LABELS[c] || c}</span>`)
+    .join('');
+
+  const depStr = guide.train?.duration ? `<span class="text-xs text-slate-300">${guide.train.duration} depuis Paris</span>` : '';
+  const priceStr = guide.train?.price_from ? `<span class="text-primary font-bold text-sm">dès ${guide.train.price_from}€</span>` : '';
+
+  const slug = `guide-ville.html?country=${guide.country}&city=${guide.id}`;
+
+  div.innerHTML = `
+    <div class="cover absolute inset-0 bg-cover bg-center"
+      style="background-image: linear-gradient(to top, rgba(17,33,25,.95) 0%, rgba(17,33,25,.3) 55%, transparent 100%),
+             url('${guide.hero_image}')">
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-end p-5">
+      <div class="flex flex-wrap gap-1 mb-3">${cats}</div>
+      <h3 class="text-2xl font-extrabold text-white mb-1">${guide.city}</h3>
+      <p class="desc text-slate-400 text-sm mb-3">${guide.tagline}</p>
+      <div class="flex items-center justify-between">
+        <div class="flex flex-col gap-0.5">${depStr}${priceStr}</div>
+        <a href="${slug}"
+          class="flex items-center gap-1.5 bg-primary text-midnight text-xs font-bold px-3 py-2 rounded-xl hover:bg-emerald-400 transition-colors">
+          Voir le guide
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+    </div>`;
+
+  return div;
+}
+
+// ─── Filtres ──────────────────────────────────────────────────────────────────
+document.querySelectorAll('.filter-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(b => {
+      b.classList.remove('active');
+      b.classList.add('bg-white/5', 'border-white/10', 'text-slate-400');
+      b.classList.remove('border-primary/30');
+    });
+    btn.classList.add('active');
+    btn.classList.remove('bg-white/5', 'border-white/10', 'text-slate-400');
+    activeFilter = btn.dataset.filter;
+    renderAll();
+  });
+});
+
+document.getElementById('search-input').addEventListener('input', e => {
+  searchQuery = e.target.value.trim().toLowerCase();
+  renderAll();
+});
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+loadGuides();
+</script>
+</body>
+</html>

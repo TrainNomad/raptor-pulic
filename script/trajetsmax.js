@@ -25,7 +25,11 @@ const state = {
 };
 
 function escapeHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function minutesToHHMM(min) { const h=Math.floor(min/60),m=min%60; return `${h}h${String(m).padStart(2,'0')}`; }
+function minutesToHHMM(min) {
+  if (!min && min !== 0) return '--';
+  const h = Math.floor(min / 60), m = min % 60;
+  return `${h}h${String(m).padStart(2,'0')}`;
+}
 function setStatus(type,text) { document.getElementById('status-dot').className=`status-dot ${type}`; document.getElementById('status-text').textContent=text; }
 function updateSearchBtn() { document.getElementById('btn-search').disabled=!(state.engineReady&&state.selectedFrom&&state.selectedTo); }
 

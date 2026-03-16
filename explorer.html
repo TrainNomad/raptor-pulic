@@ -177,10 +177,23 @@
         <span id="mobile-view-label">Voir la carte</span>
     </button>
 
-    <!-- Légende durée — hors map-container pour z-index correct -->
+    <!-- Légende durée + slider fusionnés -->
     <div id="duration-legend">
-        <div class="legend-title">Durée du trajet</div>
-        <div class="legend-gradient"></div>
+        <div class="legend-header">
+            <span class="legend-title">Durée du trajet</span>
+            <span class="legend-cur-val" id="dur-val">Toutes</span>
+        </div>
+
+        <!-- Barre de couleur = la piste du slider -->
+        <div class="legend-gradient-track">
+            <div class="legend-gradient"></div>
+            <!-- Masque grisé à droite du curseur -->
+            <div class="legend-mask" id="dur-mask"></div>
+            <!-- Thumb -->
+            <div class="legend-slider-thumb" id="dur-thumb"></div>
+            <input type="range" id="dur-slider" min="30" max="900" step="15" value="900" class="legend-slider-range"/>
+        </div>
+
         <div class="legend-labels">
             <span>0h</span>
             <span>3h</span>
@@ -232,6 +245,10 @@
 </footer>
 
 <!-- ══ JS ══ -->
+<!-- PixiJS + Leaflet.PixiOverlay (WebGL haute performance) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
+<script src="https://unpkg.com/leaflet-pixi-overlay@1.10.2/L.PixiOverlay.min.js"></script>
+
 <script src="script/explorer.js"></script>
 
 </body>
