@@ -597,14 +597,22 @@ const TRAIN_TYPE_STYLES = {
   'TRAMTRAIN':       { bg: '#5a7a3a', label: 'TramTrain' },
   'NAVETTE':         { bg: '#7a6a5a', label: 'Navette' },
   'NIGHTJET':          { bg: '#1a1a2e', label: 'Nightjet' },
-  'ICE':             { bg: '#d40000', label: 'ICE' },
-  'EUROSTAR':        { bg: '#00435a', label: 'Eurostar' },
-  'NIGHTJET':          { bg: '#1a1a2e', label: 'Nightjet' },
+  'ICE':               { bg: '#d40000', label: 'ICE' },
+  'EUROSTAR':          { bg: '#00435a', label: 'Eurostar' },
   'EC':                { bg: '#003d6e', label: 'EuroCity' },
   'IC_DB':             { bg: '#d40000', label: 'IC DB' },
   'FLIXTRAIN':         { bg: '#00c060', label: 'Flixtrain' },
   'TRAIN_DB':          { bg: '#d40000', label: 'DB' },
   'IC_SNCB':           { bg: '#003466', label: 'IC SNCB' },
+  // ── Partenaires DB Fernverkehr (agences du feed gtfs.de) ──────────────────
+  'RJ':                { bg: '#d40000', label: 'Railjet' },       // ÖBB / SBB
+  'EN':                { bg: '#1a1a2e', label: 'EuroNight' },     // trains de nuit
+  'IC_DSB':            { bg: '#c8001e', label: 'IC DSB' },        // Danemark
+  'IC_NS':             { bg: '#003082', label: 'IC NS' },         // Pays-Bas
+  'IC_PKP':            { bg: '#c8001e', label: 'IC PKP' },        // Pologne
+  'IC_CD':             { bg: '#003466', label: 'IC ČD' },         // Tchéquie
+  'IC_ZSSK':           { bg: '#003466', label: 'IC ZSSK' },       // Slovaquie
+  'IC_MAV':            { bg: '#c8001e', label: 'IC MÁV' },        // Hongrie
   'THALYS_CORRIDOR':   { bg: '#003466', label: 'Thalys' },
   'ALFA_PENDULAR':     { bg: '#c8001e', label: 'Alfa Pendular' },
   'IC_CP':             { bg: '#005b99', label: 'Intercidades' },
@@ -653,17 +661,18 @@ const TRAIN_TYPE_LOGO = {
   'LYRIA':             'lyria.png',
   'TRAIN':             'tgv_inoui.png', // Remplacement du .svg par .png
   'IC_SNCB':           'SNCB.png',      // Majuscule selon image
-  'NIGHTJET':          'nightjet.png',
   'THALYS_CORRIDOR':   'eurostar.png',
   'FRECCIAROSSA':      'frecciarossa.png',
   // ── Allemagne DB ────────────────────────────────────────────────────────────
-    'ICE':               'ice.png',
-    'IC_DB':             'ice.png',          
-    'EC':                'eurocity.png',
-    'NIGHTJET':          'nightjet.png',
-    'FLIXTRAIN':         'Flixtrain.png',
-    'TRAIN_DB':          'ice.png',
-    'EC':                'eurocity.png',
+  'ICE':               'ice.png',
+  'IC_DB':             'ice.png',
+  'EC':                'eurocity.png',
+  'NIGHTJET':          'nightjet.png',
+  'FLIXTRAIN':         'Flixtrain.png',
+  'TRAIN_DB':          'ice.png',
+  // ── Partenaires DB Fernverkehr ───────────────────────────────────────────────
+  'RJ':                'ice.png',          // Railjet ÖBB/SBB (fallback ICE visuel)
+  'EN':                'nightjet.png',     // EuroNight
 
   // --- ROYAUME-UNI (UK) ---
   'AVANTI':            'avanti.png',
@@ -705,8 +714,6 @@ const TRAIN_TYPE_LOGO = {
   
   // ── Fallbacks ────────────────────────────────────────────────────────────────
   'UK_RAIL':           'uk-rail.png',
-  'TRAIN_DB':          'ice.png',
-  'FLIXTRAIN':         'flixtrain.png',
   'TRENITALIA':        'frecciarossa.png',  // alias legacy
 
 }
