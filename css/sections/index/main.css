@@ -83,7 +83,7 @@ input[type="date"] {
     background:
         linear-gradient(105deg, rgba(14, 55, 33, 0.95) 30%, rgba(34, 139, 34, 0.4) 100%),
         url('../assets/TGVMax/TGVMax-Section.jpg') center / cover no-repeat;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); */
     color: #ffffff;
 }
 
