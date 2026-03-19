@@ -610,6 +610,7 @@ const TRAIN_TYPE_STYLES = {
   'EN':                { bg: '#1a1a2e', label: 'EuroNight' },     // trains de nuit
   'IC_DSB':            { bg: '#c8001e', label: 'IC DSB' },        // Danemark
   'IC_NS':             { bg: '#003082', label: 'IC NS' },         // Pays-Bas
+  'IC_NS_INT':          { bg: '#003082', label: 'NS Int.' },        // NS International
   'IC_PKP':            { bg: '#c8001e', label: 'IC PKP' },        // Pologne
   'IC_CD':             { bg: '#003466', label: 'IC ČD' },         // Tchéquie
   'IC_ZSSK':           { bg: '#003466', label: 'IC ZSSK' },       // Slovaquie
@@ -661,8 +662,13 @@ const TRAIN_TYPE_LOGO = {
   'IC_NUIT':           'intercites.png',
   'LYRIA':             'lyria.png',
   'TRAIN':             'tgv_inoui.png', // Remplacement du .svg par .png
-  'IC_SNCB':           'SNCB.png',      // Majuscule selon image
-  'THALYS_CORRIDOR':   'eurostar.png',
+    'THALYS_CORRIDOR':   'eurostar.png',
+  // ── Belgique ────────────────────────────────────────────────────────────
+  'IC_SNCB':           'SNCB.png',
+  // ── Netherlands ────────────────────────────────────────────────────────────
+  'IC_NS':              'NS.png',
+  'IC_NS_INT':          'NS.png',      // Majuscule selon image
+    // ── Italie ────────────────────────────────────────────────────────────
   'FRECCIAROSSA':      'frecciarossa.png',
   // ── Allemagne DB ────────────────────────────────────────────────────────────
   'ICE':               'ice.png',
@@ -792,7 +798,7 @@ function renderTarifBlock(tarif) {
 // ─── Multi-select type de train ───────────────────────────────────────────────
 const TYPE_ORDER = [
   'INOUI','OUIGO','OUIGO_CLASSIQUE','IC','IC_NUIT','TER','CAR','TRAMTRAIN','NAVETTE','LYRIA',
-  'ICE','EUROSTAR','FRECCIAROSSA','NIGHTJET','EUROPEAN_SLEEPER',
+  'ICE','EUROSTAR','FRECCIAROSSA','NIGHTJET','EUROPEAN_SLEEPER','IC_NS','IC_NS_INT',
   'AVE','AVE_INT','AVLO','OUIGO_ES','ALVIA','AVANT','EUROMED','INTERCITY_ES','MD','REGIONAL_ES','REG_EXP','RENFE',
   'TRAIN',
 ];

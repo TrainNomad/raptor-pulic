@@ -31,7 +31,6 @@ function formatDate(iso) {
 }
 
 // ─── Logos / styles types de train ────────────────────────────────────────────
-// ─── Badges types de train ────────────────────────────────────────────────────
 const TRAIN_TYPE_STYLES = {
   'INOUI':           { bg: '#c8962e', label: 'TGV Inoui' },
   'OUIGO':           { bg: '#e80082', label: 'Ouigo GV' },
@@ -57,6 +56,7 @@ const TRAIN_TYPE_STYLES = {
   'EN':                { bg: '#1a1a2e', label: 'EuroNight' },     // trains de nuit
   'IC_DSB':            { bg: '#c8001e', label: 'IC DSB' },        // Danemark
   'IC_NS':             { bg: '#003082', label: 'IC NS' },         // Pays-Bas
+  'IC_NS_INT':          { bg: '#003082', label: 'NS Int.' },        // NS International
   'IC_PKP':            { bg: '#c8001e', label: 'IC PKP' },        // Pologne
   'IC_CD':             { bg: '#003466', label: 'IC ČD' },         // Tchéquie
   'IC_ZSSK':           { bg: '#003466', label: 'IC ZSSK' },       // Slovaquie
@@ -108,8 +108,13 @@ const TRAIN_TYPE_LOGO = {
   'IC_NUIT':           'intercites.png',
   'LYRIA':             'lyria.png',
   'TRAIN':             'tgv_inoui.png', // Remplacement du .svg par .png
-  'IC_SNCB':           'SNCB.png',      // Majuscule selon image
-  'THALYS_CORRIDOR':   'eurostar.png',
+    'THALYS_CORRIDOR':   'eurostar.png',
+  // ── Belgique ────────────────────────────────────────────────────────────
+  'IC_SNCB':           'SNCB.png',
+  // ── Netherlands ────────────────────────────────────────────────────────────
+  'IC_NS':              'NS.png',
+  'IC_NS_INT':          'NS.png',      // Majuscule selon image
+    // ── Italie ────────────────────────────────────────────────────────────
   'FRECCIAROSSA':      'frecciarossa.png',
   // ── Allemagne DB ────────────────────────────────────────────────────────────
   'ICE':               'ice.png',
