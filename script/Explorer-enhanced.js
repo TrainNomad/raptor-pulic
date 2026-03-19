@@ -9,57 +9,50 @@
    ════════════════════════════════════════════════════════════════════════════ */
 
 // ─── Slider durée max ─────────────────────────────────────────────────────────
-// Séparation UI (RAF = 60fps garanti) vs filtrage lourd (debounce 80ms)
-let _durRafId    = null;   // animation frame en attente
-let _durDebTimer = null;   // timer debounce pour refreshView
-
-function _updateDurUI() {
-  // Appelé dans un requestAnimationFrame : uniquement visuel, jamais de calcul lourd
+function updateDurSlider() {
   const slider = document.getElementById('dur-slider');
   const mask   = document.getElementById('dur-mask');
   const thumb  = document.getElementById('dur-thumb');
   const valEl  = document.getElementById('dur-val');
   if (!slider) return;
   const val = parseInt(slider.value), min = parseInt(slider.min), max = parseInt(slider.max);
-  const rPct = 100 - ((val - min) / (max - min)) * 100;
-  if (mask)  mask.style.width  = rPct + '%';
+  const pct = ((val - min) / (max - min)) * 100, rPct = 100 - pct;
+  if (mask)  mask.style.width = rPct + '%';
   if (thumb) { thumb.style.right = rPct + '%'; thumb.style.transform = 'translate(50%,-50%)'; }
-  if (valEl) {
-    if (val >= max) { valEl.textContent = 'Toutes'; }
-    else {
-      const h = Math.floor(val/60), m = val%60;
-      valEl.textContent = h + 'h' + (m > 0 ? String(m).padStart(2,'0') : '');
-    }
+  if (val >= max) { if (valEl) valEl.textContent = 'Toutes'; maxDurationMin = 9999; }
+  else {
+    const h = Math.floor(val/60), m = val%60;
+    if (valEl) valEl.textContent = h + 'h' + (m > 0 ? String(m).padStart(2,'0') : '');
+    maxDurationMin = val;
   }
-  _durRafId = null;
+  // Pendant le glissement : carte seule (GPU), pas de reconstruction DOM liste
+  if (allDestinations.length) refreshMapOnly();
 }
 
-function updateDurSlider() {
-  const slider = document.getElementById('dur-slider');
-  if (!slider) return;
-  const val = parseInt(slider.value), max = parseInt(slider.max);
-
-  // 1) Mise à jour visuelle au prochain frame (jamais de doublon)
-  if (_durRafId) cancelAnimationFrame(_durRafId);
-  _durRafId = requestAnimationFrame(_updateDurUI);
-
-  // 2) Mettre à jour la variable d'état immédiatement (pas besoin d'attendre)
-  maxDurationMin = (val >= max) ? 9999 : val;
-
-  // 3) Filtrage carte + liste : debounce 80ms pour ne déclencher qu'une fois
-  //    après que l'utilisateur s'arrête de glisser
-  if (allDestinations.length) {
-    clearTimeout(_durDebTimer);
-    _durDebTimer = setTimeout(refreshView, 80);
-  }
+// Filtre + points carte uniquement — pas de renderList
+function refreshMapOnly() {
+  lastResults = allDestinations.filter(d => {
+    if (currentFilter==='direct' && d.journeys[0]?.transfers!==0) return false;
+    if (currentFilter!=='all'&&currentFilter!=='direct') {
+      const types = d.journeys[0]?.train_types||[];
+      if (!types.some(t=>t?.toUpperCase().includes(currentFilter.toUpperCase()))) return false;
+    }
+    const dur = d.journeys[0]?.duration||0;
+    if (maxDurationMin<9999&&dur>maxDurationMin) return false;
+    return true;
+  });
+  document.getElementById('results-count').textContent = lastResults.length;
+  invalidateClusterCache(); // les données filtrées ont changé
+  renderPoints();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const s = document.getElementById('dur-slider');
   if (s) {
     s.addEventListener('input', updateDurSlider);
-    // Init visuelle au chargement (sans debounce, aucune donnée encore)
-    requestAnimationFrame(_updateDurUI);
+    // Liste reconstruite une seule fois au relâchement
+    s.addEventListener('change', () => { if (allDestinations.length) renderList(lastResults); });
+    updateDurSlider();
   }
 });
 
@@ -142,22 +135,43 @@ function popularityLevel(score) {
   if (score>=150) return 3; if (score>=100) return 2; if (score>=60) return 1; return 0;
 }
 
+// ─── Index O(1) pour destIndex ────────────────────────────────────────────────
+// Remplace allDestinations.indexOf(dest) qui est O(n) → O(n²) sur 4000 points
+let destIndexMap = new Map(); // dest object → index dans allDestinations
+
+function rebuildDestIndex() {
+  destIndexMap = new Map();
+  allDestinations.forEach((d, i) => destIndexMap.set(d, i));
+}
+
 // ─── Quadtree clustering ──────────────────────────────────────────────────────
 function getCellSize(zoom) {
   if (zoom<=4) return 3; if (zoom<=5) return 1.5; if (zoom<=6) return 0.8;
   if (zoom<=7) return 0.4; if (zoom<=8) return 0.2; return 0.1;
 }
 
+// Cache cluster : invalider uniquement si zoom ou données changent
+let _clusterCache = null; // { zoom, inputLen, result }
+
 function clusterDestinations(destinations) {
-  const zoom = map.getZoom(), cell = getCellSize(zoom);
+  const zoom = Math.round(map.getZoom() * 2) / 2; // quantifier au 0.5 près
+  const cell = getCellSize(zoom);
+  // Cache valide si même zoom quantifié et même nombre de destinations
+  if (_clusterCache && _clusterCache.zoom === zoom && _clusterCache.inputLen === destinations.length) {
+    return _clusterCache.result;
+  }
   const grid = new Map();
   for (const dest of destinations) {
     const key = `${Math.floor(dest.lon/cell)}:${Math.floor(dest.lat/cell)}`;
     const ex = grid.get(key);
     if (!ex || dest.score > ex.score) grid.set(key, dest);
   }
-  return [...grid.values()];
+  const result = [...grid.values()];
+  _clusterCache = { zoom, inputLen: destinations.length, result };
+  return result;
 }
+
+function invalidateClusterCache() { _clusterCache = null; }
 
 // ─── Convertir destinations → GeoJSON ────────────────────────────────────────
 function toGeoJSON(destinations) {
@@ -180,7 +194,7 @@ function toGeoJSON(destinations) {
           arr: j?.arr_str || '--:--',
           trainType: (j?.train_types||[])[0] || '',
           trainCount: dest.journeys.length,
-          destIndex: allDestinations.indexOf(dest),
+          destIndex: destIndexMap.get(dest) ?? 0, // O(1) au lieu de O(n)
         }
       };
     })
@@ -397,8 +411,8 @@ function renderPoints() {
 }
 
 // Recalculer à chaque fin de mouvement (le clustering change avec le zoom)
-map.on('moveend', () => { if (lastResults.length && displayMode === 'smart') renderPoints(); });
-map.on('zoomend', () => { if (lastResults.length) renderPoints(); });
+map.on('moveend', () => { invalidateClusterCache(); if (lastResults.length && displayMode === 'smart') renderPoints(); });
+map.on('zoomend', () => { invalidateClusterCache(); if (lastResults.length) renderPoints(); });
 
 // ─── Toggle mode ──────────────────────────────────────────────────────────────
 function setDisplayMode(mode) {
@@ -498,6 +512,8 @@ function buildDestinations(journeys) {
     .filter(d => d.lat && d.lon)
     .map(d => ({ ...d, score: scoreDestination(d) }))
     .sort((a,b) => b.score - a.score);
+  rebuildDestIndex();    // index O(1) pour toGeoJSON
+  invalidateClusterCache(); // reset cache cluster
 
   document.getElementById('map-hint').classList.add('hidden');
   document.getElementById('filters-bar').classList.add('visible');
