@@ -31,6 +31,7 @@ function formatDate(iso) {
 }
 
 // ─── Logos / styles types de train ────────────────────────────────────────────
+// ─── Badges types de train ────────────────────────────────────────────────────
 const TRAIN_TYPE_STYLES = {
   'INOUI':           { bg: '#c8962e', label: 'TGV Inoui' },
   'OUIGO':           { bg: '#e80082', label: 'Ouigo GV' },
@@ -42,8 +43,44 @@ const TRAIN_TYPE_STYLES = {
   'LYRIA':           { bg: '#d4001a', label: 'Lyria' },
   'TRAMTRAIN':       { bg: '#5a7a3a', label: 'TramTrain' },
   'NAVETTE':         { bg: '#7a6a5a', label: 'Navette' },
-  'ICE':             { bg: '#d40000', label: 'ICE' },
-  'EUROSTAR':        { bg: '#00435a', label: 'Eurostar' },
+  'NIGHTJET':          { bg: '#1a1a2e', label: 'Nightjet' },
+  'EUROPEAN_SLEEPER':  { bg: '#1c3a5e', label: 'European Sleeper' },
+  'ICE':               { bg: '#d40000', label: 'ICE' },
+  'EUROSTAR':          { bg: '#00435a', label: 'Eurostar' },
+  'EC':                { bg: '#003d6e', label: 'EuroCity' },
+  'IC_DB':             { bg: '#d40000', label: 'IC DB' },
+  'FLIXTRAIN':         { bg: '#00c060', label: 'Flixtrain' },
+  'TRAIN_DB':          { bg: '#d40000', label: 'DB' },
+  'IC_SNCB':           { bg: '#003466', label: 'IC SNCB' },
+  // ── Partenaires DB Fernverkehr (agences du feed gtfs.de) ──────────────────
+  'RJ':                { bg: '#d40000', label: 'Railjet' },       // ÖBB / SBB
+  'EN':                { bg: '#1a1a2e', label: 'EuroNight' },     // trains de nuit
+  'IC_DSB':            { bg: '#c8001e', label: 'IC DSB' },        // Danemark
+  'IC_NS':             { bg: '#003082', label: 'IC NS' },         // Pays-Bas
+  'IC_PKP':            { bg: '#c8001e', label: 'IC PKP' },        // Pologne
+  'IC_CD':             { bg: '#003466', label: 'IC ČD' },         // Tchéquie
+  'IC_ZSSK':           { bg: '#003466', label: 'IC ZSSK' },       // Slovaquie
+  'IC_MAV':            { bg: '#c8001e', label: 'IC MÁV' },        // Hongrie
+  'THALYS_CORRIDOR':   { bg: '#003466', label: 'Thalys' },
+  'ALFA_PENDULAR':     { bg: '#c8001e', label: 'Alfa Pendular' },
+  'IC_CP':             { bg: '#005b99', label: 'Intercidades' },
+  'IR_CP':             { bg: '#1e6e3d', label: 'Inter-regional' },
+  'CP':                { bg: '#005b99', label: 'CP' },
+  'AVANTI':            { bg: '#541f6b', label: 'Avanti' },
+  'LNER':              { bg: '#d40000', label: 'LNER' },
+  'CROSSCOUNTRY':      { bg: '#8b0000', label: 'CrossCountry' },
+  'GWR':               { bg: '#0a4f2e', label: 'GWR' },
+  'EMR':               { bg: '#6b1a8a', label: 'EMR' },
+  'SWR':               { bg: '#003087', label: 'SWR' },
+  'TRANSPENNINE':      { bg: '#003087', label: 'TransPennine' },
+  'CALEDONIAN_SLEEPER':{ bg: '#1a2744', label: 'Caledonian Sleeper' },
+  'LUMO':              { bg: '#5b2d8e', label: 'Lumo' },
+  'GRAND_CENTRAL':     { bg: '#f5a623', label: 'Grand Central' },
+  'HULL_TRAINS':       { bg: '#003087', label: 'Hull Trains' },
+  'SCOTRAIL':          { bg: '#003087', label: 'ScotRail' },
+  'NORTHERN':          { bg: '#003087', label: 'Northern' },
+  'TRANSPORT_WALES':   { bg: '#c8001e', label: 'TfW' },
+  'UK_RAIL':           { bg: '#1c3d6e', label: 'UK Rail' },
   'FRECCIAROSSA':    { bg: '#c60018', label: 'Frecciarossa' },
   'AVE':             { bg: '#8b1a4a', label: 'AVE' },
   'AVE_INT':         { bg: '#6b1238', label: 'AVE Int.' },
@@ -70,20 +107,28 @@ const TRAIN_TYPE_LOGO = {
   'IC':                'intercites.png',
   'IC_NUIT':           'intercites.png',
   'LYRIA':             'lyria.png',
-  'ICE':               'ice.png',
   'TRAIN':             'tgv_inoui.png', // Remplacement du .svg par .png
   'IC_SNCB':           'SNCB.png',      // Majuscule selon image
-  'NIGHTJET':          'nightjet.png',
-  'EC':                'eurocity.png',
   'THALYS_CORRIDOR':   'eurostar.png',
-  'IC_DB':             'ice.png',       // Utilisation de ice.png faute de db.png
   'FRECCIAROSSA':      'frecciarossa.png',
+  // ── Allemagne DB ────────────────────────────────────────────────────────────
+  'ICE':               'ice.png',
+  'IC_DB':             'ice.png',
+  'EC':                'eurocity.png',
+  'NIGHTJET':          'nightjet.png',
+  'EUROPEAN_SLEEPER':  'european_sleeper.png',
+  'FLIXTRAIN':         'Flixtrain.png',
+  'TRAIN_DB':          'ice.png',
+  // ── Partenaires DB Fernverkehr ───────────────────────────────────────────────
+  'RJ':                'ice.png',          // Railjet ÖBB/SBB (fallback ICE visuel)
+  'EN':                'nightjet.png',     // EuroNight
 
   // --- ROYAUME-UNI (UK) ---
   'AVANTI':            'avanti.png',
   'LNER':              'LNER.png',
   'CALEDONIAN_SLEEPER': 'CaledonianSleeper.png',
   'CROSSCOUNTRY':      'crosscountry.png',
+  'TPE':               'TransPennineExpress.png',  // alias legacy
   'TRANSPENNINE':      'TransPennineExpress.png',
   'EMR':               'East_Midlands_Railway.png',
   'GWR':               'Great_Western_Railway.png',
@@ -93,6 +138,7 @@ const TRAIN_TYPE_LOGO = {
   'LUMO':              'Lumo.png',
   'SCOTRAIL':          'scotrail.png',
   'NORTHERN':          'northern.png',
+  'TFW':               'transport_for_wales.png',  // alias legacy
   'TRANSPORT_WALES':   'transport_for_wales.png',
 
   // --- ESPAGNE (RENFE) ---
@@ -115,9 +161,11 @@ const TRAIN_TYPE_LOGO = {
   'IR_CP':             'Comboios-de-Portugal.png',
   'CP':                'Comboios-de-Portugal.png',
   
-  // --- ITALIE ---
-  'TRENITALIA':        'trenitalia.png'
-};
+  // ── Fallbacks ────────────────────────────────────────────────────────────────
+  'UK_RAIL':           'uk-rail.png',
+  'TRENITALIA':        'frecciarossa.png',  // alias legacy
+
+}
 
 function trainTypeBadge(trainType) {
   const s    = TRAIN_TYPE_STYLES[trainType] || TRAIN_TYPE_STYLES['TRAIN'];

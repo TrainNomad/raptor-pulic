@@ -597,6 +597,7 @@ const TRAIN_TYPE_STYLES = {
   'TRAMTRAIN':       { bg: '#5a7a3a', label: 'TramTrain' },
   'NAVETTE':         { bg: '#7a6a5a', label: 'Navette' },
   'NIGHTJET':          { bg: '#1a1a2e', label: 'Nightjet' },
+  'EUROPEAN_SLEEPER':  { bg: '#1c3a5e', label: 'European Sleeper' },
   'ICE':               { bg: '#d40000', label: 'ICE' },
   'EUROSTAR':          { bg: '#00435a', label: 'Eurostar' },
   'EC':                { bg: '#003d6e', label: 'EuroCity' },
@@ -668,6 +669,7 @@ const TRAIN_TYPE_LOGO = {
   'IC_DB':             'ice.png',
   'EC':                'eurocity.png',
   'NIGHTJET':          'nightjet.png',
+  'EUROPEAN_SLEEPER':  'european_sleeper.png',
   'FLIXTRAIN':         'Flixtrain.png',
   'TRAIN_DB':          'ice.png',
   // ── Partenaires DB Fernverkehr ───────────────────────────────────────────────
@@ -790,7 +792,7 @@ function renderTarifBlock(tarif) {
 // ─── Multi-select type de train ───────────────────────────────────────────────
 const TYPE_ORDER = [
   'INOUI','OUIGO','OUIGO_CLASSIQUE','IC','IC_NUIT','TER','CAR','TRAMTRAIN','NAVETTE','LYRIA',
-  'ICE','EUROSTAR','FRECCIAROSSA',
+  'ICE','EUROSTAR','FRECCIAROSSA','NIGHTJET','EUROPEAN_SLEEPER',
   'AVE','AVE_INT','AVLO','OUIGO_ES','ALVIA','AVANT','EUROMED','INTERCITY_ES','MD','REGIONAL_ES','REG_EXP','RENFE',
   'TRAIN',
 ];
