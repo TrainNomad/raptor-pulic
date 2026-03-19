@@ -42,7 +42,7 @@ function refreshMapOnly() {
     return true;
   });
   document.getElementById('results-count').textContent = lastResults.length;
-  invalidateClusterCache(); // les données filtrées ont changé
+  invalidateClusterCache();
   renderPoints();
 }
 
@@ -137,7 +137,7 @@ function popularityLevel(score) {
 
 // ─── Index O(1) pour destIndex ────────────────────────────────────────────────
 // Remplace allDestinations.indexOf(dest) qui est O(n) → O(n²) sur 4000 points
-let destIndexMap = new Map(); // dest object → index dans allDestinations
+let destIndexMap = new Map();
 
 function rebuildDestIndex() {
   destIndexMap = new Map();
@@ -150,13 +150,12 @@ function getCellSize(zoom) {
   if (zoom<=7) return 0.4; if (zoom<=8) return 0.2; return 0.1;
 }
 
-// Cache cluster : invalider uniquement si zoom ou données changent
+// Cache cluster : invalider si zoom ou données changent
 let _clusterCache = null; // { zoom, inputLen, result }
 
 function clusterDestinations(destinations) {
-  const zoom = Math.round(map.getZoom() * 2) / 2; // quantifier au 0.5 près
+  const zoom = Math.round(map.getZoom() * 2) / 2;
   const cell = getCellSize(zoom);
-  // Cache valide si même zoom quantifié et même nombre de destinations
   if (_clusterCache && _clusterCache.zoom === zoom && _clusterCache.inputLen === destinations.length) {
     return _clusterCache.result;
   }
@@ -512,11 +511,13 @@ function buildDestinations(journeys) {
     .filter(d => d.lat && d.lon)
     .map(d => ({ ...d, score: scoreDestination(d) }))
     .sort((a,b) => b.score - a.score);
-  rebuildDestIndex();    // index O(1) pour toGeoJSON
-  invalidateClusterCache(); // reset cache cluster
+  rebuildDestIndex();
+  invalidateClusterCache();
 
   document.getElementById('map-hint').classList.add('hidden');
   document.getElementById('filters-bar').classList.add('visible');
+  document.getElementById('display-toggle').classList.add('visible');
+  document.getElementById('duration-legend').classList.add('visible');
   document.getElementById('results-count-label').textContent = 'Destinations trouvées :';
 
   // Placer le marqueur d'origine + flyTo
@@ -740,6 +741,8 @@ function clearMap() {
   document.getElementById('results-count').textContent = '';
   document.getElementById('results-count-label').textContent = 'Lancez une recherche';
   document.getElementById('filters-bar').classList.remove('visible');
+  document.getElementById('display-toggle').classList.remove('visible');
+  document.getElementById('duration-legend').classList.remove('visible');
   maxDurationMin = 9999;
   const sl = document.getElementById('dur-slider');
   if (sl) { sl.value = sl.max; updateDurSlider(); }
@@ -878,16 +881,19 @@ map.on('load', () => {
 let mobileMapVisible=false;
 function toggleMapMobile(){
   const panel=document.getElementById('side-panel'),mapCont=document.getElementById('map-container');
+  const main=document.getElementById('explorer-main');
   const icon=document.getElementById('mobile-view-icon'),label=document.getElementById('mobile-view-label');
   const closeBtn=document.getElementById('mobile-close-map');
   mobileMapVisible=!mobileMapVisible;
   if(mobileMapVisible){
     panel.classList.add('collapsed');mapCont.classList.add('map-open');
+    main.classList.add('map-visible');
     if(closeBtn)closeBtn.classList.add('visible');
     icon.textContent='list';label.textContent='Voir les destinations';
     setTimeout(()=>map.resize(),50);
   }else{
     panel.classList.remove('collapsed');mapCont.classList.remove('map-open');
+    main.classList.remove('map-visible');
     if(closeBtn)closeBtn.classList.remove('visible');
     icon.textContent='map';label.textContent='Voir la carte';
   }

@@ -152,6 +152,37 @@
             <button class="filter-chip" data-filter="LYRIA">Lyria</button>
         </div>
 
+        <!-- Toggle Tout / Pertinent -->
+        <div id="display-toggle">
+            <button class="dtoggle-btn active" id="btn-smart" onclick="setDisplayMode('smart')">
+                <i class="fa-solid fa-star fa-xs"></i> Pertinent
+            </button>
+            <button class="dtoggle-btn" id="btn-all" onclick="setDisplayMode('all')">
+                <i class="fa-solid fa-circle-dot fa-xs"></i> Tout
+            </button>
+        </div>
+
+        <!-- Durée du trajet (slider) -->
+        <div id="duration-legend">
+            <div class="legend-header">
+                <span class="legend-title">Durée du trajet</span>
+                <span class="legend-cur-val" id="dur-val">Toutes</span>
+            </div>
+            <div class="legend-gradient-track">
+                <div class="legend-gradient"></div>
+                <div class="legend-mask" id="dur-mask"></div>
+                <div class="legend-slider-thumb" id="dur-thumb"></div>
+                <input type="range" id="dur-slider" min="30" max="900" step="15" value="900" class="legend-slider-range"/>
+            </div>
+            <div class="legend-labels">
+                <span>0h</span>
+                <span>3h</span>
+                <span>6h</span>
+                <span>9h</span>
+                <span>12h+</span>
+            </div>
+        </div>
+
         <!-- Liste -->
         <div id="results-list"></div>
     </div>
@@ -187,41 +218,9 @@
         <span id="mobile-view-label">Voir la carte</span>
     </button>
 
-    <!-- Toggle Tout / Pertinent -->
-    <div id="display-toggle">
-        <button class="dtoggle-btn active" id="btn-smart" onclick="setDisplayMode('smart')">
-            <i class="fa-solid fa-star fa-xs"></i> Pertinent
-        </button>
-        <button class="dtoggle-btn" id="btn-all" onclick="setDisplayMode('all')">
-            <i class="fa-solid fa-circle-dot fa-xs"></i> Tout
-        </button>
-    </div>
 
-    <!-- Légende durée + slider fusionnés -->
-    <div id="duration-legend">
-        <div class="legend-header">
-            <span class="legend-title">Durée du trajet</span>
-            <span class="legend-cur-val" id="dur-val">Toutes</span>
-        </div>
 
-        <!-- Barre de couleur = la piste du slider -->
-        <div class="legend-gradient-track">
-            <div class="legend-gradient"></div>
-            <!-- Masque grisé à droite du curseur -->
-            <div class="legend-mask" id="dur-mask"></div>
-            <!-- Thumb -->
-            <div class="legend-slider-thumb" id="dur-thumb"></div>
-            <input type="range" id="dur-slider" min="30" max="900" step="15" value="900" class="legend-slider-range"/>
-        </div>
 
-        <div class="legend-labels">
-            <span>0h</span>
-            <span>3h</span>
-            <span>6h</span>
-            <span>9h</span>
-            <span>12h+</span>
-        </div>
-    </div>
 
 </div>
 

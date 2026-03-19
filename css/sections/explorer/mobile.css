@@ -149,8 +149,7 @@
   #filters-bar::-webkit-scrollbar { display: none; }
   .filter-chip { flex-shrink: 0; }
 
-  /* ── Légende masquée ── */
-  #duration-legend { display: none; }
+  /* ── Légende durée : dans le side-panel, toujours visible ── */
 
   /* ── Footer visible ── */
   footer {
