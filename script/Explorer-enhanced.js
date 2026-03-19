@@ -9,27 +9,58 @@
    ════════════════════════════════════════════════════════════════════════════ */
 
 // ─── Slider durée max ─────────────────────────────────────────────────────────
-function updateDurSlider() {
+// Séparation UI (RAF = 60fps garanti) vs filtrage lourd (debounce 80ms)
+let _durRafId    = null;   // animation frame en attente
+let _durDebTimer = null;   // timer debounce pour refreshView
+
+function _updateDurUI() {
+  // Appelé dans un requestAnimationFrame : uniquement visuel, jamais de calcul lourd
   const slider = document.getElementById('dur-slider');
   const mask   = document.getElementById('dur-mask');
   const thumb  = document.getElementById('dur-thumb');
   const valEl  = document.getElementById('dur-val');
   if (!slider) return;
   const val = parseInt(slider.value), min = parseInt(slider.min), max = parseInt(slider.max);
-  const pct = ((val - min) / (max - min)) * 100, rPct = 100 - pct;
-  if (mask)  mask.style.width = rPct + '%';
+  const rPct = 100 - ((val - min) / (max - min)) * 100;
+  if (mask)  mask.style.width  = rPct + '%';
   if (thumb) { thumb.style.right = rPct + '%'; thumb.style.transform = 'translate(50%,-50%)'; }
-  if (val >= max) { if (valEl) valEl.textContent = 'Toutes'; maxDurationMin = 9999; }
-  else {
-    const h = Math.floor(val/60), m = val%60;
-    if (valEl) valEl.textContent = h + 'h' + (m > 0 ? String(m).padStart(2,'0') : '');
-    maxDurationMin = val;
+  if (valEl) {
+    if (val >= max) { valEl.textContent = 'Toutes'; }
+    else {
+      const h = Math.floor(val/60), m = val%60;
+      valEl.textContent = h + 'h' + (m > 0 ? String(m).padStart(2,'0') : '');
+    }
   }
-  if (allDestinations.length) refreshView();
+  _durRafId = null;
 }
+
+function updateDurSlider() {
+  const slider = document.getElementById('dur-slider');
+  if (!slider) return;
+  const val = parseInt(slider.value), max = parseInt(slider.max);
+
+  // 1) Mise à jour visuelle au prochain frame (jamais de doublon)
+  if (_durRafId) cancelAnimationFrame(_durRafId);
+  _durRafId = requestAnimationFrame(_updateDurUI);
+
+  // 2) Mettre à jour la variable d'état immédiatement (pas besoin d'attendre)
+  maxDurationMin = (val >= max) ? 9999 : val;
+
+  // 3) Filtrage carte + liste : debounce 80ms pour ne déclencher qu'une fois
+  //    après que l'utilisateur s'arrête de glisser
+  if (allDestinations.length) {
+    clearTimeout(_durDebTimer);
+    _durDebTimer = setTimeout(refreshView, 80);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const s = document.getElementById('dur-slider');
-  if (s) { s.addEventListener('input', updateDurSlider); updateDurSlider(); }
+  if (s) {
+    s.addEventListener('input', updateDurSlider);
+    // Init visuelle au chargement (sans debounce, aucune donnée encore)
+    requestAnimationFrame(_updateDurUI);
+  }
 });
 
 // ─── MapLibre GL JS ───────────────────────────────────────────────────────────
