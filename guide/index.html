@@ -239,11 +239,11 @@
 <div class="bg-white border-b border-slate-100 py-5 px-6">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-8 md:gap-16">
         <div class="flex items-center gap-3">
-            <span class="text-2xl font-extrabold" style="color:#1A2B3C" id="stat-guides">24</span>
+            <span class="text-2xl font-extrabold" style="color:#1A2B3C" id="stat-guides">16</span>
             <span class="text-sm font-semibold text-slate-400">guides disponibles</span>
         </div>
         <div class="flex items-center gap-3">
-            <span class="text-2xl font-extrabold" style="color:#4ade80">12</span>
+            <span class="text-2xl font-extrabold" style="color:#4ade80">7</span>
             <span class="text-sm font-semibold text-slate-400">pays couverts</span>
         </div>
         <div class="flex items-center gap-3">
@@ -262,6 +262,7 @@
         <button class="filter-pill" data-filter="nuit" onclick="setFilter(this)">🌙 Train de nuit</button>
         <button class="filter-pill" data-filter="italie" onclick="setFilter(this)">🇮🇹 Italie</button>
         <button class="filter-pill" data-filter="espagne" onclick="setFilter(this)">🇪🇸 Espagne</button>
+        <button class="filter-pill" data-filter="portugal" onclick="setFilter(this)">🇵🇹 Portugal</button>
         <button class="filter-pill" data-filter="allemagne" onclick="setFilter(this)">🇩🇪 Allemagne</button>
         <button class="filter-pill" data-filter="suisse" onclick="setFilter(this)">🇨🇭 Suisse</button>
     </div>
@@ -278,29 +279,29 @@
                 À la une
             </h2>
         </div>
-        <a href="milan.html" class="guide-card guide-card-featured" data-tags="direct,italie,frecciarossa">
+        <a href="guide.html?ville=lisbonne" class="guide-card guide-card-featured" data-tags="nuit,portugal">
             <div class="guide-card-img">
-                <img src="../assets/guides/milan-hero.jpg" alt="Milan"
+                <img src="../assets/guides/lisbonne-hero.jpg" alt="Lisbonne"
                      onerror="this.style.display='none';this.parentElement.querySelector('.guide-card-img-placeholder').style.display='flex'"/>
-                <div class="guide-card-img-placeholder" style="display:none;background:linear-gradient(135deg,#1A2B3C,#2d4a63)">🏛️</div>
+                <div class="guide-card-img-placeholder" style="display:none;background:linear-gradient(135deg,#1A2B3C,#2d4a63)">🛤️</div>
                 <div class="guide-card-badges">
-                    <span class="badge badge-direct">Train direct</span>
-                    <span class="badge badge-default">Frecciarossa</span>
+                    <span class="badge badge-nuit">Train de nuit</span>
+                    <span class="badge badge-default">TGV + Lusitânia</span>
                 </div>
                 <div class="guide-card-travel">
                     <span class="material-symbols-outlined text-sm" style="color:#4ade80">schedule</span>
-                    3h 45min
+                    ~20h
                 </div>
             </div>
             <div class="guide-card-body">
-                <div class="guide-card-meta">Italie · Milan</div>
-                <div class="guide-card-title">La capitale du style, à 3h de Paris</div>
-                <div class="guide-card-excerpt">Duomo, Navigli, Brera — un guide complet pour trois jours à Milan sans se noyer dans les boutiques.</div>
+                <div class="guide-card-meta">Portugal · Lisbonne</div>
+                <div class="guide-card-title">Fado, Alfama et pastéis de nata au bout du rail</div>
+                <div class="guide-card-excerpt">La capitale européenne la plus attachante, accessible en train de nuit via Madrid. Tram 28, miradouros et sardines grillées — un guide complet pour 3 jours à Lisbonne.</div>
                 <div class="guide-card-footer">
                     <span class="guide-card-link">
                         Lire le guide <span class="material-symbols-outlined text-base">arrow_forward</span>
                     </span>
-                    <span class="text-xs font-semibold text-slate-400">3 jours · 49€ depuis Paris</span>
+                    <span class="text-xs font-semibold text-slate-400">3 jours · dès 120€ depuis Paris</span>
                 </div>
             </div>
         </a>
@@ -387,85 +388,22 @@
 </footer>
 
 <script>
-// ── Données des guides (à alimenter depuis votre CMS / JSON) ──────────────────
+// ── Données des guides ────────────────────────────────────────────────────────
 const GUIDES_DATA = [
+
+    // ── EUROPE CENTRALE ───────────────────────────────────────────────────────
     {
         id: 'barcelone',
         city: 'Barcelone',
         country: 'Espagne',
-        excerpt: '2 jours à Barcelone',
+        excerpt: '3 jours à Barcelone',
         tagline: 'Gaudí, tapas et soleil catalan',
-        cover: null,
+        cover: 'barcelone-cover.jpg',
         emoji: '🏖️',
-        duration: '6h 30min',
-        price: '39€',
-        tags: ['direct', 'espagne'],
-        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'AVE', cls: 'badge-default' }],
-    },
-    {
-        id: 'zurich',
-        city: 'Zurich',
-        country: 'Suisse',
-        excerpt: '2 jours à Zurich',
-        tagline: 'Lac, montagne et chocolat',
-        cover: null,
-        emoji: '🏔️',
-        duration: '4h',
-        price: '59€',
-        tags: ['direct', 'suisse'],
-        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'Lyria', cls: 'badge-default' }],
-    },
-    {
-        id: 'bruxelles',
-        city: 'Bruxelles',
-        country: 'Belgique',
-        excerpt: '1 jour à Bruxelles',
-        tagline: 'Bières, BD et Grand-Place',
-        cover: null,
-        emoji: '🍺',
-        duration: '1h 22min',
-        price: '29€',
-        tags: ['direct', 'budget'],
-        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'Budget', cls: 'badge-budget' }],
-    },
-    {
-        id: 'amsterdam',
-        city: 'Amsterdam',
-        country: 'Pays-Bas',
-        excerpt: '3 jours à Amsterdam',
-        tagline: 'Canaux, musées et vélos',
-        cover: null,
-        emoji: '🚲',
-        duration: '3h 30min',
-        price: '49€',
-        tags: ['direct'],
-        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'Thalys', cls: 'badge-default' }],
-    },
-    {
-        id: 'berlin',
-        city: 'Berlin',
-        country: 'Allemagne',
-        excerpt: '4 jours à Berlin',
-        tagline: 'Histoire, street art et culture',
-        cover: null,
-        emoji: '🎨',
-        duration: '8h',
+        duration: '6h 50min',
         price: '79€',
-        tags: ['nuit', 'allemagne'],
-        badges: [{ label: 'Train de nuit', cls: 'badge-nuit' }, { label: 'Nightjet', cls: 'badge-default' }],
-    },
-    {
-        id: 'venise',
-        city: 'Venise',
-        country: 'Italie',
-        excerpt: '2 jours à Venise',
-        tagline: 'La sérénissime sans les foules',
-        cover: null,
-        emoji: '🚤',
-        duration: '4h 45min',
-        price: '49€',
-        tags: ['direct', 'italie'],
-        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'Frecciarossa', cls: 'badge-default' }],
+        tags: ['direct', 'espagne'],
+        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'TGV / AVE', cls: 'badge-default' }],
     },
     {
         id: 'madrid',
@@ -473,25 +411,178 @@ const GUIDES_DATA = [
         country: 'Espagne',
         excerpt: '3 jours à Madrid',
         tagline: 'Prado, tapas et nuits infinies',
-        cover: null,
+        cover: 'madrid-cover.jpg',
         emoji: '🎭',
-        duration: '9h 30min',
-        price: '59€',
-        tags: ['nuit', 'espagne'],
-        badges: [{ label: 'Train de nuit', cls: 'badge-nuit' }, { label: 'Trenhotel', cls: 'badge-default' }],
+        duration: '~9h30',
+        price: '99€',
+        tags: ['espagne'],
+        badges: [{ label: '1 correspondance', cls: 'badge-budget' }, { label: 'TGV + AVE', cls: 'badge-default' }],
+    },
+    {
+        id: 'seville',
+        city: 'Séville',
+        country: 'Espagne',
+        excerpt: '3 jours à Séville',
+        tagline: 'Flamenco, orangers et art mudéjar',
+        cover: 'seville-cover.jpg',
+        emoji: '💃',
+        duration: '~13h',
+        price: '109€',
+        tags: ['espagne'],
+        badges: [{ label: '2 correspondances', cls: 'badge-budget' }, { label: 'TGV + AVE', cls: 'badge-default' }],
+    },
+    {
+        id: 'valence',
+        city: 'Valence',
+        country: 'Espagne',
+        excerpt: '2 jours à Valence',
+        tagline: 'Paella, modernisme et mer Méditerranée',
+        cover: 'valence-cover.jpg',
+        emoji: '🥘',
+        duration: '~8h30',
+        price: '89€',
+        tags: ['espagne'],
+        badges: [{ label: '1 correspondance', cls: 'badge-budget' }, { label: 'TGV + AVE', cls: 'badge-default' }],
+    },
+    {
+        id: 'grenade',
+        city: 'Grenade',
+        country: 'Espagne',
+        excerpt: '2 jours à Grenade',
+        tagline: "L'Alhambra, les tapas gratuites et l'Andalousie profonde",
+        cover: 'grenade-cover.jpg',
+        emoji: '🏰',
+        duration: '~14h',
+        price: '109€',
+        tags: ['espagne'],
+        badges: [{ label: '2 correspondances', cls: 'badge-budget' }, { label: 'TGV + AVE + MD', cls: 'badge-default' }],
+    },
+
+    // ── PORTUGAL ──────────────────────────────────────────────────────────────
+    {
+        id: 'porto',
+        city: 'Porto',
+        country: 'Portugal',
+        excerpt: '2 jours à Porto',
+        tagline: 'Port, azulejos et Douro',
+        cover: 'porto-cover.jpg',
+        emoji: '🍷',
+        duration: '~18h',
+        price: '109€',
+        tags: ['nuit', 'portugal'],
+        badges: [{ label: 'Train de nuit', cls: 'badge-nuit' }, { label: 'TGV + Lusitânia + AP', cls: 'badge-default' }],
+    },
+    {
+        id: 'faro',
+        city: 'Faro',
+        country: 'Portugal',
+        excerpt: '2 jours à Faro',
+        tagline: "L'Algarve sauvage au bout des rails",
+        cover: 'faro-cover.jpg',
+        emoji: '🌊',
+        duration: '~22h',
+        price: '119€',
+        tags: ['nuit', 'portugal'],
+        badges: [{ label: 'Train de nuit', cls: 'badge-nuit' }, { label: 'TGV + Lusitânia + CP', cls: 'badge-default' }],
+    },
+
+    // ── ITALIE ────────────────────────────────────────────────────────────────
+    {
+        id: 'milan',
+        city: 'Milan',
+        country: 'Italie',
+        excerpt: '3 jours à Milan',
+        tagline: 'La capitale du style, à moins de 7h de Paris',
+        cover: 'milan-cover.jpg',
+        emoji: '🏛️',
+        duration: '~6h45',
+        price: '49€',
+        tags: ['direct', 'italie'],
+        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'TGV / Frecciarossa', cls: 'badge-default' }],
+    },
+    {
+        id: 'venise',
+        city: 'Venise',
+        country: 'Italie',
+        excerpt: '2 jours à Venise',
+        tagline: 'La Sérénissime sans les foules',
+        cover: 'venise-cover.jpg',
+        emoji: '🚤',
+        duration: '~9h30',
+        price: '78€',
+        tags: ['italie'],
+        badges: [{ label: '1 correspondance', cls: 'badge-budget' }, { label: 'TGV + Frecciarossa', cls: 'badge-default' }],
+    },
+
+    // ── SUISSE ────────────────────────────────────────────────────────────────
+    {
+        id: 'zurich',
+        city: 'Zurich',
+        country: 'Suisse',
+        excerpt: '2 jours à Zurich',
+        tagline: 'Lac, montagne et chocolat',
+        cover: 'zurich-cover.jpg',
+        emoji: '🏔️',
+        duration: '4h',
+        price: '29€',
+        tags: ['direct', 'suisse'],
+        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'TGV Lyria', cls: 'badge-default' }],
     },
     {
         id: 'geneve',
         city: 'Genève',
         country: 'Suisse',
         excerpt: '1 jour à Genève',
-        tagline: 'Jet d\'eau, ONU et horlogerie',
-        cover: null,
+        tagline: "Jet d'eau, ONU et horlogerie",
+        cover: 'geneve-cover.jpg',
         emoji: '⌚',
-        duration: '3h 05min',
-        price: '39€',
+        duration: '3h05',
+        price: '29€',
         tags: ['direct', 'suisse', 'budget'],
-        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'Budget', cls: 'badge-budget' }],
+        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'TGV Lyria', cls: 'badge-default' }],
+    },
+
+    // ── BELGIQUE & PAYS-BAS ───────────────────────────────────────────────────
+    {
+        id: 'bruxelles',
+        city: 'Bruxelles',
+        country: 'Belgique',
+        excerpt: '1 jour à Bruxelles',
+        tagline: 'Bières, BD et Grand-Place',
+        cover: 'bruxelles-cover.jpg',
+        emoji: '🍺',
+        duration: '1h22',
+        price: '29€',
+        tags: ['direct', 'budget'],
+        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'Eurostar', cls: 'badge-default' }],
+    },
+    {
+        id: 'amsterdam',
+        city: 'Amsterdam',
+        country: 'Pays-Bas',
+        excerpt: '3 jours à Amsterdam',
+        tagline: 'Canaux, musées et vélos',
+        cover: 'amsterdam-cover.jpg',
+        emoji: '🚲',
+        duration: '3h20',
+        price: '35€',
+        tags: ['direct'],
+        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'Eurostar', cls: 'badge-default' }],
+    },
+
+    // ── ALLEMAGNE ─────────────────────────────────────────────────────────────
+    {
+        id: 'berlin',
+        city: 'Berlin',
+        country: 'Allemagne',
+        excerpt: '4 jours à Berlin',
+        tagline: 'Histoire, street art et culture',
+        cover: 'berlin-cover.jpg',
+        emoji: '🎨',
+        duration: '~16h (nuit)',
+        price: '59€',
+        tags: ['nuit', 'allemagne'],
+        badges: [{ label: 'Train de nuit', cls: 'badge-nuit' }, { label: 'European Sleeper', cls: 'badge-default' }],
     },
     {
         id: 'munich',
@@ -499,25 +590,23 @@ const GUIDES_DATA = [
         country: 'Allemagne',
         excerpt: '3 jours à Munich',
         tagline: 'Bière, baroque et Alpes',
-        cover: null,
+        cover: 'munich-cover.jpg',
         emoji: '🍻',
-        duration: '5h 45min',
-        price: '69€',
-        tags: ['direct', 'allemagne'],
-        badges: [{ label: 'Train direct', cls: 'badge-direct' }, { label: 'ICE', cls: 'badge-default' }],
+        duration: '~5h48',
+        price: '59€',
+        tags: ['allemagne'],
+        badges: [{ label: '1 correspondance', cls: 'badge-budget' }, { label: 'TGV + ICE', cls: 'badge-default' }],
     },
 ];
 
 // ── Rendu des cartes ──────────────────────────────────────────────────────────
 function renderCard(g, delay) {
     const badgesHtml = g.badges.map(b => `<span class="badge ${b.cls}">${b.label}</span>`).join('');
-    const imgContent = g.cover
-        ? `<img src="../assets/guides/${g.cover}" alt="${g.city}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-        : '';
+    const imgContent = g.cover ? `<img src="../assets/guides/${g.cover}" alt="${g.city}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
     const placeholder = `<div class="guide-card-img-placeholder" style="display:${g.cover ? 'none' : 'flex'};background:linear-gradient(135deg,#1A2B3C,#2d4a63)">${g.emoji}</div>`;
 
     return `
-    <a href="${g.id}.html" class="guide-card fade-up" style="animation-delay:${delay}s" data-tags="${g.tags.join(',')}">
+    <a href="guide.html?ville=${g.id}" class="guide-card fade-up" style="animation-delay:${delay}s" data-tags="${g.tags.join(',')}">
         <div class="guide-card-img">
             ${imgContent}${placeholder}
             <div class="guide-card-badges">${badgesHtml}</div>
@@ -579,6 +668,9 @@ function applyFilters() {
         empty.classList.add('hidden');
         grid.innerHTML = filtered.map((g, i) => renderCard(g, i * 0.06)).join('');
     }
+
+    // Mettre à jour le compteur principal
+    document.getElementById('stat-guides').textContent = GUIDES_DATA.length;
 }
 
 // ── Menu mobile ───────────────────────────────────────────────────────────────

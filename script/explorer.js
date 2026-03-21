@@ -465,7 +465,9 @@ function formatDuration(m) { if(!m)return'--'; const h=Math.floor(m/60),mn=m%60;
 function setProgress(pct) { document.getElementById('progress-bar').style.width=pct+'%'; }
 
 // ─── Autocomplétion ───────────────────────────────────────────────────────────
-const API_BASE = 'https://raptor-backend-2vdj.onrender.com';
+// const API_BASE = 'https://raptor-backend-2vdj.onrender.com';
+const API = 'https://raptor-backend-00p1.onrender.com';
+
 let acTimers = {};
 
 const AC_COUNTRY_NAMES = {
