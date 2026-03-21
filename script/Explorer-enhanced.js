@@ -473,7 +473,7 @@ function syncHoverList() {}
 
 // ─── Fetch & build ────────────────────────────────────────────────────────────
 // const API_BASE = 'https://raptor-backend-2vdj.onrender.com';
-const API = 'https://raptor-backend-00p1.onrender.com';
+const API_BASE = 'https://raptor-backend-00p1.onrender.com';
 
 // Timer d'animation progressive
 let revealTimer = null;
