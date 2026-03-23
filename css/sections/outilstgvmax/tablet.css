@@ -81,6 +81,15 @@
   /* ── Sections padding ── */
   section { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
 
+  /* ── Coins arrondis (même style que mobile) ── */
+  .bg-white.rounded-4xl    { border-radius: 1.25rem !important; }
+  .hero-shadow             { border-radius: 1.25rem !important; }
+  .rounded-2xl             { border-radius: 1rem !important; }
+  .offer-card              { border-radius: 14px !important; }
+  .dest-card               { border-radius: 14px !important; }
+  .suggestions-container   { border-radius: 10px !important; }
+  #max-btn-search          { border-radius: 1rem !important; }
+
   /* ── Footer ── */
   footer .grid.grid-cols-1.md\:grid-cols-4 {
     grid-template-columns: 1fr 1fr !important;

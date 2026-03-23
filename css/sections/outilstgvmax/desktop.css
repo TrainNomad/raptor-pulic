@@ -17,6 +17,15 @@
 
   /* Booking card plus aéré */
   .bg-white.rounded-4xl { padding: 2.25rem !important; }
+
+  /* ── Coins arrondis (même style que mobile) ── */
+  .bg-white.rounded-4xl    { border-radius: 1.25rem !important; }
+  .hero-shadow             { border-radius: 1.25rem !important; }
+  .rounded-2xl             { border-radius: 1rem !important; }
+  .offer-card              { border-radius: 14px !important; }
+  .dest-card               { border-radius: 14px !important; }
+  .suggestions-container   { border-radius: 10px !important; }
+  #max-btn-search          { border-radius: 1rem !important; }
   .search-field { padding: 16px 20px; }
   .search-field input { font-size: 1.1rem; }
 

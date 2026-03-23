@@ -37,7 +37,9 @@ function toggleMapMobile() {
 // ═══════════════════════════════════════════════════════════
 //  CONFIG — pointe sur votre propre server.js, jamais SNCF
 // ═══════════════════════════════════════════════════════════
-const API_BASE = 'https://raptor-tgvmax-backend.onrender.com';
+// const API_BASE = 'https://raptor-tgvmax-backend.onrender.com';
+const API_BASE = 'https://tgvmax-engine.onrender.com';
+
 
 // State partagé entre les deux blocs <script>
 let explorerState = { from: null };

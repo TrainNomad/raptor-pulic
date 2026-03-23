@@ -18,6 +18,15 @@
   /* Booking card */
   .bg-white.rounded-4xl { padding: 1.75rem !important; }
 
+  /* ── Coins arrondis (même style que mobile) ── */
+  .bg-white.rounded-4xl    { border-radius: 1.25rem !important; }
+  .hero-shadow             { border-radius: 1.25rem !important; }
+  .rounded-2xl             { border-radius: 1rem !important; }
+  .offer-card              { border-radius: 14px !important; }
+  .dest-card               { border-radius: 14px !important; }
+  .suggestions-container   { border-radius: 10px !important; }
+  #max-btn-search          { border-radius: 1rem !important; }
+
   /* ── Tableau comparatif ── */
   .max-w-5xl { max-width: 900px; }
   .grid.grid-cols-1.md\:grid-cols-3 { gap: 1.25rem !important; }
