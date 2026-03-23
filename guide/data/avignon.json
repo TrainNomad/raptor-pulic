@@ -1,0 +1,70 @@
+{
+  "id": "avignon",
+  "city": "Avignon",
+  "country": "France",
+  "tagline": "Palais des Papes, Luberon et lavande à 2h40 de Paris",
+  "excerpt": "2 jours à Avignon",
+  "cover": "avignon-cover.jpg",
+  "hero": "avignon-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "2h 36min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare de Lyon",
+    "arrival_station": "Avignon TGV",
+    "price_from": "19€",
+    "best_season": "Avril · Mai · Juin · Septembre",
+    "co2_saved": "94%",
+    "note": "10+ trains/jour depuis Paris Gare de Lyon. OUIGO à partir de 19€, TGV Inoui à partir de 25€. Trajet le plus rapide : 2h36. Deux gares : Avignon TGV (hors les murs, navette vers centre) et Avignon Centre (Intercités). Réservez sur SNCF Connect.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Avignon est la ville des papes et des festivals. Son Palais des Papes — la plus grande construction gothique médiévale du monde — domine une cité intra-muros ceinte de remparts intacts depuis le XIVe siècle. Les papes y résidèrent pendant 70 ans quand Rome était en crise. Aujourd'hui, le Festival d'Avignon (juillet) est le plus grand festival de théâtre du monde. Hors festival, la ville retrouve une douceur provençale où les platanes ombragent les cafés et où le Luberon commence à 30 km. À 2h36 de Paris, c'est la Provence à portée de TGV.",
+  "essentials": {
+    "voir": [
+      { "icon": "castle",         "name": "Palais des Papes",         "note": "La plus grande construction gothique médiévale au monde — réservez en ligne" },
+      { "icon": "photo_camera",   "name": "Pont Saint-Bénézet",       "note": "'Sur le pont d'Avignon' — le pont inachevé sur le Rhône" },
+      { "icon": "park",           "name": "Rocher des Doms",          "note": "Le jardin suspendu au-dessus du Rhône — vue sur le pont et les Alpilles" },
+      { "icon": "architecture",   "name": "Remparts d'Avignon",       "note": "Le tour complet fait 4,3 km — les mieux conservés de France" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Tapenade et anchoïade",    "note": "Les apéritifs provençaux avec les olives du marché des Halles" },
+      { "icon": "storefront",     "name": "Halles d'Avignon",         "note": "Le marché couvert — fraises de Carpentras, fromages de chèvre et melons du Vaucluse" },
+      { "icon": "wine_bar",       "name": "Côtes du Rhône et Châteauneuf","note": "Les vins de la vallée du Rhône — dégustation dans les caves du centre intra-muros" },
+      { "icon": "local_cafe",     "name": "Calissons et berlingots",  "note": "Les confiseries provençales — cherchez une confiserie artisanale" }
+    ],
+    "transport": [
+      { "icon": "directions_bus", "name": "Navette TGV → centre",     "note": "Bus navette gratuit Avignon TGV ↔ gare centre en 15 min (inclus avec votre billet)" },
+      { "icon": "directions_bike","name": "Vélos en location",        "note": "Plusieurs loueurs dans l'intra-muros — la ville est plate et cyclable" },
+      { "icon": "directions_walk","name": "À pied intra-muros",       "note": "L'intra-muros est compact — tout se fait à pied en 20 min" },
+      { "icon": "directions_bus", "name": "Bus vers les Baux / Luberon","note": "Cars départementaux vers Les Baux-de-Provence, Gordes et le Luberon" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Palais des Papes et remparts", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Palais des Papes",               "desc": "Arrivez tôt avec billet réservé. Comptez 2h pour les grandes salles gothiques et les fresques." },
+        { "time": "12:30", "title": "Halles d'Avignon",               "desc": "Le marché couvert — fromages de chèvre, tapenade et fraises de Carpentras." },
+        { "time": "14:00", "title": "Pont Saint-Bénézet",             "desc": "Le pont inachevé sur le Rhône — et la vue depuis la rive gauche est encore plus belle." },
+        { "time": "16:00", "title": "Rocher des Doms",                "desc": "Le jardin suspendu — vue panoramique sur le Rhône, le pont et les Alpilles." },
+        { "time": "19:30", "title": "Apéro provençal",                "desc": "Tapenade, anchois et rosé de Provence sur une terrasse de l'intra-muros." }
+      ]
+    },
+    {
+      "day": 2, "title": "Luberon ou Les Baux", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:00", "title": "Bus vers Les Baux-de-Provence",  "desc": "Le plus beau village de France perché sur ses Alpilles — 45 min en car départemental." },
+        { "time": "11:00", "title": "Carrières de Lumières",          "desc": "Les projections monumentales dans les Baux — expérience artistique unique." },
+        { "time": "13:30", "title": "Déjeuner provençal",             "desc": "Agneau des Alpilles et tian de légumes dans un restaurant des Baux." },
+        { "time": "16:00", "title": "Avignon TGV",                    "desc": "Navette depuis la gare centre + TGV vers Paris Gare de Lyon — 2h36." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "10+ trains/jour Paris Gare de Lyon → Avignon TGV. OUIGO à partir de 19€, TGV Inoui à partir de 25€. Trajet : 2h36. La navette gratuite Avignon TGV ↔ gare centre est incluse dans votre billet SNCF." },
+    { "icon": "schedule",    "text": "Le Festival d'Avignon (juillet) est le plus grand festival de théâtre du monde — 1 500 spectacles en 3 semaines. C'est magique mais la ville est bondée et les hôtels réservés 6 mois à l'avance." },
+    { "icon": "castle",      "text": "Réservez le Palais des Papes en ligne sur palais-des-papes.com — les files d'attente physiques peuvent dépasser 1h en été. Le billet combiné avec le Pont Saint-Bénézet fait économiser 3€." },
+    { "icon": "wb_sunny",    "text": "Le Mistral peut souffler violemment en Provence — prévoyez une veste même en été. Avril-mai et septembre sont idéaux : 22-26°C, sans foule et avec les marchés en plein essor." }
+  ],
+  "related": ["marseille", "lyon", "bordeaux"]
+}

@@ -1,0 +1,217 @@
+/* ============================================================
+   TrainNomad.eu — guide/css/main.css
+   Styles globaux de la section Guides
+   ============================================================ */
+
+/* ── Variables ────────────────────────────────────────────── */
+:root {
+    --midnight: #1A2B3C;
+    --primary:  #4ade80;
+    --bg:       #f8f7f5;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--midnight);
+}
+
+/* ── Hero guides ──────────────────────────────────────────── */
+.guides-hero {
+    background: linear-gradient(135deg, var(--midnight) 0%, #2d4a63 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.guides-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(74,222,128,0.12) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.guides-hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(74,222,128,0.15);
+    border: 1px solid rgba(74,222,128,0.3);
+    color: var(--primary);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+/* ── Barre de filtres ─────────────────────────────────────── */
+.filter-pill {
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 1.5px solid #e2e8f0;
+    background: white;
+    font-size: 13px;
+    font-weight: 700;
+    color: #64748b;
+    cursor: pointer;
+    transition: all .15s;
+    white-space: nowrap;
+}
+.filter-pill:hover  { border-color: var(--midnight); color: var(--midnight); }
+.filter-pill.active { background: var(--midnight); color: white; border-color: var(--midnight); }
+
+/* ── Cards guide ──────────────────────────────────────────── */
+.guide-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    box-shadow: 0 2px 12px rgba(26,43,60,0.06);
+}
+.guide-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(26,43,60,0.14);
+}
+
+.guide-card-img {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e2e8f0;
+}
+.guide-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+}
+.guide-card:hover .guide-card-img img { transform: scale(1.04); }
+
+.guide-card-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    background: linear-gradient(135deg, var(--midnight), #2d4a63);
+}
+
+.guide-card-badges {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* ── Badges ───────────────────────────────────────────────── */
+.badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+.badge-direct  { background: var(--primary); color: var(--midnight); }
+.badge-budget  { background: var(--midnight); color: white; }
+.badge-nuit    { background: #1e1b4b; color: #a5b4fc; }
+.badge-default { background: white; color: var(--midnight); }
+
+.guide-card-travel {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--midnight);
+}
+
+.guide-card-body    { padding: 20px 22px 24px; }
+.guide-card-meta    { font-size: 11px; font-weight: 700; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+.guide-card-title   { font-size: 20px; font-weight: 800; color: var(--midnight); margin-bottom: 6px; line-height: 1.2; }
+.guide-card-excerpt { font-size: 13px; color: #64748b; margin-bottom: 16px; line-height: 1.5; }
+.guide-card-footer  { display: flex; align-items: center; justify-content: space-between; }
+
+.guide-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--midnight);
+    text-decoration: none;
+    transition: gap .15s;
+}
+.guide-card:hover .guide-card-link { gap: 8px; }
+
+/* ── Card featured (grande) ───────────────────────────────── */
+.guide-card-featured .guide-card-img  { aspect-ratio: 16/9; }
+.guide-card-featured .guide-card-title { font-size: 24px; }
+
+/* ── Homepage cards (section guides sur index.html) ───────── */
+.home-guide-badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    backdrop-filter: blur(8px);
+}
+.home-guide-badge--badge-direct  { background: var(--primary); color: var(--midnight); }
+.home-guide-badge--badge-budget  { background: rgba(26,43,60,0.85); color: white; }
+.home-guide-badge--badge-nuit    { background: rgba(30,27,75,0.85); color: #a5b4fc; }
+.home-guide-badge--badge-default { background: rgba(255,255,255,0.9); color: var(--midnight); }
+
+.home-guide-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    background: linear-gradient(135deg, var(--midnight), #2d4a63);
+}
+
+/* ── Newsletter strip ─────────────────────────────────────── */
+.newsletter-strip {
+    background: var(--midnight);
+    border-radius: 24px;
+    padding: 48px 56px;
+}
+
+/* ── Entrée fadeUp ────────────────────────────────────────── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up   { animation: fadeUp .5s ease both; }
+.fade-up-1 { animation-delay: .05s; }
+.fade-up-2 { animation-delay: .12s; }
+.fade-up-3 { animation-delay: .19s; }
+.fade-up-4 { animation-delay: .26s; }
+.fade-up-5 { animation-delay: .33s; }
+.fade-up-6 { animation-delay: .40s; }
+
+/* ── Footer quote ─────────────────────────────────────────── */
+.footer-quote {
+    color: #a0aec0;
+    line-height: 1.6;
+    font-style: italic;
+}

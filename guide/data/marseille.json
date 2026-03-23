@@ -1,0 +1,70 @@
+{
+  "id": "marseille",
+  "city": "Marseille",
+  "country": "France",
+  "tagline": "Calanques, Vieux-Port et bouillabaisse à 3h de Paris",
+  "excerpt": "2 jours à Marseille",
+  "cover": "marseille-cover.jpg",
+  "hero": "marseille-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "3h 05min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare de Lyon",
+    "arrival_station": "Marseille Saint-Charles",
+    "price_from": "10€",
+    "best_season": "Mai · Juin · Septembre",
+    "co2_saved": "93%",
+    "note": "15+ trains/jour depuis Paris Gare de Lyon. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 3h05. Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Marseille est la ville la plus mal-aimée et la plus fascinante de France. Rugueuse, solaire, chaotique, multiculturelle — la cité phocéenne résiste à tous les clichés qu'on lui colle dessus. Son Vieux-Port où les pêcheurs vendent leur poisson le matin, ses calanques sauvages à 20 minutes du centre, son quartier du Panier aux ruelles d'une autre époque, son MuCEM d'une architecture audacieuse : Marseille est une ville qui récompense ceux qui la regardent vraiment. À 3h de Paris, c'est la Méditerranée à portée de TGV.",
+  "essentials": {
+    "voir": [
+      { "icon": "water",          "name": "Calanques de Marseille",   "note": "Calanque de Sormiou ou Cassis en TER — réservez le bus navette en été" },
+      { "icon": "museum",         "name": "MuCEM",                    "note": "Le musée des civilisations en Méditerranée — architecture époustouflante" },
+      { "icon": "church",         "name": "Notre-Dame-de-la-Garde",   "note": "'La Bonne Mère' — panorama à 360° sur la ville et la mer" },
+      { "icon": "location_city",  "name": "Quartier du Panier",       "note": "Le plus vieux quartier de Marseille — street art et ruelles escarpées" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Bouillabaisse",            "note": "La vraie — comptez 60-80€/personne. Chez Fonfon ou Miramar au Vieux-Port" },
+      { "icon": "lunch_dining",   "name": "Navettes et pastis",       "note": "Les biscuits orange-fleur de la biscuiterie du Vieux-Port — depuis 1781" },
+      { "icon": "storefront",     "name": "Marché du Vieux-Port",     "note": "Poissons frais vendus par les pêcheurs le matin (jusqu'à 13h)" },
+      { "icon": "local_cafe",     "name": "Cours Julien",             "note": "Le quartier bohème — cafés, street art et restaurants du monde entier" }
+    ],
+    "transport": [
+      { "icon": "subway",         "name": "Métro RTM (lignes 1 et 2)","note": "Ticket 1,80€, pass journée 5,50€" },
+      { "icon": "tram",           "name": "Trams ligne 2 et 3",       "note": "Relient le Vieux-Port aux quartiers nord" },
+      { "icon": "directions_boat","name": "Navette maritime",         "note": "Traverse le Vieux-Port pour 50 cts — vue unique" },
+      { "icon": "train",          "name": "TER vers Cassis / Toulon", "note": "Cassis en 20 min — point de départ des calanques par la mer" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Vieux-Port et collines", "color": "#4ade80",
+      "points": [
+        { "time": "09:00", "title": "Marché du Vieux-Port",          "desc": "Les pêcheurs vendent leur pêche de la nuit. Arrivez avant 10h pour les meilleurs poissons." },
+        { "time": "10:30", "title": "Quartier du Panier",            "desc": "Les ruelles du plus vieux quartier de France — street art et petites places." },
+        { "time": "12:30", "title": "MuCEM",                         "desc": "Le musée en béton ajouré sur la mer. Vue spectaculaire depuis la passerelle." },
+        { "time": "15:00", "title": "Notre-Dame-de-la-Garde",        "desc": "Montez à pied ou en bus. Vue à 360° sur l'archipel des Frioul et les calanques." },
+        { "time": "19:00", "title": "Cours Julien",                  "desc": "L'apéro marseillais avec pastis, navettes et olives dans les cafés du cours." }
+      ]
+    },
+    {
+      "day": 2, "title": "Calanques et départ", "color": "#1A2B3C",
+      "points": [
+        { "time": "08:30", "title": "TER vers Cassis",               "desc": "20 min depuis Saint-Charles. Navette bus vers la Calanque d'En-Vau (la plus belle)." },
+        { "time": "10:00", "title": "Calanques",                     "desc": "Baignade dans les eaux turquoise. En été : réservez la navette au préalable." },
+        { "time": "13:00", "title": "Déjeuner à Cassis",             "desc": "Fruits de mer et tielle au port de Cassis." },
+        { "time": "15:30", "title": "Retour Marseille Saint-Charles","desc": "TGV ou OUIGO vers Paris Gare de Lyon — 3h05 de Méditerranée depuis ton siège." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "15+ trains/jour Paris Gare de Lyon → Marseille Saint-Charles. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 3h05. Réservez sur SNCF Connect." },
+    { "icon": "water",       "text": "En juillet-août, l'accès aux calanques en voiture est interdit. Prenez le TER jusqu'à Cassis (20 min) + navette maritime pour les calanques. Réservez la navette sur le site du Parc National des Calanques." },
+    { "icon": "restaurant",  "text": "La vraie bouillabaisse marseillaise (rascasse, saint-pierre, grondin, baudroie) coûte entre 60 et 80€ par personne. C'est un investissement — mais c'est l'original." },
+    { "icon": "wb_sunny",    "text": "Juillet-août : plages bondées et calanques en quota d'accès. Mai-juin et septembre sont parfaits — mer chaude (24°C), ciel clair, foule raisonnable." }
+  ],
+  "related": ["avignon", "lyon", "nice"]
+}

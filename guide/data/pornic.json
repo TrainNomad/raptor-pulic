@@ -1,0 +1,72 @@
+{
+  "id": "pornic",
+  "city": "Pornic",
+  "country": "France",
+  "tagline": "La station balnéaire secrète de la Loire-Atlantique",
+  "excerpt": "2 jours à Pornic",
+  "cover": "pornic-cover.jpg",
+  "hero": "pornic-hero.jpg",
+  "badges": ["1 correspondance", "TGV + TER"],
+  "travel": {
+    "duration": "~3h (Paris → Nantes 2h + TER Nantes → Pornic 1h)",
+    "operator": "TGV Inoui / OUIGO + TER Pays de la Loire",
+    "from": "Paris Gare Montparnasse",
+    "arrival_station": "Pornic",
+    "price_from": "35€",
+    "best_season": "Juin · Septembre",
+    "co2_saved": "94%",
+    "correspondance": "1 changement à Nantes (~30 min)",
+    "note": "TGV Paris Montparnasse → Nantes (2h, à partir de 25€ sur SNCF Connect) + TER Nantes → Pornic (1h, à partir de 10€ sur SNCF Connect ou à bord). 7-8 TER Nantes–Pornic par jour (6h28 → 18h40 depuis Nantes). Budget total à partir de 35€.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Pornic est la station balnéaire que les Nantais gardent jalousement pour eux. Son port de pêche cerné de maisons colorées, son château de Gilles de Rais dominant l'anse, ses criques de schiste noir accessibles à pied depuis la plage centrale, ses restaurants d'huîtres et de poissons — tout ici respire l'authenticité d'une station qui n'a pas encore cédé à la touristification de masse. À 3h de Paris avec une correspondance à Nantes, c'est une des meilleures escapades atlantiques du réseau ferroviaire.",
+  "essentials": {
+    "voir": [
+      { "icon": "castle",         "name": "Château de Pornic",        "note": "Le château médiéval de Gilles de Rais — propriété privée, visible depuis le port" },
+      { "icon": "water",          "name": "Vieux-Port",               "note": "Le cœur de Pornic — bateaux colorés et restaurants de poisson" },
+      { "icon": "beach_access",   "name": "Côte de Jade",             "note": "Les criques sauvages de schiste au nord et les grandes plages au sud" },
+      { "icon": "directions_walk","name": "Sentier côtier GR",        "note": "Le GR longe la côte sur des kilomètres — criques et panoramas" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Huîtres du lac de Grand-Lieu","note": "Les ostréiculteurs du marché du samedi matin au vieux port" },
+      { "icon": "local_cafe",     "name": "Galette bretonne",         "note": "Les crêperies du port — avec beurre demi-sel et cidre bouché" },
+      { "icon": "lunch_dining",   "name": "Poissons et langoustines", "note": "Les restaurants du quai servís directement par les bateaux locaux" },
+      { "icon": "storefront",     "name": "Marché du samedi",         "note": "Le marché couvert — produits bretons et marins frais" }
+    ],
+    "transport": [
+      { "icon": "directions_walk","name": "À pied",                   "note": "Le centre de Pornic est entièrement piéton — tout se fait à pied" },
+      { "icon": "directions_bike","name": "Vélos en location",        "note": "Location disponible en ville — idéal pour le sentier côtier" },
+      { "icon": "directions_bus", "name": "Bus Aléop",                "note": "Pour atteindre les plages plus éloignées (La Bernerie, Préfailles)" },
+      { "icon": "train",          "name": "TER vers Nantes",          "note": "7 trains/jour — dernier retour vers 18h40" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Le port et les criques", "color": "#4ade80",
+      "points": [
+        { "time": "11:00", "title": "Arrivée Pornic",                 "desc": "5 min à pied de la gare jusqu'au vieux port." },
+        { "time": "11:30", "title": "Vieux-Port",                     "desc": "Flânerie parmi les bateaux de pêche. Le château domine la ria depuis les hauteurs." },
+        { "time": "13:00", "title": "Déjeuner de fruits de mer",      "desc": "Huîtres, moules et poissons grillés sur les terrasses du quai." },
+        { "time": "15:00", "title": "Sentier côtier nord",            "desc": "Les criques de schiste noir vers La Noëveillard — à pied depuis le port, 3 km." },
+        { "time": "18:00", "title": "Grande Plage de Pornic",         "desc": "La plage principale pour le bain de fin d'après-midi." },
+        { "time": "20:00", "title": "Apéro au port",                  "desc": "Muscadet sur les terrasses du vieux port au coucher du soleil." }
+      ]
+    },
+    {
+      "day": 2, "title": "Côte de Jade et départ", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "Marché du samedi",               "desc": "Le marché couvert du samedi matin — huîtres, beurre et produits locaux." },
+        { "time": "11:00", "title": "Préfailles et Pointe Saint-Gildas","desc": "Bus ou vélo vers la pointe sauvage — vue dégagée sur l'estuaire de la Loire." },
+        { "time": "13:30", "title": "Déjeuner galette",               "desc": "Crêperie du centre — galette de sarrasin au beurre fondu." },
+        { "time": "16:00", "title": "Gare de Pornic",                 "desc": "TER vers Nantes (1h), puis TGV vers Paris Montparnasse (2h)." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "TGV Paris Montparnasse → Nantes (2h, dès 25€) + TER Nantes → Pornic (1h, ~10€). 7 TER/jour Nantes–Pornic, dernier retour à 18h40. Budget total à partir de 35€ sur SNCF Connect." },
+    { "icon": "schedule",    "text": "Vérifiez les horaires du dernier TER Pornic → Nantes avant de partir — le dernier départ en semaine est vers 18h40. Prévoyez votre retour en conséquence." },
+    { "icon": "wb_sunny",    "text": "Juillet-août : Pornic est très fréquentée par les familles nantaises. Juin et septembre sont bien plus agréables — plages dégagées et restaurants accessibles." },
+    { "icon": "directions_bike","text": "Le sentier côtier GR (chemin des douaniers) relie Pornic à Saint-Brevin-les-Pins sur 30 km. Faisable en vélo de location pour la journée avec vues imprenables sur l'Atlantique." }
+  ],
+  "related": ["rennes", "saint-malo", "nantes"]
+}

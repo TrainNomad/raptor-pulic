@@ -1,0 +1,62 @@
+{
+  "id": "reims",
+  "city": "Reims",
+  "country": "France",
+  "tagline": "Champagne, cathédrale gothique et sacres royaux à 45min de Paris",
+  "excerpt": "1 jour à Reims",
+  "cover": "reims-cover.jpg",
+  "hero": "reims-hero.jpg",
+  "badges": ["Train direct", "Budget"],
+  "travel": {
+    "duration": "45min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare de l'Est",
+    "arrival_station": "Reims",
+    "price_from": "10€",
+    "best_season": "Septembre · Octobre · Mai",
+    "co2_saved": "96%",
+    "note": "15+ trains/jour depuis Paris Gare de l'Est. OUIGO à partir de 10€, TGV Inoui à partir de 15€. Trajet le plus rapide : 45min. Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Reims est à 45 minutes de Paris et pourtant, elle se sent à des siècles de distance. Sa cathédrale gothique — où 33 rois de France furent sacrés depuis Clovis — est l'une des plus belles de France. Ses caves à champagne creusées dans la craie à 30 mètres sous terre accueillent des millions de bouteilles de Moët, Taittinger et Pommery. Et ses brasseries Art déco de l'après-Première Guerre mondiale rappellent que la ville fut rasée à 80% en 1918 et reconstruite entièrement en 15 ans. Parfaite pour une journée ou un week-end.",
+  "essentials": {
+    "voir": [
+      { "icon": "church",         "name": "Cathédrale Notre-Dame",    "note": "Les vitraux de Chagall au chœur — lumière bleue irréelle l'après-midi" },
+      { "icon": "wine_bar",       "name": "Caves de champagne",       "note": "Taittinger, Pommery ou Ruinart — réservez la visite et la dégustation en ligne" },
+      { "icon": "museum",         "name": "Palais du Tau",            "note": "Le trésor royal — les statues originales de la cathédrale et les ornements du sacre" },
+      { "icon": "architecture",   "name": "Villa Demoiselle (Vranken)","note": "La villa Art nouveau et ses caves — visite guidée avec dégustation" }
+    ],
+    "manger": [
+      { "icon": "wine_bar",       "name": "Coupe de champagne",       "note": "À partir de 8€ dans les bars du centre — les vignerons locaux sont bien moins chers que les grandes maisons" },
+      { "icon": "restaurant",     "name": "Brasserie du Boulingrin",  "note": "La brasserie Art déco la plus belle de France (1925) — cochon de lait et tartes flambées" },
+      { "icon": "storefront",     "name": "Marché du Boulingrin",     "note": "Le plus grand marché couvert de France — le samedi matin" },
+      { "icon": "lunch_dining",   "name": "Biscuits roses de Reims",  "note": "La pâtisserie emblématique — à tremper dans son champagne selon la tradition" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Trams CITURA (2 lignes)",  "note": "Ticket 1,60€ — relie la gare à la cathédrale en 10 min" },
+      { "icon": "directions_bike","name": "Vélos Vélomalin",          "note": "Vélos en libre-service — le centre est plat et cyclable" },
+      { "icon": "directions_walk","name": "À pied",                   "note": "Le centre historique est compact — cathédrale à 10 min à pied de la gare" },
+      { "icon": "directions_bus", "name": "Bus vers la Route du Champagne","note": "Villages de vignerons à 20-40 min en bus depuis Reims" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Reims en une journée", "color": "#4ade80",
+      "points": [
+        { "time": "09:30", "title": "Cathédrale Notre-Dame",          "desc": "Les vitraux de Chagall illuminent le chœur l'après-midi. Montez sur les tours pour la vue." },
+        { "time": "11:00", "title": "Palais du Tau",                  "desc": "Les statues gothiques originales de la cathédrale (remplacées par des copies) et les ornements royaux du sacre." },
+        { "time": "12:30", "title": "Brasserie du Boulingrin",        "desc": "Déjeuner dans la plus belle brasserie Art déco de France, sous le plafond peint." },
+        { "time": "14:30", "title": "Cave de champagne",              "desc": "Visite des caves de Taittinger ou Pommery — 45 min sous terre avec dégustation incluse." },
+        { "time": "17:00", "title": "Bar à champagne place Drouet-d'Erlon","desc": "La coupe d'avant le retour — les vignerons de la Montagne de Reims proposent de petits producteurs." },
+        { "time": "19:00", "title": "Gare de Reims",                  "desc": "TGV vers Paris Gare de l'Est — 45 min et vous êtes rentrés." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "15+ trains/jour Paris Gare de l'Est → Reims. OUIGO à partir de 10€, TGV Inoui à partir de 15€. Trajet : 45 minutes seulement. La journée parfaite depuis Paris." },
+    { "icon": "wine_bar",    "text": "Réservez la visite de cave à l'avance (Taittinger, Pommery ou Ruinart) — certaines sessions sont complètes longtemps à l'avance en septembre lors des vendanges." },
+    { "icon": "schedule",    "text": "Les vendanges en Champagne ont lieu en septembre. C'est la meilleure période pour visiter — caves ouvertes aux visiteurs et ambiance festive dans tous les villages." },
+    { "icon": "architecture","text": "Reims a été reconstruite entièrement après 1918 en style Art déco. La Brasserie du Boulingrin (1925) est le symbole de cette renaissance — réservez une table pour le déjeuner." }
+  ],
+  "related": ["strasbourg", "lille", "lyon"]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "biarritz",
+  "city": "Biarritz",
+  "country": "France",
+  "tagline": "Surf, rochers et Art déco sur la côte basque à 4h15 de Paris",
+  "excerpt": "2 jours à Biarritz",
+  "cover": "biarritz-cover.jpg",
+  "hero": "biarritz-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "4h 15min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare Montparnasse",
+    "arrival_station": "Biarritz",
+    "price_from": "19€",
+    "best_season": "Mai · Juin · Septembre",
+    "co2_saved": "93%",
+    "note": "4-6 trains/jour directs depuis Paris Gare Montparnasse. OUIGO à partir de 19€, TGV Inoui à partir de 29€. Trajet le plus rapide : 4h15. Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Biarritz est la station balnéaire la plus élégante de France. Ses villas Art déco datant de la Belle Époque quand la reine Victoria et Napoléon III s'y retrouvaient, ses falaises de schiste noir découpées par les vagues de l'Atlantique, sa Grande Plage et son casino au bord de l'eau — tout respire une certaine idée du luxe à la française. Mais Biarritz c'est aussi la capitale européenne du surf, avec des spots comme la Côte des Basques qui ont formé des champions du monde. Le pays basque commence ici.",
+  "essentials": {
+    "voir": [
+      { "icon": "beach_access",   "name": "Grande Plage",             "note": "La plage iconique face au Casino Municipal — plus belle en dehors de l'été" },
+      { "icon": "photo_camera",   "name": "Rocher de la Vierge",      "note": "La passerelle au-dessus des vagues — vue sur les Pyrénées par temps clair" },
+      { "icon": "water",          "name": "Côte des Basques",         "note": "La plage des surfeurs — spot légendaire au pied des falaises" },
+      { "icon": "museum",         "name": "Musée de la Mer",          "note": "Les requins et les otaries de l'Atlantique dans un bâtiment Art déco" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Pintxos basques",          "note": "Rue du Port Vieux — les tapas basques à 1-2€ pièce debout au comptoir" },
+      { "icon": "local_cafe",     "name": "Chocolat Cazenave",        "note": "Le chocolate chaud au chocolat amer et à la crème — depuis 1854" },
+      { "icon": "storefront",     "name": "Halles de Biarritz",       "note": "Le marché couvert du centre — fromage ossau-iraty et jambon de Bayonne" },
+      { "icon": "lunch_dining",   "name": "Chipirons à l'encre",      "note": "Les encornets basques à l'encre noire — spécialité incontournable" }
+    ],
+    "transport": [
+      { "icon": "directions_bus", "name": "Bus TXIK TXAK",            "note": "Réseau urbain de Biarritz — ticket 1€" },
+      { "icon": "directions_bike","name": "Vélos en location",        "note": "Plusieurs loueurs dans le centre — attention aux côtes escarpées" },
+      { "icon": "directions_walk","name": "À pied",                   "note": "Le front de mer se parcourt entièrement à pied" },
+      { "icon": "train",          "name": "TER vers Bayonne / Saint-Jean-de-Luz","note": "8 min vers Bayonne, 15 min vers Saint-Jean-de-Luz" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Front de mer et falaises", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Grande Plage",                   "desc": "La plage centrale avec le Casino en arrière-plan. Vue sur les vagues de l'Atlantique." },
+        { "time": "11:30", "title": "Rocher de la Vierge",            "desc": "La passerelle métallique au-dessus des vagues — Napoléon III l'a fait construire pour son épouse." },
+        { "time": "13:00", "title": "Pintxos au Port Vieux",          "desc": "Le déjeuner à la basque — debout au comptoir avec un verre de txakoli." },
+        { "time": "15:00", "title": "Côte des Basques",               "desc": "Descendez la falaise jusqu'à la plage des surfeurs. Coucher de soleil inoubliable." },
+        { "time": "20:00", "title": "Dîner basque",                   "desc": "Chipirons à l'encre ou axoa de veau dans un restaurant du centre." }
+      ]
+    },
+    {
+      "day": 2, "title": "Saint-Jean-de-Luz et départ", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "Chocolat Cazenave",              "desc": "Le chocolate chaud le plus réputé de la côte basque depuis 1854." },
+        { "time": "10:30", "title": "TER vers Saint-Jean-de-Luz",     "desc": "15 min de train. Le port de pêche le plus pittoresque du Pays Basque." },
+        { "time": "12:30", "title": "Thon basque et ttoro",           "desc": "La bouillabaisse basque dans un restaurant du port de Saint-Jean-de-Luz." },
+        { "time": "15:00", "title": "Gare de Biarritz",               "desc": "TGV vers Paris Montparnasse — 4h15 d'Atlantique depuis ton siège." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "4-6 TGV/OUIGO directs/jour Paris Montparnasse → Biarritz. OUIGO à partir de 19€, TGV Inoui à partir de 29€. Trajet : 4h15. Réservez sur SNCF Connect." },
+    { "icon": "wb_sunny",    "text": "Juillet-août : Biarritz est bondée et les prix des hôtels triplent. Mai-juin et septembre sont les meilleures périodes — vagues régulières pour le surf, foule raisonnable et météo souvent parfaite." },
+    { "icon": "train",       "text": "Depuis Biarritz : Bayonne (8 min), Saint-Jean-de-Luz (15 min) et Saint-Jean-Pied-de-Port (1h30) sont accessibles en TER. Les trois méritent une demi-journée chacune." },
+    { "icon": "water",       "text": "La Côte des Basques (surf) est accessible à pied depuis le centre en 15 min. La descente est raide — prévoyez de bonnes chaussures pour remonter." }
+  ],
+  "related": ["bordeaux", "la-rochelle", "marseille"]
+}

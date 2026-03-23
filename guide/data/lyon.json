@@ -1,0 +1,70 @@
+{
+  "id": "lyon",
+  "city": "Lyon",
+  "country": "France",
+  "tagline": "Gastronomie, Vieux-Lyon et confluences à 2h de Paris",
+  "excerpt": "2 jours à Lyon",
+  "cover": "lyon-cover.jpg",
+  "hero": "lyon-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "1h 58min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare de Lyon",
+    "arrival_station": "Lyon Part-Dieu",
+    "price_from": "10€",
+    "best_season": "Avril · Mai · Septembre · Octobre",
+    "co2_saved": "94%",
+    "note": "20+ trains/jour depuis Paris Gare de Lyon. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 1h58. Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Lyon est la deuxième ville gastronomique du monde après Paris, et la première ville française à avoir obtenu ce titre sans discussion. Ses bouchons — ces petits restaurants aux nappes en vichy rouge — servent depuis des générations le tablier de sapeur, les quenelles et la tarte à la praline. Son Vieux-Lyon Renaissance classé à l'UNESCO, ses traboules secrètes qui percent les immeubles, ses deux fleuves — le Rhône et la Saône — et sa colline de Fourvière : tout cela fait de Lyon une destination qui surprend ceux qui n'y sont jamais allés. À moins de 2h de Paris, c'est l'une des meilleures escapades du réseau TGV.",
+  "essentials": {
+    "voir": [
+      { "icon": "history_edu",    "name": "Vieux-Lyon (Saint-Jean)",  "note": "Quartier Renaissance inscrit à l'UNESCO — le plus grand d'Europe" },
+      { "icon": "architecture",   "name": "Traboules",                "note": "Les passages secrets qui traversent les immeubles — demandez un plan à l'office de tourisme" },
+      { "icon": "church",         "name": "Basilique de Fourvière",   "note": "Montez à pied ou en funiculaire — vue panoramique sur la ville" },
+      { "icon": "museum",         "name": "Musée des Beaux-Arts",     "note": "Un des plus riches de France — Rubens, Monet, Picasso" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Bouchon lyonnais",         "note": "Cherchez le label 'Bouchon Lyonnais Authentique' — évitez les imitations touristiques" },
+      { "icon": "storefront",     "name": "Halles Paul Bocuse",       "note": "Le marché couvert le plus prestigieux de France — fromages, charcuteries et chocolats" },
+      { "icon": "local_cafe",     "name": "Café des Fédérations",     "note": "Le bouchon le plus emblématique depuis 1920 — réservez obligatoirement" },
+      { "icon": "lunch_dining",   "name": "Tarte à la praline",       "note": "La pâtisserie lyonnaise par excellence — rose et sucrée" }
+    ],
+    "transport": [
+      { "icon": "subway",         "name": "Métro TCL",                "note": "4 lignes — ticket 1,90€, pass 24h 6€" },
+      { "icon": "tram",           "name": "Trams et trolleybus",      "note": "Réseau dense couvrant toute l'agglomération" },
+      { "icon": "directions_bike","name": "Vélo'v",                   "note": "Vélos en libre-service — 30 min gratuites avec carte" },
+      { "icon": "train",          "name": "Funiculaire Fourvière",    "note": "Inclus dans le titre de transport TCL — monte jusqu'à la basilique" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Vieux-Lyon et Fourvière", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Halles Paul Bocuse",             "desc": "Commencez par le marché couvert de Bocuse — déjeuner debout entre les étals." },
+        { "time": "11:30", "title": "Vieux-Lyon",                    "desc": "Les ruelles Renaissance de Saint-Jean. Cherchez les traboules avec le plan de l'office de tourisme." },
+        { "time": "13:00", "title": "Bouchon lyonnais",              "desc": "Réservez un bouchon labellisé pour les quenelles de brochet et le gratin dauphinois." },
+        { "time": "15:00", "title": "Fourvière en funiculaire",      "desc": "La basilique et le théâtre romain antique au sommet de la colline." },
+        { "time": "18:00", "title": "Presqu'île et Place Bellecour", "desc": "La plus grande place piétonne de France — apéro dans un café de la place des Jacobins." }
+      ]
+    },
+    {
+      "day": 2, "title": "Confluence et départ", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "Croix-Rousse",                  "desc": "La colline qui travaille — le quartier des canuts et ses bouchons du matin." },
+        { "time": "11:30", "title": "Musée des Beaux-Arts",          "desc": "Sur la place des Terreaux, l'un des plus riches musées français. Comptez 2h." },
+        { "time": "14:00", "title": "Confluence",                    "desc": "Le quartier ultramoderne où le Rhône rejoint la Saône. Architecture spectaculaire." },
+        { "time": "16:30", "title": "Lyon Part-Dieu",                "desc": "TGV ou OUIGO vers Paris Gare de Lyon — 2h et vous êtes rentrés." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "20+ trains/jour Paris Gare de Lyon → Lyon Part-Dieu. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus court : 1h58. Réservez sur SNCF Connect." },
+    { "icon": "restaurant",  "text": "Un bouchon sans le label 'Bouchon Lyonnais Authentique' est probablement un piège à touristes. La liste complète des bouchons authentiques est disponible sur l'office de tourisme de Lyon." },
+    { "icon": "schedule",    "text": "La Fête des Lumières (début décembre) transforme Lyon en musée géant de lumière en plein air. C'est un événement exceptionnel — réservez hôtels et trains 6 mois à l'avance." },
+    { "icon": "wb_sunny",    "text": "Lyon est agréable au printemps et en automne. L'été peut être caniculaire (40°C les mauvaises années). Décembre pour les Lumières, mai pour les terrasses." }
+  ],
+  "related": ["avignon", "marseille", "bordeaux"]
+}

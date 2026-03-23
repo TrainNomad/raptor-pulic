@@ -6,65 +6,65 @@
   "excerpt": "2 jours à Faro",
   "cover": "faro-cover.jpg",
   "hero": "faro-hero.jpg",
-  "badges": ["3 correspondances", "TGV + Renfe + CP"],
+  "badges": ["4 correspondances", "TGV + AVE + Renfe + CP"],
   "travel": {
-    "duration": "~20h à 24h",
-    "operator": "TGV Inoui + Renfe Alvia + CP Portugal",
-    "from": "Paris Gare Montparnasse",
+    "duration": "~2-3 jours de voyage (nuit à Madrid + nuit à Lisbonne recommandées)",
+    "operator": "TGV Inoui + Renfe AVE + Renfe Nàutica + CP Portugal",
+    "from": "Paris Gare de Lyon",
     "arrival_station": "Faro",
-    "price_from": "110€",
+    "price_from": "130€",
     "best_season": "Avril · Mai · Septembre · Octobre",
     "co2_saved": "85%",
-    "correspondance": "3 changements : Hendaye/Irún → Badajoz → Lisbonne → Faro",
-    "note": "Itinéraire : TGV Paris → Hendaye (4h45, dès 34€), Renfe Irún → Badajoz (~7h, dès 30€), CP Badajoz → Lisbonne (~4h, dès 25€), CP Intercidades Lisbonne → Faro (~2h30, dès 15€). Réservez chaque segment sur SNCF Connect, Renfe.es et cp.pt. Envisagez une nuit à Lisbonne pour scinder le trajet.",
+    "correspondance": "Barcelona Sants · Madrid Atocha · Ciudad Real · Badajoz · Entroncamento · Lisboa Oriente · Faro",
+    "note": "Itinéraire complet : J1 TGV Paris GdL → Barcelone + AVE → Madrid Atocha (nuit à Madrid). J2 Renfe Madrid → Ciudad Real → Badajoz + CP → Entroncamento → Lisboa Oriente (nuit à Lisbonne optionnelle). J3 CP Intercidades Lisboa → Faro (~2h30, dès 15€). Achetez sur SNCF Connect, Renfe.es et cp.pt. Fortement recommandé de passer au moins 1 nuit à Lisbonne au passage.",
     "operators_used": ["SNCF", "RENFE", "CP"]
   },
-  "intro": "Faro est la porte d'entrée de l'Algarve, mais aussi une ville à part entière : son centre historique ceint de murailles romaines, son cimetière aux ossements (Capela dos Ossos), ses bateaux vers les îles-barrières de la Ria Formosa. L'Algarve est connue pour ses falaises orangées et ses plages immenses, souvent mal connues en dehors des circuits touristiques. En train depuis Paris via Lisbonne, c'est une aventure ibérique complète.",
+  "intro": "Faro est la porte d'entrée de l'Algarve, mais aussi une ville à part entière : son centre historique ceint de murailles romaines, son cimetière aux ossements (Capela dos Ossos), ses bateaux vers les îles-barrières de la Ria Formosa. L'Algarve est connue pour ses falaises orangées et ses plages immenses, trop souvent noyées sous les touristes en été. Hors saison, c'est l'un des plus beaux littoraux d'Europe. Le voyage depuis Paris est une aventure ibérique en plusieurs actes — et c'est précisément ce qui en fait l'intérêt.",
   "essentials": {
     "voir": [
-      { "icon": "beach_access",   "name": "Ria Formosa / Ilha Deserta","note": "Lagune sauvage et île sans touristes — ferry depuis Faro" },
+      { "icon": "beach_access",   "name": "Ria Formosa / Ilha Deserta","note": "Lagune sauvage et île sans commerces — ferry depuis Faro" },
       { "icon": "history_edu",    "name": "Cidade Velha de Faro",     "note": "Centre historique ceint de remparts romains" },
-      { "icon": "architecture",   "name": "Praia de Benagil",         "note": "La grotte de mer la plus photographiée du Portugal — à 1h en bus" },
+      { "icon": "architecture",   "name": "Praia de Benagil",         "note": "La grotte de mer la plus photographiée du Portugal — 1h en bus" },
       { "icon": "museum",         "name": "Museu Municipal de Faro",  "note": "Mosaïques romaines dans un ancien couvent" }
     ],
     "manger": [
       { "icon": "restaurant",     "name": "Cataplana de Marisco",     "note": "Le ragoût de fruits de mer en cuivre — spécialité d'Algarve" },
-      { "icon": "lunch_dining",   "name": "Pastel de Tentúgal",       "note": "La pâtisserie feuilletée au dessert — cherchez une pastelaria locale" },
+      { "icon": "lunch_dining",   "name": "Pastel de Tentúgal",       "note": "Pâtisserie feuilletée au dessert — cherchez une pastelaria locale" },
       { "icon": "storefront",     "name": "Mercado Municipal de Faro","note": "Poissons frais et produits locaux le matin en semaine" },
-      { "icon": "local_cafe",     "name": "Café Aliança",             "note": "Le café historique de Faro, Art Déco, depuis 1908" }
+      { "icon": "local_cafe",     "name": "Café Aliança",             "note": "Le café historique Art Déco de Faro, depuis 1908" }
     ],
     "transport": [
       { "icon": "directions_boat","name": "Ferries Ria Formosa",      "note": "Vers Ilha Deserta, Armona, Culatra — départs depuis le port" },
       { "icon": "directions_bus", "name": "Bus EVA/Rede Expressos",   "note": "Pour Albufeira, Lagos, Sagres depuis la gare routière" },
-      { "icon": "directions_bike","name": "Vélos en location",        "note": "Idéal pour longer les pistes cyclables du parc naturel" },
-      { "icon": "train",          "name": "CP Regional",              "note": "Ligne côtière Faro–Lagos (1h30) — paysages de l'Algarve" }
+      { "icon": "train",          "name": "CP Regional côtier",       "note": "Ligne Faro–Lagos (1h30) — paysages d'Algarve" },
+      { "icon": "directions_bike","name": "Vélos en location",        "note": "Pistes cyclables le long de la Ria Formosa" }
     ]
   },
   "days": [
     {
       "day": 1, "title": "Faro et la lagune", "color": "#4ade80",
       "points": [
-        { "time": "09:00", "title": "Cidade Velha",                    "desc": "Les remparts, la cathédrale et les ruelles médiévales de Faro en matinée calme." },
+        { "time": "09:00", "title": "Cidade Velha",                    "desc": "Les remparts, la cathédrale et les ruelles médiévales en matinée calme." },
         { "time": "10:30", "title": "Chapel dos Ossos",                "desc": "La chapelle décorée d'ossements humains — frappant et mémorable." },
-        { "time": "12:00", "title": "Ferry vers Ilha Deserta",         "desc": "L'île sauvage de la Ria Formosa, sans voiture ni commerces. Pique-nique sur la plage." },
+        { "time": "12:00", "title": "Ferry vers Ilha Deserta",         "desc": "L'île sauvage sans voiture ni commerces. Pique-nique sur la plage." },
         { "time": "16:00", "title": "Retour Faro",                    "desc": "Cataplana ou frango piri-piri dans un restaurant local." }
       ]
     },
     {
       "day": 2, "title": "Falaises et départ", "color": "#1A2B3C",
       "points": [
-        { "time": "09:00", "title": "Bus vers Albufeira ou Lagos",     "desc": "Les falaises d'Algarve en train côtier ou en bus. Arrivez avant 10h." },
+        { "time": "09:00", "title": "Train côtier vers Lagos",         "desc": "CP Regional Faro → Lagos (1h30). Falaises de Ponta da Piedade." },
         { "time": "11:00", "title": "Praia da Marinha",               "desc": "La plus belle plage d'Algarve, creusée dans la falaise orange." },
         { "time": "13:30", "title": "Seafood dans un village",        "desc": "Carvoeiro ou Ferragudo — restaurants de pêcheurs authentiques." },
-        { "time": "16:30", "title": "Faro → Lisbonne",               "desc": "CP Intercidades (2h30) vers Lisbonne, puis correspondance vers la France." }
+        { "time": "16:30", "title": "Faro → Lisboa Oriente",         "desc": "CP Intercidades (~2h30), puis correspondance Madrid → Barcelone → Paris." }
       ]
     }
   ],
   "tips": [
-    { "icon": "train",       "text": "Faro est à ~2h30 de Lisbonne en train CP Intercidades (dès 15€). Envisagez fortement une nuit à Lisbonne pour casser le trajet depuis Paris. Budget total depuis Paris : à partir de 110€ en achetant chaque segment séparément." },
-    { "icon": "wb_sunny",    "text": "L'Algarve en juillet-août = 40°C et plages surpeuplées. Avril-mai et septembre-octobre sont idéaux : mer chaude (22-24°C), moins de monde, prix raisonnables." },
-    { "icon": "directions_boat","text": "Les ferries de la Ria Formosa partent de la marina de Faro. Arrivez 20 min avant le départ. L'Ilha Deserta (sans touristes) est la plus belle." },
-    { "icon": "schedule",    "text": "La grotte de Benagil se fait idéalement en kayak ou en bateau depuis Benagil. Les visites à la nage sont interdites — vérifiez la réglementation avant." }
+    { "icon": "train",       "text": "Faro est à 2h30 de Lisbonne en CP Intercidades (dès 15€, achetez sur cp.pt). Planifiez un arrêt à Lisbonne (1-2 nuits) sur le chemin — la capitale est incontournable et casse naturellement le trajet depuis Paris." },
+    { "icon": "wb_sunny",    "text": "L'Algarve en juillet-août = 40°C et plages surpeuplées. Avril-mai et septembre-octobre : mer chaude (22-24°C), pas de foule, prix raisonnables." },
+    { "icon": "directions_boat","text": "Les ferries de la Ria Formosa partent de la marina de Faro. Arrivez 20 min avant le départ. L'Ilha Deserta est la plus sauvage et la moins fréquentée." },
+    { "icon": "schedule",    "text": "La grotte de Benagil se visite en kayak ou en bateau depuis Benagil (à 1h de bus de Faro). Les visites à la nage sont interdites — vérifiez la réglementation locale." }
   ],
   "related": ["lisbonne", "porto", "seville"]
 }

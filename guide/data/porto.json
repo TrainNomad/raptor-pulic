@@ -6,17 +6,17 @@
   "excerpt": "2 jours à Porto",
   "cover": "porto-cover.jpg",
   "hero": "porto-hero.jpg",
-  "badges": ["2 correspondances", "TGV + Renfe + CP"],
+  "badges": ["3 correspondances", "TGV + AVE + Renfe + CP"],
   "travel": {
-    "duration": "~16h à 20h",
-    "operator": "TGV Inoui + Renfe + CP Portugal",
-    "from": "Paris Gare Montparnasse",
-    "arrival_station": "Porto São Bento ou Porto Campanhã",
-    "price_from": "95€",
+    "duration": "~2 jours (nuit à Madrid ou Vigo recommandée)",
+    "operator": "TGV Inoui + Renfe AVE + Renfe + CP Portugal",
+    "from": "Paris Gare de Lyon",
+    "arrival_station": "Porto São Bento / Porto Campanhã",
+    "price_from": "110€",
     "best_season": "Avril · Mai · Septembre",
     "co2_saved": "85%",
-    "correspondance": "2 changements — Hendaye/Irún puis Vigo ou Badajoz",
-    "note": "Itinéraire recommandé : TGV Paris Montparnasse → Hendaye (4h45, dès 34€), puis Renfe Irún → Vigo (~4h30), puis CP Alfa Pendular Vigo → Porto (~1h30). Ou via Madrid + CP Alfa Pendular Madrid → Porto (~6h). Achetez les billets sur SNCF Connect, Renfe.es et cp.pt.",
+    "correspondance": "Option Sud : Barcelona Sants · Madrid Atocha · Ciudad Real · Badajoz · Lisbonne · Porto. Option Nord : Barcelona Sants · Madrid Atocha · Vigo-Guixar · Porto Campanhã",
+    "note": "Option Nord (recommandée) : TGV Paris GdL → Barcelone (6h50) + AVE → Madrid Atocha, puis Renfe AVE Madrid → Vigo-Guixar (~3h10), puis CP Alfa Pendular Vigo → Porto Campanhã (~1h15). Option Sud : idem Lisbonne puis CP Alfa Pendular Lisboa → Porto (~3h). Achetez sur SNCF Connect, Renfe.es et cp.pt.",
     "operators_used": ["SNCF", "RENFE", "CP"]
   },
   "intro": "Porto est la ville la plus authentique de la péninsule ibérique. Moins touristique que Lisbonne, plus verticale, plus rugueuse — ses façades de carrelage bleu descendent vers le Douro en pente raide, ses ponts de fer enjambent le fleuve, et ses caves à vinho do Porto s'étendent à perte de vue à Vila Nova de Gaia. Porto résiste à la gentrification avec une fierté tranquille. Deux jours suffisent à en tomber amoureux.",
@@ -34,10 +34,10 @@
       { "icon": "lunch_dining",   "name": "Bacalhau à Brás",           "note": "La morue gratinée — plat national, décliné partout" }
     ],
     "transport": [
-      { "icon": "tram",           "name": "Tram historique",           "note": "Ligne 1 le long du Douro — 4€ l'aller" },
-      { "icon": "subway",         "name": "Métro Porto",               "note": "6 lignes — andante ticket 24h à 7€" },
-      { "icon": "directions_walk","name": "À pied",                    "note": "Le centre est compact — tout se fait en marchant" },
-      { "icon": "directions_bike","name": "Vélos Gira",               "note": "Attention aux pentes — Porto est une ville verticale" }
+      { "icon": "tram",           "name": "Tram historique ligne 1",  "note": "Le long du Douro — 4€ l'aller" },
+      { "icon": "subway",         "name": "Métro Porto",               "note": "Ligne D (jaune) depuis Campanhã jusqu'au centre — andante 24h 7€" },
+      { "icon": "directions_walk","name": "À pied",                   "note": "Le centre est compact — tout se fait en marchant" },
+      { "icon": "train",          "name": "CP vers Lisbonne",          "note": "Alfa Pendular Porto–Lisboa en 3h — si vous combinez les deux villes" }
     ]
   },
   "days": [
@@ -57,14 +57,14 @@
       "day": 2, "title": "Foz do Douro et départ", "color": "#1A2B3C",
       "points": [
         { "time": "09:30", "title": "Mercado do Bolhão",              "desc": "Le marché rénové — vivant et sans touristes à cette heure." },
-        { "time": "11:00", "title": "Musée de la Fondation Serralves","desc": "Art contemporain dans un cadre splendide. Parc inclus." },
+        { "time": "11:00", "title": "Fondação Serralves",             "desc": "Art contemporain dans un cadre splendide. Parc inclus." },
         { "time": "13:30", "title": "Foz do Douro",                   "desc": "Où le fleuve rejoint l'Atlantique. Promenade, fruits de mer." },
-        { "time": "16:00", "title": "Porto Campanhã",                 "desc": "Retour en train CP → connexion vers la France." }
+        { "time": "16:00", "title": "Porto Campanhã",                 "desc": "CP Alfa Pendular vers Vigo (option Nord) ou Lisbonne (option Sud), puis retour vers Paris." }
       ]
     }
   ],
   "tips": [
-    { "icon": "train",       "text": "Itinéraire : TGV Paris Montparnasse → Hendaye (4h45, dès 34€), Renfe Irún → Vigo (~4h30, dès 20€), CP Alfa Pendular Vigo → Porto (~1h30, dès 12€). Budget total à partir de 95€ en réservant à l'avance sur SNCF Connect, Renfe.es et cp.pt." },
+    { "icon": "train",       "text": "Option Nord (recommandée) : TGV Paris GdL → Barcelone (dès 79€) + AVE → Madrid + Renfe AVE Madrid → Vigo-Guixar (~3h10, dès 25€) + CP Alfa Pendular Vigo → Porto Campanhã (~1h15, dès 8€). Option Sud : Paris → Madrid → Badajoz → Lisbonne → Porto Campanhã (CP Alfa Pendular, 3h, dès 20€). Budget total à partir de 110€." },
     { "icon": "schedule",    "text": "La Librairie Lello demande une réservation en ligne — le billet coûte 6€ (déductible d'un achat). Ne manquez pas ce délai." },
     { "icon": "wine_bar",    "text": "Les caves de Vila Nova de Gaia proposent des dégustations le matin (moins fréquentées). Sandeman, Graham's et Taylor's sont les plus accessibles." },
     { "icon": "wb_sunny",    "text": "Porto est agréable presque toute l'année. Évitez juillet-août pour la chaleur et la foule. Avril-mai : parfait." }

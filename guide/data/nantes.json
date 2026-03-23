@@ -1,0 +1,70 @@
+{
+  "id": "nantes",
+  "city": "Nantes",
+  "country": "France",
+  "tagline": "Machines de l'île, château des Ducs et Loire à 2h de Paris",
+  "excerpt": "2 jours à Nantes",
+  "cover": "nantes-cover.jpg",
+  "hero": "nantes-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "2h 05min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare Montparnasse",
+    "arrival_station": "Nantes",
+    "price_from": "10€",
+    "best_season": "Avril · Mai · Juin · Septembre",
+    "co2_saved": "94%",
+    "note": "15+ trains/jour depuis Paris Gare Montparnasse. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 2h05. Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Nantes est la ville française la plus créative de sa génération. Ses Machines de l'île — un éléphant mécanique de 12 mètres qui se promène dans les anciens chantiers navals — sont le symbole d'une métropole qui a décidé d'investir massivement dans la culture et l'art urbain. Son château des Ducs de Bretagne rappelle qu'Anne de Bretagne y signa son rattachement à la France. Et ses bords de Loire, ses passages Pommeraye et sa scène gastronomique en font une des villes les plus agréables à vivre de France. À 2h de Paris, c'est l'escapade idéale.",
+  "essentials": {
+    "voir": [
+      { "icon": "precision_manufacturing","name": "Machines de l'île","note": "L'éléphant mécanique se promène mardi-dimanche — réservez les billets en ligne" },
+      { "icon": "castle",         "name": "Château des Ducs de Bretagne","note": "Musée gratuit dans la cour — exposition permanente sur l'histoire de Nantes" },
+      { "icon": "architecture",   "name": "Passage Pommeraye",        "note": "Le passage commercial le plus beau de France (1843) — trois niveaux néo-Renaissance" },
+      { "icon": "water",          "name": "Île de Nantes",            "note": "Les anciens chantiers navals reconvertis en quartier artistique" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Beurre blanc nantais",     "note": "La sauce emblématique de Nantes avec du brochet ou du sandre de Loire" },
+      { "icon": "storefront",     "name": "Marché de Talensac",       "note": "Le marché couvert des Nantais — le matin en semaine" },
+      { "icon": "local_cafe",     "name": "Muscadet sur lie",         "note": "Le vin des bords de Loire — légèrement pétillant et parfait avec les fruits de mer" },
+      { "icon": "lunch_dining",   "name": "Gâteau nantais",           "note": "Le gâteau à la poudre d'amande et au rhum — cherchez une pâtisserie artisanale" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Trams TAN (4 lignes)",     "note": "Ticket 1,70€, pass 24h 5€ — réseau dense et fiable" },
+      { "icon": "directions_bus", "name": "Navibus Loire",            "note": "Navette fluviale sur la Loire — vue magnifique sur la ville" },
+      { "icon": "directions_bike","name": "Bicloo",                   "note": "Vélos en libre-service — 30 min gratuites" },
+      { "icon": "train",          "name": "TER vers Pornic / La Baule","note": "1h vers les stations balnéaires de la Côte de Jade et de la Loire-Atlantique" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Machines et château", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Machines de l'île",              "desc": "L'éléphant mécanique part à 10h et 14h. Réservez impérativement en ligne." },
+        { "time": "12:00", "title": "Île de Nantes",                  "desc": "Déjeuner dans les restaurants et food trucks des anciens chantiers navals." },
+        { "time": "14:00", "title": "Château des Ducs de Bretagne",   "desc": "Promenade sur les remparts. Le musée retrace 600 ans d'histoire nantaise." },
+        { "time": "16:30", "title": "Passage Pommeraye",              "desc": "Le passage commercial néo-Renaissance — une expérience architecturale unique." },
+        { "time": "19:00", "title": "Apéro Muscadet",                 "desc": "Les bouchons nantais autour de la place du Bouffay — Muscadet sur lie et beurre blanc." }
+      ]
+    },
+    {
+      "day": 2, "title": "Bords de Loire et départ", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "Marché de Talensac",             "desc": "Le grand marché couvert nantais — vins de Loire et fromages du Pays de la Loire." },
+        { "time": "11:00", "title": "Mémorial de l'Abolition de l'Esclavage","desc": "Au bord de Loire — un mémorial sobre et fort sur l'histoire de Nantes." },
+        { "time": "13:00", "title": "Déjeuner beurre blanc",          "desc": "Restaurant de Loire avec brochet ou sandre au beurre blanc nantais." },
+        { "time": "15:30", "title": "Gare de Nantes",                 "desc": "TGV ou OUIGO vers Paris Montparnasse — 2h05 de Loire depuis ton siège." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "15+ trains/jour Paris Montparnasse → Nantes. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 2h05. Réservez sur SNCF Connect." },
+    { "icon": "schedule",    "text": "Les Machines de l'île ont des horaires limités et des jauges restreintes. Réservez impérativement en ligne sur les-machines.fr plusieurs jours à l'avance, surtout le week-end." },
+    { "icon": "train",       "text": "Depuis Nantes : Pornic (1h), La Baule-Escoublac (50 min), Saint-Nazaire (45 min) sont accessibles en TER pour une excursion balnéaire depuis la ville." },
+    { "icon": "music_note",  "text": "Le Voyage à Nantes (juillet-août) est un parcours d'art contemporain en plein air dans toute la ville — totalement gratuit et incontournable." }
+  ],
+  "related": ["pornic", "rennes", "bordeaux"]
+}

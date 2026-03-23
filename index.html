@@ -68,7 +68,10 @@
             <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="explorer.html">
                 <span class="material-symbols-outlined text-lg">explore</span> Explorer
             </a>
-            <a class="text-sm font-bold text-white bg-midnight px-4 py-2 rounded-xl hover:bg-primary hover:text-midnight transition-all flex items-center gap-2 shadow-sm" href="outilstgvmax.html">
+            <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="guide/index.html">
+                <span class="material-symbols-outlined text-lg">menu_book</span> Guides
+            </a>
+            <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="outilstgvmax.html">
                 <span class="material-symbols-outlined text-lg">bolt</span> Outils TGVmax
             </a>
         </div>
@@ -91,9 +94,13 @@
     <a href="explorer.html">
         <span class="material-symbols-outlined text-xl">explore</span> Explorer
     </a>
-    <a href="outilstgvmax.html" class="nav-cta">
+    <a href="guide/index.html"> 
+        <span class="material-symbols-outlined text-xl">menu_book</span> Guides
+  </a>
+    <a href="outilstgvmax.html"> 
         <span class="material-symbols-outlined text-xl">bolt</span> Outils TGVmax
     </a>
+    
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -392,6 +399,122 @@
     </div>
 </section>
 
+
+<!-- ═══════════════════════════════════════════════════════════
+     GUIDES DE VOYAGE
+════════════════════════════════════════════════════════════ -->
+<section class="py-16 bg-white" id="section-guides">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="flex items-end justify-between mb-12">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4"
+                     style="background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);color:#4ade80">
+                    <span class="material-symbols-outlined text-sm">menu_book</span>
+                    Guides de voyage
+                </div>
+                <h2 class="text-3xl font-bold tracking-tight text-midnight mb-2">Voyagez guidé, voyagez bien</h2>
+                <p class="text-slate-500">Itinéraires soignés, adresses locales et conseils de réservation.</p>
+            </div>
+            <a class="text-sm font-bold border-b-2 pb-1 hover:text-primary transition-colors whitespace-nowrap ml-8"
+               style="border-color:#4ade80" href="guide/index.html">
+                Tous les guides →
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+
+            <!-- Barcelone — Espagne -->
+            <a href="guide/guide.html?ville=barcelone" class="group block text-inherit no-underline">
+                <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5 bg-slate-100">
+                    <img src="assets/guides/barcelone-cover.jpg" alt="Barcelone"
+                         class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+                    <div class="w-full h-full items-center justify-center text-5xl"
+                         style="display:none;background:linear-gradient(135deg,#1A2B3C,#2d4a63)">🏖️</div>
+                    <!-- Badge -->
+                    <div class="absolute top-4 left-4">
+                        <span class="px-2.5 py-1 rounded-full text-[11px] font-bold"
+                              style="background:#4ade80;color:#1A2B3C">Train direct</span>
+                    </div>
+                    <!-- Durée -->
+                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm" style="color:#4ade80">schedule</span>
+                        6h50 <span class="text-slate-400 font-normal">de Paris</span>
+                    </div>
+                    <!-- Prix -->
+                    <div class="absolute bottom-4 left-4 px-3 py-1.5 rounded-2xl text-[11px] font-bold text-white flex items-center gap-1"
+                         style="background:rgba(26,43,60,0.85)">
+                        dès <span style="color:#4ade80" class="ml-1">79€</span>
+                    </div>
+                </div>
+                <div class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1">Espagne · Barcelone</div>
+                <h3 class="font-bold text-xl text-midnight mb-1">Gaudí, tapas et soleil catalan</h3>
+                <p class="text-sm text-slate-500">3 jours à Barcelone</p>
+            </a>
+
+            <!-- Strasbourg — France -->
+            <a href="guide/guide.html?ville=strasbourg" class="group block text-inherit no-underline">
+                <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5 bg-slate-100">
+                    <img src="assets/guides/strasbourg-cover.jpg" alt="Strasbourg"
+                         class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+                    <div class="w-full h-full items-center justify-center text-5xl"
+                         style="display:none;background:linear-gradient(135deg,#1A2B3C,#2d4a63)">🥨</div>
+                    <!-- Badge -->
+                    <div class="absolute top-4 left-4">
+                        <span class="px-2.5 py-1 rounded-full text-[11px] font-bold"
+                              style="background:#4ade80;color:#1A2B3C">Train direct</span>
+                    </div>
+                    <!-- Durée -->
+                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm" style="color:#4ade80">schedule</span>
+                        1h46 <span class="text-slate-400 font-normal">de Paris</span>
+                    </div>
+                    <!-- Prix -->
+                    <div class="absolute bottom-4 left-4 px-3 py-1.5 rounded-2xl text-[11px] font-bold text-white flex items-center gap-1"
+                         style="background:rgba(26,43,60,0.85)">
+                        dès <span style="color:#4ade80" class="ml-1">10€</span>
+                    </div>
+                </div>
+                <div class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1">France · Strasbourg</div>
+                <h3 class="font-bold text-xl text-midnight mb-1">Alsace, cathédrale et tarte flambée</h3>
+                <p class="text-sm text-slate-500">2 jours à Strasbourg</p>
+            </a>
+
+            <!-- Porto — Portugal -->
+            <a href="guide/guide.html?ville=porto" class="group block text-inherit no-underline">
+                <div class="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5 bg-slate-100">
+                    <img src="assets/guides/porto-cover.jpg" alt="Porto"
+                         class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+                    <div class="w-full h-full items-center justify-center text-5xl"
+                         style="display:none;background:linear-gradient(135deg,#1A2B3C,#2d4a63)">🍷</div>
+                    <!-- Badge -->
+                    <div class="absolute top-4 left-4">
+                        <span class="px-2.5 py-1 rounded-full text-[11px] font-bold"
+                              style="background:#1e1b4b;color:#a5b4fc">Train de nuit</span>
+                    </div>
+                    <!-- Durée -->
+                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl text-[11px] font-bold uppercase tracking-widest text-midnight shadow-sm flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm" style="color:#4ade80">schedule</span>
+                        ~2 jours <span class="text-slate-400 font-normal">de Paris</span>
+                    </div>
+                    <!-- Prix -->
+                    <div class="absolute bottom-4 left-4 px-3 py-1.5 rounded-2xl text-[11px] font-bold text-white flex items-center gap-1"
+                         style="background:rgba(26,43,60,0.85)">
+                        dès <span style="color:#4ade80" class="ml-1">110€</span>
+                    </div>
+                </div>
+                <div class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1">Portugal · Porto</div>
+                <h3 class="font-bold text-xl text-midnight mb-1">Vinho do Porto, azulejos et Douro</h3>
+                <p class="text-sm text-slate-500">2 jours à Porto</p>
+            </a>
+
+        </div>
+    </div>
+</section>
+
 <!-- ═══════════════════════════════════════════════════════════
      OUTILS TGVMAX
 ════════════════════════════════════════════════════════════ -->
@@ -462,58 +585,39 @@
 <!-- ═══════════════════════════════════════════════════════════
      FOOTER
 ════════════════════════════════════════════════════════════ -->
-<footer class="bg-midnight text-white py-20">
+<footer class="text-white py-20" style="background:#1A2B3C">
     <div class="max-w-7xl mx-auto px-6">
-
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-16 mb-12">
-
-            <!-- Branding -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-16 mb-12" style="border-bottom:1px solid rgba(255,255,255,0.1)">
             <div class="col-span-1">
-                <a href="index.html" class="flex items-center gap-2 mb-8 group w-fit">
-                    <img src="assets/Logo/SVG/Background_IndexFichier 2.svg" alt="TrainNomad Logo" class="w-8 h-8 transition-transform group-hover:scale-105">
-                    <span class="text-xl font-extrabold tracking-tight text-white">
-                        TrainNomad<span class="text-primary">.eu</span>
-                    </span>
+                <a href="../index.html" class="flex items-center gap-2 mb-8 group w-fit">
+                    <img src="../assets/Logo/SVG/Background_IndexFichier 2.svg" alt="TrainNomad Logo" class="w-8 h-8 transition-transform group-hover:scale-105">
+                    <span class="text-xl font-extrabold tracking-tight text-white">TrainNomad<span style="color:#4ade80">.eu</span></span>
                 </a>
-                <p class="text-slate-400 text-base leading-relaxed">
-                    L'expérience de réservation ferroviaire la plus élégante. Conçue pour le voyageur moderne et éco-responsable.
-                </p>
+                <p class="text-slate-400 text-base leading-relaxed">L'expérience de réservation ferroviaire la plus élégante. Conçue pour le voyageur moderne et éco-responsable.</p>
             </div>
-
-            <!-- Navigation -->
             <div>
                 <h5 class="font-bold mb-8 text-lg">Navigation</h5>
                 <ul class="flex flex-col gap-5 text-base text-slate-400">
-                    <li><a class="hover:text-primary transition-colors" href="A_propos.html">À propos</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="trajets.html">Destinations</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="explorer.html">Explorer</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="outilstgvmax.html">Outils TGVMax</a></li>
+                    <li><a class="hover:text-green-400 transition-colors" href="../A_propos.html">À propos</a></li>
+                    <li><a class="hover:text-green-400 transition-colors" href="../trajets.html">Destinations</a></li>
+                    <li><a class="hover:text-green-400 transition-colors" href="../explorer.html">Explorer</a></li>
+                    <li><a class="hover:text-green-400 transition-colors" href="index.html">Guides</a></li>
+                    <li><a class="hover:text-green-400 transition-colors" href="../outilstgvmax.html">Outils TGVMax</a></li>
                 </ul>
             </div>
-
-            <!-- Engagement -->
             <div>
                 <h5 class="font-bold mb-8 text-lg">Notre Engagement</h5>
-                <div class="flex gap-4">
-                    <p class="footer-quote text-base">
-                        "Choisir le rail, c'est réduire son empreinte carbone de 90% par rapport à l'avion.
-                        Voyagez léger, voyagez loin, voyagez responsable."
-                    </p>
-                </div>
+                <p class="footer-quote text-base">"Choisir le rail, c'est réduire son empreinte carbone de 90% par rapport à l'avion. Voyagez léger, voyagez loin, voyagez responsable."</p>
             </div>
-
         </div>
-
-        <!-- Barre légale -->
         <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] text-slate-500 uppercase tracking-[0.2em] font-bold">
             <p>© 2026 TrainNomad.eu - Engagé pour un futur durable.</p>
             <div class="flex gap-10">
-                <a class="hover:text-white transition-colors" href="mention_legal.html">Mentions Légales</a>
-                <a class="hover:text-white transition-colors" href="confidentialite.html">Confidentialité</a>
-                <a class="hover:text-white transition-colors" href="conditions.html">Conditions</a>
+                <a class="hover:text-white transition-colors" href="../mention_legal.html">Mentions Légales</a>
+                <a class="hover:text-white transition-colors" href="../confidentialite.html">Confidentialité</a>
+                <a class="hover:text-white transition-colors" href="../conditions.html">Conditions</a>
             </div>
         </div>
-
     </div>
 </footer>
 

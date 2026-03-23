@@ -1,0 +1,70 @@
+{
+  "id": "strasbourg",
+  "city": "Strasbourg",
+  "country": "France",
+  "tagline": "Alsace, cathédrale et tarte flambée à 1h46 de Paris",
+  "excerpt": "2 jours à Strasbourg",
+  "cover": "strasbourg-cover.jpg",
+  "hero": "strasbourg-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "1h 46min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare de l'Est",
+    "arrival_station": "Strasbourg",
+    "price_from": "10€",
+    "best_season": "Décembre · Avril · Mai",
+    "co2_saved": "94%",
+    "note": "15+ trains/jour depuis Paris Gare de l'Est. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 1h46. Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Strasbourg est la ville la plus européenne de France. Siège du Parlement Européen et du Conseil de l'Europe, elle est aussi la capitale de l'Alsace, cette région qui a changé de nationalité quatre fois en 75 ans et en garde une identité culinaire, architecturale et linguistique absolument unique. La Petite France — son quartier de maisons à colombages au bord de l'Ill — est l'un des décors les plus photogéniques d'Europe. En décembre, le marché de Noël le plus ancien de France transforme la ville en carte postale vivante.",
+  "essentials": {
+    "voir": [
+      { "icon": "church",         "name": "Cathédrale Notre-Dame",    "note": "La flèche gothique la plus haute de France — montez pour la vue" },
+      { "icon": "location_city",  "name": "La Petite France",         "note": "Les maisons à colombages au bord de l'Ill — le quartier le plus photographié" },
+      { "icon": "museum",         "name": "Musée Alsacien",           "note": "La vie quotidienne alsacienne reconstituée dans des maisons du XVIIe" },
+      { "icon": "architecture",   "name": "Parlement Européen",       "note": "Visite guidée gratuite sur réservation — impressionnant" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Tarte flambée (Flammkuchen)","note": "Dans un winstub — nature, lardons-oignon ou choucroute" },
+      { "icon": "lunch_dining",   "name": "Baeckeoffe",               "note": "Le ragoût alsacien de trois viandes mijoté au Riesling" },
+      { "icon": "local_cafe",     "name": "Bredele et kougelhopf",    "note": "Les pâtisseries alsaciennes — cherchez une boulangerie artisanale" },
+      { "icon": "wine_bar",       "name": "Vins d'Alsace",            "note": "Gewurztraminer, Riesling et Pinot Gris — dans n'importe quel winstub" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Trams CTS (6 lignes)",     "note": "Ticket 1,80€ — réseau exemplaire couvrant toute la ville" },
+      { "icon": "directions_bike","name": "Vélhop",                   "note": "Vélos en libre-service — Strasbourg est la ville la plus cyclable de France" },
+      { "icon": "directions_walk","name": "À pied",                   "note": "Le centre historique est entièrement piéton et compact" },
+      { "icon": "train",          "name": "TER vers Colmar",          "note": "30 min — la Route des Vins d'Alsace commence là" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Cathédrale et Petite France", "color": "#4ade80",
+      "points": [
+        { "time": "09:30", "title": "Cathédrale Notre-Dame",          "desc": "Arrivez tôt pour la montée — la file s'allonge vite. Vue imprenable sur le Rhin et la Forêt-Noire." },
+        { "time": "11:30", "title": "La Petite France",               "desc": "Les maisons à colombages au bord de l'Ill. La photo la plus reproduite d'Alsace." },
+        { "time": "13:00", "title": "Winstub et tarte flambée",       "desc": "Déjeuner dans un winstub traditionnel — tarte flambée et bière d'Alsace." },
+        { "time": "15:00", "title": "Musée Alsacien",                 "desc": "La vie quotidienne alsacienne reconstituée — fascinant pour comprendre la région." },
+        { "time": "18:00", "title": "Place Kléber",                   "desc": "L'épicentre de Strasbourg. Apéro avec un Cremant d'Alsace dans un café." }
+      ]
+    },
+    {
+      "day": 2, "title": "Colmar ou Parlement", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:00", "title": "TER vers Colmar",                "desc": "30 min de train. La ville la plus belle d'Alsace, la Petite Venise et les musées Unterlinden." },
+        { "time": "14:00", "title": "Retour Strasbourg",              "desc": "Ou restez à Colmar pour le déjeuner — choucroute et Riesling." },
+        { "time": "16:00", "title": "Parlement Européen",             "desc": "Si votre visite était réservée — ou simple promenade du quartier des institutions." },
+        { "time": "18:00", "title": "Gare de Strasbourg",             "desc": "TGV vers Paris Gare de l'Est — 1h46 d'Alsace depuis ton siège." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "15+ trains/jour Paris Gare de l'Est → Strasbourg. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet : 1h46. Réservez sur SNCF Connect." },
+    { "icon": "schedule",    "text": "Le marché de Noël de Strasbourg (le plus ancien de France, depuis 1570) se tient de fin novembre au 26 décembre. C'est l'un des plus beaux d'Europe — réservez hôtels et trains 3-4 mois à l'avance." },
+    { "icon": "train",       "text": "Colmar est à 30 min en TER depuis Strasbourg (15 trains/jour). Combinée dans le même week-end, c'est l'excursion idéale pour découvrir la Route des Vins d'Alsace." },
+    { "icon": "directions_bike","text": "Strasbourg est la capitale française du vélo — 600 km de pistes cyclables. Louez un vélo Vélhop dès l'arrivée en gare et explorez la ville sur deux roues." }
+  ],
+  "related": ["reims", "lille", "lyon"]
+}

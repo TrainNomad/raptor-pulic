@@ -1,0 +1,71 @@
+{
+  "id": "rennes",
+  "city": "Rennes",
+  "country": "France",
+  "tagline": "La capitale bretonne à 1h25 de Paris",
+  "excerpt": "2 jours à Rennes",
+  "cover": "rennes-cover.jpg",
+  "hero": "rennes-hero.jpg",
+  "badges": ["Train direct", "Budget"],
+  "travel": {
+    "duration": "1h 25min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare Montparnasse",
+    "arrival_station": "Rennes",
+    "price_from": "10€",
+    "best_season": "Avril · Mai · Septembre",
+    "co2_saved": "94%",
+    "note": "20+ trains/jour depuis Paris Montparnasse. TGV Inoui à partir de 16€, OUIGO à partir de 10€. Trajet le plus rapide : 1h25. Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Rennes est la capitale bretonne qui mérite bien mieux que son statut de gare de correspondance vers Saint-Malo. Son centre médiéval aux maisons à colombages rescapées de l'incendie de 1720, son parlement de Bretagne au plafond doré, son marché des Lices — l'un des plus beaux de France —, et ses bars du quartier Sainte-Anne qui ne ferment jamais. Rennes est aussi une ville étudiante de 70 000 étudiants, ce qui lui donne une énergie particulière, jeune et créative. À 1h25 de Paris, c'est l'une des meilleures affaires du réseau TGV.",
+  "essentials": {
+    "voir": [
+      { "icon": "history_edu",    "name": "Parlement de Bretagne",    "note": "Le plafond peint est un chef-d'œuvre — visites guidées obligatoires" },
+      { "icon": "architecture",   "name": "Quartier médiéval",        "note": "Rue Saint-Michel et place Sainte-Anne — maisons à colombages du XVe" },
+      { "icon": "museum",         "name": "Musée des Beaux-Arts",     "note": "Rubens, Gauguin et une collection bretonne remarquable" },
+      { "icon": "park",           "name": "Parc du Thabor",           "note": "Le jardin à la française le plus beau de Bretagne — entrée gratuite" }
+    ],
+    "manger": [
+      { "icon": "storefront",     "name": "Marché des Lices",         "note": "Le samedi matin — l'un des 5 plus grands marchés de France" },
+      { "icon": "restaurant",     "name": "Galettes au froment",      "note": "Les crêperies de la rue Saint-Malo — galette-saucisse en street food" },
+      { "icon": "sports_bar",     "name": "Rue de la Soif",           "note": "La rue Saint-Michel, capitale de la bière bretonne" },
+      { "icon": "local_cafe",     "name": "Beurre demi-sel et kouign","note": "Épiceries fines bretonnes pour ramener les vrais produits du terroir" }
+    ],
+    "transport": [
+      { "icon": "subway",         "name": "Métro de Rennes",          "note": "2 lignes (A et B) — ticket 1,70€, pass 24h 3,40€" },
+      { "icon": "directions_bus", "name": "Bus STAR",                 "note": "Réseau urbain dense — inclus dans l'abonnement métro" },
+      { "icon": "directions_bike","name": "Vélo STAR",                "note": "Vélos en libre-service — 1€/jour pour les non-abonnés" },
+      { "icon": "train",          "name": "TER vers Saint-Malo",      "note": "55min depuis Rennes — idéal pour combiner les deux villes" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Le cœur historique", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Marché des Lices",               "desc": "Le samedi matin uniquement — arrivez à 9h pour les huîtres et le beurre." },
+        { "time": "11:30", "title": "Quartier médiéval",              "desc": "Rue Saint-Michel, place du Parlement — les maisons à colombages du centre historique." },
+        { "time": "13:00", "title": "Galette-saucisse",               "desc": "Le sandwich breton par excellence, vendu dans les crêperies du marché." },
+        { "time": "14:30", "title": "Parlement de Bretagne",          "desc": "Le seul bâtiment parisien construit hors de Paris. Plafond doré extraordinaire." },
+        { "time": "17:00", "title": "Parc du Thabor",                 "desc": "La promenade des Rennais par excellence. Roseraie et vue sur la ville." },
+        { "time": "20:00", "title": "Rue de la Soif",                 "desc": "La rue Saint-Michel — bars bretons bondés jusqu'à l'aube." }
+      ]
+    },
+    {
+      "day": 2, "title": "Arts et départ", "color": "#1A2B3C",
+      "points": [
+        { "time": "10:00", "title": "Musée des Beaux-Arts",           "desc": "La collection bretonne et les maîtres flamands — 2h bien employées." },
+        { "time": "12:30", "title": "Place de la République",         "desc": "L'épicentre de Rennes — cafés et terrasses sous les arcades." },
+        { "time": "14:00", "title": "Quartier Sainte-Anne",           "desc": "Le quartier étudiant en journée — galeries et boutiques créatives." },
+        { "time": "16:00", "title": "Gare de Rennes",                 "desc": "TGV ou OUIGO vers Paris Montparnasse — 1h25 et vous êtes chez vous." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "20+ trains/jour depuis Paris Montparnasse. OUIGO à partir de 10€, TGV Inoui à partir de 16€ en réservant à l'avance sur SNCF Connect ou OUIGO.com. Le trajet le plus rapide est 1h25." },
+    { "icon": "storefront",  "text": "Le marché des Lices se tient uniquement le samedi matin de 7h à 13h. C'est l'un des plus beaux et grands marchés de France — organisez votre séjour autour." },
+    { "icon": "train",       "text": "Depuis Rennes, Saint-Malo est à seulement 55 min en TER (5 trains/jour). Combinez les deux villes en un seul week-end." },
+    { "icon": "music_note",  "text": "Les Tombées de la Nuit (début juillet) et le festival Les Trans Musicales (décembre) sont les deux événements culturels majeurs de Rennes — réservez longtemps à l'avance." }
+  ],
+  "related": ["saint-malo", "pornic", "brest"]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "bordeaux",
+  "city": "Bordeaux",
+  "country": "France",
+  "tagline": "Vignobles, architecture néoclassique et Garonne à 2h10 de Paris",
+  "excerpt": "2 jours à Bordeaux",
+  "cover": "bordeaux-cover.jpg",
+  "hero": "bordeaux-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "2h 04min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare Montparnasse",
+    "arrival_station": "Bordeaux Saint-Jean",
+    "price_from": "10€",
+    "best_season": "Mai · Juin · Septembre · Octobre",
+    "co2_saved": "94%",
+    "note": "15+ trains/jour depuis Paris Gare Montparnasse. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 2h04 depuis l'ouverture de la LGV SEA en 2017. Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Bordeaux a réussi quelque chose de rare : devenir une grande ville de vignobles sans perdre son âme urbaine. Son centre classé à l'UNESCO regroupe plus de 350 monuments historiques, le plus grand ensemble architectural néoclassique de France. La Cité du Vin au bord de la Garonne est le musée le plus futuriste du pays. Et au-delà des remparts, Saint-Émilion, Médoc et Arcachon s'offrent en excursion d'une demi-journée. Depuis Paris, la LGV a tout changé : Bordeaux est désormais à 2h de la capitale.",
+  "essentials": {
+    "voir": [
+      { "icon": "architecture",   "name": "Place de la Bourse",       "note": "Le miroir d'eau face au palais — la photo incontournable de Bordeaux" },
+      { "icon": "museum",         "name": "Cité du Vin",              "note": "L'architecture futuriste et la collection permanente sur le vin — réservez" },
+      { "icon": "local_cafe",     "name": "Rue Sainte-Catherine",     "note": "La plus longue rue commerçante piétonne de France (1,2 km)" },
+      { "icon": "church",         "name": "Cathédrale Saint-André",   "note": "La cathédrale gothique et son campanile indépendant, la tour Pey-Berland" }
+    ],
+    "manger": [
+      { "icon": "wine_bar",       "name": "Bar à vins CIVB",          "note": "La Maison du Vin de Bordeaux — dégustations de 3€ à 10€ le verre" },
+      { "icon": "restaurant",     "name": "Entrecôte bordelaise",     "note": "La sauce secrète du Bœuf, rue du Commandant Rolland — file d'attente garantie" },
+      { "icon": "storefront",     "name": "Marché des Capucins",      "note": "Le marché couvert populaire — huîtres et fromages le matin" },
+      { "icon": "lunch_dining",   "name": "Canelé bordelais",         "note": "La pâtisserie signature — cherchez la boutique Baillardran" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Trams TBC (lignes A B C D)","note": "Sans caténaire visible dans le centre-ville — ticket 1,70€, pass 24h 4,30€" },
+      { "icon": "directions_bike","name": "VCub",                     "note": "Vélos en libre-service — 30 min gratuites" },
+      { "icon": "directions_bus", "name": "Bus Liane",                "note": "Lignes express pour l'agglomération" },
+      { "icon": "train",          "name": "TER vers Arcachon",        "note": "50 min depuis Saint-Jean — le bassin d'Arcachon et la Dune du Pilat" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Centre néoclassique et Garonne", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Marché des Capucins",            "desc": "Le marché des Bordelais. Huîtres debout et muscadet dès 9h — c'est la tradition." },
+        { "time": "11:30", "title": "Place de la Bourse",            "desc": "Le miroir d'eau (3 cm d'eau) reflète la façade néoclassique. Venez à l'ouverture." },
+        { "time": "13:00", "title": "Déjeuner entrecôte",            "desc": "Le restaurant Le Bœuf sur le Toit — la sauce secrète fait la réputation de la ville." },
+        { "time": "15:00", "title": "Cité du Vin",                   "desc": "Le bâtiment ressemble à un décanteur géant. La collection permanente est fascinante." },
+        { "time": "18:30", "title": "Bar à vins CIVB",               "note": "Dégustation avec un sommelier — 3 vins de 3 appellations différentes pour 15€." }
+      ]
+    },
+    {
+      "day": 2, "title": "Saint-Émilion ou Arcachon", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:00", "title": "TER vers Saint-Émilion ou Arcachon","desc": "Saint-Émilion : 35 min, village médiéval et caves à vin. Arcachon : 50 min, huîtres et Dune du Pilat." },
+        { "time": "14:00", "title": "Retour Bordeaux",               "desc": "Déjeuner sur place, retour en milieu d'après-midi." },
+        { "time": "16:00", "title": "Rue Sainte-Catherine",          "desc": "Dernière flânerie dans la plus longue rue piétonne de France." },
+        { "time": "18:00", "title": "Bordeaux Saint-Jean",           "desc": "TGV vers Paris Montparnasse — 2h04 de vignes depuis ton siège." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "15+ trains/jour Paris Montparnasse → Bordeaux Saint-Jean. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 2h04. Réservez sur SNCF Connect." },
+    { "icon": "wine_bar",    "text": "Pour une dégustation sérieuse et abordable, la Maison du Vin CIVB (face à la Bourse) propose des verres à partir de 3€ avec un sommelier. Bien mieux que les caves touristiques." },
+    { "icon": "train",       "text": "Saint-Émilion est à 35 min en TER (6 trains/jour). Arcachon est à 50 min (15+ trains/jour). Les deux excursions sont parfaites en demi-journée depuis Bordeaux." },
+    { "icon": "wb_sunny",    "text": "Les vendanges (septembre-octobre) sont la meilleure période pour visiter les vignobles. Évitez août : les Bordelais partent en vacances et de nombreux restaurants ferment." }
+  ],
+  "related": ["biarritz", "la-rochelle", "lyon"]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "la-rochelle",
+  "city": "La Rochelle",
+  "country": "France",
+  "tagline": "Vieux-Port, tours médiévales et Île de Ré à 3h de Paris",
+  "excerpt": "2 jours à La Rochelle",
+  "cover": "la-rochelle-cover.jpg",
+  "hero": "la-rochelle-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "2h 55min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare Montparnasse",
+    "arrival_station": "La Rochelle Ville",
+    "price_from": "19€",
+    "best_season": "Mai · Juin · Septembre",
+    "co2_saved": "94%",
+    "note": "8-10 trains/jour depuis Paris Gare Montparnasse. OUIGO à partir de 19€, TGV Inoui à partir de 25€. Trajet le plus rapide : 2h55. Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "La Rochelle est la ville atlantique par excellence. Ses trois tours médiévales gardant l'entrée du vieux port depuis le XIVe siècle, ses arcades couvertes qui permettent de flâner sous la pluie, son aquarium parmi les plus grands d'Europe, et surtout l'Île de Ré — accessible par un pont de 3 km — avec ses villages de pêcheurs, ses marais salants et ses 100 km de pistes cyclables. La Rochelle est classée 3e ville la plus verte de France. À 3h de Paris, c'est la meilleure escapade atlantique du réseau.",
+  "essentials": {
+    "voir": [
+      { "icon": "castle",         "name": "Tours du Vieux-Port",      "note": "Tour Saint-Nicolas et tour de la Chaîne — montez pour la vue sur le port" },
+      { "icon": "water",          "name": "Île de Ré",                "note": "Le pont de 3 km (bus en 20 min depuis la gare) — vélos obligatoires" },
+      { "icon": "museum",         "name": "Aquarium de La Rochelle",  "note": "12 000 animaux marins — un des plus grands d'Europe" },
+      { "icon": "architecture",   "name": "Vieux-Port et arcades",   "note": "Les arcades couvertes du centre permettent de flâner par tous les temps" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Huîtres de Marennes-Oléron","note": "Les meilleures huîtres de France — directement au port ou sur l'Île de Ré" },
+      { "icon": "lunch_dining",   "name": "Moules-marinières",        "note": "Le classique rochelais — dans n'importe quel restaurant du vieux port" },
+      { "icon": "storefront",     "name": "Marché des Halles",        "note": "Le marché couvert du centre-ville — le matin en semaine et le samedi" },
+      { "icon": "local_cafe",     "name": "Cognac et pineau des Charentes","note": "Les apéritifs régionaux — dégustation dans un bar à vins du centre" }
+    ],
+    "transport": [
+      { "icon": "directions_bus", "name": "Bus Yélo vers l'Île de Ré","note": "20 min depuis la gare jusqu'à Saint-Martin-de-Ré — pass journée 2,50€" },
+      { "icon": "directions_bike","name": "Yélo vélos",               "note": "Vélos en libre-service — 100 km de pistes cyclables sur l'Île de Ré" },
+      { "icon": "tram",           "name": "Bus + tram Yélo",          "note": "Réseau urbain — ticket 1,30€" },
+      { "icon": "directions_boat","name": "Navette vers Fort Boyard",  "note": "En saison — départs depuis le vieux port" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Vieux-Port et tours médiévales", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Tours du Vieux-Port",            "desc": "Tour Saint-Nicolas et tour de la Chaîne — montez pour la vue sur le port et l'Atlantique." },
+        { "time": "12:00", "title": "Huîtres au port",                "desc": "Déjeuner d'huîtres de Marennes-Oléron et de moules directement sur les quais." },
+        { "time": "14:00", "title": "Aquarium de La Rochelle",        "desc": "Un des plus grands d'Europe — comptez 2h pour tout voir." },
+        { "time": "16:30", "title": "Arcades du centre",              "desc": "Flânerie sous les arcades couvertes — magasins et cafés à l'abri de la pluie ou du vent." },
+        { "time": "19:30", "title": "Apéro au vieux port",            "desc": "Pineau des Charentes face aux tours illuminées au coucher du soleil." }
+      ]
+    },
+    {
+      "day": 2, "title": "Île de Ré et départ", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:00", "title": "Bus vers l'Île de Ré",           "desc": "20 min de bus depuis la gare. Location de vélos à Saint-Martin-de-Ré." },
+        { "time": "10:00", "title": "Saint-Martin-de-Ré",             "desc": "Le village fortifié par Vauban, inscrit à l'UNESCO. Marché le matin." },
+        { "time": "12:30", "title": "Huîtres et moules sur l'île",    "desc": "Les cabanes ostréicoles de l'Île de Ré servent les coquillages sur des planches." },
+        { "time": "15:00", "title": "Retour La Rochelle Ville",       "desc": "TGV ou OUIGO vers Paris Montparnasse — 2h55 d'Atlantique depuis ton siège." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "8-10 trains/jour Paris Montparnasse → La Rochelle Ville. OUIGO à partir de 19€, TGV Inoui à partir de 25€. Trajet : 2h55. Réservez sur SNCF Connect." },
+    { "icon": "directions_bike","text": "Sur l'Île de Ré, le vélo est la seule façon sensée de se déplacer — 100 km de pistes cyclables relient tous les villages. Location à partir de 12€/jour à Saint-Martin-de-Ré." },
+    { "icon": "wb_sunny",    "text": "Juillet-août : l'Île de Ré est la destination la plus fréquentée de France par habitant. Le prix des hôtels explose. Mai-juin et septembre sont parfaits." },
+    { "icon": "water",       "text": "La navette maritime vers Fort Boyard (le vrai !) fonctionne de mai à septembre au départ du Vieux-Port. Réservez sur île-de-ré-plaisance.fr." }
+  ],
+  "related": ["nantes", "bordeaux", "pornic"]
+}

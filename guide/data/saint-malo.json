@@ -1,0 +1,72 @@
+{
+  "id": "saint-malo",
+  "city": "Saint-Malo",
+  "country": "France",
+  "tagline": "La cité corsaire à 2h35 de Paris",
+  "excerpt": "2 jours à Saint-Malo",
+  "cover": "saint-malo-cover.jpg",
+  "hero": "saint-malo-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "2h 35min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare Montparnasse",
+    "arrival_station": "Saint-Malo",
+    "price_from": "29€",
+    "best_season": "Mai · Juin · Septembre",
+    "co2_saved": "95%",
+    "note": "3 trains directs/jour depuis Paris Montparnasse (TGV Inoui). Nombreuses liaisons avec correspondance à Rennes (~16 trains/jour au total). À partir de 29€. Réservez sur SNCF Connect.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Saint-Malo est l'une des villes les plus spectaculaires de France. Ses remparts de granit ceinturent une cité intra-muros que l'on parcourt comme une île, les pieds dans le vent d'ouest, les yeux sur la Manche et le fort National. Ancienne base des corsaires du roi, la ville a été rasée en 1944 puis reconstruite à l'identique. Ce n'est pas de la reconstitution — c'est la même pierre, la même lumière, la même âme. En été, la Grande Plage du Sillon déborde de monde ; en basse saison, les remparts sont à vous seul.",
+  "essentials": {
+    "voir": [
+      { "icon": "castle",         "name": "Remparts intra-muros",     "note": "Le tour complet fait 2km — comptez 1h en flânant" },
+      { "icon": "photo_camera",   "name": "Fort National",            "note": "Accessible à pied à marée basse — vérifiez les horaires de marée" },
+      { "icon": "beach_access",   "name": "Grande Plage du Sillon",   "note": "La plage urbaine longée par la digue — 3 km de sable" },
+      { "icon": "water",          "name": "Île de Cézembre",          "note": "30 min en bateau — la seule île accessible de Saint-Malo" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Huîtres de Cancale",       "note": "À 15 min en TER — les meilleures huîtres de Bretagne" },
+      { "icon": "local_cafe",     "name": "Galettes malouines",       "note": "Les crêperies de la rue Jacques-Cartier dans l'intra-muros" },
+      { "icon": "storefront",     "name": "Marché du samedi matin",   "note": "Place Bouvet — produits bretons et poissons frais" },
+      { "icon": "lunch_dining",   "name": "Kouign-amann",             "note": "La pâtisserie bretonne caramélisée — cherchez une boulangerie locale" }
+    ],
+    "transport": [
+      { "icon": "directions_walk","name": "À pied intra-muros",       "note": "La ville close se parcourt entièrement à pied en 20 min" },
+      { "icon": "directions_bus", "name": "Bus Kicéo",                "note": "Pour relier la gare à l'intra-muros (15 min à pied sinon)" },
+      { "icon": "directions_boat","name": "Compagnie Corsaire",       "note": "Bateaux vers l'Île de Cézembre, Dinard et le Mont-Saint-Michel" },
+      { "icon": "train",          "name": "TER vers Rennes",          "note": "55 min — pratique pour combiner les deux villes" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "L'intra-muros et les remparts", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Gare → Intra-muros",            "desc": "15 min à pied ou bus Kicéo ligne 1. Entrez par la Porte Saint-Vincent." },
+        { "time": "10:30", "title": "Tour des remparts",              "desc": "Le chemin de ronde au sommet des murailles — vue sur la mer et les îlots." },
+        { "time": "12:30", "title": "Galette dans l'intra-muros",    "desc": "Les crêperies de la rue Jacques-Cartier — galette complète et cidre." },
+        { "time": "14:30", "title": "Fort National",                  "desc": "À marée basse uniquement — vérifiez les horaires sur le site officiel avant." },
+        { "time": "17:00", "title": "Grande Plage du Sillon",         "desc": "La longue plage de sable longeant la digue — baignade selon la saison." },
+        { "time": "20:00", "title": "Dîner fruits de mer",           "desc": "Homard, moules et huîtres dans les restaurants de la place Chateaubriand." }
+      ]
+    },
+    {
+      "day": 2, "title": "Cancale et départ", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "TER vers Cancale",              "desc": "15 min en bus ou voiture (peu de trains directs). La capitale de l'huître bretonne." },
+        { "time": "10:30", "title": "Marché de la Houle",            "desc": "Huîtres à 1€ pièce directement sur le port — le meilleur rapport qualité-prix de France." },
+        { "time": "13:00", "title": "Déjeuner crêperie",             "desc": "Retour à Saint-Malo pour une galette de sarrasin au beurre." },
+        { "time": "15:00", "title": "Île de Cézembre",               "desc": "Traversée en bateau (Compagnie Corsaire) — plage sauvage, pique-nique." },
+        { "time": "18:00", "title": "Gare de Saint-Malo",            "desc": "TGV direct vers Paris Montparnasse ou TER vers Rennes puis TGV." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "3 TGV Inoui directs/jour Paris Montparnasse → Saint-Malo (2h35, dès 29€). De nombreuses liaisons avec correspondance à Rennes complètent le programme (~16 trains/jour au total). Réservez sur SNCF Connect." },
+    { "icon": "water",       "text": "Consultez impérativement les horaires de marée avant de planifier le Fort National — il n'est accessible qu'à marée basse (2-3h autour de la basse mer). Site officiel : fortnational.com." },
+    { "icon": "wb_sunny",    "text": "Saint-Malo en juillet-août : bondée et chère. Mai-juin et septembre sont parfaits — mer encore fraîche mais lumière bretonne magnifique et plages abordables." },
+    { "icon": "directions_boat","text": "La Compagnie Corsaire propose des traversées vers Dinard (10 min), l'Île de Cézembre (30 min) et en saison le Mont-Saint-Michel. Vérifiez les horaires sur corsaire.fr." }
+  ],
+  "related": ["rennes", "pornic", "brest"]
+}

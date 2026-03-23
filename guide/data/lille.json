@@ -1,0 +1,61 @@
+{
+  "id": "lille",
+  "city": "Lille",
+  "country": "France",
+  "tagline": "Flandres, estaminets et Grande Braderie à 1h de Paris",
+  "excerpt": "1 jour à Lille",
+  "cover": "lille-cover.jpg",
+  "hero": "lille-hero.jpg",
+  "badges": ["Train direct", "Budget"],
+  "travel": {
+    "duration": "1h 00min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare du Nord",
+    "arrival_station": "Lille Europe ou Lille Flandres",
+    "price_from": "10€",
+    "best_season": "Septembre · Octobre · Avril",
+    "co2_saved": "95%",
+    "note": "20+ trains/jour depuis Paris Gare du Nord. OUIGO à partir de 10€, TGV Inoui à partir de 15€. Trajet le plus rapide : 1h00 (TGV Inoui). Deux gares : Lille Europe (TGV) et Lille Flandres (Intercités). Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Lille est la capitale des Flandres françaises, et c'est ce mélange franco-flamand qui lui donne son caractère unique. Sa Grand'Place et sa Vieille Bourse ornementée, ses estaminets où l'on mange du welsh rabbit et du potjevleesch avec une bière de garde, son Vieux-Lille aux façades baroques roses et rouges — tout cela en fait l'une des villes les plus attachantes de France. Et la Braderie de Lille en septembre est le plus grand vide-grenier d'Europe. À 1h de Paris, c'est l'une des meilleures affaires du réseau TGV.",
+  "essentials": {
+    "voir": [
+      { "icon": "architecture",   "name": "Vieux-Lille",              "note": "Les façades baroques flamandes — rue de la Monnaie et place Louise-de-Bettignies" },
+      { "icon": "museum",         "name": "Palais des Beaux-Arts",    "note": "Le 2e plus grand musée de France après le Louvre — Rubens, Goya, Delacroix" },
+      { "icon": "storefront",     "name": "Grand'Place et Vieille Bourse","note": "La plus belle bourse du monde — brocante de livres anciens dans la cour" },
+      { "icon": "architecture",   "name": "Citadelle Vauban",         "note": "Le chef-d'œuvre de Vauban au milieu d'un parc — promenade le week-end" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Welsh rabbit et carbonnade","note": "Les plats emblématiques des estaminets lillois — Estaminet Gantois" },
+      { "icon": "sports_bar",     "name": "Bières de garde du Nord",  "note": "Jenlain, Choulette ou Trois Monts — les vraies bières du nord dans un estaminet" },
+      { "icon": "local_cafe",     "name": "Gaufres de Lille",         "note": "La gaufre fourrée au sucre vergeoise — cherchez une gaufrerie artisanale" },
+      { "icon": "storefront",     "name": "Marché de Wazemmes",       "note": "Le marché populaire le dimanche matin — le plus vivant de la métropole" }
+    ],
+    "transport": [
+      { "icon": "subway",         "name": "Métro VAL (2 lignes)",     "note": "Ticket 1,80€, pass journée 5,50€ — automatique et fiable" },
+      { "icon": "tram",           "name": "Trams",                    "note": "2 lignes pour les quartiers périphériques" },
+      { "icon": "directions_bike","name": "V'Lille",                  "note": "Vélos en libre-service — le Vieux-Lille est entièrement cyclable" },
+      { "icon": "train",          "name": "Thalys/Eurostar vers Bruxelles","note": "30 min depuis Lille Europe — Bruxelles pour la journée" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Lille en une journée", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Grand'Place et Vieille Bourse",  "desc": "La plus belle bourse du monde — brocante de livres anciens dans la cour intérieure." },
+        { "time": "11:30", "title": "Vieux-Lille",                   "desc": "Les ruelles flamandes baroques roses et rouges — rue de la Monnaie et ses boutiques." },
+        { "time": "13:00", "title": "Estaminet lillois",              "desc": "Welsh rabbit et carbonnade flamande dans un estaminet du Vieux-Lille. Bière de garde obligatoire." },
+        { "time": "15:00", "title": "Palais des Beaux-Arts",          "desc": "2h dans le 2e plus grand musée de France — Rubens, Goya et la salle des plans en relief." },
+        { "time": "18:00", "title": "Gare Lille Europe",              "desc": "TGV vers Paris Gare du Nord — 1h et vous êtes rentrés." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "20+ trains/jour Paris Gare du Nord → Lille Europe (1h) ou Lille Flandres (1h15). OUIGO à partir de 10€, TGV Inoui à partir de 15€. Réservez sur SNCF Connect." },
+    { "icon": "schedule",    "text": "La Braderie de Lille (1er week-end de septembre) est le plus grand vide-grenier d'Europe — 10 000 exposants dans toute la ville. Ambiance unique mais hôtels complets 6 mois à l'avance." },
+    { "icon": "train",       "text": "Depuis Lille Europe, Bruxelles est à 30 min en Eurostar/Thalys (dès 19€), Londres à 1h20. Lille est parfaite comme base pour visiter plusieurs villes en un week-end." },
+    { "icon": "museum",      "text": "Le Palais des Beaux-Arts est gratuit le 1er dimanche de chaque mois. La salle des plans en relief (maquettes de villes fortifiées par Vauban) est unique au monde." }
+  ],
+  "related": ["bruxelles", "reims", "strasbourg"]
+}

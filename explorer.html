@@ -47,10 +47,15 @@
             <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="trajets.html">
                 <span class="material-symbols-outlined text-lg">train</span> Voyager
             </a>
-            <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="explorer.html">
+            <a class="text-sm font-bold flex items-center gap-2 px-4 py-2 rounded-xl shadow-sm transition-all"
+               href="explorer.html"
+               style="background:#4ade80; color:#1A2B3C"> 
                 <span class="material-symbols-outlined text-lg">explore</span> Explorer
             </a>
-            <a class="text-sm font-bold text-white bg-midnight px-4 py-2 rounded-xl hover:bg-primary hover:text-midnight transition-all flex items-center gap-2 shadow-sm" href="outilstgvmax.html">
+            <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="guide/index.html">
+                <span class="material-symbols-outlined text-lg">menu_book</span> Guides
+            </a>
+            <a class="text-sm font-bold hover:text-primary transition-colors flex items-center gap-2" href="outilstgvmax.html">
                 <span class="material-symbols-outlined text-lg">bolt</span> Outils TGVmax
             </a>
         </div>
@@ -78,9 +83,13 @@
     <a href="explorer.html">
         <span class="material-symbols-outlined text-xl">explore</span> Explorer
     </a>
-    <a href="outilstgvmax.html" class="nav-cta">
+    <a href="guide/index.html"> 
+        <span class="material-symbols-outlined text-xl">menu_book</span> Guides
+  </a>
+    <a href="outilstgvmax.html"> 
         <span class="material-symbols-outlined text-xl">bolt</span> Outils TGVmax
     </a>
+    
 </div>
 
 <!-- ══ SEARCH BAR ══ -->
@@ -225,46 +234,37 @@
 </div>
 
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
-<footer class="bg-midnight text-white py-20">
+<footer class="text-white py-20" style="background:#1A2B3C">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-16 mb-12">
-            <!-- Branding -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-16 mb-12" style="border-bottom:1px solid rgba(255,255,255,0.1)">
             <div class="col-span-1">
-                <a href="index.html" class="flex items-center gap-2 mb-8 group w-fit">
-                    <img src="assets/Logo/SVG/Background_IndexFichier 2.svg" alt="TrainNomad Logo" class="w-8 h-8 transition-transform group-hover:scale-105">
-                    <span class="text-xl font-extrabold tracking-tight text-white">
-                        TrainNomad<span class="text-primary">.eu</span>
-                    </span>
+                <a href="../index.html" class="flex items-center gap-2 mb-8 group w-fit">
+                    <img src="../assets/Logo/SVG/Background_IndexFichier 2.svg" alt="TrainNomad Logo" class="w-8 h-8 transition-transform group-hover:scale-105">
+                    <span class="text-xl font-extrabold tracking-tight text-white">TrainNomad<span style="color:#4ade80">.eu</span></span>
                 </a>
-                <p class="text-slate-400 text-base leading-relaxed">
-                    L'expérience de réservation ferroviaire la plus élégante. Conçue pour le voyageur moderne et éco-responsable.
-                </p>
+                <p class="text-slate-400 text-base leading-relaxed">L'expérience de réservation ferroviaire la plus élégante. Conçue pour le voyageur moderne et éco-responsable.</p>
             </div>
-            <!-- Navigation -->
             <div>
                 <h5 class="font-bold mb-8 text-lg">Navigation</h5>
                 <ul class="flex flex-col gap-5 text-base text-slate-400">
-                    <li><a class="hover:text-primary transition-colors" href="A_propos.html">À propos</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="trajets.html">Destinations</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="explorer.html">Explorer</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="outilstgvmax.html">Outils TGVMax</a></li>
+                    <li><a class="hover:text-green-400 transition-colors" href="../A_propos.html">À propos</a></li>
+                    <li><a class="hover:text-green-400 transition-colors" href="../trajets.html">Destinations</a></li>
+                    <li><a class="hover:text-green-400 transition-colors" href="../explorer.html">Explorer</a></li>
+                    <li><a class="hover:text-green-400 transition-colors" href="index.html">Guides</a></li>
+                    <li><a class="hover:text-green-400 transition-colors" href="../outilstgvmax.html">Outils TGVMax</a></li>
                 </ul>
             </div>
-            <!-- Engagement -->
             <div>
                 <h5 class="font-bold mb-8 text-lg">Notre Engagement</h5>
-                <p class="text-slate-400 text-base leading-relaxed" style="font-style:italic">
-                    "Choisir le rail, c'est réduire son empreinte carbone de 90% par rapport à l'avion. Voyagez léger, voyagez loin, voyagez responsable."
-                </p>
+                <p class="footer-quote text-base">"Choisir le rail, c'est réduire son empreinte carbone de 90% par rapport à l'avion. Voyagez léger, voyagez loin, voyagez responsable."</p>
             </div>
         </div>
-        <!-- Barre légale -->
         <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] text-slate-500 uppercase tracking-[0.2em] font-bold">
             <p>© 2026 TrainNomad.eu - Engagé pour un futur durable.</p>
             <div class="flex gap-10">
-                <a class="hover:text-white transition-colors" href="mention_legal.html">Mentions Légales</a>
-                <a class="hover:text-white transition-colors" href="confidentialite.html">Confidentialité</a>
-                <a class="hover:text-white transition-colors" href="conditions.html">Conditions</a>
+                <a class="hover:text-white transition-colors" href="../mention_legal.html">Mentions Légales</a>
+                <a class="hover:text-white transition-colors" href="../confidentialite.html">Confidentialité</a>
+                <a class="hover:text-white transition-colors" href="../conditions.html">Conditions</a>
             </div>
         </div>
     </div>
