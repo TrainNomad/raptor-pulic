@@ -1,0 +1,74 @@
+{
+  "id": "montpellier",
+  "city": "Montpellier",
+  "country": "France",
+  "tagline": "Place de la Comédie, garrigue et Méditerranée à 3h20 de Paris",
+  "excerpt": "2 jours à Montpellier",
+  "cover": "montpellier-cover.jpg",
+  "hero": "montpellier-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "3h 19min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare de Lyon",
+    "arrival_station": "Montpellier Saint-Roch",
+    "price_from": "19€",
+    "best_season": "Avril · Mai · Septembre · Octobre",
+    "co2_saved": "95%",
+    "note": "12+ trains/jour depuis Paris Gare de Lyon. OUIGO à partir de 19€, TGV Inoui à partir de 29€. Trajet : 3h19. Gare Saint-Roch à 5 min à pied de la Place de la Comédie. Réservez sur SNCF Connect.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Montpellier est la ville la plus jeune de France — un tiers de ses habitants ont moins de 30 ans, et ça se voit dans l'énergie de ses rues. Mais la cité est aussi l'une des plus anciennes universités d'Europe, fondée en 1289, et son écuyer Rabelais y étudia la médecine. Le centre historique — l'Écusson — forme un pentagone de ruelles médiévales et d'hôtels particuliers du XVIIe siècle que les étudiants ont transformé en terrasses de café permanentes. À 10 km, la plage de Palavas-les-Flots et les étangs de la camargue héraultaise commencent une autre vie.",
+  "essentials": {
+    "voir": [
+      { "icon": "architecture",  "name": "Place de la Comédie",       "note": "L'Œuf — le cœur de la ville, autour de la fontaine des Trois Grâces" },
+      { "icon": "museum",        "name": "Musée Fabre",                "note": "L'un des plus riches musées des Beaux-Arts de France hors Paris" },
+      { "icon": "park",          "name": "Promenade du Peyrou",        "note": "Le jardin suspendu avec l'aqueduc et la vue sur les Cévennes" },
+      { "icon": "history_edu",   "name": "L'Écusson",                  "note": "Le centre médiéval — les hôtels particuliers du XVIIe cachés dans les ruelles" }
+    ],
+    "manger": [
+      { "icon": "restaurant",    "name": "Tielle sétoise",             "note": "La tourte aux poulpes de Sète — introuvable ailleurs" },
+      { "icon": "storefront",    "name": "Marché des Arceaux",         "note": "Le meilleur marché de la ville le samedi matin — sous l'aqueduc" },
+      { "icon": "wine_bar",      "name": "Vins du Languedoc",          "note": "Picpoul de Pinet, Faugères et Saint-Chinian — les vins méconnus qui montent" },
+      { "icon": "local_cafe",    "name": "Huîtres de Bouzigues",       "note": "L'étang de Thau est à 30 km — les huîtres arrivent fraîches tous les matins aux halles" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Tramways (4 lignes)",       "note": "Ticket 1,70€ — réseau le plus dense de France pour une ville de cette taille" },
+      { "icon": "directions_bike","name": "Vélomagg'",                 "note": "Vélos en libre-service — abonnement journalier 1€" },
+      { "icon": "directions_bus", "name": "Bus TaM vers les plages",   "note": "Ligne 131 vers Palavas-les-Flots — 30 min depuis le centre" },
+      { "icon": "train",          "name": "TER vers Sète / Nîmes",     "note": "Sète à 25 min, Nîmes à 30 min, Carcassonne à 1h30" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1,
+      "title": "L'Écusson et les musées",
+      "color": "#4ade80",
+      "points": [
+        { "time": "09:30", "title": "Musée Fabre",                "desc": "La collection Frédéric Bazille et les maîtres flamands — l'un des meilleurs musées régionaux de France." },
+        { "time": "11:30", "title": "L'Écusson",                  "desc": "Explorez les ruelles médiévales au hasard — cherchez les cours intérieures des hôtels particuliers." },
+        { "time": "13:00", "title": "Déjeuner place de la Comédie","desc": "Les terrasses autour de l'Œuf pour regarder passer Montpellier." },
+        { "time": "15:00", "title": "Promenade du Peyrou",         "desc": "Le jardin suspendu du XVIIe, l'arc de triomphe et la vue sur les Cévennes par temps clair." },
+        { "time": "17:30", "title": "Quartier Beaux-Arts",         "desc": "Le quartier étudiant et artistique — galeries et cafés indépendants." }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Plage et étang de Thau",
+      "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "Marché des Arceaux",          "desc": "Le marché du samedi sous l'aqueduc — fromages, olives et vins du Languedoc." },
+        { "time": "11:30", "title": "Bus vers Palavas-les-Flots",  "desc": "La plage la plus proche de Montpellier — 30 min en bus, sable fin et Méditerranée." },
+        { "time": "13:30", "title": "Déjeuner huîtres de Bouzigues","desc": "Les huîtres de l'étang de Thau servies sur la plage — plateau pour deux à partir de 18€." },
+        { "time": "16:00", "title": "Montpellier Saint-Roch",       "desc": "TGV retour vers Paris Gare de Lyon — 3h19 depuis le soleil languedocien." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",     "text": "12+ TGV/OUIGO directs/jour Paris Gare de Lyon → Montpellier Saint-Roch. OUIGO à partir de 19€. La gare est à 5 min à pied de la Place de la Comédie — aucun transport nécessaire à l'arrivée." },
+    { "icon": "wine_bar",  "text": "Le Languedoc-Roussillon est la plus grande région viticole du monde. Les vins locaux (Picpoul de Pinet, Grès de Montpellier, Faugères) sont d'une qualité exceptionnelle à des prix deux fois inférieurs au Bordelais." },
+    { "icon": "beach_access","text": "Montpellier est à 10 km de la Méditerranée — Palavas-les-Flots et Carnon en bus (30 min, 1,70€). En juillet-août, arrivez avant 10h pour trouver une place sur la plage." },
+    { "icon": "train",     "text": "Depuis Montpellier : Nîmes et ses arènes romaines à 30 min, Sète (la Venise languedocienne) à 25 min, Carcassonne à 1h30. Le pass TER Occitanie journalier (12€) couvre tous ces trajets." }
+  ],
+  "related": ["avignon", "toulouse", "marseille"]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "londres",
+  "city": "Londres",
+  "country": "Royaume-Uni",
+  "tagline": "Big Ben, pubs et culture britannique à 2h17 de Paris",
+  "excerpt": "3 jours à Londres",
+  "cover": "londres-cover.jpg",
+  "hero": "londres-hero.jpg",
+  "badges": ["Train direct", "Eurostar"],
+  "travel": {
+    "duration": "2h 17min",
+    "operator": "Eurostar",
+    "from": "Paris Gare du Nord",
+    "arrival_station": "London St Pancras International",
+    "price_from": "52€",
+    "best_season": "Avril · Mai · Septembre · Octobre",
+    "co2_saved": "91%",
+    "note": "15 trains directs/jour depuis Paris Gare du Nord. À partir de 52€ en réservant à l'avance sur eurostar.com ou SNCF Connect. Trajet le plus rapide : 2h17. Arrivée à St Pancras International, en plein centre de Londres. Passeport obligatoire. ETA requis pour les ressortissants français depuis janvier 2025 (demande en ligne sur gov.uk, 10£).",
+    "operators_used": ["ES", "UK"]
+  },
+  "intro": "Londres est l'une des villes les plus denses culturellement du monde. Ses musées sont gratuits et parmi les meilleurs de la planète — British Museum, National Gallery, Tate Modern, V&A. Ses parcs royaux sont immenses et ouverts à tous. Ses quartiers sont aussi distincts que des villes différentes : le Shoreditch hipster, le Mayfair élégant, le Borough Market gourmand, le Notting Hill coloré. Et sa scène théâtrale, concentrée dans le West End, rivalise avec Broadway. À 2h17 de Paris, c'est l'escapade internationale la plus rapide depuis la Gare du Nord.",
+  "essentials": {
+    "voir": [
+      { "icon": "museum",         "name": "British Museum",            "note": "Gratuit — la Rosette de Champollion, les momies égyptiennes" },
+      { "icon": "palette",        "name": "Tate Modern",               "note": "Art contemporain dans une centrale électrique — gratuit" },
+      { "icon": "castle",         "name": "Tower of London",           "note": "Les joyaux de la Couronne — réservez en ligne" },
+      { "icon": "park",           "name": "Hyde Park & Kensington",    "note": "350 hectares en plein centre — promenade incontournable" }
+    ],
+    "manger": [
+      { "icon": "storefront",     "name": "Borough Market",            "note": "Le marché gastronomique de Londres — vendredi et samedi" },
+      { "icon": "sports_bar",     "name": "Pub traditionnel",          "note": "The Churchill Arms ou The Mayflower — pinte de real ale" },
+      { "icon": "restaurant",     "name": "Brick Lane",                "note": "Les meilleurs currys de Londres dans l'East End" },
+      { "icon": "local_cafe",     "name": "Afternoon Tea",             "note": "Sandwichs, scones et thé — une institution britannique" }
+    ],
+    "transport": [
+      { "icon": "subway",         "name": "Underground (Tube)",        "note": "11 lignes — Oyster card ou carte bancaire sans contact" },
+      { "icon": "directions_bus", "name": "Bus rouges à impériale",   "note": "Plus lent mais iconique — payer par carte sans contact" },
+      { "icon": "directions_bike","name": "Santander Cycles",          "note": "Vélos en libre-service — 1£ pour 30 min" },
+      { "icon": "train",          "name": "Overground & Elizabeth line","note": "Pour les quartiers de l'Est et l'aéroport Heathrow" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Le Londres historique", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "British Museum",                  "desc": "Arrivez à l'ouverture. La Grande Galerie couverte, les frises du Parthénon, la Rosette. Gratuit." },
+        { "time": "13:00", "title": "Covent Garden",                   "desc": "Déjeuner dans le marché couvert ou les restaurants de l'arcade victorienne." },
+        { "time": "15:00", "title": "National Gallery",                "desc": "Trafalgar Square et la collection nationale — Van Gogh, Turner, Caravage. Gratuit." },
+        { "time": "18:00", "title": "South Bank",                      "desc": "Promenade le long de la Tamise jusqu'à la Tate Modern. Vue sur St Paul's au coucher du soleil." },
+        { "time": "20:00", "title": "Pub à Southwark",                 "desc": "The Anchor, l'un des plus vieux pubs de Londres au bord de la Tamise." }
+      ]
+    },
+    {
+      "day": 2, "title": "East London et marchés", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "Borough Market",                  "desc": "Le marché gastronomique sous le pont de London Bridge. Arrivez tôt." },
+        { "time": "11:00", "title": "Tower of London",                 "desc": "Les joyaux de la Couronne et les ravens. Réservez en ligne." },
+        { "time": "13:30", "title": "Brick Lane",                      "desc": "Les meilleurs currys de la ville dans le quartier bangladais." },
+        { "time": "15:30", "title": "Shoreditch",                      "desc": "Street art, galeries et boutiques vintage. L'East End créatif." },
+        { "time": "19:00", "title": "West End",                        "desc": "Théâtre ou comédie musicale — les billets du jour sont soldés à moitié prix au TKTS de Leicester Square." }
+      ]
+    },
+    {
+      "day": 3, "title": "Parcs et départ", "color": "#94a3b8",
+      "points": [
+        { "time": "09:30", "title": "Hyde Park + Kensington",          "desc": "Serpentine Gallery, Diana Memorial, Kensington Palace. Gratuit et immense." },
+        { "time": "12:00", "title": "Notting Hill",                    "desc": "Portobello Road et ses maisons colorées. Marché le samedi matin." },
+        { "time": "14:00", "title": "Victoria & Albert Museum",        "desc": "Mode, design, arts décoratifs. La collection la plus riche du monde. Gratuit." },
+        { "time": "18:00", "title": "St Pancras International",        "desc": "Eurostar retour vers Paris Gare du Nord — 2h17 sous la Manche." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "badge",       "text": "Passeport obligatoire (carte d'identité non acceptée). Les ressortissants français doivent obtenir un ETA (Electronic Travel Authorisation) avant le voyage — demande en ligne sur gov.uk pour 10£. Délivré en quelques minutes." },
+    { "icon": "train",       "text": "Eurostar Paris Gare du Nord → Londres St Pancras : 15 trains/jour, trajet de 2h17 à 2h30. À partir de 52€ en réservant à l'avance sur eurostar.com. Comptez arriver 30 min avant pour le contrôle passeport et la sécurité." },
+    { "icon": "payments",    "text": "La livre sterling (£) est obligatoire. La carte bancaire sans contact fonctionne partout — dans le Tube, les bus, les pubs et les musées. Pas besoin d'Oyster card avec une carte Visa ou Mastercard." },
+    { "icon": "museum",      "text": "Les grands musées nationaux sont gratuits : British Museum, National Gallery, Natural History Museum, V&A, Science Museum, Tate Modern, Tate Britain. C'est l'un des meilleurs rapports qualité-prix culturels d'Europe." }
+  ],
+  "related": ["edimbourg", "oxford", "manchester"]
+}

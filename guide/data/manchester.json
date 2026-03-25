@@ -1,0 +1,71 @@
+{
+  "id": "manchester",
+  "city": "Manchester",
+  "country": "Royaume-Uni",
+  "tagline": "Football, musique et culture industrielle à 5h de Paris",
+  "excerpt": "2 jours à Manchester",
+  "cover": "manchester-cover.jpg",
+  "hero": "manchester-hero.jpg",
+  "badges": ["1 correspondance", "Eurostar + Avanti"],
+  "travel": {
+    "duration": "~5h (via Londres)",
+    "operator": "Eurostar + Avanti West Coast",
+    "from": "Paris Gare du Nord",
+    "arrival_station": "Manchester Piccadilly",
+    "price_from": "72€",
+    "best_season": "Mai · Juin · Septembre",
+    "co2_saved": "88%",
+    "correspondance": "1 changement à London Euston",
+    "note": "Eurostar Paris Gare du Nord → Londres St Pancras (2h17, dès 52€) + métro St Pancras → Euston (10 min) + Avanti West Coast Euston → Manchester Piccadilly (2h08, dès 15£). Passeport + ETA (10£) obligatoires.",
+    "operators_used": ["ES", "UK"]
+  },
+  "intro": "Manchester est la ville anglaise la plus mal-aimée des guides touristiques — et l'une des plus fascinantes à vivre. Berceau de la Révolution industrielle, capitale mondiale du coton au XIXe siècle, elle a recyclé ses entrepôts en galeries d'art, ses usines en appartements et ses docks en quartier culturel de premier plan. Sa scène musicale (Oasis, The Smiths, Joy Division, The Stone Roses) est légendaire. Ses deux clubs de football (United et City) se partagent la ville avec une passion sans équivalent. Et son Northern Quarter regorge de bars, disquaires et street art. À 5h de Paris, c'est l'Angleterre authentique, loin des circuits touristiques londoniens.",
+  "essentials": {
+    "voir": [
+      { "icon": "museum",         "name": "Manchester Art Gallery",    "note": "La collection Pre-Raphaelite la plus riche du monde — gratuit" },
+      { "icon": "history_edu",    "name": "Museum of Science & Industry","note": "Les origines de la Révolution industrielle — gratuit" },
+      { "icon": "sports_score",   "name": "Old Trafford ou Etihad",   "note": "Visite du stade selon l'équipe choisie — réservez en ligne" },
+      { "icon": "architecture",   "name": "Castlefield & les docks",   "note": "Le quartier post-industriel — canaux, entrepôts et galeries" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Chinatown de Manchester",   "note": "Le plus grand Chinatown d'Angleterre hors Londres" },
+      { "icon": "storefront",     "name": "Mackie Mayor",              "note": "Une halle victorienne rénovée en food hall — la meilleure de Manchester" },
+      { "icon": "sports_bar",     "name": "Pubs du Northern Quarter",  "note": "Bars indépendants, craft beer et musique live — Tib Street et Oldham Street" },
+      { "icon": "local_cafe",     "name": "Afflecks Palace",           "note": "L'arcade indie mythique — vintage, vinyles et culture alternative" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Metrolink (tramway)",       "note": "Le plus grand réseau de trams du Royaume-Uni — day ticket 5,50£" },
+      { "icon": "directions_bus", "name": "Bus TfGM",                  "note": "Réseau dense couvrant tout Greater Manchester" },
+      { "icon": "directions_walk","name": "À pied en centre",          "note": "Le centre de Manchester est compact — Northern Quarter à 10 min de Piccadilly" },
+      { "icon": "train",          "name": "Northern Rail vers Liverpool","note": "45 min pour rejoindre Liverpool et les Beatles" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Culture et histoire industrielle", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Museum of Science & Industry",    "desc": "Le berceau de la Révolution industrielle et du premier chemin de fer passager (1830). Gratuit." },
+        { "time": "12:30", "title": "Castlefield",                     "desc": "Le quartier des canaux industriels réhabilités. Déjeuner dans un pub au bord de l'eau." },
+        { "time": "14:30", "title": "Manchester Art Gallery",          "desc": "Les Pre-Raphaelites et l'art britannique du XIXe. Gratuit." },
+        { "time": "17:00", "title": "Northern Quarter",                "desc": "Le quartier indie — disquaires, street art et boutiques vintage." },
+        { "time": "20:00", "title": "Concert ou pub live",             "desc": "Manchester a plus de scènes musicales par habitant que n'importe quelle ville du Royaume-Uni." }
+      ]
+    },
+    {
+      "day": 2, "title": "Football et départ", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "Mackie Mayor",                    "desc": "Le food hall dans l'ancienne halle aux poissons victorienne — le meilleur brunch de Manchester." },
+        { "time": "11:00", "title": "Old Trafford ou Etihad Stadium",  "desc": "Visite guidée du stade et du musée de votre équipe de cœur. Réservez sur le site du club." },
+        { "time": "14:00", "title": "Chinatown",                       "desc": "Le plus grand Chinatown d'Angleterre hors Londres — déjeuner tardif." },
+        { "time": "16:30", "title": "Manchester Piccadilly",           "desc": "Avanti West Coast vers Londres Euston, puis Eurostar vers Paris Gare du Nord." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "badge",       "text": "Passeport obligatoire + ETA (10£, sur gov.uk). Valable 2 ans. Les ressortissants français ne peuvent plus utiliser leur carte d'identité pour entrer au Royaume-Uni depuis le Brexit." },
+    { "icon": "train",       "text": "Eurostar Paris → St Pancras (2h17, dès 52€) + métro → Euston (10 min, ~3£) + Avanti West Coast Euston → Manchester Piccadilly (2h08, dès 15£). Budget total à partir de ~72€. Réservez sur eurostar.com et avantitrain.com." },
+    { "icon": "music_note",  "text": "Manchester a produit certains des plus grands groupes de l'histoire : The Smiths, Joy Division/New Order, Oasis, The Stone Roses, Elbow. Le Madchester Tour visite les lieux mythiques — The Haçienda, The Boardwalk, Salford Lads Club." },
+    { "icon": "train",       "text": "Liverpool est à 45 min de train depuis Manchester Piccadilly (Northern Rail, dès 6£). Combinez les deux villes facilement en un week-end — Anfield et les Beatles à Liverpool, Old Trafford et Joy Division à Manchester." }
+  ],
+  "related": ["londres", "edimbourg", "bath"]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "tours",
+  "city": "Tours",
+  "country": "France",
+  "tagline": "Châteaux de la Loire, gastronomie et douceur tourangelle à 1h14 de Paris",
+  "excerpt": "2 jours à Tours",
+  "cover": "tours-cover.jpg",
+  "hero": "tours-hero.jpg",
+  "badges": ["Train direct", "Budget"],
+  "travel": {
+    "duration": "1h 14min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare Montparnasse",
+    "arrival_station": "Tours Saint-Pierre-des-Corps",
+    "price_from": "10€",
+    "best_season": "Avril · Mai · Juin · Septembre",
+    "co2_saved": "95%",
+    "note": "20+ trains/jour depuis Paris Montparnasse. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 1h14. Arrivée à Saint-Pierre-des-Corps, 4 km du centre de Tours (navette ou tramway). Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Tours est la capitale du Val de Loire, classé au Patrimoine Mondial de l'UNESCO. À moins d'1h15 de Paris, elle est la porte d'entrée naturelle vers les plus beaux châteaux de France : Chambord, Chenonceau, Amboise et Villandry sont tous accessibles en moins d'une heure depuis la ville. Mais Tours mérite qu'on s'y attarde — son quartier médiéval de la Vieille Tours, ses halles gourmandes, ses restaurants de cuisine ligérienne et son marché du dimanche comptent parmi les meilleures adresses de la région Centre-Val de Loire. Et la douceur du climat ligérien — la lumière de la Touraine — est une chose à vivre plutôt qu'à décrire.",
+  "essentials": {
+    "voir": [
+      { "icon": "castle",         "name": "Château de Chenonceau",    "note": "Le château des Dames, à 30 min en voiture ou en car — le plus visité après Versailles" },
+      { "icon": "castle",         "name": "Château de Chambord",      "note": "Le chef-d'œuvre de François Ier — 440 pièces et la double hélice de Léonard" },
+      { "icon": "history_edu",    "name": "Vieux-Tours (place Plumereau)","note": "Les maisons à colombages médiévales — le cœur animé de la ville" },
+      { "icon": "museum",         "name": "Musée des Beaux-Arts de Tours","note": "Dans l'archevêché — collection de Mantegna à Degas" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Rillettes de Tours",        "note": "La charcuterie emblématique — cherchez une charcuterie artisanale de la vieille ville" },
+      { "icon": "storefront",     "name": "Halles de Tours",           "note": "Le marché couvert du centre — fromages de chèvre, volailles et vins de Loire" },
+      { "icon": "local_cafe",     "name": "Tarte Tatin",               "note": "Née à Lamotte-Beuvron à 70 km — incontournable dans tous les restaurants de la région" },
+      { "icon": "wine_bar",       "name": "Vins de Loire (Vouvray, Chinon)","note": "Dégustation dans les caves troglodytiques autour de Tours" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Tramway de Tours",          "note": "Ligne A : Saint-Pierre-des-Corps → centre-ville en 10 min — ticket 1,70€" },
+      { "icon": "directions_bus", "name": "Cars vers les châteaux",    "note": "Navettes touristiques depuis Tours vers Chenonceau, Amboise et Chambord" },
+      { "icon": "directions_bike","name": "Vélos Vélociti",            "note": "Vélos en libre-service — la Loire à Vélo passe par Tours (800 km de pistes)" },
+      { "icon": "train",          "name": "TER vers Amboise / Blois",  "note": "20 min vers Amboise, 35 min vers Blois — pour les châteaux du Val de Loire" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "La Loire et la vieille ville", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Place Plumereau",                "desc": "Le cœur du Vieux-Tours. Maisons à colombages du XVe siècle et cafés en terrasse." },
+        { "time": "11:30", "title": "Cathédrale Saint-Gatien",        "desc": "Les vitraux gothiques et les tombeaux des enfants royaux de Charles VIII." },
+        { "time": "13:00", "title": "Halles de Tours",                "desc": "Déjeuner au marché couvert — rillettes, fromages de chèvre et vins de Vouvray." },
+        { "time": "15:00", "title": "Musée des Beaux-Arts",           "desc": "Dans les jardins de l'archevêché — collection nationale de premier rang." },
+        { "time": "18:00", "title": "Bords de Loire",                 "desc": "Promenade sur les quais — la lumière du soir sur le fleuve est célèbre dans toute la région." }
+      ]
+    },
+    {
+      "day": 2, "title": "Châteaux et départ", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:00", "title": "TER vers Amboise",               "desc": "20 min de train. Le château royal où mourut Léonard de Vinci. Vue sur la Loire depuis les terrasses." },
+        { "time": "11:00", "title": "Clos Lucé",                      "desc": "La demeure de Léonard de Vinci à Amboise — les maquettes de ses inventions." },
+        { "time": "13:00", "title": "Déjeuner en Touraine",           "desc": "Sandre au beurre blanc ou rillons de Tours dans un restaurant du bord de Loire." },
+        { "time": "16:00", "title": "Saint-Pierre-des-Corps",         "desc": "TGV ou OUIGO vers Paris Montparnasse — 1h14 depuis les rives de la Loire." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "20+ trains/jour Paris Montparnasse → Saint-Pierre-des-Corps (Tours). OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 1h14. Tramway ligne A vers le centre en 10 min depuis la gare." },
+    { "icon": "castle",      "text": "Les navettes touristiques 'Fil Vert' desservent Chenonceau, Amboise et Villandry depuis Tours centre. Plus pratique que le TER pour les châteaux non connectés au rail." },
+    { "icon": "wine_bar",    "text": "Les caves troglodytiques de Vouvray (15 min de Tours) proposent des dégustations gratuites ou à prix libre. Le Vouvray pétillant est l'un des meilleurs bulles de France." },
+    { "icon": "wb_sunny",    "text": "Avril-juin est la meilleure période : les jardins des châteaux sont en fleurs et les vins du millésime précédent viennent d'être mis en bouteilles. Évitez juillet-août pour les foules." }
+  ],
+  "related": ["angers", "le-mans", "bordeaux"]
+}

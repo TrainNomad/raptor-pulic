@@ -1,0 +1,72 @@
+{
+  "id": "bath",
+  "city": "Bath",
+  "country": "Royaume-Uni",
+  "tagline": "Thermes romains, architecture georgienne et Jane Austen à 4h de Paris",
+  "excerpt": "2 jours à Bath",
+  "cover": "bath-cover.jpg",
+  "hero": "bath-hero.jpg",
+  "badges": ["1 correspondance", "Eurostar + GWR"],
+  "travel": {
+    "duration": "~3h45 (via Londres)",
+    "operator": "Eurostar + GWR",
+    "from": "Paris Gare du Nord",
+    "arrival_station": "Bath Spa",
+    "price_from": "69€",
+    "best_season": "Avril · Mai · Septembre · Octobre",
+    "co2_saved": "89%",
+    "correspondance": "1 changement à London Paddington",
+    "note": "Eurostar Paris Gare du Nord → Londres St Pancras (2h17, dès 52€) + GWR Paddington → Bath Spa (1h30, dès 10£). Correspondance à Londres entre St Pancras et Paddington (30 min de métro, ligne Circle). Passeport + ETA (10£) obligatoires.",
+    "operators_used": ["ES", "UK"]
+  },
+  "intro": "Bath est la ville la plus élégante d'Angleterre. Inscrite au Patrimoine Mondial de l'UNESCO dans son intégralité, elle est la seule ville britannique où chaque façade, chaque rue, chaque place forme un ensemble cohérent et harmonieux en pierre calcaire ocre. Les thermes romains du Ier siècle sont parmi les mieux conservés d'Europe du Nord. Le Royal Crescent et le Circus sont des chefs-d'œuvre de l'architecture géorgienne du XVIIIe. Et Jane Austen y vécut de 1801 à 1806 — son musée attire des pèlerins du monde entier. À moins de 4h de Paris via Londres, Bath est l'une des plus belles découvertes du réseau Eurostar.",
+  "essentials": {
+    "voir": [
+      { "icon": "history_edu",    "name": "Roman Baths",               "note": "Les thermes romains du Ier siècle — réservez en ligne, toujours bondés" },
+      { "icon": "architecture",   "name": "Royal Crescent & Circus",   "note": "L'architecture géorgienne la plus parfaite d'Angleterre" },
+      { "icon": "museum",         "name": "Jane Austen Centre",        "note": "La vie de l'auteure à Bath — reconstitutions et costumes d'époque" },
+      { "icon": "water",          "name": "Thermae Bath Spa",          "note": "Les bains thermaux modernes sur le toit — vue sur la cathédrale" }
+    ],
+    "manger": [
+      { "icon": "local_cafe",     "name": "Sally Lunn's",              "note": "La plus vieille maison de Bath (1680) — les buns Sally Lunn depuis 400 ans" },
+      { "icon": "restaurant",     "name": "The Pump Room",             "note": "L'institution géorgienne pour le brunch ou le thé — eau thermale incluse" },
+      { "icon": "storefront",     "name": "Bath Farmer's Market",      "note": "Le samedi matin — produits du Somerset et du Wiltshire" },
+      { "icon": "lunch_dining",   "name": "Afternoon Tea",             "note": "Bath est la capitale anglaise du afternoon tea — quelques shillings et un moment hors du temps" }
+    ],
+    "transport": [
+      { "icon": "directions_walk","name": "À pied",                    "note": "Bath est entièrement à pied — tout se rejoint en 15 min depuis la gare" },
+      { "icon": "directions_bus", "name": "Bus First West of England", "note": "Pour les quartiers périphériques et Lacock Abbey (50 min)" },
+      { "icon": "train",          "name": "GWR vers Bristol",          "note": "15 min pour combiner les deux villes — Bristol a un excellent street art" },
+      { "icon": "train",          "name": "GWR vers Londres Paddington","note": "1h30 direct — pour le retour ou des excursions" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Les thermes et le centre", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Roman Baths",                     "desc": "Arrivez à l'ouverture. Les thermes du Ier siècle avec l'audio-guide inclus — comptez 2h." },
+        { "time": "12:30", "title": "The Pump Room",                   "desc": "Déjeuner dans la salle de réunion géorgienne par excellence — eau thermale en supplément." },
+        { "time": "14:30", "title": "Bath Abbey",                      "desc": "La cathédrale gothique tardive au cœur de la ville — les vitraux en pleine lumière l'après-midi." },
+        { "time": "16:00", "title": "Thermae Bath Spa",                "desc": "Le bain thermal sur les toits — réservez à l'avance, vue sur la cathédrale depuis l'eau." },
+        { "time": "19:00", "title": "Dîner en ville",                  "desc": "Les restaurants de Milsom Street ou autour de Green Park." }
+      ]
+    },
+    {
+      "day": 2, "title": "Architecture et départ", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "The Circus",                      "desc": "Le cercle parfait de John Wood — trois rangées d'architecture classique continue." },
+        { "time": "10:30", "title": "Royal Crescent",                  "desc": "La demi-lune la plus élégante d'Angleterre. No. 1 Royal Crescent est un musée de la vie géorgienne." },
+        { "time": "12:00", "title": "Sally Lunn's",                    "desc": "Les célèbres buns dans la plus vieille maison de Bath." },
+        { "time": "14:00", "title": "Jane Austen Centre",              "desc": "La vie de l'auteure à Bath — pour les fans et les curieux." },
+        { "time": "16:30", "title": "Bath Spa",                        "desc": "GWR vers Londres Paddington, puis Eurostar vers Paris Gare du Nord." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "badge",       "text": "Passeport obligatoire + ETA (10£, demande sur gov.uk). Valable 2 ans. Les ressortissants français ne peuvent plus utiliser leur carte d'identité pour entrer au Royaume-Uni." },
+    { "icon": "train",       "text": "Eurostar Paris → St Pancras (2h17, dès 52€) + métro St Pancras → Paddington (30 min, ~3£) + GWR Paddington → Bath Spa (1h30, dès 10£). Budget total à partir de ~69€. Réservez sur eurostar.com et gwr.com." },
+    { "icon": "water",       "text": "Le Thermae Bath Spa (bains modernes sur le toit) est très populaire — réservez 2h de session à l'avance sur thermaebathspa.com. Tarif d'entrée ~40£." },
+    { "icon": "architecture","text": "Bath est inscrite au Patrimoine Mondial de l'UNESCO dans sa totalité — c'est la seule ville britannique dans ce cas. Ne manquez pas le Prior Park Landscape Garden pour la vue sur toute la ville." }
+  ],
+  "related": ["londres", "oxford", "edimbourg"]
+}

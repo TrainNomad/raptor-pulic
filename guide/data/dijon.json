@@ -1,0 +1,74 @@
+{
+  "id": "dijon",
+  "city": "Dijon",
+  "country": "France",
+  "tagline": "Moutarde, Bourgogne et art flamboyant à 1h35 de Paris",
+  "excerpt": "2 jours à Dijon",
+  "cover": "dijon-cover.jpg",
+  "hero": "dijon-hero.jpg",
+  "badges": ["Train direct", "Budget"],
+  "travel": {
+    "duration": "1h 35min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare de Lyon",
+    "arrival_station": "Dijon-Ville",
+    "price_from": "10€",
+    "best_season": "Septembre · Octobre · Mai",
+    "co2_saved": "96%",
+    "note": "15+ trains/jour depuis Paris Gare de Lyon. OUIGO à partir de 10€, TGV Inoui à partir de 20€. Trajet : 1h35. Gare Dijon-Ville à 15 min à pied du Palais des Ducs. Réservez sur SNCF Connect.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Dijon est une ville-musée en activité. Le Palais des Ducs de Bourgogne — l'une des cours les plus puissantes d'Europe au XVe siècle — trône au centre d'un ensemble médiéval et Renaissance remarquablement préservé. Dans ses ruelles de pierre, chouettes taillées portent bonheur, hôtels particuliers cachent des cours secrètes et restaurants de cave servent les grands vins de Bourgogne au verre. Car Dijon est aussi la porte de la Route des Grands Crus — Gevrey-Chambertin, Chambolle-Musigny, Vougeot, Pommard — que l'on parcourt à vélo depuis la gare en moins d'une heure. À 1h35 de Paris, c'est une capitale régionale d'une richesse rare.",
+  "essentials": {
+    "voir": [
+      { "icon": "museum",        "name": "Musée des Beaux-Arts",       "note": "Dans le Palais des Ducs — l'un des 5 plus riches musées de province, gratuit" },
+      { "icon": "architecture",  "name": "Palais des Ducs",            "note": "La tour Philippe le Bon offre la vue la plus complète sur les toits vernissés" },
+      { "icon": "church",        "name": "Cathédrale Saint-Bénigne",   "note": "La crypte romane du XIe siècle est l'une des plus impressionnantes de France" },
+      { "icon": "history_edu",   "name": "Route des Grands Crus",      "note": "À vélo depuis Dijon — Gevrey-Chambertin et Chambolle-Musigny en une demi-journée" }
+    ],
+    "manger": [
+      { "icon": "restaurant",    "name": "Bœuf bourguignon",           "note": "Le plat emblématique — Chez Léon ou La Dame d'Aquitaine pour la version authentique" },
+      { "icon": "storefront",    "name": "Marché central",             "note": "Les producteurs de Bourgogne — escargots vivants, fromages d'Époisses et cancoillotte" },
+      { "icon": "wine_bar",      "name": "Vins de Bourgogne au verre", "note": "La Cour des Nuits ou le Bar à vins Castel — Pinot Noir de Gevrey à 6-8€ le verre" },
+      { "icon": "local_cafe",    "name": "Pain d'épices Mulot & Petitjean","note": "La maison fondée en 1796 — le pain d'épices de Dijon est une AOP depuis 2009" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Tramways Divia (2 lignes)",  "note": "Ticket 1,50€ — couvre le centre-ville et les musées" },
+      { "icon": "directions_bike","name": "Vélos DiviaVélo",            "note": "Réseau cyclable dense — location à la gare pour rejoindre la Route des Grands Crus" },
+      { "icon": "directions_bus", "name": "Bus Divia",                  "note": "Réseau complet pour les musées périphériques" },
+      { "icon": "train",          "name": "TER vers Beaune / Mâcon",    "note": "Beaune (capitale des vins de Bourgogne) à 22 min en TER" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1,
+      "title": "Palais des Ducs et centre médiéval",
+      "color": "#4ade80",
+      "points": [
+        { "time": "09:30", "title": "Musée des Beaux-Arts",       "desc": "Dans le Palais des Ducs — les tombeaux des Ducs de Bourgogne valent seuls le déplacement. Gratuit." },
+        { "time": "11:30", "title": "Tour Philippe le Bon",        "desc": "316 marches pour le panorama sur les toits vernissés et la plaine de Bourgogne." },
+        { "time": "13:00", "title": "Marché central",              "desc": "Escargots de Bourgogne, fromages d'Époisses et moutarde Fallot en direct du producteur." },
+        { "time": "15:00", "title": "Quartier médiéval",           "desc": "Cherchez la chouette porte-bonheur rue de la Chouette, puis les cours secrètes de la rue Verrerie." },
+        { "time": "19:00", "title": "Dîner en cave",               "desc": "Bœuf bourguignon et Bourgogne rouge dans l'un des restaurants de cave du centre historique." }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Route des Grands Crus à vélo",
+      "color": "#1A2B3C",
+      "points": [
+        { "time": "09:00", "title": "Location vélo à la gare",     "desc": "La Route des Grands Crus commence à Marsannay-la-Côte, à 7 km. Piste cyclable intégrale." },
+        { "time": "10:30", "title": "Gevrey-Chambertin",           "desc": "Le village du vin le plus célèbre de Bourgogne. Dégustation dans une cave de vigneron." },
+        { "time": "12:30", "title": "Chambolle-Musigny",           "desc": "Le village le plus élégant de la Côte de Nuits. Déjeuner au restaurant du village." },
+        { "time": "15:00", "title": "Retour à Dijon",              "desc": "TGV retour vers Paris Gare de Lyon — 1h35 depuis la capitale des Ducs." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",     "text": "15+ TGV/OUIGO directs/jour Paris Gare de Lyon → Dijon-Ville. OUIGO à partir de 10€. Trajet : 1h35. Idéal pour une excursion à la journée ou un week-end." },
+    { "icon": "wine_bar",  "text": "La Route des Grands Crus UNESCO fait 60 km de Dijon à Santenay — à parcourir en plusieurs étapes. La section Dijon-Beaune en vélo (30 km) est praticable sans entraînement particulier." },
+    { "icon": "museum",    "text": "Le Musée des Beaux-Arts de Dijon est totalement gratuit. Les tombeaux des Ducs Philippe le Hardi et Jean sans Peur sont parmi les plus beaux exemples de la sculpture bourguignonne du XVe siècle." },
+    { "icon": "restaurant","text": "Depuis Dijon, Beaune (22 min en TER) mérite une demi-journée — l'Hôtel-Dieu et ses toits vernissés, et les caves des négociants avec dégustation." }
+  ],
+  "related": ["lyon", "strasbourg", "reims"]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "nice",
+  "city": "Nice",
+  "country": "France",
+  "tagline": "Promenade des Anglais, Vieux-Nice et Côte d'Azur à 5h30 de Paris",
+  "excerpt": "3 jours à Nice",
+  "cover": "nice-cover.jpg",
+  "hero": "nice-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "5h 27min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare de Lyon",
+    "arrival_station": "Nice-Ville",
+    "price_from": "29€",
+    "best_season": "Mai · Juin · Septembre",
+    "co2_saved": "93%",
+    "note": "8+ trains/jour depuis Paris Gare de Lyon. OUIGO à partir de 29€, TGV Inoui à partir de 39€. Trajet : 5h27. Gare Nice-Ville en plein centre. Réservez sur SNCF Connect.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Nice est une ville de lumière et de contraste. La Promenade des Anglais longe la Méditerranée sur 7 kilomètres, entre mer bleue et façades ocre. Mais le vrai Nice est dans ses ruelles — le Vieux-Nice baroque avec ses marchés de fleurs, ses socca grillées et ses facades du XVIIe siècle couleur mandarine. Derrière la gare, le quartier Libération déborde de vie locale, loin des terrasses touristiques du front de mer. En train depuis Paris, c'est la Côte d'Azur sans l'aéroport ni l'autoroute — une arrivée en gare au cœur même de la ville.",
+  "essentials": {
+    "voir": [
+      { "icon": "beach_access",  "name": "Promenade des Anglais",    "note": "7 km de front de mer — plus belle à pied tôt le matin" },
+      { "icon": "photo_camera",  "name": "Colline du Château",        "note": "Vue panoramique sur la baie des Anges — montez à pied ou par ascenseur gratuit" },
+      { "icon": "museum",        "name": "Musée Matisse",             "note": "La collection la plus complète de Matisse au monde dans une villa romaine" },
+      { "icon": "history_edu",   "name": "Vieux-Nice",                "note": "Le quartier baroque — marché du Cours Saleya le matin, restaurants le soir" }
+    ],
+    "manger": [
+      { "icon": "lunch_dining",  "name": "Socca Chez Pipo",           "note": "La galette de pois chiches niçoise — file d'attente normale, ça vaut le coup" },
+      { "icon": "storefront",    "name": "Marché du Cours Saleya",    "note": "Le marché aux fleurs et aux légumes du Vieux-Nice — tous les matins sauf lundi" },
+      { "icon": "restaurant",    "name": "Pan bagnat",                "note": "Le sandwich niçois — pain rond, thon, œuf dur et légumes de saison" },
+      { "icon": "local_cafe",    "name": "Tourte de blettes",         "note": "La tarte sucrée aux blettes — spécialité niçoise introuvable ailleurs" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Tramway T1 et T2",         "note": "Ticket 1,70€ — T1 traverse le centre, T2 relie l'aéroport" },
+      { "icon": "directions_bus", "name": "Lignes Azur",              "note": "Bus urbains couvrant tout le bassin niçois" },
+      { "icon": "train",          "name": "Train des Merveilles",     "note": "Nice → Tende à travers les vallées alpines — excursion d'une journée" },
+      { "icon": "directions_bike","name": "Vélos Vélo Bleu",          "note": "175 stations dans la ville — abonnement journalier 1€" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1,
+      "title": "Vieux-Nice et Promenade",
+      "color": "#4ade80",
+      "points": [
+        { "time": "08:30", "title": "Marché du Cours Saleya",  "desc": "Le marché le plus coloré de France. Fleurs, légumes provençaux et fromages de pays." },
+        { "time": "10:00", "title": "Vieux-Nice",               "desc": "Perdez-vous dans les ruelles baroques — la cathédrale Sainte-Réparate et la place Rossetti." },
+        { "time": "12:00", "title": "Socca Chez Pipo",          "desc": "La socca sort du four toutes les 20 minutes. Mangez debout, avec un verre de rosé." },
+        { "time": "14:00", "title": "Colline du Château",       "desc": "Prenez l'ascenseur gratuit depuis le bord de mer. Vue à 360° sur la baie et les toits." },
+        { "time": "17:00", "title": "Promenade des Anglais",    "desc": "Marchez vers l'ouest dans la lumière de fin d'après-midi. La mer est turquoise à cette heure." }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Musées et collines",
+      "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "Musée Matisse",             "desc": "La villa romaine rouge sur la colline de Cimiez. Comptez 1h30 pour la collection." },
+        { "time": "11:30", "title": "Arènes de Cimiez",          "desc": "Les ruines romaines dans un parc calme — contrastent avec l'agitation du front de mer." },
+        { "time": "13:30", "title": "Déjeuner Libération",       "desc": "Le marché du quartier Libération — moins touristique, plus authentiquement niçois." },
+        { "time": "15:30", "title": "Musée d'Art Moderne (MAMAC)","desc": "Le nouveau réalisme et l'art américain des années 60 dans une architecture audacieuse." },
+        { "time": "19:30", "title": "Apéro Vieux-Nice",          "desc": "Les bars de la place du Pin et de la rue de la Préfecture s'animent à la tombée du jour." }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Villefranche ou Èze",
+      "color": "#94a3b8",
+      "points": [
+        { "time": "09:00", "title": "Train vers Villefranche-sur-Mer","desc": "6 min depuis Nice-Ville. La plus belle rade de la Méditerranée selon Cocteau." },
+        { "time": "10:30", "title": "Chapelle Saint-Pierre",     "desc": "Décorée par Jean Cocteau en 1957 — une des plus belles chapelles de France." },
+        { "time": "13:00", "title": "Déjeuner port de Villefranche","desc": "Bouillabaisse ou poisson du jour sur le port — comptez 25-35€." },
+        { "time": "15:30", "title": "Nice-Ville",                 "desc": "TGV retour vers Paris — 5h27 de Côte d'Azur depuis ton siège." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",      "text": "8+ TGV/OUIGO directs/jour Paris Gare de Lyon → Nice-Ville. OUIGO à partir de 29€. Trajet : 5h27. La gare est à 10 min à pied du Vieux-Nice et de la Promenade." },
+    { "icon": "wb_sunny",   "text": "Juillet-août : foule et chaleur intense (35°C+). Mai-juin et septembre sont idéaux — eau chaude (23-25°C), foule divisée par trois et prix raisonnables." },
+    { "icon": "train",      "text": "Depuis Nice, Monaco est à 22 min en TER (4€), Menton à 35 min et Cannes à 40 min. Le pass journalier Côte d'Azur couvre tous ces trajets pour 17€." },
+    { "icon": "museum",     "text": "La plupart des musées municipaux niçois sont gratuits en permanence — Musée d'Art Moderne, Musée des Beaux-Arts, Musée d'Histoire Naturelle. Profitez-en." }
+  ],
+  "related": ["marseille", "avignon", "monaco"]
+}

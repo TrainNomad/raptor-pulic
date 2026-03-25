@@ -1,0 +1,80 @@
+{
+  "id": "edimbourg",
+  "city": "Édimbourg",
+  "country": "Royaume-Uni",
+  "tagline": "Châteaux, whisky et Highlands à 6h30 de Paris",
+  "excerpt": "3 jours à Édimbourg",
+  "cover": "edimbourg-cover.jpg",
+  "hero": "edimbourg-hero.jpg",
+  "badges": ["1 correspondance", "Eurostar + LNER"],
+  "travel": {
+    "duration": "~6h30 (via Londres)",
+    "operator": "Eurostar + LNER",
+    "from": "Paris Gare du Nord",
+    "arrival_station": "Edinburgh Waverley",
+    "price_from": "79€",
+    "best_season": "Mai · Juin · Septembre",
+    "co2_saved": "88%",
+    "correspondance": "1 changement à London St Pancras / King's Cross",
+    "note": "Eurostar Paris Gare du Nord → Londres St Pancras (2h17, dès 52€) + LNER King's Cross → Edinburgh Waverley (4h20, dès 25£). Les deux gares sont à 5 min à pied l'une de l'autre. Prévoyez 1h de correspondance minimum. Passeport + ETA (10£) obligatoires.",
+    "operators_used": ["ES", "UK"]
+  },
+  "intro": "Édimbourg est la capitale la plus dramatique d'Europe. Son château perché sur un volcan éteint, ses ruelles médiévales du Royal Mile, ses collines d'Arthur's Seat accessibles en 45 minutes de marche depuis le centre, et l'ombre d'Harry Potter qui plane sur Greyfriars Kirkyard — tout ici est spectaculaire. En août, le Festival Fringe transforme la ville en capitale mondiale des arts vivants avec 3 000 spectacles en trois semaines. Depuis Paris, Édimbourg est à un Eurostar et un LNER de distance.",
+  "essentials": {
+    "voir": [
+      { "icon": "castle",         "name": "Edinburgh Castle",          "note": "Le château sur le volcan — Crown Jewels of Scotland inclus" },
+      { "icon": "architecture",   "name": "Royal Mile & Old Town",     "note": "Le kilomètre médiéval le plus dense d'Europe" },
+      { "icon": "landscape",      "name": "Arthur's Seat",             "note": "Le volcan éteint au cœur de la ville — 45 min à pied depuis le centre" },
+      { "icon": "museum",         "name": "National Museum of Scotland","note": "L'histoire de l'Écosse des origines à nos jours — gratuit" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Haggis, neeps & tatties",   "note": "Le plat national écossais — dans n'importe quel pub traditionnel" },
+      { "icon": "wine_bar",       "name": "Scotch Whisky Experience",  "note": "Dégustation guidée au pied du château — 4 régions, 4 styles" },
+      { "icon": "storefront",     "name": "Grassmarket",               "note": "Le marché historique — restaurants et pubs animés le soir" },
+      { "icon": "local_cafe",     "name": "Elephant House Café",       "note": "Là où J.K. Rowling écrivit les premiers chapitres d'Harry Potter" }
+    ],
+    "transport": [
+      { "icon": "directions_bus", "name": "Bus Lothian",               "note": "Réseau dense — payer sans contact à bord" },
+      { "icon": "tram",           "name": "Edinburgh Trams",           "note": "Ligne unique centre → aéroport — 30 min" },
+      { "icon": "directions_walk","name": "À pied",                    "note": "Le centre historique est entièrement piéton — tout se fait à pied" },
+      { "icon": "train",          "name": "ScotRail vers les Highlands","note": "The Jacobite (Mallaig Line) — l'un des plus beaux voyages ferroviaires du monde" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Le château et le Royal Mile", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Edinburgh Castle",                "desc": "Arrivez à l'ouverture. Les joyaux de la Couronne d'Écosse et la vue sur la ville." },
+        { "time": "12:30", "title": "Royal Mile",                      "desc": "Descendez lentement le kilomètre médiéval jusqu'à Holyrood. Boutiques de tartan, closes et venelles." },
+        { "time": "14:00", "title": "Déjeuner pub",                    "desc": "Haggis ou fish & chips dans un pub du Royal Mile." },
+        { "time": "16:00", "title": "Arthur's Seat",                   "desc": "Montée de 45 min. Vue à 360° sur la ville, le Firth of Forth et les Pentlands." },
+        { "time": "19:30", "title": "Grassmarket",                     "desc": "Les pubs animés sous les remparts — The White Hart (le plus vieux pub d'Édimbourg, 1516)." }
+      ]
+    },
+    {
+      "day": 2, "title": "New Town et whisky", "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "National Museum of Scotland",      "desc": "L'histoire de l'Écosse des origines au XXIe siècle. Dolly the Sheep, les joyaux médiévaux. Gratuit." },
+        { "time": "12:00", "title": "New Town",                        "desc": "L'architecture géorgienne du XVIIIe — Princes Street et George Street." },
+        { "time": "14:30", "title": "Scotch Whisky Experience",        "desc": "Visite guidée et dégustation de 4 whiskies des différentes régions d'Écosse." },
+        { "time": "17:00", "title": "Calton Hill",                     "desc": "La colline avec le Partenon inachevé — vue sur toute la ville au coucher du soleil." }
+      ]
+    },
+    {
+      "day": 3, "title": "Leith et départ", "color": "#94a3b8",
+      "points": [
+        { "time": "09:30", "title": "Greyfriars Kirkyard",             "desc": "Le cimetière où J.K. Rowling trouva les noms de ses personnages. Greyfriars Bobby." },
+        { "time": "11:00", "title": "Leith",                           "desc": "Le port d'Édimbourg rénové — restaurants de fruits de mer et le Royal Yacht Britannia." },
+        { "time": "13:30", "title": "Dernier déjeuner écossais",       "desc": "Cullen skink (soupe de haddock) ou Scottish breakfast dans un café de Leith." },
+        { "time": "16:00", "title": "Edinburgh Waverley",              "desc": "LNER vers Londres King's Cross, puis Eurostar vers Paris Gare du Nord." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "badge",       "text": "Passeport obligatoire + ETA (Electronic Travel Authorisation, 10£) à demander sur gov.uk avant le voyage. Délivré en quelques minutes. Valable 2 ans pour plusieurs séjours." },
+    { "icon": "train",       "text": "Eurostar Paris → Londres (2h17, dès 52€) + LNER London King's Cross → Edinburgh Waverley (4h20, dès 25£). Les deux gares sont à 5 min à pied. Prévoyez 1h de correspondance. Budget total à partir de ~79€. Réservez Eurostar sur eurostar.com et LNER sur lner.co.uk." },
+    { "icon": "schedule",    "text": "Le Festival Fringe d'Édimbourg (tout août) est le plus grand festival des arts du monde — 3 000 spectacles en 3 semaines. Hôtels complets et prix multipliés par 3 : réservez 6 mois à l'avance si vous souhaitez y assister." },
+    { "icon": "landscape",   "text": "Depuis Édimbourg, le West Highland Line (Glasgow → Mallaig via Fort William) est régulièrement classé plus beau voyage en train du monde. Le Jacobite Steam Train (les mois d'été) passe sur le viaduc de Glenfinnan, le viaduc de Harry Potter." }
+  ],
+  "related": ["londres", "manchester", "bath"]
+}

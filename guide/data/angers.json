@@ -1,0 +1,179 @@
+{
+  "id": "angers",
+  "city": "Angers",
+  "country": "France",
+  "tagline": "Apocalypse médiévale, ardoise noire et douceur angevine à 1h21 de Paris",
+  "excerpt": "2 jours à Angers",
+  "cover": "angers-cover.jpg",
+  "hero": "angers-hero.jpg",
+  "badges": [
+    "Train direct",
+    "Budget"
+  ],
+  "travel": {
+    "duration": "1h 21min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare Montparnasse",
+    "arrival_station": "Angers Saint-Laud",
+    "price_from": "10€",
+    "best_season": "Avril · Mai · Septembre",
+    "co2_saved": "95%",
+    "note": "14 trains directs/jour depuis Paris Montparnasse. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 1h21. Gare d'Angers Saint-Laud en plein centre-ville. Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": [
+      "SNCF"
+    ]
+  },
+  "intro": "Angers est une ville que l'on découvre par couches successives. Sa première révélation : la Tenture de l'Apocalypse, la plus grande tapisserie médiévale du monde (140 mètres de long), conservée dans son château de schiste noir. La deuxième : ses jardins extraordinaires — la ville est capitale française du végétal, et ses parcs débordent de collections botaniques exceptionnelles. La troisième : son vignoble, avec les grands blancs moelleux du Layon et les rouges de Saumur-Champigny. À 1h21 de Paris, c'est une ville riche et discrète que ses habitants gardent jalousement pour eux.",
+  "essentials": {
+    "voir": [
+      {
+        "icon": "castle",
+        "name": "Château d'Angers",
+        "note": "La Tenture de l'Apocalypse (140m) — réservez en ligne, file d'attente garantie en été"
+      },
+      {
+        "icon": "museum",
+        "name": "Galerie David d'Angers",
+        "note": "Les plâtres originaux du sculpteur angevin dans une abbaye vitrée — entrée gratuite"
+      },
+      {
+        "icon": "park",
+        "name": "Terra Botanica",
+        "note": "Le parc dédié au végétal — unique en Europe"
+      },
+      {
+        "icon": "museum",
+        "name": "Musée des Beaux-Arts",
+        "note": "Dans l'ancien logis Barrault du XVe siècle"
+      }
+    ],
+    "manger": [
+      {
+        "icon": "wine_bar",
+        "name": "Cointreau et vins d'Anjou",
+        "note": "La liqueur d'orange créée à Angers en 1849 — visite de la distillerie sur réservation"
+      },
+      {
+        "icon": "storefront",
+        "name": "Halles d'Angers",
+        "note": "Le marché couvert — produits du Val de Loire et vins d'Anjou"
+      },
+      {
+        "icon": "restaurant",
+        "name": "Quarts de Chaume et Layon",
+        "note": "Les grands vins liquoreux d'Anjou — dégustations dans les caves de la Corniche Angevine"
+      },
+      {
+        "icon": "local_cafe",
+        "name": "Crêmets d'Anjou",
+        "note": "Le dessert traditionnel angevin — fromage frais battu en neige avec crème"
+      }
+    ],
+    "transport": [
+      {
+        "icon": "tram",
+        "name": "Tramway Irigo (3 lignes)",
+        "note": "Gare Saint-Laud au centre — ticket 1,60€, tout accessible à pied ou en tram"
+      },
+      {
+        "icon": "directions_bike",
+        "name": "Vélos en libre-service",
+        "note": "Réseau cyclable dense — Angers est labellisée Ville Cyclable"
+      },
+      {
+        "icon": "directions_bus",
+        "name": "Bus Irigo",
+        "note": "Réseau complet couvrant l'agglomération"
+      },
+      {
+        "icon": "train",
+        "name": "TER vers Saumur / Nantes",
+        "note": "30 min vers Saumur (châteaux + caves à champignons), 40 min vers Nantes"
+      }
+    ]
+  },
+  "days": [
+    {
+      "day": 1,
+      "title": "Le château et le centre historique",
+      "color": "#4ade80",
+      "points": [
+        {
+          "time": "09:30",
+          "title": "Château d'Angers",
+          "desc": "Arrivez dès l'ouverture. La Tenture de l'Apocalypse (1377-1382) vous demandera 1h30 minimum — c'est un choc visuel."
+        },
+        {
+          "time": "11:30",
+          "title": "Cathédrale Saint-Maurice",
+          "desc": "Les vitraux du XIIe au XVIIe siècle — un des plus beaux ensembles de France."
+        },
+        {
+          "time": "13:00",
+          "title": "Halles d'Angers",
+          "desc": "Déjeuner au marché — rillauds d'Anjou et fromages de chèvre du pays."
+        },
+        {
+          "time": "15:00",
+          "title": "Quartier de la Doutre",
+          "desc": "L'ancien quartier des tisserands sur la rive gauche — maisons colorées et chapelle de la Trinité."
+        },
+        {
+          "time": "17:00",
+          "title": "Promenades du Mail",
+          "desc": "Le jardin classique du XVIIe siècle — la promenade des Angevins depuis 400 ans."
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Terra Botanica et Arts et Métiers",
+      "color": "#1A2B3C",
+      "points": [
+        {
+          "time": "09:30",
+          "title": "Arts et Métiers (ENSAM)",
+          "desc": "Le campus de l'ENSAM est l'un des plus beaux de France — bâtiments classiques et grand hall des machines."
+        },
+        {
+          "time": "11:30",
+          "title": "Terra Botanica",
+          "desc": "Le seul parc européen dédié au végétal — serres tropicales et jardins du monde."
+        },
+        {
+          "time": "14:00",
+          "title": "Déjeuner Cointreau",
+          "desc": "Visite de la distillerie Cointreau (sur réservation) ou cocktails au bar de la ville."
+        },
+        {
+          "time": "16:30",
+          "title": "Gare d'Angers Saint-Laud",
+          "desc": "TGV ou OUIGO vers Paris Montparnasse — 1h21 depuis le cœur de l'Anjou."
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "icon": "train",
+      "text": "14 trains directs/jour Paris Montparnasse → Angers Saint-Laud. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 1h21. La gare est en plein centre-ville — tout est accessible à pied."
+    },
+    {
+      "icon": "castle",
+      "text": "La Tenture de l'Apocalypse se réserve en ligne sur chateau-angers.fr. En juillet-août, la file d'attente sans réservation peut atteindre 2h. La réservation est très fortement recommandée."
+    },
+    {
+      "icon": "school",
+      "text": "Deux fois par an, les Gadzarts — les élèves des Arts et Métiers d'Angers — défilent en uniforme dans les rues de la ville. Leur uniforme bleu marine, héritage du passé militaire de l'école fondée en 1780, est proche de celui des officiers de la Marine française. Le défilé part du campus du boulevard du Ronceray, traverse le pont de Verdun et la place du Ralliement jusqu'au jardin du Mail, au son de leurs chants traditionnels. L'événement de septembre marque la remise des clés de la ville aux élèves ; celui de juin, appelé la Délivrance, leur restitution. Un spectacle inattendu qui arrête les passants."
+    },
+    {
+      "icon": "wine_bar",
+      "text": "Depuis Angers, Saumur est à 30 min en TER — caves troglodytiques et Champigny rouge incontournable. La Corniche Angevine (route des vins) se fait idéalement à vélo au printemps."
+    }
+  ],
+  "related": [
+    "tours",
+    "le-mans",
+    "nantes"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "oxford",
+  "city": "Oxford",
+  "country": "Royaume-Uni",
+  "tagline": "Dreaming spires, bibliothèques médiévales et Harry Potter à 3h30 de Paris",
+  "excerpt": "1 jour à Oxford",
+  "cover": "oxford-cover.jpg",
+  "hero": "oxford-hero.jpg",
+  "badges": ["1 correspondance", "Eurostar + GWR"],
+  "travel": {
+    "duration": "~3h30 (via Londres)",
+    "operator": "Eurostar + GWR",
+    "from": "Paris Gare du Nord",
+    "arrival_station": "Oxford",
+    "price_from": "62€",
+    "best_season": "Avril · Mai · Juin · Septembre",
+    "co2_saved": "90%",
+    "correspondance": "1 changement à London Paddington",
+    "note": "Eurostar Paris Gare du Nord → St Pancras (2h17, dès 52€) + métro St Pancras → Paddington (30 min) + GWR Paddington → Oxford (1h, dès 9£). Passeport + ETA (10£) obligatoires.",
+    "operators_used": ["ES", "UK"]
+  },
+  "intro": "Oxford est la plus ancienne université anglophone du monde — ses premières classes datent de 1096. Ses 39 colleges sont des institutions indépendantes dont certains sont ouverts au public : quadrangles médiévaux, chapelles gothiques, jardins secrets. La Bodleian Library, fondée en 1602, est l'une des plus grandes bibliothèques du monde avec 13 millions de volumes. Les décors d'Oxford ont servi pour Harry Potter (Christ Church), Philip Pullman (à La Croisée des Mondes) et Tolkien. À 3h30 de Paris avec une correspondance à Londres, Oxford est parfaite en journée.",
+  "essentials": {
+    "voir": [
+      { "icon": "school",         "name": "Christ Church College",     "note": "Le plus grand college — le réfectoire a servi de décor à Harry Potter" },
+      { "icon": "history_edu",    "name": "Bodleian Library",          "note": "13 millions de livres depuis 1602 — visite guidée à réserver" },
+      { "icon": "architecture",   "name": "Radcliffe Camera",          "note": "La rotonde du XVIIIe siècle — le symbole d'Oxford" },
+      { "icon": "museum",         "name": "Ashmolean Museum",          "note": "Le plus ancien musée public d'Angleterre — gratuit" }
+    ],
+    "manger": [
+      { "icon": "sports_bar",     "name": "The Eagle & Child",         "note": "Le pub où Tolkien et C.S. Lewis se retrouvaient pour leurs 'Inklings'" },
+      { "icon": "local_cafe",     "name": "Covered Market",            "note": "Le marché couvert depuis 1774 — cafés, bouchers et fromageries" },
+      { "icon": "restaurant",     "name": "Turf Tavern",               "note": "Le pub le plus caché d'Oxford — dans une ruelle médiévale" },
+      { "icon": "lunch_dining",   "name": "The Trout Inn",             "note": "Le pub au bord de la Tamise à Port Meadow — classique dominical" }
+    ],
+    "transport": [
+      { "icon": "directions_walk","name": "À pied",                    "note": "Le centre d'Oxford est entièrement piéton — tout à 10 min à pied de la gare" },
+      { "icon": "directions_bike","name": "Vélos en location",         "note": "Oxford est la ville la plus cyclable d'Angleterre — location dès 15£/jour" },
+      { "icon": "directions_bus", "name": "Bus X90 vers Londres",      "note": "Alternative au train — moins cher mais 1h45" },
+      { "icon": "train",          "name": "GWR vers Bath",             "note": "1h15 direct — pour combiner les deux villes en un week-end" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Oxford en une journée", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Christ Church College",           "desc": "Le Great Hall (décor de Poudlard), le Meadow et la cathédrale. Réservez en ligne." },
+        { "time": "12:00", "title": "Radcliffe Camera",                "desc": "La rotonde symbole d'Oxford. Bodleian Library visible depuis Radcliffe Square." },
+        { "time": "13:00", "title": "Covered Market",                  "desc": "Déjeuner dans le marché couvert depuis 1774 — sandwichs artisanaux." },
+        { "time": "14:30", "title": "Ashmolean Museum",                "desc": "Le plus ancien musée public d'Angleterre — gratuit. Collection égyptienne et Renaissance." },
+        { "time": "16:30", "title": "The Eagle & Child",               "desc": "La pinte de bière là où Tolkien et Lewis débattaient de leurs manuscrits." },
+        { "time": "18:30", "title": "Gare d'Oxford",                   "desc": "GWR vers Paddington, puis Eurostar vers Paris Gare du Nord." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "badge",       "text": "Passeport obligatoire + ETA (10£, sur gov.uk). Valable 2 ans pour de multiples séjours. À demander avant le voyage — délivré en quelques minutes." },
+    { "icon": "train",       "text": "Eurostar Paris → St Pancras (2h17, dès 52€) + métro → Paddington (30 min, ~3£) + GWR Paddington → Oxford (1h, dès 9£). Budget total à partir de ~62€. Réservez sur eurostar.com et gwr.com." },
+    { "icon": "school",      "text": "Les colleges ne sont pas tous ouverts au public et les horaires varient selon les examens universitaires (mai-juin). Vérifiez sur ox.ac.uk avant de planifier votre visite." },
+    { "icon": "directions_bike","text": "Oxford est la capitale britannique du vélo. Location chez Bainton Bikes (St Michael's Street) ou Cycle King — idéal pour rejoindre Port Meadow et le Trout Inn au bord de la Tamise." }
+  ],
+  "related": ["londres", "bath", "edimbourg"]
+}

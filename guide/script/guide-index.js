@@ -15,6 +15,7 @@ const COUNTRY_CONFIG = [
     { country: 'Belgique',  emoji: '🇧🇪' },
     { country: 'Pays-Bas',  emoji: '🇳🇱' },
     { country: 'France',    emoji: '🇫🇷' },
+    { country: 'Royaume-Uni', emoji: '🇬🇧' }
 ];
 
 // ── Génération des filtres pays depuis GUIDES_DATA ────────────────────────────

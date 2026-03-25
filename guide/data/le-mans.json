@@ -1,0 +1,62 @@
+{
+  "id": "le-mans",
+  "city": "Le Mans",
+  "country": "France",
+  "tagline": "24 Heures, cité Plantagenêt et rillettes à 53min de Paris",
+  "excerpt": "1 jour au Mans",
+  "cover": "le-mans-cover.jpg",
+  "hero": "le-mans-hero.jpg",
+  "badges": ["Train direct", "Budget"],
+  "travel": {
+    "duration": "53min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare Montparnasse",
+    "arrival_station": "Le Mans",
+    "price_from": "10€",
+    "best_season": "Juin · Mai · Septembre",
+    "co2_saved": "96%",
+    "note": "25+ trains/jour depuis Paris Montparnasse. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 53 minutes — l'une des villes les mieux desservies de France. Gare centrale à 10 min à pied de la cité Plantagenêt. Réservez sur SNCF Connect ou OUIGO.com.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Le Mans est une ville double. D'un côté, la Cité Plantagenêt — l'une des cités médiévales les mieux conservées d'Europe, avec ses remparts gallo-romains du IIIe siècle, ses maisons Renaissance et sa cathédrale aux voûtes élancées. De l'autre, le Circuit de la Sarthe et les 24 Heures du Mans, la course automobile la plus mythique du monde depuis 1923. Ces deux visages font du Mans une destination surprenante, à seulement 53 minutes de Paris par TGV. Et les rillettes du Mans — concurrentes directes de celles de Tours — sont parmi les meilleures charcuteries de France.",
+  "essentials": {
+    "voir": [
+      { "icon": "location_city",  "name": "Cité Plantagenêt",         "note": "Les remparts gallo-romains du IIIe siècle et les ruelles médiévales — gratuit" },
+      { "icon": "church",         "name": "Cathédrale Saint-Julien",   "note": "Les voûtes gothiques Plantagenêt les plus hautes de France" },
+      { "icon": "sports_score",   "name": "Circuit des 24 Heures",     "note": "Musée des 24H ouvert toute l'année — incontournable pour les passionnés" },
+      { "icon": "museum",         "name": "Musée de Tessé",            "note": "Art et archéologie — collection égyptienne et émaux du Mans" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Rillettes du Mans",         "note": "La fierté locale — cherchez le label 'Rillettes du Mans IGP' en charcuterie" },
+      { "icon": "storefront",     "name": "Marché des Jacobins",       "note": "Le grand marché du mercredi et samedi matin — volailles de la Sarthe et fromages" },
+      { "icon": "local_cafe",     "name": "Rillons et rillauds",       "note": "Les petits morceaux de porc confits — à grignoter avec un verre de Jasnières" },
+      { "icon": "wine_bar",       "name": "Jasnières et Coteaux du Loir","note": "Les vins confidentiels de la vallée du Loir — rares et excellents" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Tramway T1 et T2",          "note": "Ticket 1,60€ — le centre médiéval est à 10 min à pied de la gare" },
+      { "icon": "directions_bus", "name": "Bus SETRAM",                "note": "Réseau urbain dense — pour le circuit et les quartiers périphériques" },
+      { "icon": "directions_bike","name": "Vélos en libre-service",    "note": "Le centre historique est compact et facile à parcourir à vélo" },
+      { "icon": "directions_walk","name": "À pied",                    "note": "La Cité Plantagenêt et la cathédrale : tout se fait en 20 min à pied depuis la gare" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Le Mans en une journée", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Cité Plantagenêt",               "desc": "Entrez par la Porte Romaine. Les remparts gallo-romains du IIIe siècle sont parmi les mieux conservés de France." },
+        { "time": "11:00", "title": "Cathédrale Saint-Julien",        "desc": "Les nervures Plantagenêt du chœur — l'architecture qui donna son nom à tout un style royal." },
+        { "time": "12:30", "title": "Déjeuner rillettes",             "desc": "Plateau de charcuteries mancelles avec un verre de Jasnières dans un café de la vieille ville." },
+        { "time": "14:30", "title": "Musée des 24 Heures",            "desc": "L'histoire de la course la plus mythique du monde — voitures légendaires et archives." },
+        { "time": "16:30", "title": "Circuit de la Sarthe",           "desc": "La ligne droite des Hunaudières et les virages mythiques — visitables hors compétition." },
+        { "time": "18:30", "title": "Gare du Mans",                   "desc": "TGV vers Paris Montparnasse — 53 minutes et vous êtes rentrés." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "25+ trains/jour Paris Montparnasse → Le Mans. OUIGO à partir de 10€, TGV Inoui à partir de 19€. Trajet le plus rapide : 53 minutes — le record de proximité pour une escapade depuis Paris. La gare est à 10 min à pied du centre médiéval." },
+    { "icon": "sports_score","text": "Les 24 Heures du Mans ont lieu chaque année en juin (généralement le 2e week-end). C'est l'événement le plus fréquenté de France après le Tour de France — réservez hôtels et trains 6 mois à l'avance si vous souhaitez y assister." },
+    { "icon": "restaurant",  "text": "Les rillettes du Mans bénéficient d'une IGP (Indication Géographique Protégée) depuis 2013. Cherchez l'étiquette 'Rillettes du Mans IGP' chez les charcutiers locaux — elles se distinguent des rillettes de Tours par leur aspect plus grossier et leur goût plus prononcé." },
+    { "icon": "schedule",    "text": "Le Mans est parfait pour une journée depuis Paris : 53 min de trajet, 1 journée complète sur place, retour en soirée. Aucune nuit nécessaire si vous partez avant 9h." }
+  ],
+  "related": ["angers", "tours", "rennes"]
+}

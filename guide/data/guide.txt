@@ -1,0 +1,61 @@
+=====================================================
+SUIVI DES DESTINATIONS (JSON) - AU 25 MARS 2026
+=====================================================
+
+--- MODIFICATIONS DU JOUR (25/03/2026) ---
+- dijon.json            (09:27)
+- montpellier.json      (09:27)
+- toulouse.json         (09:27)
+- nice.json             (09:26)
+* Fichier de configuration : guides.js (09:30)
+
+--- MODIFICATIONS RÉCENTES (22/03 au 24/03) ---
+- angers.json           (24/03)
+- le-mans.json          (23/03)
+- tours.json            (23/03)
+- avignon.json          (23/03)
+- lille.json            (23/03)
+- nantes.json           (23/03)
+- reims.json            (23/03)
+- strasbourg.json       (23/03)
+- lyon.json             (23/03)
+- marseille.json        (23/03)
+- biarritz.json         (23/03)
+- bordeaux.json         (23/03)
+- la-rochelle.json      (23/03)
+- pornic.json           (22/03)
+- rennes.json           (22/03)
+- saint-malo.json       (22/03)
+- porto.json            (22/03)
+- valence.json          (22/03)
+- lisbonne.json         (22/03)
+- madrid.json           (22/03)
+
+--- DESTINATIONS NON MODIFIÉES (Depuis le 20/03) ---
+- amsterdam.json
+- barcelone.json
+- berlin.json
+- bruxelles.json
+- geneve.json
+- milan.json
+- munich.json
+- venise.json
+- zurich.json
+- grenade.json
+- malaga.json
+- seville.json
+- faro.json
+
+=====================================================
+RÉCAPITULATIF PAR PAYS
+=====================================================
+FRANCE (20) : Angers, Avignon, Biarritz, Bordeaux, Dijon, La Rochelle, Le Mans, Lille, Lyon, Marseille, Montpellier, Nantes, Nice, Pornic, Reims, Rennes, Saint-Malo, Strasbourg, Toulouse, Tours.
+ESPAGNE (5) : Barcelone, Grenade, Madrid, Malaga, Séville.
+PORTUGAL (3) : Faro, Lisbonne, Porto.
+ITALIE (2)  : Milan, Venise.
+ALLEMAGNE (2): Berlin, Munich.
+SUISSE (2)  : Genève, Zurich.
+AUTRES (2)  : Amsterdam (NL), Bruxelles (BE).
+
+TOTAL : 36 fichiers JSON détectés.
+=====================================================

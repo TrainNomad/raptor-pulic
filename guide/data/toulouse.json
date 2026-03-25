@@ -1,0 +1,74 @@
+{
+  "id": "toulouse",
+  "city": "Toulouse",
+  "country": "France",
+  "tagline": "La Ville Rose, Airbus et violettes à 4h20 de Paris",
+  "excerpt": "2 jours à Toulouse",
+  "cover": "toulouse-cover.jpg",
+  "hero": "toulouse-hero.jpg",
+  "badges": ["Train direct", "TGV Inoui"],
+  "travel": {
+    "duration": "4h 20min",
+    "operator": "TGV Inoui / OUIGO",
+    "from": "Paris Gare Montparnasse",
+    "arrival_station": "Toulouse Matabiau",
+    "price_from": "19€",
+    "best_season": "Avril · Mai · Octobre",
+    "co2_saved": "94%",
+    "note": "10+ trains/jour depuis Paris Gare Montparnasse. OUIGO à partir de 19€, TGV Inoui à partir de 29€. Trajet : 4h20. Gare Matabiau à 15 min à pied du Capitole. Réservez sur SNCF Connect.",
+    "operators_used": ["SNCF"]
+  },
+  "intro": "Toulouse brûle d'une teinte unique — la brique de terre cuite de ses immeubles change de couleur du matin au soir, de l'ocre au rose vif. C'est la Ville Rose, quatrième agglomération de France, capitale mondiale de l'aéronautique et ville étudiante débordante d'énergie. Le Capitole et ses arcades, les bords de Garonne où les Toulousains pique-niquent dès les premiers soleils, le marché du Victor Hugo avec ses terrasses du dessus, et les spécialités gasconnes — cassoulet, foie gras, armagnac — font de Toulouse une ville qui nourrit aussi bien l'œil que l'estomac.",
+  "essentials": {
+    "voir": [
+      { "icon": "architecture",  "name": "Place du Capitole",         "note": "Le cœur de Toulouse — la salle des Illustres est accessible et gratuite" },
+      { "icon": "church",        "name": "Basilique Saint-Sernin",    "note": "La plus grande église romane du monde — étape du Chemin de Saint-Jacques" },
+      { "icon": "museum",        "name": "Cité de l'Espace",          "note": "La réplique d'Ariane 5 et le simulateur ISS — comptez une demi-journée" },
+      { "icon": "history_edu",   "name": "Les Jacobins",              "note": "Le chef-d'œuvre gothique toulousain — le palmier de pierre est saisissant" }
+    ],
+    "manger": [
+      { "icon": "restaurant",    "name": "Cassoulet maison",          "note": "Au Colombier ou Au Gascon — le vrai cassoulet demande minimum 3 heures de cuisson" },
+      { "icon": "storefront",    "name": "Marché Victor Hugo",        "note": "Le marché couvert le matin — foie gras, magret et fromages du Sud-Ouest" },
+      { "icon": "lunch_dining",  "name": "Saucisse de Toulouse",      "note": "La spécialité charcutière locale — grillée ou dans un cassoulet" },
+      { "icon": "local_cafe",    "name": "Violettes en confiserie",   "note": "La fleur emblématique de Toulouse en bonbons, liqueur ou cristallisée" }
+    ],
+    "transport": [
+      { "icon": "subway",         "name": "Métro Tisséo (ligne A et B)","note": "Ticket 1,80€ — couvre l'essentiel du centre en moins de 10 min" },
+      { "icon": "tram",           "name": "Tramway T1 et T2",          "note": "Dessert les quartiers est et la Cité de l'Espace" },
+      { "icon": "directions_bike","name": "Vélos VélôToulouse",        "note": "250 stations — abonnement journalier 1,20€" },
+      { "icon": "directions_bus", "name": "Navette aéroport",          "note": "Aéroport ↔ centre en 20 min, départ toutes les 20 min" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1,
+      "title": "Le cœur rose de Toulouse",
+      "color": "#4ade80",
+      "points": [
+        { "time": "09:30", "title": "Marché Victor Hugo",       "desc": "Le marché couvert du centre-ville. Foie gras tranché devant vous et fromages pyrénéens." },
+        { "time": "11:00", "title": "Place du Capitole",         "desc": "La grande place aux arcades roses. La salle des Illustres est ouverte gratuitement." },
+        { "time": "13:00", "title": "Déjeuner cassoulet",        "desc": "Toulouse sans cassoulet n'est pas Toulouse. Réservez la veille dans un bon restaurant." },
+        { "time": "15:00", "title": "Basilique Saint-Sernin",   "desc": "La plus grande église romane d'Occident — les chapiteaux romans méritent une heure." },
+        { "time": "17:00", "title": "Bords de Garonne",          "desc": "La Prairie des Filtres, les péniches, les étudiants. La vraie vie toulousaine." }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cité de l'Espace et Jacobins",
+      "color": "#1A2B3C",
+      "points": [
+        { "time": "09:30", "title": "Les Jacobins",              "desc": "Le chef-d'œuvre gothique toulousain. La voûte en palmier est unique en Europe." },
+        { "time": "11:00", "title": "Quartier des Carmes",       "desc": "Le quartier bobo du centre — galeries, cafés et maisons roses typiques." },
+        { "time": "14:00", "title": "Cité de l'Espace",          "desc": "La réplique d'Ariane 5, le Soyouz et le simulateur ISS — prenez le tramway T2." },
+        { "time": "17:00", "title": "Toulouse Matabiau",         "desc": "TGV retour vers Paris Montparnasse — 4h20 depuis la capitale occitane." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",     "text": "10+ TGV/OUIGO directs/jour Paris Montparnasse → Toulouse Matabiau. OUIGO à partir de 19€. La gare est à 15 min à pied du Capitole ou 2 arrêts de métro." },
+    { "icon": "restaurant","text": "Le vrai cassoulet toulousain se prépare avec de la saucisse de Toulouse, du confit de canard et des haricots lingots. Méfiez-vous des versions touristiques en boîte près des monuments." },
+    { "icon": "museum",    "text": "La Cité de l'Espace ouvre à 9h30 et nécessite une demi-journée. Réservez en ligne pour éviter la file. Le billet famille est intéressant, même pour deux adultes." },
+    { "icon": "train",     "text": "Depuis Toulouse : Carcassonne est à 50 min en TER (idéal en journée), Albi à 1h et les Pyrénées accessibles via Foix en 1h30. Le billet de retour Paris peut passer par Bordeaux sans surcoût." }
+  ],
+  "related": ["bordeaux", "montpellier", "biarritz"]
+}
