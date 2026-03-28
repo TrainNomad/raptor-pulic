@@ -1,0 +1,63 @@
+{
+  "id": "bruges",
+  "city": "Bruges",
+  "country": "Belgique",
+  "tagline": "Venise du Nord, chocolat et dentelle à 2h30 de Paris",
+  "excerpt": "1 jour à Bruges",
+  "cover": "bruges-cover.jpg",
+  "hero": "bruges-hero.jpg",
+  "badges": ["Train direct", "Eurostar"],
+  "travel": {
+    "duration": "2h 31min",
+    "operator": "Eurostar",
+    "from": "Paris Gare du Nord",
+    "arrival_station": "Bruges (Brugge)",
+    "price_from": "33€",
+    "best_season": "Mars · Avril · Octobre · Novembre",
+    "co2_saved": "95%",
+    "note": "Trains Eurostar directs Paris Gare du Nord → Bruges (Brugge). À partir de 33€ sur eurostar.com ou SNCF Connect. Trajet direct sans changement. Gare de Bruges à 15 min à pied du centre historique.",
+    "operators_used": ["ES", "SNCB"]
+  },
+  "intro": "Bruges est la ville médiévale la mieux conservée d'Europe du Nord. Ses canaux, ses beffrois, ses moulins à vent sur les remparts et ses façades de briques rouges lui valent le surnom de Venise du Nord — mais contrairement à Venise, elle a survécu aux siècles sans catastrophe ni reconstruction. Le centre historique, inscrit à l'UNESCO, est un labyrinthe de ruelles pavées où l'on tombe à chaque coin sur une église, une brasserie ou un chocolatier artisanal. Le secret : venir hors saison. En juillet-août, Bruges est envahie. En mars ou novembre, elle vous appartient.",
+  "essentials": {
+    "voir": [
+      { "icon": "photo_camera",   "name": "Markt et Beffroi",          "note": "La place centrale et la tour de 83m — montez pour la vue sur les toits" },
+      { "icon": "water",          "name": "Canaux et Minnewater",      "note": "Le lac d'amour — les plus belles photos de Bruges" },
+      { "icon": "church",         "name": "Basilique du Saint-Sang",   "note": "La relique du sang du Christ — une des plus petites chapelles gothiques d'Europe" },
+      { "icon": "museum",         "name": "Groeningemuseum",           "note": "Les Primitifs flamands — Van Eyck, Hans Memling, Jan van Eyck" }
+    ],
+    "manger": [
+      { "icon": "local_cafe",     "name": "Chocolats artisanaux",      "note": "Plus de 50 chocolatiers — Dumon, The Chocolate Line ou Depla" },
+      { "icon": "sports_bar",     "name": "Bière trappiste De Garre",  "note": "Le bar caché dans une ruelle — la bière la plus forte de Bruges (11,5°)" },
+      { "icon": "restaurant",     "name": "Waterzooi brugeois",        "note": "Le ragoût de poisson local — différent du waterzooi de Gand" },
+      { "icon": "storefront",     "name": "Marché du Zand",            "note": "Le samedi matin — produits locaux et spécialités flamandes" }
+    ],
+    "transport": [
+      { "icon": "directions_walk","name": "À pied",                    "note": "Bruges est entièrement piétonne — tout se fait à pied depuis la gare (15 min)" },
+      { "icon": "directions_bike","name": "Vélos en location",         "note": "Bruges est plate et cyclable — location dès 10€/jour" },
+      { "icon": "directions_boat","name": "Bateaux sur les canaux",    "note": "30 min de croisière depuis les Quais du Rosaire — vues impossibles à pied" },
+      { "icon": "train",          "name": "SNCB vers Gand",            "note": "25 min direct — pour combiner les deux villes en un week-end" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Bruges en une journée", "color": "#4ade80",
+      "points": [
+        { "time": "09:30", "title": "Markt et Beffroi",                "desc": "La grande place et la tour de 83m. Montez les 366 marches — vue panoramique sur les toits flamands." },
+        { "time": "11:00", "title": "Groeningemuseum",                 "desc": "Les Primitifs flamands dans leur meilleure collection mondiale — Van Eyck, Memling. Comptez 1h30." },
+        { "time": "13:00", "title": "Croisière sur les canaux",        "desc": "30 min depuis les Quais du Rosaire — les façades et les ponts vus de l'eau." },
+        { "time": "14:30", "title": "Minnewater",                      "desc": "Le lac d'amour et les remparts — la plus belle promenade de Bruges." },
+        { "time": "16:00", "title": "Chocolatiers et dentelle",        "desc": "La rue Steenstraat pour les chocolatiers, le Kantcentrum pour la dentelle aux fuseaux." },
+        { "time": "18:00", "title": "Bière De Garre",                  "desc": "La ruelle cachée et son bar légendaire — une tripel à 11,5° avant le train." },
+        { "time": "19:30", "title": "Gare de Bruges",                  "desc": "Eurostar retour vers Paris Gare du Nord — 2h31." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "Eurostar direct Paris Gare du Nord → Bruges en 2h31, à partir de 33€. Sans changement. Réservez sur eurostar.com ou SNCF Connect. La gare est à 15 min à pied du Markt." },
+    { "icon": "schedule",    "text": "Juillet-août : Bruges est l'une des villes les plus fréquentées d'Europe par habitant. Les ruelles sont impraticables. Venez en mars-avril ou octobre-novembre — la ville retrouve son calme, les prix baissent de 40%." },
+    { "icon": "water",       "text": "La croisière sur les canaux (30 min, ~10€) part des Quais du Rosaire — 5 embarcadères dans le centre. C'est la seule façon de voir les façades et les jardins cachés inaccessibles à pied." },
+    { "icon": "train",       "text": "Depuis Bruges, Gand est à 25 min en SNCB et Anvers à 1h. Parfait pour un week-end combinant deux villes — Bruges le samedi, Gand le dimanche." }
+  ],
+  "related": ["bruxelles", "gand", "anvers"]
+}

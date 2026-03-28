@@ -1,0 +1,71 @@
+{
+  "id": "anvers",
+  "city": "Anvers",
+  "country": "Belgique",
+  "tagline": "Diamants, mode et baroque flamand à 2h de Paris",
+  "excerpt": "2 jours à Anvers",
+  "cover": "anvers-cover.jpg",
+  "hero": "anvers-hero.jpg",
+  "badges": ["Train direct", "Eurostar"],
+  "travel": {
+    "duration": "2h 02min",
+    "operator": "Eurostar",
+    "from": "Paris Gare du Nord",
+    "arrival_station": "Antwerpen Centraal",
+    "price_from": "29€",
+    "best_season": "Avril · Mai · Septembre · Octobre",
+    "co2_saved": "95%",
+    "note": "Trains directs Paris Gare du Nord → Antwerpen Centraal via Bruxelles-Midi. À partir de 29€ sur eurostar.com ou SNCF Connect. Arrivée à Antwerpen Centraal, l'une des plus belles gares d'Europe. Réservez à l'avance.",
+    "operators_used": ["ES", "SNCB"]
+  },
+  "intro": "Anvers est la ville la plus surprenante de Belgique. Capitale mondiale du diamant — 80% des diamants bruts mondiaux transitent encore par ses bourses —, elle est aussi la capitale européenne de la mode avec l'école de la mode d'Anvers et ses Six d'Anvers légendaires (Dries Van Noten, Ann Demeulemeester, Martin Margiela…). Son centre historique baroque est dominé par la cathédrale Notre-Dame qui abrite trois Rubens monumentaux. Et sa gare centrale, souvent classée plus belle gare du monde, vaut à elle seule le voyage.",
+  "essentials": {
+    "voir": [
+      { "icon": "train",          "name": "Gare Centrale d'Anvers",   "note": "Classée parmi les plus belles gares du monde — architecture néo-baroque" },
+      { "icon": "church",         "name": "Cathédrale Notre-Dame",     "note": "Les trois triptyques de Rubens — La Descente de Croix, L'Élévation de la Croix" },
+      { "icon": "castle",         "name": "Steen (château médiéval)",  "note": "La forteresse médiévale sur l'Escaut — le plus vieux monument d'Anvers" },
+      { "icon": "palette",        "name": "Musée Royal des Beaux-Arts","note": "Fermé pour rénovation jusqu'en 2027 — mais les autres musées compensent" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Moules-frites anversoises", "note": "Plus petites que les bruxelloises — dans les restaurants du Grote Markt" },
+      { "icon": "storefront",     "name": "Marché du Vrijdagmarkt",    "note": "Le vendredi matin — antiquités, brocante et produits locaux" },
+      { "icon": "local_cafe",     "name": "Café Den Bengel",           "note": "Le café historique place du Meir — bières belges depuis 1920" },
+      { "icon": "lunch_dining",   "name": "Boulangerie Goossens",      "note": "La boulangerie artisanale la plus célèbre d'Anvers — pains au levain depuis 1884" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Trams et prémétro De Lijn", "note": "Réseau dense — ticket 1 trajet 2€ ou app De Lijn" },
+      { "icon": "directions_bike","name": "Vélos Blue-bike",           "note": "Location courte durée depuis les gares" },
+      { "icon": "directions_walk","name": "À pied",                    "note": "Le centre historique est entièrement piéton et compact" },
+      { "icon": "train",          "name": "SNCB vers Gand",            "note": "40 min direct depuis Anvers — pour combiner les deux villes" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "La gare, la cathédrale et les Rubens", "color": "#4ade80",
+      "points": [
+        { "time": "10:00", "title": "Gare Centrale",                   "desc": "Commencez par la gare elle-même — dôme en fer et verre, escaliers de marbre, galeries superposées." },
+        { "time": "11:00", "title": "Cathédrale Notre-Dame",           "desc": "Les trois triptyques de Rubens dans leur contexte original. Lumière naturelle du matin." },
+        { "time": "13:00", "title": "Déjeuner Grote Markt",            "desc": "Les restaurants de la grande place sous les façades de guildes dorées." },
+        { "time": "14:30", "title": "Quartier du diamant",             "desc": "Les rues autour de la gare concentrent 1 500 diamantaires — les vitrines sont stupéfiantes." },
+        { "time": "16:30", "title": "Maison de Rubens (Rubenshuis)",   "desc": "L'atelier et la demeure du peintre — reconstitution exceptionnelle." },
+        { "time": "19:30", "title": "Quartier du Schipperskwartier",   "desc": "Les bars et restaurants du port historique — la vie nocturne anversoise commence ici." }
+      ]
+    },
+    {
+      "day": 2, "title": "Mode et Escaut", "color": "#1A2B3C",
+      "points": [
+        { "time": "10:00", "title": "MoMu (Musée de la Mode)",         "desc": "L'un des meilleurs musées de mode du monde — les collections des Six d'Anvers." },
+        { "time": "12:30", "title": "Boulangerie Goossens",            "desc": "Sandwich et viennoiseries pour pique-niquer au bord de l'Escaut." },
+        { "time": "14:00", "title": "Het Steen",                       "desc": "La forteresse médiévale et les quais réhabilités de l'Escaut — promenade panoramique." },
+        { "time": "16:30", "title": "Antwerpen Centraal",              "desc": "Retour Eurostar vers Paris Gare du Nord — 2h02." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "Eurostar direct Paris Gare du Nord → Antwerpen Centraal en 2h02, à partir de 29€. Les trains passent par Bruxelles-Midi (sans changement). Réservez sur eurostar.com ou SNCF Connect." },
+    { "icon": "palette",     "text": "Anvers est la capitale européenne de la mode — Dries Van Noten, Ann Demeulemeester et Martin Margiela y ont tous fait leurs classes. Le MoMu (Musée de la Mode) est l'un des meilleurs du monde dans ce domaine." },
+    { "icon": "schedule",    "text": "Le Musée Royal des Beaux-Arts (KMSKA) est en travaux jusqu'en 2027. Le Musée Plantin-Moretus (imprimerie du XVIe, UNESCO) et la Maison de Rubens sont en revanche ouverts — ne les manquez pas." },
+    { "icon": "train",       "text": "Depuis Anvers, Gand est à 40 min en SNCB et Bruxelles à 35 min. Idéal pour combiner deux villes belges en un week-end." }
+  ],
+  "related": ["bruxelles", "gand", "bruges"]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "liege",
+  "city": "Liège",
+  "country": "Belgique",
+  "tagline": "Gaufres chaudes, architecture Calatrava et Wallonie profonde à 2h14 de Paris",
+  "excerpt": "1 jour à Liège",
+  "cover": "liege-cover.jpg",
+  "hero": "liege-hero.jpg",
+  "badges": ["Train direct", "Budget"],
+  "travel": {
+    "duration": "2h 14min",
+    "operator": "Eurostar",
+    "from": "Paris Gare du Nord",
+    "arrival_station": "Liège-Guillemins",
+    "price_from": "29€",
+    "best_season": "Septembre · Octobre · Décembre",
+    "co2_saved": "95%",
+    "note": "Trains Eurostar directs Paris Gare du Nord → Liège-Guillemins. À partir de 29€ sur eurostar.com ou SNCF Connect. La gare de Liège-Guillemins (Calatrava) est à 15 min à pied du centre historique.",
+    "operators_used": ["ES", "SNCB"]
+  },
+  "intro": "Liège est la capitale wallonne, fière et authentique, que les guides touristiques ignorent presque toujours. C'est leur erreur. Sa gare des Guillemins, signée Santiago Calatrava, est l'une des plus spectaculaires d'Europe. Son marché de la Batte le dimanche matin est le plus long marché en plein air de Belgique (3 km le long de la Meuse). Sa cuisine est unique : la gaufre de Liège (avec des perles de sucre caramélisé) est la vraie gaufre belge, et le boulet à la liégeoise (boulette de viande à la sauce lapin) est un des plats les plus savoureux du Nord. Sans oublier le marché de Noël, régulièrement élu meilleur d'Europe.",
+  "essentials": {
+    "voir": [
+      { "icon": "train",          "name": "Gare des Guillemins (Calatrava)","note": "L'architecture la plus spectaculaire de Belgique — arrivez à pied, profitez-en" },
+      { "icon": "history_edu",    "name": "Cité Miroir",               "note": "L'ancien bain public art déco reconverti en centre culturel" },
+      { "icon": "museum",         "name": "Grand Curtius",             "note": "7 musées dans un palais mosan du XVIIe — arts, armes et verrerie" },
+      { "icon": "church",         "name": "Montagne de Bueren",        "note": "374 marches menant aux quartiers hauts — vue sur toute la ville" }
+    ],
+    "manger": [
+      { "icon": "local_cafe",     "name": "Gaufre de Liège",           "note": "Avec des perles de sucre caramélisées — la vraie, dans une gauffrerie de rue" },
+      { "icon": "restaurant",     "name": "Boulet à la liégeoise",     "note": "La boulette de viande à la sauce lapin — dans un café ou brasserie locale" },
+      { "icon": "storefront",     "name": "Marché de la Batte",        "note": "3 km le long de la Meuse le dimanche matin — le plus grand marché de rue de Belgique" },
+      { "icon": "sports_bar",     "name": "Peket (genièvre wallon)",   "note": "La liqueur locale à base de genièvre — les Peketeirs servent 300 variétés" }
+    ],
+    "transport": [
+      { "icon": "directions_bus", "name": "Bus TEC",                   "note": "Réseau de bus wallon — ticket journée 5€" },
+      { "icon": "directions_walk","name": "À pied",                    "note": "Le centre de Liège se parcourt à pied depuis la gare en 15 min" },
+      { "icon": "train",          "name": "SNCB vers Bruxelles",       "note": "1h05 direct — pour combiner Liège et Bruxelles" },
+      { "icon": "train",          "name": "SNCB vers Maastricht",      "note": "30 min pour rejoindre les Pays-Bas — excursion facile" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Liège en une journée", "color": "#4ade80",
+      "points": [
+        { "time": "09:00", "title": "Gare des Guillemins",             "desc": "Même si vous n'y arrivez pas ce matin, revenez voir la structure de Calatrava — béton blanc et acier, monumentale." },
+        { "time": "10:00", "title": "Marché de la Batte (dimanche)",   "desc": "3 km de marché le long de la Meuse. Le plus grand marché de rue de Belgique — fruits, épices, vieux livres." },
+        { "time": "12:00", "title": "Gaufre de Liège",                 "desc": "Une gaufre chaude avec ses perles de sucre caramélisé dans une gauffrerie de rue — environ 2€." },
+        { "time": "13:30", "title": "Grand Curtius",                   "desc": "7 musées dans un palais du XVIIe — collections d'armes de Liège (capitale mondiale de l'armurerie au XIXe)." },
+        { "time": "15:30", "title": "Montagne de Bueren",              "desc": "374 marches vers les quartiers hauts. Vue panoramique sur les toits et la Meuse." },
+        { "time": "17:30", "title": "Peket en guise d'au revoir",      "desc": "Un verre de peket (genièvre wallon) dans un Peketeir du centre avant le train." },
+        { "time": "18:30", "title": "Liège-Guillemins",                "desc": "Eurostar retour vers Paris Gare du Nord — 2h14." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "Eurostar direct Paris Gare du Nord → Liège-Guillemins en 2h14, à partir de 29€. Réservez sur eurostar.com ou SNCF Connect. La gare est à 15 min à pied du centre historique." },
+    { "icon": "storefront",  "text": "Le marché de la Batte a lieu uniquement le dimanche matin (7h-14h) sur 3 km le long de la Meuse. C'est le meilleur moment pour visiter Liège — organisez votre séjour autour." },
+    { "icon": "schedule",    "text": "Le marché de Noël de Liège (novembre-décembre) est régulièrement élu meilleur marché de Noël d'Europe. 200 chalets sur la place Saint-Lambert — arrivez tôt le matin pour éviter la foule." },
+    { "icon": "train",       "text": "Depuis Liège, Maastricht (Pays-Bas) est à 30 min en SNCB — une excursion facile et gratuite avec le pass Interrail. La Cité des Trois-Frontières (Belgique, Pays-Bas, Allemagne) est à 20 km." }
+  ],
+  "related": ["bruxelles", "gand", "bruges"]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "gand",
+  "city": "Gand",
+  "country": "Belgique",
+  "tagline": "L'Agneau mystique, streetfood et vie étudiante à 2h15 de Paris",
+  "excerpt": "1 jour à Gand",
+  "cover": "gand-cover.jpg",
+  "hero": "gand-hero.jpg",
+  "badges": ["Train direct", "Eurostar + IC"],
+  "travel": {
+    "duration": "~2h 15min (via Bruxelles)",
+    "operator": "Eurostar + SNCB Intercity",
+    "from": "Paris Gare du Nord",
+    "arrival_station": "Gent Sint-Pieters",
+    "price_from": "32€",
+    "best_season": "Avril · Mai · Septembre · Octobre",
+    "co2_saved": "95%",
+    "correspondance": "1 changement à Bruxelles-Midi (10 min)",
+    "note": "Eurostar Paris Gare du Nord → Bruxelles-Midi (1h22, dès 29€) + IC Bruxelles → Gent Sint-Pieters (~30 min, dès 3€ avec le ticket combiné). Très bonne fréquence. Ou Eurostar direct Paris → Bruges puis IC Bruges → Gand (25 min). Réservez sur eurostar.com et b-europe.com.",
+    "operators_used": ["ES", "SNCB"]
+  },
+  "intro": "Gand est la ville belge que les connaisseurs gardent pour eux. Moins touristique que Bruges, plus authentique que Bruxelles, elle combine un centre médiéval exceptionnellement dense — châteaux, abbayes, quais flamands — avec une vie universitaire intense de 80 000 étudiants qui animent chaque bar et chaque place. Le Retable de l'Agneau mystique des frères Van Eyck (1432), considéré comme le tableau le plus influent de l'histoire de l'art occidental, s'y trouve dans la cathédrale Saint-Bavon. Et les Gentenaars sont fiers de leur ville avec une passion qui se transmet.",
+  "essentials": {
+    "voir": [
+      { "icon": "palette",        "name": "L'Agneau mystique (Van Eyck)","note": "Dans la cathédrale Saint-Bavon — réservez absolument en ligne" },
+      { "icon": "castle",         "name": "Gravensteen",                "note": "Le château des Comtes du XIIe siècle — en pleine ville" },
+      { "icon": "water",          "name": "Quais aux Herbes et aux Grains","note": "Les façades médiévales les plus photographiées de Gand" },
+      { "icon": "architecture",   "name": "STAM (City Museum)",        "note": "L'histoire de Gand dans une abbaye médiévale — passionnant" }
+    ],
+    "manger": [
+      { "icon": "restaurant",     "name": "Waterzooi de poulet",       "note": "La recette originale de Gand — différente du waterzooi brugeois" },
+      { "icon": "storefront",     "name": "Groentenmarkt",             "note": "Le marché aux légumes — entouré des meilleures friteries de Gand" },
+      { "icon": "local_cafe",     "name": "Cuberdon (nez de Gand)",    "note": "Les bonbons au nez violets — spécialité unique à Gand, achetez-les frais" },
+      { "icon": "sports_bar",     "name": "Bars de la Vrijdagmarkt",   "note": "La grande place de la vie nocturne — animée jusqu'à l'aube" }
+    ],
+    "transport": [
+      { "icon": "tram",           "name": "Trams De Lijn",             "note": "Réseau dense — ticket journée 7€" },
+      { "icon": "directions_bike","name": "Vélos Blue-bike",           "note": "Location à la gare Sint-Pieters — Gand est très cyclable" },
+      { "icon": "directions_boat","name": "Bateaux sur la Lys",        "note": "Croisière sur les canaux — vues sur les quais médiévaux" },
+      { "icon": "train",          "name": "SNCB vers Bruges / Anvers", "note": "25 min vers Bruges, 40 min vers Anvers — parfait pour combiner" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1, "title": "Gand en une journée", "color": "#4ade80",
+      "points": [
+        { "time": "09:30", "title": "L'Agneau mystique",               "desc": "La cathédrale Saint-Bavon et le chef-d'œuvre des Van Eyck (1432). Réservez impérativement en ligne — jauge limitée." },
+        { "time": "11:30", "title": "Gravensteen",                     "desc": "Le château des Comtes au cœur de la ville — salle de torture médiévale et vue sur les quais." },
+        { "time": "13:00", "title": "Quais aux Herbes",                "desc": "Déjeuner en terrasse face aux façades flamandes médiévales. Waterzooi ou moules." },
+        { "time": "15:00", "title": "STAM Museum",                     "desc": "L'histoire de Gand dans une abbaye du XVIe siècle — une des meilleures muséographies de Belgique." },
+        { "time": "17:00", "title": "Groentenmarkt et cuberdon",       "desc": "Les marchands de cuberdons violets se disputent la place — achetez-les frais, ils ne se conservent pas." },
+        { "time": "19:00", "title": "Vrijdagmarkt",                    "desc": "La grande place animée — bières belges et ambiance étudiante." }
+      ]
+    }
+  ],
+  "tips": [
+    { "icon": "train",       "text": "Eurostar Paris Gare du Nord → Bruxelles-Midi (1h22, dès 29€) + IC Bruxelles → Gand Sint-Pieters (30 min, dès 3€). Ou via Bruges (direct Eurostar 2h31, puis IC Bruges → Gand 25 min). Budget total à partir de ~32€." },
+    { "icon": "palette",     "text": "L'Agneau mystique des frères Van Eyck se réserve obligatoirement en ligne sur visitgent.be — jauge journalière limitée depuis la restauration terminée en 2020. Ne venez pas sans réservation." },
+    { "icon": "schedule",    "text": "Gand est une ville universitaire de 80 000 étudiants. En mai (examens) et juillet (vacances), l'ambiance change. Les meilleurs mois pour sentir la ville à son naturel : octobre, novembre, mars, avril." },
+    { "icon": "local_cafe",  "text": "Les cuberdons (bonbons violets en forme de cône) se vendent frais sur le Groentenmarkt — ils ne se conservent que quelques jours. Les marchands se disputent légendairement leur emplacement depuis des générations." }
+  ],
+  "related": ["bruxelles", "bruges", "anvers"]
+}

@@ -307,12 +307,13 @@ Dernière mise à jour : 25 Mars 2026
 ├── index.html
 ├── mention_legal.html
 ├── outilstgvmax.html
-├── READ.md
+├── README.md
 ├── recap.html
 ├── script/
 │   ├── Explorer-enhanced.js
 │   ├── explorer.js
 │   ├── explorermax.js
+│   ├── generate-sitemap.js
 │   ├── index.js
 │   ├── outilstgvmax.js
 │   ├── recap.js
@@ -320,131 +321,9 @@ Dernière mise à jour : 25 Mars 2026
 │   ├── trajets.js
 │   ├── trajetsmax.js
 │   └── uptdate-readmd.js
+├── sitemap.xml
 ├── trajets.html
-├── trajetsmax.html
-└── V1/
-    ├── Assets/
-    │   ├── background_index.jpg
-    │   ├── Icone_logo/
-    │   │   ├── Comboios-de-Portugal.png
-    │   │   ├── eurostar.png
-    │   │   ├── frecciarossa.png
-    │   │   ├── ice.png
-    │   │   ├── inoui.svg
-    │   │   ├── Intercite.svg
-    │   │   ├── intercites.png
-    │   │   ├── lyria.png
-    │   │   ├── nightjet.png
-    │   │   ├── ouigo-classique.png
-    │   │   ├── ouigo.png
-    │   │   ├── ouigo.svg
-    │   │   ├── renfe.png
-    │   │   ├── Renfe_Alvia.png
-    │   │   ├── Renfe_Avant.png
-    │   │   ├── Renfe_ave.png
-    │   │   ├── Renfe_Avlo.png
-    │   │   ├── Renfe_Euromed.png
-    │   │   ├── Renfe_Intercity.png
-    │   │   ├── Renfe_MD.png
-    │   │   ├── Renfe_Media_Distancia.png
-    │   │   ├── Renfe_regionales.png
-    │   │   ├── SNCB.png
-    │   │   ├── TER.png
-    │   │   ├── tgv_inoui.png
-    │   │   └── trenitalia.png
-    │   ├── TGVMax/
-    │   │   └── TGVMax-Section.jpg
-    │   └── Train_Marker.svg
-    ├── CSS/
-    │   ├── autocomplete.css
-    │   ├── global.css
-    │   ├── Recap.css
-    │   ├── Sections/
-    │   │   ├── footer.css
-    │   │   ├── header.css
-    │   │   ├── main.css
-    │   │   ├── Recap/
-    │   │   │   ├── footer.css
-    │   │   │   ├── header.css
-    │   │   │   └── main.css
-    │   │   └── Trajets/
-    │   │       ├── footer.css
-    │   │       ├── header.css
-    │   │       └── main.css
-    │   ├── style.css
-    │   └── Trajets.css
-    ├── index.html
-    ├── recap.html
-    ├── script/
-    │   ├── autocomplete.js
-    │   ├── index.js
-    │   ├── recap.js
-    │   └── trajets.js
-    ├── TGVMax/
-    │   ├── Assets/
-    │   │   ├── background_index.jpg
-    │   │   ├── background_index1.jpg
-    │   │   ├── Icone_index/
-    │   │   │   ├── annuler.png
-    │   │   │   ├── date-du-calendrier.png
-    │   │   │   ├── etiqueter.png
-    │   │   │   ├── siege.png
-    │   │   │   └── ticket.png
-    │   │   ├── Icone_logo/
-    │   │   │   ├── Comboios-de-Portugal.png
-    │   │   │   ├── eurostar.png
-    │   │   │   ├── frecciarossa.png
-    │   │   │   ├── ice.png
-    │   │   │   ├── inoui.svg
-    │   │   │   ├── Intercite.svg
-    │   │   │   ├── intercites.png
-    │   │   │   ├── lyria.png
-    │   │   │   ├── nightjet.png
-    │   │   │   ├── ouigo-classique.png
-    │   │   │   ├── ouigo.png
-    │   │   │   ├── ouigo.svg
-    │   │   │   ├── renfe.png
-    │   │   │   ├── Renfe_Alvia.png
-    │   │   │   ├── Renfe_Avant.png
-    │   │   │   ├── Renfe_ave.png
-    │   │   │   ├── Renfe_Avlo.png
-    │   │   │   ├── Renfe_Euromed.png
-    │   │   │   ├── Renfe_Intercity.png
-    │   │   │   ├── Renfe_MD.png
-    │   │   │   ├── Renfe_Media_Distancia.png
-    │   │   │   ├── Renfe_regionales.png
-    │   │   │   ├── SNCB.png
-    │   │   │   ├── TER.png
-    │   │   │   ├── tgv_inoui.png
-    │   │   │   └── trenitalia.png
-    │   │   └── Train_Marker.svg
-    │   ├── CSS/
-    │   │   ├── autocomplete.css
-    │   │   ├── global.css
-    │   │   ├── Recap.css
-    │   │   ├── Sections/
-    │   │   │   ├── footer.css
-    │   │   │   ├── header.css
-    │   │   │   ├── main.css
-    │   │   │   ├── Recap/
-    │   │   │   │   ├── footer.css
-    │   │   │   │   ├── header.css
-    │   │   │   │   └── main.css
-    │   │   │   └── Trajets/
-    │   │   │       ├── footer.css
-    │   │   │       ├── header.css
-    │   │   │       └── main.css
-    │   │   ├── style.css
-    │   │   └── Trajets.css
-    │   ├── index.html
-    │   ├── recap.html
-    │   ├── Script/
-    │   │   ├── autocomplete.js
-    │   │   ├── index.js
-    │   │   ├── recap.js
-    │   │   └── trajets.js
-    │   └── trajets.html
-    └── trajets.html
+└── trajetsmax.html
 ```
 
 ## 🛠️ Scripts de Maintenance
