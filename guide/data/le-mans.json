@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "24 Heures, cité Plantagenêt et rillettes à 53min de Paris",
   "excerpt": "1 jour au Mans",
-  "cover": "le-mans-cover.jpg",
-  "hero": "le-mans-hero.jpg",
+  "cover": "le-mans-cover.webp",
+  "hero": "le-mans-hero.webp",
   "badges": ["Train direct", "Budget"],
   "travel": {
     "duration": "53min",

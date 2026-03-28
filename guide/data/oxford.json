@@ -4,8 +4,8 @@
   "country": "Royaume-Uni",
   "tagline": "Dreaming spires, bibliothèques médiévales et Harry Potter à 3h30 de Paris",
   "excerpt": "1 jour à Oxford",
-  "cover": "oxford-cover.jpg",
-  "hero": "oxford-hero.jpg",
+  "cover": "oxford-cover.webp",
+  "hero": "oxford-hero.webp",
   "badges": ["1 correspondance", "Eurostar + GWR"],
   "travel": {
     "duration": "~3h30 (via Londres)",

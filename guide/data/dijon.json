@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Moutarde, Bourgogne et art flamboyant à 1h35 de Paris",
   "excerpt": "2 jours à Dijon",
-  "cover": "dijon-cover.jpg",
-  "hero": "dijon-hero.jpg",
+  "cover": "dijon-cover.webp",
+  "hero": "dijon-hero.webp",
   "badges": ["Train direct", "Budget"],
   "travel": {
     "duration": "1h 35min",

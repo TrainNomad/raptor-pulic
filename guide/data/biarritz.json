@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Surf, rochers et Art déco sur la côte basque à 4h15 de Paris",
   "excerpt": "2 jours à Biarritz",
-  "cover": "biarritz-cover.jpg",
-  "hero": "biarritz-hero.jpg",
+  "cover": "biarritz-cover.webp",
+  "hero": "biarritz-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "4h 15min",

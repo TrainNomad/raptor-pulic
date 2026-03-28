@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Vieux-Port, tours médiévales et Île de Ré à 3h de Paris",
   "excerpt": "2 jours à La Rochelle",
-  "cover": "la-rochelle-cover.jpg",
-  "hero": "la-rochelle-hero.jpg",
+  "cover": "la-rochelle-cover.webp",
+  "hero": "la-rochelle-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "2h 55min",

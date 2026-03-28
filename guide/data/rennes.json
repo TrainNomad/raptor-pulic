@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "La capitale bretonne à 1h25 de Paris",
   "excerpt": "2 jours à Rennes",
-  "cover": "rennes-cover.jpg",
-  "hero": "rennes-hero.jpg",
+  "cover": "rennes-cover.webp",
+  "hero": "rennes-hero.webp",
   "badges": ["Train direct", "Budget"],
   "travel": {
     "duration": "1h 25min",

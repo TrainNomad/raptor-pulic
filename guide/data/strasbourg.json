@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Alsace, cathédrale et tarte flambée à 1h46 de Paris",
   "excerpt": "2 jours à Strasbourg",
-  "cover": "strasbourg-cover.jpg",
-  "hero": "strasbourg-hero.jpg",
+  "cover": "strasbourg-cover.webp",
+  "hero": "strasbourg-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "1h 46min",

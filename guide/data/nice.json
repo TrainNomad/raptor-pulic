@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Promenade des Anglais, Vieux-Nice et Côte d'Azur à 5h30 de Paris",
   "excerpt": "3 jours à Nice",
-  "cover": "nice-cover.jpg",
-  "hero": "nice-hero.jpg",
+  "cover": "nice-cover.webp",
+  "hero": "nice-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "5h 27min",

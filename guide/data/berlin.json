@@ -4,8 +4,8 @@
   "country": "Allemagne",
   "tagline": "Histoire, street art et culture à une nuit de Paris",
   "excerpt": "4 jours à Berlin",
-  "cover": "berlin-cover.jpg",
-  "hero": "berlin-hero.jpg",
+  "cover": "berlin-cover.webp",
+  "hero": "berlin-hero.webp",
   "badges": ["Train de nuit", "European Sleeper"],
   "travel": {
     "duration": "~16h (nuit)",

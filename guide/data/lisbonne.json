@@ -4,8 +4,8 @@
   "country": "Portugal",
   "tagline": "Fado, Alfama et pastéis de nata au bout des rails ibériques",
   "excerpt": "3 jours à Lisbonne",
-  "cover": "lisbonne-cover.jpg",
-  "hero": "lisbonne-hero.jpg",
+  "cover": "lisbonne-cover.webp",
+  "hero": "lisbonne-hero.webp",
   "badges": ["3 correspondances", "TGV + AVE + Renfe + CP"],
   "travel": {
     "duration": "~15h (jour 1 : Paris→Madrid, jour 2 : Madrid→Lisbonne)",

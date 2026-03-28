@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Châteaux de la Loire, gastronomie et douceur tourangelle à 1h14 de Paris",
   "excerpt": "2 jours à Tours",
-  "cover": "tours-cover.jpg",
-  "hero": "tours-hero.jpg",
+  "cover": "tours-cover.webp",
+  "hero": "tours-hero.webp",
   "badges": ["Train direct", "Budget"],
   "travel": {
     "duration": "1h 14min",

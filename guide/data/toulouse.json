@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "La Ville Rose, Airbus et violettes à 4h20 de Paris",
   "excerpt": "2 jours à Toulouse",
-  "cover": "toulouse-cover.jpg",
-  "hero": "toulouse-hero.jpg",
+  "cover": "toulouse-cover.webp",
+  "hero": "toulouse-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "4h 20min",

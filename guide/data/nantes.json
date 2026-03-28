@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Machines de l'île, château des Ducs et Loire à 2h de Paris",
   "excerpt": "2 jours à Nantes",
-  "cover": "nantes-cover.jpg",
-  "hero": "nantes-hero.jpg",
+  "cover": "nantes-cover.webp",
+  "hero": "nantes-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "2h 05min",

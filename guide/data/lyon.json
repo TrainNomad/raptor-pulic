@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Gastronomie, Vieux-Lyon et confluences à 2h de Paris",
   "excerpt": "2 jours à Lyon",
-  "cover": "lyon-cover.jpg",
-  "hero": "lyon-hero.jpg",
+  "cover": "lyon-cover.webp",
+  "hero": "lyon-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "1h 58min",

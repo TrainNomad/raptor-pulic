@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Vignobles, architecture néoclassique et Garonne à 2h10 de Paris",
   "excerpt": "2 jours à Bordeaux",
-  "cover": "bordeaux-cover.jpg",
-  "hero": "bordeaux-hero.jpg",
+  "cover": "bordeaux-cover.webp",
+  "hero": "bordeaux-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "2h 04min",

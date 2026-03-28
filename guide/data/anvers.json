@@ -4,8 +4,8 @@
   "country": "Belgique",
   "tagline": "Diamants, mode et baroque flamand à 2h de Paris",
   "excerpt": "2 jours à Anvers",
-  "cover": "anvers-cover.jpg",
-  "hero": "anvers-hero.jpg",
+  "cover": "anvers-cover.webp",
+  "hero": "anvers-hero.webp",
   "badges": ["Train direct", "Eurostar"],
   "travel": {
     "duration": "2h 02min",

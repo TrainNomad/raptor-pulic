@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "La cité corsaire à 2h35 de Paris",
   "excerpt": "2 jours à Saint-Malo",
-  "cover": "saint-malo-cover.jpg",
-  "hero": "saint-malo-hero.jpg",
+  "cover": "saint-malo-cover.webp",
+  "hero": "saint-malo-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "2h 35min",

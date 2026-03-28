@@ -4,8 +4,8 @@
   "country": "Belgique",
   "tagline": "Venise du Nord, chocolat et dentelle à 2h30 de Paris",
   "excerpt": "1 jour à Bruges",
-  "cover": "bruges-cover.jpg",
-  "hero": "bruges-hero.jpg",
+  "cover": "bruges-cover.webp",
+  "hero": "bruges-hero.webp",
   "badges": ["Train direct", "Eurostar"],
   "travel": {
     "duration": "2h 31min",

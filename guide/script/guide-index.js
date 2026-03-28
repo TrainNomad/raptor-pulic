@@ -4,18 +4,18 @@
    Dépend de : guide/data/guides.js (GUIDES_DATA chargé avant)
    ============================================================ */
 
-// ── Config pays : ordre d'affichage + emoji ───────────────────────────────────
+// ── Config pays : ordre d'affichage + flag local ─────────────────────────────
 // Ajoutez une entrée ici quand vous couvrez un nouveau pays.
 const COUNTRY_CONFIG = [
-    { country: 'Italie',    emoji: '🇮🇹' },
-    { country: 'Espagne',   emoji: '🇪🇸' },
-    { country: 'Portugal',  emoji: '🇵🇹' },
-    { country: 'Allemagne', emoji: '🇩🇪' },
-    { country: 'Suisse',    emoji: '🇨🇭' },
-    { country: 'Belgique',  emoji: '🇧🇪' },
-    { country: 'Pays-Bas',  emoji: '🇳🇱' },
-    { country: 'France',    emoji: '🇫🇷' },
-    { country: 'Royaume-Uni', emoji: '🇬🇧' }
+    { country: 'Italie',      emoji: '🇮🇹', flag: '../assets/pays/italie.webp' },
+    { country: 'Espagne',     emoji: '🇪🇸', flag: '../assets/pays/espagne.webp' },
+    { country: 'Portugal',    emoji: '🇵🇹', flag: '../assets/pays/portugal.webp' },
+    { country: 'Allemagne',   emoji: '🇩🇪', flag: '../assets/pays/allemagne.webp' },
+    { country: 'Suisse',      emoji: '🇨🇭', flag: '../assets/pays/suisse.webp' },
+    { country: 'Belgique',    emoji: '🇧🇪', flag: '../assets/pays/belgique.webp' },
+    { country: 'Pays-Bas',    emoji: '🇳🇱', flag: '../assets/pays/pays-bas.webp' },
+    { country: 'France',      emoji: '🇫🇷', flag: '../assets/pays/france.webp' },
+    { country: 'Royaume-Uni', emoji: '🇬🇧', flag: '../assets/pays/royaume-uni.webp' },
 ];
 
 // ── Génération des filtres pays depuis GUIDES_DATA ────────────────────────────
@@ -27,7 +27,7 @@ function buildCountryFilters() {
     // Pays réellement présents dans les données
     const presentCountries = new Set(GUIDES_DATA.map(g => g.country));
 
-    COUNTRY_CONFIG.forEach(({ country, emoji }) => {
+    COUNTRY_CONFIG.forEach(({ country, emoji, flag }) => {
         if (!presentCountries.has(country)) return;
 
         // Tag de filtre = nom du pays en minuscules sans accents
@@ -38,8 +38,18 @@ function buildCountryFilters() {
         const btn = document.createElement('button');
         btn.className = 'filter-pill';
         btn.dataset.filter = tag;
-        btn.textContent = `${emoji} ${country}`;
         btn.onclick = function () { setFilter(this); };
+
+        // Image drapeau avec fallback emoji
+        const img = document.createElement('img');
+        img.src = flag;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.style.cssText = 'width:20px;border-radius:3px;object-fit:cover;flex-shrink:0;';
+        img.onerror = function () { this.replaceWith(document.createTextNode(emoji + ' ')); };
+
+        btn.appendChild(img);
+        btn.appendChild(document.createTextNode(country));
         bar.appendChild(btn);
     });
 }
@@ -63,7 +73,10 @@ function renderCard(g, delay) {
             </div>
         </div>
         <div class="guide-card-body">
-            <div class="guide-card-meta">${g.country} · ${g.city}</div>
+            <div class="guide-card-meta" style="display:flex;align-items:center;gap:6px;">
+                ${(()=>{ const c=COUNTRY_CONFIG.find(x=>x.country===g.country); return c?`<img src="${c.flag}" alt="" loading="lazy" style="width:18px;;border-radius:2px;object-fit:cover;flex-shrink:0;" onerror="this.replaceWith(document.createTextNode('${c.emoji}'))">`:''; })()}
+                ${g.country} · ${g.city}
+            </div>
             <div class="guide-card-title">${g.tagline}</div>
             <div class="guide-card-excerpt">${g.excerpt}</div>
             <div class="guide-card-footer">

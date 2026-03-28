@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Flandres, estaminets et Grande Braderie à 1h de Paris",
   "excerpt": "1 jour à Lille",
-  "cover": "lille-cover.jpg",
-  "hero": "lille-hero.jpg",
+  "cover": "lille-cover.webp",
+  "hero": "lille-hero.webp",
   "badges": ["Train direct", "Budget"],
   "travel": {
     "duration": "1h 00min",

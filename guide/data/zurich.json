@@ -4,8 +4,8 @@
   "country": "Suisse",
   "tagline": "Lac, montagne et chocolat à 4h de Paris",
   "excerpt": "2 jours à Zurich",
-  "cover": "zurich-cover.jpg",
-  "hero": "zurich-hero.jpg",
+  "cover": "zurich-cover.webp",
+  "hero": "zurich-hero.webp",
   "badges": ["Train direct", "TGV Lyria"],
   "travel": {
     "duration": "4h",

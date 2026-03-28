@@ -4,8 +4,8 @@
   "country": "Espagne",
   "tagline": "Gaudí, tapas et soleil catalan",
   "excerpt": "3 jours à Barcelone",
-  "cover": "barcelone-cover.jpg",
-  "hero": "barcelone-hero.jpg",
+  "cover": "barcelone-cover.webp",
+  "hero": "barcelone-hero.webp",
   "badges": ["Train direct", "TGV Inoui / AVE"],
   "travel": {
     "duration": "6h 50min",

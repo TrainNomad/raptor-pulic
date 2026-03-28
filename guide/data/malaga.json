@@ -4,8 +4,8 @@
   "country": "Espagne",
   "tagline": "Picasso, Costa del Sol et tapas au soleil",
   "excerpt": "2 jours à Málaga",
-  "cover": "malaga-cover.jpg",
-  "hero": "malaga-hero.jpg",
+  "cover": "malaga-cover.webp",
+  "hero": "malaga-hero.webp",
   "badges": ["2 correspondances", "TGV + AVE"],
   "travel": {
     "duration": "~12h (via Barcelone + Madrid)",

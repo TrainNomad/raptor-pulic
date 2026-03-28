@@ -4,8 +4,8 @@
   "country": "Belgique",
   "tagline": "L'Agneau mystique, streetfood et vie étudiante à 2h15 de Paris",
   "excerpt": "1 jour à Gand",
-  "cover": "gand-cover.jpg",
-  "hero": "gand-hero.jpg",
+  "cover": "gand-cover.webp",
+  "hero": "gand-hero.webp",
   "badges": ["Train direct", "Eurostar + IC"],
   "travel": {
     "duration": "~2h 15min (via Bruxelles)",

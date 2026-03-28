@@ -4,8 +4,8 @@
   "country": "Espagne",
   "tagline": "L'Alhambra, les tapas gratuites et l'Andalousie profonde",
   "excerpt": "2 jours à Grenade",
-  "cover": "grenade-cover.jpg",
-  "hero": "grenade-hero.jpg",
+  "cover": "grenade-cover.webp",
+  "hero": "grenade-hero.webp",
   "badges": ["2 correspondances", "TGV + AVE + MD"],
   "travel": {
     "duration": "~14h (via Barcelone + Madrid)",

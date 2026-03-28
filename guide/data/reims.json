@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Champagne, cathédrale gothique et sacres royaux à 45min de Paris",
   "excerpt": "1 jour à Reims",
-  "cover": "reims-cover.jpg",
-  "hero": "reims-hero.jpg",
+  "cover": "reims-cover.webp",
+  "hero": "reims-hero.webp",
   "badges": ["Train direct", "Budget"],
   "travel": {
     "duration": "45min",

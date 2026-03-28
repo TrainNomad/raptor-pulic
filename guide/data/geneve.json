@@ -4,8 +4,8 @@
   "country": "Suisse",
   "tagline": "Jet d'eau, ONU et horlogerie à 3h05 de Paris",
   "excerpt": "1 jour à Genève",
-  "cover": "geneve-cover.jpg",
-  "hero": "geneve-hero.jpg",
+  "cover": "geneve-cover.webp",
+  "hero": "geneve-hero.webp",
   "badges": ["Train direct", "TGV Lyria"],
   "travel": {
     "duration": "3h 05min",

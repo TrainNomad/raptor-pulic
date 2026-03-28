@@ -4,8 +4,8 @@
   "country": "Portugal",
   "tagline": "Vinho do Porto, azulejos et Douro",
   "excerpt": "2 jours à Porto",
-  "cover": "porto-cover.jpg",
-  "hero": "porto-hero.jpg",
+  "cover": "porto-cover.webp",
+  "hero": "porto-hero.webp",
   "badges": ["3 correspondances", "TGV + AVE + Renfe + CP"],
   "travel": {
     "duration": "~2 jours (nuit à Madrid ou Vigo recommandée)",

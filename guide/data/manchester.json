@@ -4,8 +4,8 @@
   "country": "Royaume-Uni",
   "tagline": "Football, musique et culture industrielle à 5h de Paris",
   "excerpt": "2 jours à Manchester",
-  "cover": "manchester-cover.jpg",
-  "hero": "manchester-hero.jpg",
+  "cover": "manchester-cover.webp",
+  "hero": "manchester-hero.webp",
   "badges": ["1 correspondance", "Eurostar + Avanti"],
   "travel": {
     "duration": "~5h (via Londres)",

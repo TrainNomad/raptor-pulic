@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Place de la Comédie, garrigue et Méditerranée à 3h20 de Paris",
   "excerpt": "2 jours à Montpellier",
-  "cover": "montpellier-cover.jpg",
-  "hero": "montpellier-hero.jpg",
+  "cover": "montpellier-cover.webp",
+  "hero": "montpellier-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "3h 19min",

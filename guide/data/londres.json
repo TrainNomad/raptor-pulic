@@ -4,8 +4,8 @@
   "country": "Royaume-Uni",
   "tagline": "Big Ben, pubs et culture britannique à 2h17 de Paris",
   "excerpt": "3 jours à Londres",
-  "cover": "londres-cover.jpg",
-  "hero": "londres-hero.jpg",
+  "cover": "londres-cover.webp",
+  "hero": "londres-hero.webp",
   "badges": ["Train direct", "Eurostar"],
   "travel": {
     "duration": "2h 17min",

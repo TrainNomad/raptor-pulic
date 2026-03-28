@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Calanques, Vieux-Port et bouillabaisse à 3h de Paris",
   "excerpt": "2 jours à Marseille",
-  "cover": "marseille-cover.jpg",
-  "hero": "marseille-hero.jpg",
+  "cover": "marseille-cover.webp",
+  "hero": "marseille-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "3h 05min",

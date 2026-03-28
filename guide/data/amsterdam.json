@@ -4,8 +4,8 @@
   "country": "Pays-Bas",
   "tagline": "Canaux, musées et vélos à 3h20 de Paris",
   "excerpt": "3 jours à Amsterdam",
-  "cover": "amsterdam-cover.jpg",
-  "hero": "amsterdam-hero.jpg",
+  "cover": "amsterdam-cover.webp",
+  "hero": "amsterdam-hero.webp",
   "badges": ["Train direct", "Eurostar"],
   "travel": {
     "duration": "3h 20min",

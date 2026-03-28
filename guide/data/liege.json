@@ -4,8 +4,8 @@
   "country": "Belgique",
   "tagline": "Gaufres chaudes, architecture Calatrava et Wallonie profonde à 2h14 de Paris",
   "excerpt": "1 jour à Liège",
-  "cover": "liege-cover.jpg",
-  "hero": "liege-hero.jpg",
+  "cover": "liege-cover.webp",
+  "hero": "liege-hero.webp",
   "badges": ["Train direct", "Budget"],
   "travel": {
     "duration": "2h 14min",

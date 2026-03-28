@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "La station balnéaire secrète de la Loire-Atlantique",
   "excerpt": "2 jours à Pornic",
-  "cover": "pornic-cover.jpg",
-  "hero": "pornic-hero.jpg",
+  "cover": "pornic-cover.webp",
+  "hero": "pornic-hero.webp",
   "badges": ["1 correspondance", "TGV + TER"],
   "travel": {
     "duration": "~3h (Paris → Nantes 2h + TER Nantes → Pornic 1h)",

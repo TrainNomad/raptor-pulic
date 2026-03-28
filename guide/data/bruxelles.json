@@ -4,8 +4,8 @@
   "country": "Belgique",
   "tagline": "Bières, BD et Grand-Place à 1h22 de Paris",
   "excerpt": "1 jour à Bruxelles",
-  "cover": "bruxelles-cover.jpg",
-  "hero": "bruxelles-hero.jpg",
+  "cover": "bruxelles-cover.webp",
+  "hero": "bruxelles-hero.webp",
   "badges": ["Train direct", "Budget"],
   "travel": {
     "duration": "1h 22min",

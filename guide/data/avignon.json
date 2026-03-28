@@ -4,8 +4,8 @@
   "country": "France",
   "tagline": "Palais des Papes, Luberon et lavande à 2h40 de Paris",
   "excerpt": "2 jours à Avignon",
-  "cover": "avignon-cover.jpg",
-  "hero": "avignon-hero.jpg",
+  "cover": "avignon-cover.webp",
+  "hero": "avignon-hero.webp",
   "badges": ["Train direct", "TGV Inoui"],
   "travel": {
     "duration": "2h 36min",
